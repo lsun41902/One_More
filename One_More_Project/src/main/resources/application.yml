@@ -1,6 +1,24 @@
 server:
   port: 8080
 
-# 옆자리 팀원의 FastAPI 주소를 미리 등록해둡니다.
 ai-server:
-  url: "http://192.168.22.53:8000"  # XX 부분에 팀원의 IP를 적으세요.
+  url: "http://192.168.22.53:8000"  #팀원의 IP
+
+# 사용자가 올리는 사진 파일의 최대 크기를 설정합니다.
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  # 데이터베이스 연결 정보 (기존 설정 유지)
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: myuser
+    password: mypassword
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
