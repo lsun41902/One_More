@@ -17,6 +17,7 @@ class Question(BaseModel):
 class IngredientRequest(BaseModel):
     ingredients: List[str]
 
+#텍스트 질문을 받으면 답변해주기
 @app.post("/ai")
 async def ask_ai(item:Question):
     print(f"Spring 친구가 보낸 메시지:{item.message}")
