@@ -45,3 +45,7 @@ Thumbs.db
 .venv/
 __pycache__/
 python-server/.env
+
+# --- 이승은 코드합치는 개인도구
+merge_code.py
+project_context.txt

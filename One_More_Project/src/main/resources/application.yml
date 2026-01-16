@@ -10,15 +10,3 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
-
-  # 데이터베이스 연결 정보 (기존 설정 유지)
-  datasource:
-    url: jdbc:postgresql://localhost:5432/mydb
-    username: myuser
-    password: mypassword
-    driver-class-name: org.postgresql.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true

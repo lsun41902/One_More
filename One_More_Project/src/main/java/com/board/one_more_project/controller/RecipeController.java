@@ -17,21 +17,29 @@ public class RecipeController {
 
     private final AiClientService aiClientService;
 
-    // 생성자 주입 (RecipeService는 이제 필요 없으므로 제거되었습니다.)
     public RecipeController(AiClientService aiClientService) {
         this.aiClientService = aiClientService;
     }
 
     /**
      * 사진 업로드 시 레시피 생성 요청
+     * @param file: 이미지 파일
+     * @param preference: 유저 취향 (예: 매콤하게, 비건 등)
+     * @param type: 이미지 종류 ("receipt" 또는 "ingredients")
      */
     @PostMapping("/upload-image")
     public RecipeResponse createRecipeFromImage(
             @RequestParam("file") MultipartFile file,
-            @RequestParam("preference") String preference
+            @RequestParam("preference") String preference,
+            @RequestParam("type") String type // 추가: 영수증인지 재료사진인지 구분
     ) {
-        // Python 서버로 중계 후 결과 반환
-        return aiClientService.sendImageForRecipe(file, preference);
+        // 1. 간단한 데이터 검증 (비어있는지 확인)
+        if (file.isEmpty()) {
+            return new RecipeResponse("오류", List.of(), List.of("파일이 없습니다."), "사진을 업로드해주세요.");
+        }
+
+        // 2. Python 서버로 중계 (type 정보를 함께 보냄)
+        return aiClientService.sendImageForRecipe(file, preference, type);
     }
 
     /**
@@ -42,7 +50,7 @@ public class RecipeController {
             @RequestBody List<String> ingredients,
             @RequestParam("preference") String preference
     ) {
-        // Python 서버로 중계 후 결과 반환
+        // 텍스트 입력은 이미 재료 리스트이므로 type 구분이 필요 없음
         return aiClientService.sendTextForRecipe(ingredients, preference);
     }
 }
