@@ -2,11 +2,11 @@ server:
   port: 8080
 
 ai-server:
-  url: "http://192.168.22.53:8000"  #팀원의 IP
+  url: "http://192.168.22.53:8000"  # python fast api server
 
 # 사용자가 올리는 사진 파일의 최대 크기를 설정합니다.
-spring:
-  servlet:
-    multipart:
-      max-file-size: 10MB
-      max-request-size: 10MB
+#spring:
+#  servlet:
+#    multipart:
+#      max-file-size: 10MB
+#      max-request-size: 10MB

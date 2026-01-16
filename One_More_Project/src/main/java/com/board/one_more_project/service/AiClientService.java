@@ -1,6 +1,7 @@
 package com.board.one_more_project.service;
 
 import com.board.one_more_project.dto.RecipeResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.MultipartBodyBuilder;
@@ -11,10 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Map;
 
-/**
- * [AI 서버 통신 전담 서비스]
- * 역할: Python 서버로 데이터를 전달하고, 최종 레시피를 받아옵니다.
- */
+
+// [AI 서버 통신 전담 서비스]
+// 역할: Python 서버로 데이터를 전달하고, 최종 레시피를 받아옵니다.
+@Slf4j
 @Service
 public class AiClientService {
 
@@ -24,10 +25,9 @@ public class AiClientService {
         this.restClient = RestClient.create(aiServerUrl);
     }
 
-    /**
-     * 이미지를 Python 서버로 보내고 최종 레시피를 받아옵니다.
-     * @param type: "receipt" (영수증-OCR) 또는 "ingredients" (재료사진-YOLO)
-     */
+
+    // 이미지를 Python 서버로 보내고 최종 레시피를 받아옵니다.
+    // @param type: "receipt" (영수증-OCR) 또는 "ingredients" (재료사진-YOLO)
     public RecipeResponse sendImageForRecipe(MultipartFile file, String preference, String type) {
         // 멀티파트 데이터 생성 (파일 + 취향 + 타입)
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
@@ -49,9 +49,7 @@ public class AiClientService {
         }
     }
 
-    /**
-     * 텍스트 재료 리스트를 Python 서버로 보냅니다.
-     */
+     //텍스트 재료 리스트를 Python 서버로 보냅니다.
     public RecipeResponse sendTextForRecipe(List<String> ingredients, String preference) {
         try {
             return restClient.post()
@@ -65,6 +63,9 @@ public class AiClientService {
                     .retrieve()
                     .body(RecipeResponse.class);
         } catch (Exception e) {
+            // log.error를 사용하되, e.getMessage()만 찍어서 눈이 편하게 만듭니다.
+            // 만약 전체 에러 원인이 궁금하면 log.error("에러 발생", e); 처럼 e를 뒤에 붙이면 됩니다.
+            log.error("Python 서버 통신 에러 발생! 사유: {}", e.getMessage());
             return createErrorResponse("레시피 생성 중 오류가 발생했습니다.");
         }
     }
