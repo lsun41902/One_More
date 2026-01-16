@@ -5,8 +5,17 @@ ai-server:
   url: "http://192.168.22.53:8000"  # python fast api server
 
 # 사용자가 올리는 사진 파일의 최대 크기를 설정합니다.
-#spring:
-#  servlet:
-#    multipart:
-#      max-file-size: 10MB
-#      max-request-size: 10MB
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+# Swagger 관련 설정
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html    # 접속 경로를 http://localhost:8080/swagger-ui.html 로 설정
+    groups-order: DESC        # API 그룹 표시 순서
+    operations-sorter: method # API를 GET, POST 순서로 정렬
+  api-docs:
+    path: /api-docs           # API 명세서(JSON)가 나오는 경로
