@@ -48,6 +48,7 @@ async def analyze_image(file: UploadFile = File(...)):
         "message": "이미지가 서버에 성공적으로 저장되었습니다."
     }
 
+#메인
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app,host='0.0.0.0',port=8000)
