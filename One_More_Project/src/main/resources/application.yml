@@ -1,0 +1,6 @@
+server:
+  port: 8080
+
+# 옆자리 팀원의 FastAPI 주소를 미리 등록해둡니다.
+ai-server:
+  url: "http://192.168.22.53:8000"  # XX 부분에 팀원의 IP를 적으세요.
