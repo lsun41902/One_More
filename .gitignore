@@ -1,10 +1,12 @@
 # --- Spring Server (으기) ---
 HELP.md
-.gradle
+.gradle/
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+!build.gradle
+!settings.gradle
 ### STS ###
 .apt_generated
 .classpath
