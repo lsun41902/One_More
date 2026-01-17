@@ -38,3 +38,10 @@ Get-ChildItem -Recurse -Include *.java, *.properties, *.yml, *.gradle, *.xml | F
     Get-Content $_.FullName
     "`n"
 } | Out-File -FilePath project_context.txt -Encoding utf8NoBOM
+
+
+일단 코드를 추가해야돼. 기존 코드도 약간 다듬어야하고. 
+지금 컨트롤러에서 이미지만 업로드한다고 메서드가 되어있는데. 
+영수증 or 재료사진 둘 중 하나를 받는거라서. 파이썬 서버에서 영수증은 OCR이 분석하고, 재료사진은 yolo가 분석해야하거든.
+백엔드에서 구분해서 보내줘야 파이썬에서 알맞은 모델에 전달할 수 있어.
+dto, service, controller 수정해서 코드 보내줘. (수정할 필요 없으면 안건드려도 괜찮아.)
