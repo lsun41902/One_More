@@ -5,12 +5,13 @@ from fastapi import FastAPI, File, UploadFile
 import shutil
 import os
 
-
+#기본 셋팅
 app = FastAPI()
 process = calc_ai.llm_question()
 # 이미지를 저장할 폴더 생성
 UPLOAD_DIR = "./uploads"
 
+#클래스 생성
 class Question(BaseModel):
     message: str
 
@@ -18,18 +19,31 @@ class IngredientRequest(BaseModel):
     ingredients: List[str]
 
 #텍스트 질문을 받으면 답변해주기
-@app.post("/ai")
+@app.post("/ai",
+          tag=["AI"],
+          summary="AI 질문 답변",
+          description="질문을 AI로 답장하기.")
 async def ask_ai(item:Question):
     print(f"Spring 친구가 보낸 메시지:{item.message}")
     result = process.getQuestion(item.message)
     return {"reply": result}
 
-@app.post("/analyze")
+#문자로 입력 받은 재료로 레시피 추천하기
+@app.post("/analyze",
+    tags=["분석 - 텍스트"], 
+    summary="텍스트 재료 분석", 
+    description="텍스트로 전달 받은 핵심 재료들을 분석하여 레시피 추천.")
 async def analyze(request: IngredientRequest):
     print(f"옆자리 자바 서버에서 온 재료: {request.ingredients}")
     return {"status": "success", "message": "잘 받았습니다!"}
 
-@app.post("/analyze-image")
+#이미지로 입력받은 재료 분석후 레시피 추천하기
+@app.post(
+    "/analyze-image", 
+    tags=["분석 - 이미지"], 
+    summary="이미지 재료 분석", 
+    description="이미지로 전달 받은 재료들을 분석하여 재료를 확인."
+)
 async def analyze_image(file: UploadFile = File(...)):
     # 1. 파일 저장 경로 설정
     print(f"접속됨")
