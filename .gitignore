@@ -47,6 +47,8 @@ Thumbs.db
 .venv/
 __pycache__/
 python-server/.env
+python-server/uploads/*
+*.tar
 
 # --- 이승은 코드합치는 개인도구
 merge_code.py
