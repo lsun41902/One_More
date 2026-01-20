@@ -1,6 +1,7 @@
 import os
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from dotenv import load_dotenv
+from collections import deque
 import cv2
 from ultralytics import YOLO
 import shutil
@@ -12,6 +13,9 @@ import google.generativeai as genai
 from PIL import Image, ImageDraw, ImageFont
 from google.api_core import exceptions
 
+#image 가져오기
+import get_image
+
 load_dotenv()
 
 openai_model = YOLO('yolov10n.pt')
@@ -22,8 +26,7 @@ genai.configure(api_key=genai_api_key)
 
 UPLOAD_DIR = "./uploads"
 
-current_recipes = []
-recipe_titles = set()
+recipe_titles = deque(maxlen=10)
 
 model_candidates = [
     "gemini-2.5-flash-lite",
@@ -114,103 +117,149 @@ class Analyze():
 
     # endregion
 
-    #region 몇가지만 재료가 더 있으면!
-    def get_more_something(self, preference, ingredients, spice):
+    #region 추천한것 외의 추천 레시피 3개
+    def get_another_more_somthing(self, preference, ingredients, spice):
         prompt = f"""
                 음.. 혹시 지금 내가 가지고 있는 재료들과 1~5개 정도의 재료 또는 조미료가 있다면 더 맛있는 음식이 가능할까?
+                방금 추천한 {recipe_titles} 이 레시피들 말고 다른 레시피를 원해. 중복되지 않게 조심해. 
                 나는 {preference} 이런 취향을 가지고 있고, {ingredients} 이런 재료들고 {spice} 이런 조미료를 가지고있어,
-                레시피는 인터넷에서 한국식, 일본식, 서양식 이였으면 좋겠고, 사람들이 이미 만든적이 
-                있는 레시피를 기반으로 3개 추천해줬으면 좋겠어. 꼭 3가지를 찾지 못해도 상관없어. 적어도 3가지를 추천해줘. 
-                근거가 없는 요리는 추천하지 않도록 조심해하고! recipe는 손질 방법과, 정량 기준, 조리에 대한 상세한 시간을 꼭 언급해줘.
-                필요한 재료들은 more에 넣어줘!
-                title,ingredients,more,summary,recipe 는 한글로 알려줘, 결과는 반드시 JSON 배열로만 응답해줘.
+                다른 재료는 없으니 참고해. 사람들이 이미 만든적이 있는 레시피를 기반으로 3개 추천해줬으면 좋겠어. 꼭 3가지를 찾지 못해도 상관없어. 적어도 3가지를 추천해줘. 
+                title 은 제목만 적어줘 예를 들어 (매콤달콤 돼지고기 김치볶음밥) 이런 품사를 제목에 섞지마,
+                ingredients 는 [재료, 정량 얼마] 이런식으로 적어주고, 근거가 없는 요리는 추천하지 않도록 조심해줘. 예를 들면 김치찌게에 방울토마토를 넣기. 이런 음식은 아무도 선호하지 않아. 
+                recipe는 손질 방법과, 정량 기준, 조리에 대한 상세한 시간을 꼭 언급해줘. 
+                image는 실존하지 않거나 접근이 불가능한 이미지 URL 대신, Google 이미지 검색이 가능한 레시피 사이트의 정확한 URL을 알려줘.
+                reference는 Google 검색이 가능한 레시피 사이트의 정확한 URL을 알려줘.
+                tip은 1~5개정도 알려주고 title,ingredients,summary,recipe,tip 는 한글로 알려줘,
+                결과는 반드시 JSON 배열로만 응답해줘.
                 응답은 반드시 아래 JSON 형식을 지켜줘:
 
               {{
-                "title": "요리 이름 (예: 김치볶음밥)",
-                "ingredients": ["재료1", "재료2", "재료3"],
-                "more":["필요한재료1","필요한재료2","필요한재료3"],
+                "title": "2번 요리 이름 (예: 김치볶음밥)",
+                "ingredients": [["재료1","정량 얼마"], ["재료2","정량 얼마"], ["재료1","정량 얼마"]],
+                "more" [["필요한재료1","정량 얼마"], ["필요한재료2","정량 얼마"], ["필요한재료3","정량 얼마"]],
                 "summary": "해당 요리에 대한 50자 이내의 간략한 설명",
+                "image": image,
+                "reference": 인터넷 주소URL,
                 "recipe": ["step1: 재료 손질 방법과 재료의 정량 기준을 알려주기(밥 숫가락으로 한숟갈, 티 스푼으로 한 숟갈, 종이컵 반컵)"],["step2: 냄비에 넣고 강불로 5분간 끓여주세요"],
                 "tip":["tip1: 닭을 손질할때 우유를 넣어서 잡내를 없애면 좋아요!","tip2: 일반 소금 대신 맛소금을 사용하면 더 맛있어요!"]
               }},
               {{
-                "title": "요리 이름 (예: 김치볶음밥)",
-                "ingredients": ["재료1", "재료2", "재료3"],
-                "more":["필요한재료1","필요한재료2","필요한재료3"],
+                "title": "2번 요리 이름 (예: 김치볶음밥)",
+                "ingredients": [["재료1","정량 얼마"], ["재료2","정량 얼마"], ["재료1","정량 얼마"]],
+                "more" [["필요한재료1","정량 얼마"], ["필요한재료2","정량 얼마"], ["필요한재료3","정량 얼마"]],
                 "summary": "해당 요리에 대한 50자 이내의 간략한 설명",
+                "image": image,
+                "reference": 인터넷 주소URL,
                 "recipe": ["step1: 재료 손질 방법과 재료의 정량 기준을 알려주기(밥 숫가락으로 한숟갈, 티 스푼으로 한 숟갈, 종이컵 반컵)"],["step2: 냄비에 넣고 강불로 5분간 끓여주세요"],
                 "tip":["tip1: 닭을 손질할때 우유를 넣어서 잡내를 없애면 좋아요!","tip2: 일반 소금 대신 맛소금을 사용하면 더 맛있어요!"]
               }}
-
                 """
 
         response = self.get_text_model(prompt)
+        print(response.content)
         result_json = json.loads(response.content)
         self.save_recipe(result_json)
         return result_json
     #endregion
 
     # region 레시피 추천
+    # 기본 레시피1개, 추천 레시피 2개
     def get_recipe(self, preference, ingredients, spice):
-        current_recipes = []
         prompt = f"""
-                나는 지금 배가고파 요리 레시피를 대신좀 찾아줘. 
+                1번. 나는 지금 배가고파 요리 레시피를 대신좀 찾아줘. 
                 나는 {preference} 이런 취향을 가지고 있고, {ingredients} 이런 재료들고 {spice} 이런 조미료를 가지고있어,
-                다른 재료는 없으니 참고해. 레시피는 인터넷에서 한국식, 일본식, 서양식 이였으면 좋겠고, 사람들이 이미 만든적이 
-                있는 레시피를 기반으로 3개 추천해줬으면 좋겠어. 꼭 3가지를 찾지 못해도 상관없어. 적어도 3가지를 추천해줘. 
-                근거가 없는 요리는 추천하지 않도록 조심해하고! recipe는 손질 방법과, 정량 기준, 조리에 대한 상세한 시간을 꼭 언급해줘.
-                title,ingredients,summary,recipe 는 한글로 알려줘, 결과는 반드시 JSON 배열로만 응답해줘.
+                가지고 있는 재료들로만 만들수 있는 요리 레피를 한가지 추천해줘. 
+                
+                2번. 음.. 혹시 지금 내가 가지고 있는 재료들과 1~5개 정도의 재료 또는 조미료가 있다면 더 맛있는 음식이 가능할까?
+                나는 {preference} 이런 취향을 가지고 있고, {ingredients} 이런 재료들고 {spice} 이런 조미료를 가지고있어,
+                다른 재료는 없으니 참고해. 사람들이 이미 만든적이 있는 레시피를 기반으로 2개 추천해줬으면 좋겠어.
+                 
+                그리고, title 은 제목만 적어줘 예를 들어 (매콤달콤 돼지고기 김치볶음밥) 이런 품사를 제목에 섞지마,
+                ingredients 는 [재료, 정량 얼마] 이런식으로 적어주고, 근거가 없는 요리는 추천하지 않도록 조심해줘. 예를 들면 김치찌게에 방울토마토를 넣기. 이런 음식은 아무도 선호하지 않아. 
+                recipe는 손질 방법과, 정량 기준, 조리에 대한 상세한 시간을 꼭 언급해줘. 
+                image는 실존하지 않거나 접근이 불가능한 이미지 URL 대신, Google 이미지 검색이 가능한 레시피 사이트의 정확한 URL을 알려줘.
+                reference는 Google 검색이 가능한 레시피 사이트의 정확한 URL을 알려줘.
+                tip은 1~5개정도 알려주고 title,ingredients,summary,recipe,tip 는 한글로 알려줘,
+                결과는 반드시 JSON 배열로만 응답해줘.
                 응답은 반드시 아래 JSON 형식을 지켜줘:
-            
+
               {{
-                "title": "요리 이름 (예: 김치볶음밥)",
-                "ingredients": ["재료1", "재료2", "재료3"],
+                "title": "1번 요리 이름 (예: 김치볶음밥)",
+                "ingredients": [["재료1","정량 얼마"], ["재료2","정량 얼마"], ["재료1","정량 얼마"]],
                 "summary": "해당 요리에 대한 50자 이내의 간략한 설명",
+                "image": image,
+                "reference": 인터넷 주소URL,
                 "recipe": ["step1: 재료 손질 방법과 재료의 정량 기준을 알려주기(밥 숫가락으로 한숟갈, 티 스푼으로 한 숟갈, 종이컵 반컵)"],["step2: 냄비에 넣고 강불로 5분간 끓여주세요"],
                 "tip":["tip1: 닭을 손질할때 우유를 넣어서 잡내를 없애면 좋아요!","tip2: 일반 소금 대신 맛소금을 사용하면 더 맛있어요!"]
               }},
+            
               {{
-                "title": "요리 이름 (예: 김치볶음밥)",
-                "ingredients": ["재료1", "재료2", "재료3"],
+                "title": "2번 요리 이름 (예: 김치볶음밥)",
+                "ingredients": [["재료1","정량 얼마"], ["재료2","정량 얼마"], ["재료1","정량 얼마"]],
+                "more" [["필요한재료1","정량 얼마"], ["필요한재료2","정량 얼마"], ["필요한재료3","정량 얼마"]],
                 "summary": "해당 요리에 대한 50자 이내의 간략한 설명",
+                "image": image,
+                "reference": 인터넷 주소URL,
                 "recipe": ["step1: 재료 손질 방법과 재료의 정량 기준을 알려주기(밥 숫가락으로 한숟갈, 티 스푼으로 한 숟갈, 종이컵 반컵)"],["step2: 냄비에 넣고 강불로 5분간 끓여주세요"],
                 "tip":["tip1: 닭을 손질할때 우유를 넣어서 잡내를 없애면 좋아요!","tip2: 일반 소금 대신 맛소금을 사용하면 더 맛있어요!"]
-              }}
+              }},
+              
+              {{
+                "title": "3번 요리 이름 (예: 김치볶음밥)",
+                "ingredients": [["재료1","정량 얼마"], ["재료2","정량 얼마"], ["재료1","정량 얼마"]],
+                "more" [["필요한재료1","정량 얼마"], ["필요한재료2","정량 얼마"], ["필요한재료3","정량 얼마"]],
+                "summary": "해당 요리에 대한 50자 이내의 간략한 설명",
+                "image": image,
+                "reference": 인터넷 주소URL,
+                "recipe": ["step1: 재료 손질 방법과 재료의 정량 기준을 알려주기(밥 숫가락으로 한숟갈, 티 스푼으로 한 숟갈, 종이컵 반컵)"],["step2: 냄비에 넣고 강불로 5분간 끓여주세요"],
+                "tip":["tip1: 닭을 손질할때 우유를 넣어서 잡내를 없애면 좋아요!","tip2: 일반 소금 대신 맛소금을 사용하면 더 맛있어요!"]
+              }},
             
                 """
 
         response = self.get_text_model(prompt)
+        print(response.content)
         result_json = json.loads(response.content)
         self.save_recipe(result_json)
         return result_json
 
+    # 추천한것 외의 기본 레시피 3개
     def get_another_recipe(self, preference, ingredients,spice):
         prompt = f"""
                 방금 추천한 {recipe_titles} 이 레시피들 말고 다른 레시피를 원해. 중복되지 않게 조심해. 
-                나는 {preference} 이런 취향을 가지고 있고, {ingredients} 이런 재료들고 {spice} 이런 조미료를 가지고있어, 다른 재료는 없으니 참고해.
-                레시피는 인터넷에서 한국식, 일본식, 서양식 이였으면 좋겠고, 사람들이 이미 만든적이 있는 레시피를 기반으로 3개 추천해줬으면 좋겠어. 
-                꼭 3가지를 찾지 못해도 상관없어. 적어도 3가지를 추천해줘. 근거가 없는 요리는 추천하지 않도록 조심해하고! 
-                recipe는 손질 방법과, 정량 기준, 조리에 대한 상세한 시간을 꼭 언급해줘.
-                title,ingredients,summary,recipe 는 한글로 알려줘, 결과는 반드시 JSON 배열로만 응답해줘.
+                나는 {preference} 이런 취향을 가지고 있고, {ingredients} 이런 재료들고 {spice} 이런 조미료를 가지고있어,
+                다른 재료는 없으니 참고해. 사람들이 이미 만든적이 있는 레시피를 기반으로 3개 추천해줬으면 좋겠어. 꼭 3가지를 찾지 못해도 상관없어. 적어도 3가지를 추천해줘. 
+                title 은 제목만 적어줘 예를 들어 (매콤달콤 돼지고기 김치볶음밥) 이런 품사를 제목에 섞지마,
+                ingredients 는 [재료, 정량 얼마] 이런식으로 적어주고, 근거가 없는 요리는 추천하지 않도록 조심해줘. 예를 들면 김치찌게에 방울토마토를 넣기. 이런 음식은 아무도 선호하지 않아. 
+                recipe는 손질 방법과, 정량 기준, 조리에 대한 상세한 시간을 꼭 언급해줘. 
+                image는 실존하지 않거나 접근이 불가능한 이미지 URL 대신, Google 이미지 검색이 가능한 레시피 사이트의 정확한 URL을 알려줘.
+                reference는 Google 검색이 가능한 레시피 사이트의 정확한 URL을 알려줘.
+                tip은 1~5개정도 알려주고 title,ingredients,summary,recipe,tip 는 한글로 알려줘,
+                결과는 반드시 JSON 배열로만 응답해줘.
                 응답은 반드시 아래 JSON 형식을 지켜줘:
             
               {{
                 "title": "요리 이름 (예: 김치볶음밥)",
-                "ingredients": ["재료1", "재료2", "재료3"],
+                "ingredients": [["재료1","정량 얼마"], ["재료2","정량 얼마"], ["재료1","정량 얼마"]],
                 "summary": "해당 요리에 대한 50자 이내의 간략한 설명",
+                "image": image,
+                "reference": 인터넷 주소URL,
                 "recipe": ["step1: 재료 손질 방법과 재료의 정량 기준을 알려주기(밥 숫가락으로 한숟갈, 티 스푼으로 한 숟갈, 종이컵 반컵)"],["step2: 냄비에 넣고 강불로 5분간 끓여주세요"],
                 "tip":["tip1: 닭을 손질할때 우유를 넣어서 잡내를 없애면 좋아요!","tip2: 일반 소금 대신 맛소금을 사용하면 더 맛있어요!"]
               }},
               {{
                 "title": "요리 이름 (예: 김치볶음밥)",
-                "ingredients": ["재료1", "재료2", "재료3"],
+                "ingredients": [["재료1","정량 얼마"], ["재료2","정량 얼마"], ["재료1","정량 얼마"]],
                 "summary": "해당 요리에 대한 50자 이내의 간략한 설명",
+                "image": image,
+                "reference": 인터넷 주소URL,
                 "recipe": ["step1: 재료 손질 방법과 재료의 정량 기준을 알려주기(밥 숫가락으로 한숟갈, 티 스푼으로 한 숟갈, 종이컵 반컵)"],["step2: 냄비에 넣고 강불로 5분간 끓여주세요"],
                 "tip":["tip1: 닭을 손질할때 우유를 넣어서 잡내를 없애면 좋아요!","tip2: 일반 소금 대신 맛소금을 사용하면 더 맛있어요!"]
-              }}"""
+              }}
+                """
 
         response = self.get_text_model(prompt)
+        print(response.content)
         result_json = json.loads(response.content)
         self.save_recipe(result_json)
         return result_json
@@ -218,11 +267,10 @@ class Analyze():
     def save_recipe(self, data):
         for recipe in data:
             title = recipe['title']
+            # get_image.getUrlInfo_homepage1(recipe['reference'])
             if title not in recipe_titles:
-                current_recipes.append(recipe)  # 리스트에 추가
-                recipe_titles.add(title)  # set에 제목 등록
+                recipe_titles.append(title)  # set에 제목 등록
                 print("이미 추천한 레시피:",title)
-
     # endregion
 
     # region 영수증 분석
@@ -230,12 +278,12 @@ class Analyze():
         imgs = [Image.open(path) for path in self.saved_file_paths]
         num_images = len(imgs)
         prompt = f"""
-            총 {num_images}장의 사진이 있어. 각 사진별로 무엇을 몇개를 구매했는지 탐색하고 알려줘.
-            ingredients의 재료는 한글로 알려줘, 결과는 반드시 image_index를 포함한 JSON 배열로만 응답해줘.
+            총 {num_images}장의 사진이 있어. 구매내역을 보고 구매 물품을 label에 알려주고 수량을 count에 알려줘.
+            ingredients, label의 재료는 한글로 알려줘, 결과는 반드시 image_index를 포함한 JSON 배열로만 응답해줘.
             응답은 반드시 아래 JSON 형식을 지켜줘:
         {{
         "ingredients": ["재료1", "재료2"],
-        "detections": [{{"label": "Apple", "box": [100, 150, 400, 450],"count":2개}},{{"label": "Milk", "box": [500, 600, 900, 800],"count":2개}}]
+        "detections": [{{"label": "Apple", "count":2개}},{{"label": "Milk" ,"count":2개}}]
         }}
             """
         content = [prompt] + imgs
@@ -249,18 +297,18 @@ class Analyze():
         imgs = [Image.open(path) for path in self.saved_file_paths]
         num_images = len(imgs)
         prompt = f"""
-            총 {num_images}장의 사진이 있어. 각 사진별로 식재료를 탐지하고 좌표를 알려줘.
-            ingredients의 재료는 한글로 알려줘, 결과는 반드시 image_index를 포함한 JSON 배열로만 응답해줘.
-            그리고 되도록이면 이미지에서 분석한 해당 재료를 센는 단위로 인식한 수량(계량정도)를 같이 알려줘
+            총 {num_images}장의 사진이 있어.
+            ingredients, label 재료는 한글로 알려줘, 결과는 반드시 image_index를 포함한 JSON 배열로만 응답해줘.
+            그리고 되도록이면 이미지에서 분석한 해당 재료를 세는 단위로 인식한 수량(계량정도)를 같이 알려줘
             응답은 반드시 아래 JSON 형식을 지켜줘:
         {{
         "ingredients": ["재료1", "재료2"],
-        "detections": [{{"label": "Apple", "box": [100, 150, 400, 450],"weighing":"1개"}},{{"label": "Milk", "box": [500, 600, 900, 800],"weighing":"1컵"}}]
+        "detections": [{{"label": "Apple", "weighing":"1개"}},{{"label": "Milk","weighing":"1컵"}}]
         }}
             """
         content = [prompt] + imgs
         response = self.get_image_model(content)
-        return self.draw_boxes(json.loads(response.text))
+        return json.loads(response.text)
 
     def draw_boxes(self, data):
         images_results = {}
