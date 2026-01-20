@@ -1,13 +1,16 @@
 from pydantic import BaseModel
 from typing import List, Annotated
 import calc_ai
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile,HTTPException
+import get_image
 
 #기본 셋팅
 app = FastAPI()
 
 # 이미지를 저장할 폴더 생성
 UPLOAD_DIR = "./uploads"
+#이미지 최대 크기
+MAX_FILE_SIZE = 15 * 1024 * 1024  # 15MB (Spring보다 조금 더 여유 있게 설정)
 
 #클래스 생성
 class Question(BaseModel):
@@ -48,7 +51,7 @@ async def analyze(request: Preferences_Ingredient):
     description="추가로 재료가 더 있다면 이런 음식도 가능해요!")
 async def analyze(request: Preferences_Ingredient):
     process_text = calc_ai.Analyze()
-    result = process_text.get_more_something(request.preferences,request.ingredients,request.spices)
+    result = process_text.get_another_more_somthing(request.preferences,request.ingredients,request.spices)
     return {"result": result}
 #endregion
 
@@ -61,10 +64,32 @@ async def analyze(request: Preferences_Ingredient):
     description="영수증에서 재료들을 분석하여 재료를 확인."
 )
 async def analyze_image(file: UploadFile = File(...)):
-    # 단일 파일도 리스트로 감싸서 보내면 Image_Material을 공통으로 쓸 수 있네.
-    process_image = calc_ai.Analyze([file])
-    result = process_image.calc_image_receipt()
-    return {"result": result}
+    # 1. 파일 검증
+
+    # 파일을 한 번에 다 읽지 않고 크기만 확인
+    content = await file.read()
+    size = len(content)
+
+    # 바이트(Byte)를 메가바이트(MB)로 환산
+    size_in_mb = size / (1024 * 1024)
+
+    if size > MAX_FILE_SIZE:
+        print(f"⚠️ 용량 초과 발생: {file.filename} ({size_in_mb:.2f} MB)")
+        raise HTTPException(status_code=413, detail=f"파일이 너무 큽니다. ({size_in_mb:.2f} MB)")
+    else:
+        # 정상적인 경우 용량 출력
+        print(f"✅ 이미지 수신: {file.filename} / 크기: {size_in_mb:.2f} MB")
+
+    # 읽은 데이터를 AI에 넘기기 위해 커서를 다시 맨 앞으로!
+    await file.seek(0)
+    try:
+        # 클래스에 이미지 리스트 전달
+        process_image = calc_ai.Analyze([file])
+        result = process_image.calc_image_receipt()
+        return {"result": result}
+    except Exception as e:
+        # 분석 중 에러 처리
+        raise HTTPException(status_code=500, detail=f"AI 분석 중 오류 발생: {str(e)}")
 
 @app.post("/analyze-multiple-receipt",
           tags=["분석 - 영수증"],
@@ -74,10 +99,32 @@ async def analyze_image(file: UploadFile = File(...)):
 async def analyze_multiple_images(
     files: Annotated[List[UploadFile], File(description="여러 개의 이미지 파일을 선택하세요")]
 ):
-    # 3. AI 클래스에 이미지 리스트 전달
-    process_image = calc_ai.Analyze(files)
-    result = process_image.calc_image_receipt()
-    return {"result": result}
+    # 1. 파일 검증
+    for file in files:
+        # 파일을 한 번에 다 읽지 않고 크기만 확인
+        content = await file.read()
+        size = len(content)
+
+        # 바이트(Byte)를 메가바이트(MB)로 환산
+        size_in_mb = size / (1024 * 1024)
+
+        if size > MAX_FILE_SIZE:
+            print(f"⚠️ 용량 초과 발생: {file.filename} ({size_in_mb:.2f} MB)")
+            raise HTTPException(status_code=413, detail=f"파일이 너무 큽니다. ({size_in_mb:.2f} MB)")
+        else:
+            # 정상적인 경우 용량 출력
+            print(f"✅ 이미지 수신: {file.filename} / 크기: {size_in_mb:.2f} MB")
+
+        # 읽은 데이터를 AI에 넘기기 위해 커서를 다시 맨 앞으로!
+        await file.seek(0)
+    try:
+        # 클래스에 이미지 리스트 전달
+        process_image = calc_ai.Analyze(files)
+        result = process_image.calc_image_receipt()
+        return {"result": result}
+    except Exception as e:
+        # 분석 중 에러 처리
+        raise HTTPException(status_code=500, detail=f"AI 분석 중 오류 발생: {str(e)}")
 #endregion
 
 #region 음식 사진 분석
@@ -89,10 +136,33 @@ async def analyze_multiple_images(
     description="이미지로 전달 받은 재료들을 분석하여 재료를 확인."
 )
 async def analyze_image(file: UploadFile = File(...)):
-    # 단일 파일도 리스트로 감싸서 보내면 Image_Material을 공통으로 쓸 수 있네.
-    process_image = calc_ai.Analyze([file])
-    result = process_image.calc_image()
-    return {"result": result}
+    # 1. 파일 검증
+    # 파일을 한 번에 다 읽지 않고 크기만 확인
+    content = await file.read()
+    size = len(content)
+
+    # 바이트(Byte)를 메가바이트(MB)로 환산
+    size_in_mb = size / (1024 * 1024)
+
+    if size > MAX_FILE_SIZE:
+        print(f"⚠️ 용량 초과 발생: {file.filename} ({size_in_mb:.2f} MB)")
+        raise HTTPException(status_code=413, detail=f"파일이 너무 큽니다. ({size_in_mb:.2f} MB)")
+    else:
+        # 정상적인 경우 용량 출력
+        print(f"✅ 이미지 수신: {file.filename} / 크기: {size_in_mb:.2f} MB")
+
+    # 읽은 데이터를 AI에 넘기기 위해 커서를 다시 맨 앞으로!
+    await file.seek(0)
+    try:
+        # 클래스에 이미지 리스트 전달
+        process_image = calc_ai.Analyze([file])
+        result = process_image.calc_image()
+        return {"result": result}
+    except Exception as e:
+        # 분석 중 에러 처리
+        raise HTTPException(status_code=500, detail=f"AI 분석 중 오류 발생: {str(e)}")
+
+
 
 @app.post("/analyze-multiple",
           tags=["분석 - 이미지"],
@@ -102,10 +172,33 @@ async def analyze_image(file: UploadFile = File(...)):
 async def analyze_multiple_images(
     files: Annotated[List[UploadFile], File(description="여러 개의 이미지 파일을 선택하세요")]
 ):
-    # 3. AI 클래스에 이미지 리스트 전달
-    process_image = calc_ai.Analyze(files)
-    result = process_image.calc_image()
-    return {"result": result}
+    # 1. 파일 검증
+    for file in files:
+        # 파일을 한 번에 다 읽지 않고 크기만 확인
+        content = await file.read()
+        size = len(content)
+
+        # 바이트(Byte)를 메가바이트(MB)로 환산
+        size_in_mb = size / (1024 * 1024)
+
+        if size > MAX_FILE_SIZE:
+            print(f"⚠️ 용량 초과 발생: {file.filename} ({size_in_mb:.2f} MB)")
+            raise HTTPException(status_code=413, detail=f"파일이 너무 큽니다. ({size_in_mb:.2f} MB)")
+        else:
+            # 정상적인 경우 용량 출력
+            print(f"✅ 이미지 수신: {file.filename} / 크기: {size_in_mb:.2f} MB")
+
+        # 읽은 데이터를 AI에 넘기기 위해 커서를 다시 맨 앞으로!
+        await file.seek(0)
+    try:
+        # 클래스에 이미지 리스트 전달
+        process_image = calc_ai.Analyze(files)
+        result = process_image.calc_image()
+        return {"result": result}
+    except Exception as e:
+        # 분석 중 에러 처리
+        raise HTTPException(status_code=500, detail=f"AI 분석 중 오류 발생: {str(e)}")
+
 #endregion
 
 
