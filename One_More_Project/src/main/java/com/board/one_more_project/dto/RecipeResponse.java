@@ -17,6 +17,6 @@ public record RecipeResponse(
         List<String> steps,
 
         @Schema(description = "요리 꿀팁", example = "마지막에 깨를 뿌리면 더 고소해요!")
-        String tip
+        String tip // 리스트로 수정
 ) {}
 
