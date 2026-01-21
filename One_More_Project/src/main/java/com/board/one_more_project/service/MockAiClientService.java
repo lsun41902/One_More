@@ -1,7 +1,6 @@
 package com.board.one_more_project.service;
 
-import com.board.one_more_project.dto.IngredientAnalysisResponse;
-import com.board.one_more_project.dto.RecipeResponse;
+import com.board.one_more_project.dto.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -11,28 +10,41 @@ import java.util.List;
 
 @Slf4j
 @Service
-@Profile("dev") // 개발 환경에서 파이썬 서버 없이 테스트할 때 사용
+@Profile("dev")
 public class MockAiClientService implements AiClientService {
 
+    // 1-1. 일반 이미지 분석 Mock
     @Override
-    public IngredientAnalysisResponse analyzeIngredients(MultipartFile file, String preference, String type, String userId) {
-        log.info("[Mock] 가짜 이미지 분석을 수행합니다. User: {}", userId);
-        return new IngredientAnalysisResponse(
-                "fake_base64_image_string", // 실제 구현 시에는 테스트용 base64 문자열 삽입 가능
-                List.of("양파", "당근", "돼지고기"),
-                preference,
-                "review"
-        );
+    public List<IngredientAnalysisResponse> analyzeImageIngredients(MultipartFile file, List<String> preference, String userId) {
+        log.info("[Mock] 일반 이미지 분석. User: {}", userId);
+        return List.of(new IngredientAnalysisResponse(0, List.of(new IngredientDto("목살", "300g"))));
     }
 
+    // 1-2. 영수증 분석 Mock
     @Override
-    public RecipeResponse generateRecipe(List<String> ingredients, String preference, String userId) {
-        log.info("[Mock] 가짜 레시피를 생성합니다. User: {}", userId);
-        return new RecipeResponse(
-                "[Mock] 맛있는 요리",
-                ingredients,
-                List.of("1. 재료를 씻는다", "2. 볶는다", "3. 먹는다"),
-                "Mock 취향 반영: " + preference
-        );
+    public List<IngredientAnalysisResponse> analyzeImageReceipt(MultipartFile file, List<String> preference, String userId) {
+        log.info("[Mock] 영수증 분석. User: {}", userId);
+        return List.of(new IngredientAnalysisResponse(0, List.of(new IngredientDto("영수증_두부", "1모"))));
+    }
+
+    // 2-1. 최초 추천 Mock
+    @Override
+    public List<RecipeResponse> generateRecipeInitial(RecipeGenerationRequest request) {
+        log.info("[Mock] 최초 레시피 추천. User: {}", request.userId());
+        return List.of(new RecipeResponse("최초 추천 요리", "맛있습니다", request.ingredients(), null, List.of("요리하세요"), List.of("팁"), null, null));
+    }
+
+    // 2-2. 기본 레시피 Mock
+    @Override
+    public List<RecipeResponse> generateRecipeBasic(RecipeGenerationRequest request) {
+        log.info("[Mock] 기본 레시피 생성. User: {}", request.userId());
+        return List.of(new RecipeResponse("기본 재료 요리", "간단합니다", request.ingredients(), null, List.of("볶으세요"), List.of("팁"), null, null));
+    }
+
+    // 2-3. 응용 레시피 Mock
+    @Override
+    public List<RecipeResponse> generateRecipeMore(RecipeGenerationRequest request) {
+        log.info("[Mock] 응용 레시피 생성. User: {}", request.userId());
+        return List.of(new RecipeResponse("응용 요리", "특별합니다", request.ingredients(), List.of(new IngredientDto("치즈", "1장")), List.of("치즈를 넣으세요"), List.of("팁"), null, null));
     }
 }
