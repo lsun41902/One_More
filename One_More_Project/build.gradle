@@ -31,11 +31,9 @@ repositories {
 dependencies {
     // 내부적으로 spring-web, spring-webmvc, tomcat 등을 모두 포함
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    // 비동기 통신(RestClient)을 위해 필요한 WebFlux 스타터
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
     // 파라미터 유효성 검증 라이브러리
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    // API 문서화를 위한 Swagger 라이브러리 (spring 3.5.x 버전과 호환하려면 2.8.x 이상 버전으로 가능.)
+    // API 문서화를 위한 Swagger 라이브러리
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.4'
     // 코드 가독성을 위한 Lombok
     compileOnly 'org.projectlombok:lombok'

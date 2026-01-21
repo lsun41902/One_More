@@ -15,14 +15,14 @@ public class MockAiClientService implements AiClientService {
 
     // 1-1. 일반 이미지 분석 Mock
     @Override
-    public List<IngredientAnalysisResponse> analyzeImageIngredients(MultipartFile file, String preference, String userId) {
+    public List<IngredientAnalysisResponse> analyzeImageIngredients(MultipartFile file, List<String> preference, String userId) {
         log.info("[Mock] 일반 이미지 분석. User: {}", userId);
         return List.of(new IngredientAnalysisResponse(0, List.of(new IngredientDto("목살", "300g"))));
     }
 
     // 1-2. 영수증 분석 Mock
     @Override
-    public List<IngredientAnalysisResponse> analyzeImageReceipt(MultipartFile file, String preference, String userId) {
+    public List<IngredientAnalysisResponse> analyzeImageReceipt(MultipartFile file, List<String> preference, String userId) {
         log.info("[Mock] 영수증 분석. User: {}", userId);
         return List.of(new IngredientAnalysisResponse(0, List.of(new IngredientDto("영수증_두부", "1모"))));
     }

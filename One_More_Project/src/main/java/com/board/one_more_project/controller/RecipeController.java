@@ -34,7 +34,7 @@ public class RecipeController {
     @PostMapping(value = "/analyze", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public List<IngredientAnalysisResponse> analyzeImage(
             @Parameter(description = "식재료 사진 또는 영수증 파일") @RequestParam("file") MultipartFile file,
-            @Parameter(description = "유저의 요리 취향") @RequestParam("preference") String preference,
+            @Parameter(description = "유저의 요리 취향") @RequestParam("preference") List<String> preference,
             @Parameter(description = "데이터 타입 (image: 식재료, receipt: 영수증)") @RequestParam("type") String type,
             @Parameter(description = "유저 식별 ID") @RequestParam(value = "userId", defaultValue = "user_01") String userId
     ) {

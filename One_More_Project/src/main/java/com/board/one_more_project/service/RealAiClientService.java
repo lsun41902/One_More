@@ -44,19 +44,19 @@ public class RealAiClientService implements AiClientService {
     }
 
     @Override
-    public List<IngredientAnalysisResponse> analyzeImageIngredients(MultipartFile file, String preference, String userId) {
+    public List<IngredientAnalysisResponse> analyzeImageIngredients(MultipartFile file, List<String> preference, String userId) {
         // 재료 이미지 분석 URL 호출
         return sendImageRequest("/analyze-image-ingredients", file, preference, userId);
     }
 
     @Override
-    public List<IngredientAnalysisResponse> analyzeImageReceipt(MultipartFile file, String preference, String userId) {
+    public List<IngredientAnalysisResponse> analyzeImageReceipt(MultipartFile file, List<String> preference, String userId) {
         // 영수증 분석 URL 호출
         return sendImageRequest("/analyze-image-receipts", file, preference, userId);
     }
 
     // 이미지 전송 로직
-    private List<IngredientAnalysisResponse> sendImageRequest(String uri, MultipartFile file, String preference, String userId) {
+    private List<IngredientAnalysisResponse> sendImageRequest(String uri, MultipartFile file, List<String> preference, String userId) {
         log.info("[prod] 이미지 분석 요청 URI: {}, User: {}", uri, userId);
 
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
