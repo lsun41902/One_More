@@ -60,7 +60,7 @@ public class RealAiClientService implements AiClientService {
         log.info("[prod] 이미지 분석 요청 URI: {}, User: {}", uri, userId);
 
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        builder.part("file", file.getResource());
+        builder.part("files", file.getResource());
         builder.part("preference", preference);
         builder.part("userId", userId);
 

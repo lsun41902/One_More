@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: dev  # 학교에서 테스트할 때는 dev, 실제 연동할 때는 prod로 변경
+    active: prod  # 학교에서 테스트할 때는 dev, 실제 연동할 때는 prod로 변경
 
   servlet: # 사용자가 올리는 사진 파일의 최대 크기를 설정
     multipart:
