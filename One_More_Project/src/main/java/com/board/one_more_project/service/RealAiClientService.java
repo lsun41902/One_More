@@ -11,6 +11,13 @@ import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 import java.net.http.HttpClient;
 import java.time.Duration;
@@ -25,34 +32,30 @@ public class RealAiClientService implements AiClientService {
     private final RestClient restClient;
 
     // 반복되는 파이썬의 응답 구조 { "result": [...] }를 받기 위한 Wrapper class
-    // 이 클래스는 이 파일 안에서만 쓰이므로 내부에 작성함.
-    // genericType: 여러 dto 타입의 데이터를 요청하게 되는데, 일일히 객체를 생성하지 않고, 필요한 타입의 객체를 생성할 수 있게 함.
-    private record PythonResponseWrapper<genericType>(List<genericType> result) {}
+    private record PythonResponseWrapper<T>(List<T> result) {}
 
     public RealAiClientService(@Value("${ai-server.url}") String aiServerUrl) {
         HttpClient httpClient = HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(5)) // 서버 로딩 타임아웃 설정
+                .connectTimeout(Duration.ofSeconds(5)) // 서버 연결 타임아웃
                 .build();
 
         JdkClientHttpRequestFactory factory = new JdkClientHttpRequestFactory(httpClient);
-        factory.setReadTimeout(Duration.ofSeconds(60)); // 파이썬 서버 응답 타임아웃 설정
+        factory.setReadTimeout(Duration.ofSeconds(60)); // 데이터 수신 타임아웃
 
         this.restClient = RestClient.builder()
                 .baseUrl(aiServerUrl)
                 .requestFactory(factory)
                 .build();
+
+    }
+    @Override
+    public List<IngredientAnalysisResponse> analyzeImageReceipt(MultipartFile file, List<String> preference, String userId) {
+        return sendImageRequest("/analyze-image-receipts", file, preference, userId);
     }
 
     @Override
     public List<IngredientAnalysisResponse> analyzeImageIngredients(MultipartFile file, List<String> preference, String userId) {
-        // 재료 이미지 분석 URL 호출
         return sendImageRequest("/analyze-image-ingredients", file, preference, userId);
-    }
-
-    @Override
-    public List<IngredientAnalysisResponse> analyzeImageReceipt(MultipartFile file, List<String> preference, String userId) {
-        // 영수증 분석 URL 호출
-        return sendImageRequest("/analyze-image-receipts", file, preference, userId);
     }
 
     // 이미지 전송 로직
@@ -79,19 +82,20 @@ public class RealAiClientService implements AiClientService {
         }
     }
 
+
     @Override
     public List<RecipeResponse> generateRecipeInitial(RecipeGenerationRequest request) {
-        return sendRecipeRequest("/recipes-generate-initial", request);
+        return sendRecipeRequest("/recipes-generate-initial/", request);
     }
 
     @Override
     public List<RecipeResponse> generateRecipeBasic(RecipeGenerationRequest request) {
-        return sendRecipeRequest("/recipes-generate-basic", request);
+        return sendRecipeRequest("/recipes-generate-basic/", request);
     }
 
     @Override
     public List<RecipeResponse> generateRecipeMore(RecipeGenerationRequest request) {
-        return sendRecipeRequest("/recipes-generate-more", request);
+        return sendRecipeRequest("/recipes-generate-more/", request);
     }
 
     // 레시피(JSON) 전송 로직
@@ -100,7 +104,7 @@ public class RealAiClientService implements AiClientService {
 
         try {
             PythonResponseWrapper<RecipeResponse> response = restClient.post()
-                    .uri(uri) // 전달받은 URI 사용
+                    .uri(uri)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(request)
                     .retrieve()

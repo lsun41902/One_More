@@ -3,11 +3,6 @@ package com.board.one_more_project.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 
-/**
- * [최종 레시피 응답 DTO]
- * AI가 생성한 레시피 카드 하나의 정보를 담습니다.
- * 기본 레시피와 응용 레시피(추가 재료 포함) 모두 이 구조를 사용합니다.
- */
 // 파이썬의 레시피 추천 결과(...추천해줘.txt) 구조에 맞춤.
 // ingredients -> IngredientDto List, more(추가 재료) 필드 추가.
 @Schema(description = "AI 추천 레시피 상세 정보")

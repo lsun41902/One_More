@@ -3,11 +3,6 @@ package com.board.one_more_project.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 
-/**
- * [레시피 생성 요청 DTO]
- * 프론트엔드 -> 스프링 서버로 전송되는 최종 데이터 패키지입니다.
- * 재료, 조미료, 취향 정보를 모두 담고 있습니다.
- */
 // 프론트엔드가 "레시피 요청하면 보낼 데이터셋. 기존에는 재료만 보냈지만, 조미료와 취향(리스트)까지 포함
 @Schema(description = "레시피 생성 요청 데이터 (재료 + 조미료 + 취향)")
 public record RecipeGenerationRequest(
