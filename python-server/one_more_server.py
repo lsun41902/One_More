@@ -36,7 +36,7 @@ process = calc_ai.Analyze()
 # process.get_rag_embedding()
 
 #region 텍스트 분석
-@app.post("/recipes-generate-real/",
+@app.post("/recipes-generate-real",
     tags=["레시피"],
     summary="만개의 레시피(3) 추천",
     description="만개의 레시피를 참고한 레시피 추천.")
@@ -44,7 +44,7 @@ async def analyze(request: Preferences_Ingredient):
     result = process.test_langchain_rag(request.preferences,request.ingredients,request.spices)
     return {"result": result}
 
-@app.post("/remake-csv/",
+@app.post("/remake-csv",
     tags=["기능"],
     summary="CSV 다시 만들기",
     description="CSV다시 만들기")
