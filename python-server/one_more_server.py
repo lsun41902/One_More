@@ -20,14 +20,16 @@ class Preferences_Ingredient(BaseModel):
     ingredients: List[str]
     spices: List[str]
 
+process = calc_ai.Analyze()
+# process.get_rag_embedding()
+
 #region 텍스트 분석
-@app.post("/test-rag",
-    tags=["테스트"],
+@app.post("/recipes-generate-real",
+    tags=["레시피"],
     summary="RAG 테스트",
-    description="텍스트로 전달 받은 요리의 재료들을 분석하여 레시피 추천.")
-async def analyze(request: Question):
-    process_text = calc_ai.Analyze()
-    result = process_text.test_langchain_rag(request.message)
+    description="만개의 레시피를 참고한 레시피 추천.")
+async def analyze(request: Preferences_Ingredient):
+    result = process.test_langchain_rag(request.preferences,request.ingredients,request.spices)
     return {"result": result}
 
 @app.post("/remake-csv",
@@ -35,8 +37,8 @@ async def analyze(request: Question):
     summary="CSV 다시 만들기",
     description="CSV다시 만들기")
 async def analyze(request: Question):
-    process_text = calc_ai.Analyze()
-    result = process_text.remake_csv()
+    process = calc_ai.Analyze()
+    result = process.remake_csv()
     return {"result": result}
 #endregion
 
@@ -47,8 +49,8 @@ async def analyze(request: Question):
     summary="기본 재료(1) 추가 재료 레시피(2) 추천",
     description="텍스트로 전달 받은 핵심 재료들을 분석하여 레시피 추천.")
 async def analyze(request: Preferences_Ingredient):
-    process_text = calc_ai.Analyze()
-    result = process_text.get_recipe(request.preferences,request.ingredients,request.spices)
+    process = calc_ai.Analyze()
+    result = process.get_recipe(request.preferences,request.ingredients,request.spices)
     return {"result": result}
 #endregion
 
@@ -58,8 +60,8 @@ async def analyze(request: Preferences_Ingredient):
     summary="기본 재료 다른 레시피(3) 추천",
     description="방금전에 말한 레시피가 아닌 다른 레시피 추천 받기.")
 async def analyze(request: Preferences_Ingredient):
-    process_text = calc_ai.Analyze()
-    result = process_text.get_another_recipe(request.preferences,request.ingredients,request.spices)
+    process = calc_ai.Analyze()
+    result = process.get_another_recipe(request.preferences,request.ingredients,request.spices)
     return {"result": result}
 #endregion
 
@@ -69,8 +71,8 @@ async def analyze(request: Preferences_Ingredient):
     summary="추가 재료 레시피(3) 추천",
     description="추가로 재료가 더 있다면 이런 음식도 가능해요!")
 async def analyze(request: Preferences_Ingredient):
-    process_text = calc_ai.Analyze()
-    result = process_text.get_another_more_somthing(request.preferences,request.ingredients,request.spices)
+    process = calc_ai.Analyze()
+    result = process.get_another_more_somthing(request.preferences,request.ingredients,request.spices)
     return {"result": result}
 #endregion
 

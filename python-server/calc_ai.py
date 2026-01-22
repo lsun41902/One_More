@@ -20,6 +20,8 @@ import pandas as pd
 import traceback
 import csv
 import time
+import re
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 load_dotenv()
 
@@ -28,7 +30,9 @@ openai_llm = ChatOpenAI(model="gpt-4o-mini")
 
 genai_api_key = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=genai_api_key)
-genai_embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+
+genai_embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-small")
+# genai_embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 genai_persist_dir = "./chroma_db"
 genai_vectorstore = Chroma(
     persist_directory=genai_persist_dir,
@@ -110,8 +114,8 @@ class Analyze():
     # endregion
 
     # region Genai 모델
-    def get_rag_model(self, docs,query):
-        batch_size = 3
+    def get_embedding(self, docs):
+        batch_size = 1000
         for i in range(0, len(docs), batch_size):
             batch = docs[i: i + batch_size]
             try:
@@ -119,55 +123,14 @@ class Analyze():
                 genai_vectorstore.add_documents(batch)
                 print(f"✅ {i + len(batch)} / {len(docs)} 저장 완료")
 
-                # 구글 무료 티어의 분당 제한을 피하기 위해 2~3초간 휴식
-                time.sleep(15)
-
             except Exception as e:
                 print(f"❌ {i}번째 근처에서 에러 발생: {e}")
                 print("10초 대기 후 다시 시도합니다...")
-                time.sleep(60)
+                time.sleep(10)
                 # 실패한 배치를 다시 시도 (필요시 로직 추가)
         # 3. 검색기(Retriever) 만들기
         print("✨ 모든 데이터가 안전하게 저장되었습니다!")
-        retriever = genai_vectorstore.as_retriever(search_kwargs={"k": 3})  # 관련 레시피 3개 검색
-        for model_name in model_candidates:
-            try:
-                print("현재 모델 이름:", model_name)
-                # 4. 드디어 'rag_chain' 만들기! (RetrievalQA 사용)
-                llm_instance = ChatGoogleGenerativeAI(
-                    model=model_name,
-                    google_api_key=genai_api_key,  # 본인의 API 키 변수명 확인
-                    temperature=0
-                )
-                rag_chain = RetrievalQA.from_chain_type(
-                    llm=llm_instance,
-                    chain_type="stuff",  # 찾은 문서를 뭉쳐서(stuff) 전달
-                    retriever=retriever,
-                    return_source_documents=True  # 어떤 레시피를 참고했는지 알려달라고 설정
-                )
 
-                result = rag_chain.invoke({"input": query})
-
-                # 1. AI의 답변 출력
-                print("=== AI 답변 ===")
-                print(result['answer'])
-
-                # 2. 실제로 참조한 데이터(CSV 행) 출력
-                print("\n=== 참조한 소스 문서 ===")
-                for i, doc in enumerate(result['context']):
-                    print(f"[{i + 1}] {doc.page_content}")
-                return result['answer']
-            except exceptions.ResourceExhausted:
-                # 횟수 초과(Quota) 오류 발생
-                print(f"현재 모델 이름:{model_name} 한도 초과! 모델로 전환하여 다시 시도합니다.")
-                pass
-            except Exception as e:
-                if "429" in str(e) or "quota" in str(e).lower():
-                    print(f"{model_name} 한도 초과, 다음 모델로 시도합니다...")
-                    continue
-                else:
-                    raise e
-        print("모든 모델의 할당량이 소진되었습니다.")
         return None
     def get_text_model(self, prompt):
         for model_name in model_candidates:
@@ -219,6 +182,7 @@ class Analyze():
 
     #region langchain,rag 테스트
     # 파일 복원하기
+    #region csv 한글 깨진거 복구하기
     def remake_csv(self):
         current_path = os.path.dirname(os.path.abspath(__file__))
         input_file = os.path.join(current_path, "temp_data", "TB_RECIPE_SEARCH-220701.csv")
@@ -243,10 +207,21 @@ class Analyze():
             writer.writerows(fixed_rows)
 
         print(f"✅ 복구가 완료되었습니다! '{output_file}' 파일을 확인해 보세요.")
-
+    #endregion
+    # region json정리하기
+    def extract_json(self, text):
+        # ```json ... ``` 또는 ``` ... ``` 사이의 내용만 추출
+        pattern = r"```(?:json)?\s*([\s\S]*?)\s*```"
+        match = re.search(pattern, text)
+        if match:
+            return match.group(1).strip()
+        return text.strip()
+    # endregion
+    # region 문서 읽어오기
     def get_docs(self):
         current_path = os.path.dirname(os.path.abspath(__file__))
-        temp_data_path = os.path.join(current_path,"temp_data","TB_RECIPE_SEARCH-20231130.csv")
+        # temp_data_path = os.path.join(current_path,"temp_data","TB_RECIPE_SEARCH-20231130.csv")
+        temp_data_path = os.path.join(current_path, "temp_data", "TB_RECIPE_SEARCH-22070.csv")
         try:
             # 에러가 예상되는 지점
             df = pd.read_csv(temp_data_path, encoding='utf-8', engine='python', on_bad_lines='skip')
@@ -255,7 +230,7 @@ class Analyze():
             for i, row in df.iterrows():
                 # AI가 학습할 '문장' 만들기 (컬럼명은 본인의 CSV에 맞게 수정)
                 content = f"요리명: {row['CKG_NM']}\n레시피 재료: {row['CKG_MTRL_CN']}"
-
+                # print(content)
                 # Document 객체 생성
                 doc = Document(
                     page_content=content,
@@ -280,25 +255,76 @@ class Analyze():
             # 상세한 에러 추적 로그(Traceback)를 전체 출력합니다.
             traceback.print_exc()
         return None
-
-    def test_langchain_rag(self,query):
-        # 2. 벡터 DB 생성 (이미 수집한 docs가 있다고 가정)
-        docs = self.get_docs()
+    # endregion
+    # region 임베딩 작업
+    def get_rag_embedding(self):
         try:
-            return self.get_rag_model(docs,query)
+            docs = self.get_docs()
+            self.get_embedding(docs)
         except Exception as e:
-            print("\n❌ 오류 발생!")
-            print("-" * 50)
-
             # 1. 에러의 종류와 메시지 출력
             print(f"에러 타입: {type(e).__name__}")
             print(f"에러 메시지: {e}")
-
-            # 2. 어디서 에러가 났는지 상세 경로(Traceback) 출력
-            print("-" * 50)
-            print("상세 발생 경로:")
             traceback.print_exc()
+    # endregion
+    def test_langchain_rag(self,preference, ingredients, spice):
+        # 벡터 DB 에서 검색 하기
+        retriever = genai_vectorstore.as_retriever(search_kwargs={"k": 3})  # 관련 레시피 3개 검색
+        for model_name in model_candidates:
+            try:
+                print("현재 모델 이름:", model_name)
+                # 4. 드디어 'rag_chain' 만들기! (RetrievalQA 사용)
+                llm_instance = ChatGoogleGenerativeAI(
+                    model=model_name,
+                    google_api_key=genai_api_key,  # 본인의 API 키 변수명 확인
+                    temperature=0,
+                    model_kwargs={"response_mime_type": "application/json"}
+                )
+                rag_chain = RetrievalQA.from_chain_type(
+                    llm=llm_instance,
+                    chain_type="stuff",  # 찾은 문서를 뭉쳐서(stuff) 전달
+                    retriever=retriever,
+                    return_source_documents=True  # 어떤 레시피를 참고했는지 알려달라고 설정
+                )
+                prompt = f"""
+                너는 세계 최고의 요리사야. 
+                아래 제공된 [취향 정보],[식재료 정보],[조미료 정보]를 바탕으로 사용자의 질문에 상세하게 답해줘.
+                만약 정보에 없는 내용이라면 지어내지 말고 "모르겠습니다"라고 답해줘. 답변은 한글로 상세하게.
+                Return the response in a VALID JSON format. 
+                Do not include any conversational text or markdown code blocks (like ```json).
+                
+                [취향 정보]:
+                {preference}
+                
+                [식재료 정보]:
+                {ingredients}
+                
+                [조미료 정보]:
+                {spice}
+                
+                Output Format:{self.another_recipe_prompt_json}
+                JSON Output:"""
+                result = rag_chain.invoke({"query": prompt})
 
+                # 1. AI의 답변 출력
+                print("=== AI 답변 ===")
+                print(result.get("result"))
+                # 2. 실제로 참조한 데이터(CSV 행) 출력
+                print("\n=== 참조한 소스 문서 ===")
+                for i, doc in enumerate(result.get('source_documents')):
+                    print(f"[{i + 1}] {doc.page_content}")
+
+
+                clean_json_str = self.extract_json(result.get("result"))
+                result_json = json.loads(clean_json_str)
+                self.save_recipe(result_json)
+                return result_json
+            except exceptions.ResourceExhausted:
+                # 횟수 초과(Quota) 오류 발생
+                print(f"현재 모델 이름:{model_name} 한도 초과! 모델로 전환하여 다시 시도합니다.")
+                pass
+
+        return None
     #endregion
 
     # region 추천한것 외의 추천 레시피 3개
