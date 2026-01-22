@@ -140,13 +140,12 @@ class Analyze():
                 llm = ChatGoogleGenerativeAI(
                     model=model_name,
                     google_api_key=genai_api_key,
-                    model_kwargs={"response_mime_type": "application/json"}
+                    response_mime_type="application/json"
                 )
                 return llm.invoke(prompt)
             except exceptions.ResourceExhausted:
                 # 횟수 초과(Quota) 오류 발생
                 print(f"현재 모델 이름:{model_name} 한도 초과! 모델로 전환하여 다시 시도합니다.")
-                pass
             except Exception as e:
                 if "429" in str(e) or "quota" in str(e).lower():
                     print(f"{model_name} 한도 초과, 다음 모델로 시도합니다...")
@@ -278,7 +277,7 @@ class Analyze():
                     model=model_name,
                     google_api_key=genai_api_key,  # 본인의 API 키 변수명 확인
                     temperature=0,
-                    model_kwargs={"response_mime_type": "application/json"}
+                    response_mime_type="application/json"
                 )
                 rag_chain = RetrievalQA.from_chain_type(
                     llm=llm_instance,
@@ -288,7 +287,7 @@ class Analyze():
                 )
                 prompt = f"""
                 너는 세계 최고의 요리사야. 
-                아래 제공된 [취향 정보],[식재료 정보],[조미료 정보]를 바탕으로 사용자의 질문에 상세하게 답해줘.
+                아래 제공된 [취향 정보],[식재료 정보],[조미료 정보]를 바탕으로 내가 원하는 레시피 3개를 추천해줘.
                 만약 정보에 없는 내용이라면 지어내지 말고 "모르겠습니다"라고 답해줘. 답변은 한글로 상세하게.
                 Return the response in a VALID JSON format. 
                 Do not include any conversational text or markdown code blocks (like ```json).
@@ -370,9 +369,6 @@ class Analyze():
                 tip은 1~5개정도 알려주고 title,ingredients,summary,recipe,tip 는 한글로 알려줘,
                 결과는 반드시 JSON 배열로만 응답해줘.
                 응답은 반드시 아래 JSON 형식을 지켜줘:{self.default_recipe_prompt_json}
-
-              
-            
                 """
 
         response = self.get_text_model(prompt)

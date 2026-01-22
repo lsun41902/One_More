@@ -1,10 +1,19 @@
 from pydantic import BaseModel
-from typing import List, Annotated
+from typing import List, Annotated,Optional
 import calc_ai
 from fastapi import FastAPI, File, UploadFile,HTTPException, Form
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi import Request
 
 #기본 셋팅
 app = FastAPI()
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"],  # 실제 운영 환경에서는 허용할 IP만 적는 것이 좋습니다.
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 # 이미지를 저장할 폴더 생성
 UPLOAD_DIR = "./uploads"
@@ -15,24 +24,27 @@ MAX_FILE_SIZE = 15 * 1024 * 1024  # 15MB (Spring보다 조금 더 여유 있게 
 class Question(BaseModel):
     message: str
 
+class ingredients_temp(BaseModel):
+    ingredient:str
+    quantity:str
 class Preferences_Ingredient(BaseModel):
     preferences: List[str]
-    ingredients: List[str]
+    ingredients: List[ingredients_temp]
     spices: List[str]
 
 process = calc_ai.Analyze()
 # process.get_rag_embedding()
 
 #region 텍스트 분석
-@app.post("/recipes-generate-real",
+@app.post("/recipes-generate-real/",
     tags=["레시피"],
-    summary="RAG 테스트",
+    summary="만개의 레시피(3) 추천",
     description="만개의 레시피를 참고한 레시피 추천.")
 async def analyze(request: Preferences_Ingredient):
     result = process.test_langchain_rag(request.preferences,request.ingredients,request.spices)
     return {"result": result}
 
-@app.post("/remake-csv",
+@app.post("/remake-csv/",
     tags=["기능"],
     summary="CSV 다시 만들기",
     description="CSV다시 만들기")
@@ -46,7 +58,7 @@ async def analyze(request: Question):
 #region 텍스트 분석
 @app.post("/recipes-generate-initial",
     tags=["레시피"],
-    summary="기본 재료(1) 추가 재료 레시피(2) 추천",
+    summary="기본 재료 레시피(1), 추가 재료 레시피(2) 추천",
     description="텍스트로 전달 받은 핵심 재료들을 분석하여 레시피 추천.")
 async def analyze(request: Preferences_Ingredient):
     process = calc_ai.Analyze()
@@ -123,10 +135,23 @@ async def analyze_images_receipts(
           description="이미지로 전달 받은 재료들을 분석하여 재료를 확인."
           )
 async def analyze_images(
-files: Annotated[List[UploadFile], File(description="여러 개의 이미지 파일을 선택하세요")],
-preference: Annotated[List[str], Form()] = None,
-userId: Annotated[str, Form()] = None
+        files: Annotated[Optional[List[UploadFile]], File()] = None,
+        preference: Annotated[Optional[str], Form()] = None,
+        userId: Annotated[Optional[str], Form()] = None
 ):
+    # 콘솔(터미널)에 바로 찍힙니다.
+    print("\n" + "=" * 50)
+    print("★ [DEBUG] 요청 도달 성공!")
+    print(f"userId: {userId}")
+    print(f"preference (raw): {preference}")
+
+    if files:
+        print(f"파일 개수: {len(files)}")
+        for f in files:
+            print(f"파일명: {f.filename}")
+
+    # 만약 preference가 JSON 문자열('[...]')로 왔을 경우 처리
+    print(f"변환된 취향 리스트: {preference}")
     # 1. 파일 검증
     for file in files:
         # 파일을 한 번에 다 읽지 않고 크기만 확인
@@ -155,6 +180,25 @@ userId: Annotated[str, Form()] = None
         raise HTTPException(status_code=500, detail=f"AI 분석 중 오류 발생: {str(e)}")
 
 #endregion
+
+@app.post("/debug",
+          tags=["디버그"],
+          summary="디버그 용",
+          description="자료형 확인하기."
+          )
+async def debug(request: Request):
+    print("\n" + "=" * 50)
+    # Spring이 보낸 모든 Form 데이터를 강제로 추출
+    form_data = await request.form()
+
+    print("--- [Spring이 보낸 실제 데이터 목록] ---")
+    for key in form_data.keys():
+        # getlist를 써야 중복된 키(리스트)를 모두 볼 수 있습니다.
+        values = form_data.getlist(key)
+        print(f"Key: '{key}' | Values: {values}")
+
+    print("=" * 50 + "\n")
+    return {"result": "ok"}
 
 
 
