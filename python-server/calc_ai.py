@@ -2,17 +2,14 @@ import os
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from dotenv import load_dotenv
 from collections import deque
-import cv2
-from ultralytics import YOLO
 import shutil
 import json
 
 # 제미나이
 from langchain_google_genai import ChatGoogleGenerativeAI,GoogleGenerativeAIEmbeddings
 import google.generativeai as genai
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 from google.api_core import exceptions
-import langchain_core
 from langchain_core.documents import Document
 from langchain_classic.chains import RetrievalQA
 from langchain_community.vectorstores import Chroma
@@ -25,7 +22,6 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 
 load_dotenv()
 
-openai_model = YOLO('yolov10n.pt')
 openai_llm = ChatOpenAI(model="gpt-4o-mini")
 
 genai_api_key = os.getenv("GOOGLE_API_KEY")
@@ -59,7 +55,7 @@ multimodel_candidates = [
 ]
 
 
-class Text_Question():
+class AnalyzeOpenAi:
     def __init__(self):
         pass
 
@@ -67,7 +63,7 @@ class Text_Question():
         return openai_llm.invoke(msg)
 
 
-class Analyze():
+class AnalyzeGenai:
     # region 생성자
     def __init__(self, images=None, user_id='user_1'):
         self.image_path = os.path.join(UPLOAD_DIR, user_id)
@@ -266,7 +262,7 @@ class Analyze():
             print(f"에러 메시지: {e}")
             traceback.print_exc()
     # endregion
-    def test_langchain_rag(self,preference, ingredients, spice):
+    def get_chef_recipe(self, preference, ingredients, spice):
         # 벡터 DB 에서 검색 하기
         retriever = genai_vectorstore.as_retriever(search_kwargs={"k": 3})  # 관련 레시피 3개 검색
         for model_name in model_candidates:
@@ -439,45 +435,4 @@ class Analyze():
         response = self.get_image_model(content)
         return json.loads(response.text)
 
-    def draw_boxes(self, data):
-        images_results = {}
-
-        for image_result in data:  # data 자체가 리스트이므로 바로 순회합니다.
-            idx = image_result['image_index']
-            # 해당 이미지의 detections 리스트를 가져와 저장합니다.
-            images_results[idx] = image_result['detections']
-
-        # 1. 저장된 경로 리스트를 순회
-        for i, path in enumerate(self.saved_file_paths):
-            # 이미지 열기
-            img = Image.open(path)
-            draw = ImageDraw.Draw(img)
-
-            # 2. 폰트 설정
-            try:
-                font = ImageFont.truetype("arial.ttf", 20)
-            except:
-                font = ImageFont.load_default()
-
-            # 3. 각 탐지 결과에 대해 그리기 (해당 이미지에 맞는 데이터인지 확인 필요)
-            for det in images_results[i]:
-                # 주의: 여러 장의 이미지 결과가 섞여 있다면
-                # det에 있는 image_index와 현재 path의 순서가 맞는지 체크 로직이 필요할 수 있습니다.
-                label = det['label']
-                box = det['box']
-                draw.rectangle([box[1], box[0], box[3], box[2]], outline="red", width=5)
-                draw.text((box[1], box[0] - 25), label, fill="red", font=font)
-
-            # 4. 파일명 추출 및 저장 경로 생성
-            # 예: D:/data/food.jpg -> 디렉토리: D:/data, 파일명: food, 확장자: .jpg
-            directory, filename = os.path.split(path)
-            name, ext = os.path.splitext(filename)
-
-            # 새로운 저장 경로: D:/data/food_label.jpg
-            output_path = os.path.join(directory, f"{name}_label{ext}")
-
-            img.save(output_path)
-            print(f"저장 완료: {output_path}")
-
-        return data
     # endregion
