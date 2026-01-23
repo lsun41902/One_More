@@ -34,31 +34,37 @@ public class RealAiClientService implements AiClientService {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
 
         factory.setConnectTimeout(5000);
-        factory.setReadTimeout(60000);
+        factory.setReadTimeout(120000);
 
         this.restTemplate = new RestTemplate(factory);
         log.info("[prod] RealAiClientService가 초기화되었습니다. Target URL: {}", aiServerUrl);
     }
     //region 이미지 분석 함수
     @Override
-    public List<IngredientAnalysisResponse> analyzeImageReceipt(MultipartFile file, List<String> preferences, String userId) {
-        return sendImageRequest("/analyze-image-receipts", file, preferences, userId);
+    public List<IngredientAnalysisResponse> analyzeImageReceipt(List<MultipartFile> files, List<String> preferences, String userId) {
+        return sendImageRequest("/analyze-image-receipts", files, preferences, userId);
     }
 
     @Override
-    public List<IngredientAnalysisResponse> analyzeImageIngredients(MultipartFile file, List<String> preferences, String userId) {
-        return sendImageRequest("/analyze-image-ingredients", file, preferences, userId);
+    public List<IngredientAnalysisResponse> analyzeImageIngredients(List<MultipartFile> files, List<String> preferences, String userId) {
+        return sendImageRequest("/analyze-image-ingredients", files, preferences, userId);
     }
 
-    private List<IngredientAnalysisResponse> sendImageRequest(String uri, MultipartFile file, List<String> preferences,String userId) {
-        log.info("[prod] 이미지 분석 요청 URI: {}, User: {}", uri, userId);
+    private List<IngredientAnalysisResponse> sendImageRequest(String uri, List<MultipartFile> files, List<String> preferences, String userId) {
+        log.info("[prod] 이미지 분석 요청: URI={}, Count={}, User={}", uri, files.size(), userId);
 
-        // 2. 바디 구성
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-        body.add("files", file.getResource());
-        if(preferences != null) {
-            for(String pref : preferences) {
-                body.add("preferences", pref);
+
+        // [핵심] 리스트로 받은 파일을 순회하며 동일한 키("files")로 추가
+        if (files != null) {
+            for (MultipartFile file : files) {
+                body.add("files", file.getResource());
+            }
+        }
+
+        if (preferences != null) {
+            for (String pref : preferences) {
+                body.add("preference", pref);
             }
         }
         body.add("userId", userId);
