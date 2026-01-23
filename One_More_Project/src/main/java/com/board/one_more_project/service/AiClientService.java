@@ -14,10 +14,10 @@ import java.util.List;
  */
 public interface AiClientService {
     // 재료 사진 분석
-    List<IngredientAnalysisResponse> analyzeImageIngredients(MultipartFile file, List<String> preference, String userId);
+    List<IngredientAnalysisResponse> analyzeImageIngredients(MultipartFile file, List<String> preferences, String userId);
 
     // 영수증 사진 분석
-    List<IngredientAnalysisResponse> analyzeImageReceipt(MultipartFile file, List<String> preference, String userId);
+    List<IngredientAnalysisResponse> analyzeImageReceipt(MultipartFile file, List<String> preferences, String userId);
 
     // 최초 레시피 추천 생성 (/recipes-generate-initial)
     List<RecipeResponse> generateRecipeInitial(RecipeGenerationRequest request);

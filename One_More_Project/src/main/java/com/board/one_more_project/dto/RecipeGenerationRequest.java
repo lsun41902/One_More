@@ -13,7 +13,7 @@ public record RecipeGenerationRequest(
         List<String> spices,
 
         @Schema(description = "유저 취향 키워드 리스트", example = "[\"매콤한\", \"간단한\", \"한식\"]")
-        List<String> preference,
+        List<String> preferences,
 
         @Schema(description = "유저 식별 ID", example = "user_01")
         String userId,
