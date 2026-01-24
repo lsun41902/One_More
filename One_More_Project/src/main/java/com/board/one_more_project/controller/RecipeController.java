@@ -33,19 +33,19 @@ public class RecipeController {
     @Operation(summary = "1단계: 이미지/영수증 분석 요청", description = "type 파라미터에 따라 일반 이미지 분석 또는 영수증 분석을 수행합니다.")
     @PostMapping(value = "/analyze", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public List<IngredientAnalysisResponse> analyzeImage(
-            @Parameter(description = "식재료 사진 또는 영수증 파일") @RequestParam("file") MultipartFile file,
-            @Parameter(description = "유저의 요리 취향") @RequestParam("preference") List<String> preference,
+            @Parameter(description = "식재료 사진 또는 영수증 파일") @RequestParam("files") List<MultipartFile> files,
+            @Parameter(description = "유저의 요리 취향") @RequestParam("preferences") List<String> preferences,
             @Parameter(description = "데이터 타입 (image: 식재료, receipt: 영수증)") @RequestParam("type") String type,
             @Parameter(description = "유저 식별 ID") @RequestParam(value = "userId", defaultValue = "user_01") String userId
     ) {
-        log.info("1단계 분석 요청: userId={}, type={}", userId, type);
-        validator.validate(file, preference);
+        log.info("1단계 분석 요청: {}장, type={}", files.size(), type);
+        validator.validateFiles(files, preferences);
 
         // Routing
         if ("receipt".equalsIgnoreCase(type)) { // 영수증 분석 서비스 호출 (/analyze-image-receipts)
-            return aiClientService.analyzeImageReceipt(file, preference, userId);
+            return aiClientService.analyzeImageReceipt(files, preferences, userId);
         } else { // 일반 식재료 이미지 분석 (/analyze-image-ingredients)
-            return aiClientService.analyzeImageIngredients(file, preference, userId);
+            return aiClientService.analyzeImageIngredients(files, preferences, userId);
         }
     }
 
@@ -58,7 +58,7 @@ public class RecipeController {
         String action = request.action(); // DTO에서 action 값 추출
 
         log.info("2단계 생성 요청: userId={}, action={}", request.userId(), action);
-        validator.validate(request.ingredients(), request.preference());
+        validator.validateIngredients(request.ingredients(), request.preferences());
 
         // action이 null이거나 비어있으면 에러 처리
         if (action == null || action.trim().isEmpty()) {

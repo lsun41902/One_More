@@ -34,12 +34,19 @@ dependencies {
     // 파라미터 유효성 검증 라이브러리
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     // API 문서화를 위한 Swagger 라이브러리
+    // RestClient Multipart 처리 시 필요한 리액티브 의존성 해결
+    implementation 'io.projectreactor:reactor-core'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.4'
     // 코드 가독성을 위한 Lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     // 개발 편의를 위한 핫 리로드(Hot Reload) 도구
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // DB 연결: Spring Data JPA (영속성 계층)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // PostgreSQL JDBC Driver
+    implementation 'org.postgresql:postgresql'
 
     //테스터
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

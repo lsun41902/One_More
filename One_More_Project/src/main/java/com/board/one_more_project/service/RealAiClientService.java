@@ -1,84 +1,99 @@
 package com.board.one_more_project.service;
-
 import com.board.one_more_project.dto.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.MediaType;
-import org.springframework.http.client.JdkClientHttpRequestFactory;
-import org.springframework.http.client.MultipartBodyBuilder;
+import org.springframework.http.*;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClient;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.net.http.HttpClient;
-import java.time.Duration;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Service
 @Profile("prod") // 운영(prod) 환경에서만 작동
 public class RealAiClientService implements AiClientService {
 
-    private final RestClient restClient;
+    private final RestTemplate restTemplate;
+    private final String aiServerUrl;
 
-    // 반복되는 파이썬의 응답 구조 { "result": [...] }를 받기 위한 Wrapper class
-    // 이 클래스는 이 파일 안에서만 쓰이므로 내부에 작성함.
-    // genericType: 여러 dto 타입의 데이터를 요청하게 되는데, 일일히 객체를 생성하지 않고, 필요한 타입의 객체를 생성할 수 있게 함.
     private record PythonResponseWrapper<genericType>(List<genericType> result) {}
 
+    // 반복되는 파이썬의 응답 구조 { "result": [...] }를 받기 위한 Wrapper class
     public RealAiClientService(@Value("${ai-server.url}") String aiServerUrl) {
-        HttpClient httpClient = HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(5)) // 서버 로딩 타임아웃 설정
-                .build();
+        this.aiServerUrl = aiServerUrl;
 
-        JdkClientHttpRequestFactory factory = new JdkClientHttpRequestFactory(httpClient);
-        factory.setReadTimeout(Duration.ofSeconds(60)); // 파이썬 서버 응답 타임아웃 설정
+        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
 
-        this.restClient = RestClient.builder()
-                .baseUrl(aiServerUrl)
-                .requestFactory(factory)
-                .build();
+        factory.setConnectTimeout(5000);
+        factory.setReadTimeout(120000);
+
+        this.restTemplate = new RestTemplate(factory);
+        log.info("[prod] RealAiClientService가 초기화되었습니다. Target URL: {}", aiServerUrl);
+    }
+    //region 이미지 분석 함수
+    @Override
+    public List<IngredientAnalysisResponse> analyzeImageReceipt(List<MultipartFile> files, List<String> preferences, String userId) {
+        return sendImageRequest("/analyze-image-receipts", files, preferences, userId);
     }
 
     @Override
-    public List<IngredientAnalysisResponse> analyzeImageIngredients(MultipartFile file, List<String> preference, String userId) {
-        // 재료 이미지 분석 URL 호출
-        return sendImageRequest("/analyze-image-ingredients", file, preference, userId);
+    public List<IngredientAnalysisResponse> analyzeImageIngredients(List<MultipartFile> files, List<String> preferences, String userId) {
+        return sendImageRequest("/analyze-image-ingredients", files, preferences, userId);
     }
 
-    @Override
-    public List<IngredientAnalysisResponse> analyzeImageReceipt(MultipartFile file, List<String> preference, String userId) {
-        // 영수증 분석 URL 호출
-        return sendImageRequest("/analyze-image-receipts", file, preference, userId);
-    }
+    private List<IngredientAnalysisResponse> sendImageRequest(String uri, List<MultipartFile> files, List<String> preferences, String userId) {
+        log.info("[prod] 이미지 분석 요청: URI={}, Count={}, User={}", uri, files.size(), userId);
 
-    // 이미지 전송 로직
-    private List<IngredientAnalysisResponse> sendImageRequest(String uri, MultipartFile file, List<String> preference, String userId) {
-        log.info("[prod] 이미지 분석 요청 URI: {}, User: {}", uri, userId);
+        MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
 
-        MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        builder.part("files", file.getResource());
-        builder.part("preference", preference);
-        builder.part("userId", userId);
+        // [핵심] 리스트로 받은 파일을 순회하며 동일한 키("files")로 추가
+        if (files != null) {
+            for (MultipartFile file : files) {
+                body.add("files", file.getResource());
+            }
+        }
 
-        try {
-            PythonResponseWrapper<IngredientAnalysisResponse> response = restClient.post()
-                    .uri(uri) // 전달받은 URI 사용
-                    .contentType(MediaType.MULTIPART_FORM_DATA)
-                    .body(builder.build())
-                    .retrieve()
-                    .body(new ParameterizedTypeReference<PythonResponseWrapper<IngredientAnalysisResponse>>() {});
+        if (preferences != null) {
+            for (String pref : preferences) {
+                body.add("preference", pref);
+            }
+        }
+        body.add("userId", userId);
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+        // MultiValueMap body와 headers를 HttpEntity로 합친다.
+        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
+
+        try {// 2. exchange 메서드를 사용하여 제네릭 타입(Wrapper<List<Response>>)을 명시
+            ResponseEntity<PythonResponseWrapper<IngredientAnalysisResponse>> responseEntity =
+                    restTemplate.exchange(
+                            aiServerUrl + uri,
+                            HttpMethod.POST,
+                            requestEntity,
+                            new ParameterizedTypeReference<PythonResponseWrapper<IngredientAnalysisResponse>>() {}
+                    );
+            PythonResponseWrapper<IngredientAnalysisResponse> response = responseEntity.getBody();
             return response != null ? response.result() : Collections.emptyList();
         } catch (Exception e) {
             log.error("이미지 분석 통신 오류 (URI: {}): {}", uri, e.getMessage());
             throw new RuntimeException("AI 서버 통신 오류: " + e.getMessage());
         }
-    }
 
+    }
+    //endregion
+
+    //region 레시피 생성 함수
     @Override
     public List<RecipeResponse> generateRecipeInitial(RecipeGenerationRequest request) {
         return sendRecipeRequest("/recipes-generate-initial", request);
@@ -94,22 +109,36 @@ public class RealAiClientService implements AiClientService {
         return sendRecipeRequest("/recipes-generate-more", request);
     }
 
-    // 레시피(JSON) 전송 로직
     private List<RecipeResponse> sendRecipeRequest(String uri, RecipeGenerationRequest request) {
-        log.info("[prod] 레시피 생성 요청 URI: {}, User: {}", uri, request.userId());
+        log.info("[prod] 레시피 생성 요청 전송: URI={}, User={}", uri, request.userId());
+
+        Map<String, Object> body = new HashMap<>();
+        body.put("userId", request.userId());
+        body.put("ingredients", request.ingredients());
+        body.put("spices", request.spices());
+        body.put("preferences", request.preferences());
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(body, headers);
 
         try {
-            PythonResponseWrapper<RecipeResponse> response = restClient.post()
-                    .uri(uri) // 전달받은 URI 사용
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body(request)
-                    .retrieve()
-                    .body(new ParameterizedTypeReference<PythonResponseWrapper<RecipeResponse>>() {});
+            ResponseEntity<PythonResponseWrapper<RecipeResponse>> responseEntity =
+                    restTemplate.exchange(
+                            aiServerUrl + uri,
+                            HttpMethod.POST,
+                            requestEntity,
+                            new ParameterizedTypeReference<PythonResponseWrapper<RecipeResponse>>() {}
+                    );
 
+            PythonResponseWrapper<RecipeResponse> response = responseEntity.getBody();
             return response != null ? response.result() : Collections.emptyList();
+
         } catch (Exception e) {
             log.error("레시피 생성 통신 오류 (URI: {}): {}", uri, e.getMessage());
-            throw new RuntimeException("AI 서버 통신 오류: " + e.getMessage());
+            throw new RuntimeException("AI 서버 레시피 생성 실패: " + e.getMessage());
         }
     }
+    //endregion
 }
