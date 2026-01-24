@@ -7,9 +7,9 @@
 -- DROP TABLE IF EXISTS spices CASCADE;
 -- DROP TABLE IF EXISTS recipes CASCADE;
 
-[2단계] 마스터 데이터 테이블 설계
+-- [2단계] 마스터 데이터 테이블 설계
 
-2-1. 취향 마스터 테이블 (표준 이름)
+-- 2-1. 취향 마스터 테이블 (표준 이름)
 CREATE TABLE preferences (
     id SERIAL PRIMARY KEY,
     category VARCHAR(20) NOT NULL,   -- 'STYLE', 'TASTE', 'CONDITION'
