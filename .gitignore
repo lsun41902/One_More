@@ -56,3 +56,4 @@ python-server/temp_data/*
 # --- 이승은 코드합치는 개인도구
 merge_code.py
 project_context.txt
+restClientUsedService.txt

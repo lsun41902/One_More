@@ -9,6 +9,25 @@ spring:
     multipart:
       max-file-size: 15MB
       max-request-size: 76MB
+
+  # 데이터 소스 설정
+  datasource:
+    url: jdbc:postgresql://localhost:5432/one-more-db  # your_db_name을 실제 DB 이름으로 변경
+    username: postgres                               # PostgreSQL 접속 계정 (예: postgres)
+    password: 1234                           # PostgreSQL 접속 비밀번호
+    driver-class-name: org.postgresql.Driver
+
+  # JPA 설정 (Hibernate)
+  jpa:
+    hibernate:
+      ddl-auto: none                                   # 'none'은 개발자가 직접 DDL 관리. 'update'는 개발 시 편의용.
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+
 ai-server:
 
   url: "http://192.168.22.54:8000"  # python fast api server
