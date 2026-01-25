@@ -1,4 +1,4 @@
- INSERT INTO ingredients (name, category) VALUES
+ INSERT INTO spices (name, category) VALUES
 -- 1. 소금 및 짠맛 조미료 (Salts)
 ('소금', '향신료'),          -- 기본 정제염
 ('굵은 소금', '향신료'),      -- 천일염 (김치 절임, 국 간)
@@ -59,7 +59,7 @@
 
 ON CONFLICT (name) DO NOTHING;
 
-INSERT INTO ingredients (name, category) VALUES
+INSERT INTO spices (name, category) VALUES
 -- 1. 건조 허브류 (Dried Herbs)
 ('바질 가루', '향신료'),       -- 파스타, 피자
 ('오레가노', '향신료'),        -- 토마토 소스 필수
@@ -103,3 +103,8 @@ INSERT INTO ingredients (name, category) VALUES
 ('레몬 페퍼', '향신료')        -- 생선 요리
 
 ON CONFLICT (name) DO NOTHING;
+
+select id, name, spices.category
+from spices
+where category = '향신료'
+order by id;

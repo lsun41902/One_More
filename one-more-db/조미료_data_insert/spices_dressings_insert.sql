@@ -1,4 +1,4 @@
- INSERT INTO ingredients (name, category) VALUES
+ INSERT INTO spices (name, category) VALUES
 -- 1. 과일 및 채소 베이스 샐러드 드레싱 (Korean Fruit Dressings)
 ('키위 드레싱', '드레싱'),       -- 한국 식당 샐러드 국룰
 ('파인애플 드레싱', '드레싱'),   -- 상큼한 맛
@@ -37,7 +37,7 @@
 
 ON CONFLICT (name) DO NOTHING;
 
-INSERT INTO ingredients (name, category) VALUES
+INSERT INTO spices (name, category) VALUES
 -- 1. 일식 샐러드 드레싱 및 토핑 (Japanese Style)
 ('참깨 드레싱', '드레싱'),       -- 고소한 고마다레 (돈까스집 샐러드)
 ('와후 드레싱', '드레싱'),       -- 일본식 간장 식초 드레싱
@@ -76,7 +76,7 @@ INSERT INTO ingredients (name, category) VALUES
 
 ON CONFLICT (name) DO NOTHING;
 
-INSERT INTO ingredients (name, category) VALUES
+INSERT INTO spices (name, category) VALUES
 -- 1. 샐러드용 클래식 드레싱 (Salad Classics)
 ('랜치 드레싱', '드레싱'),       -- 미국인이 가장 사랑하는 맛 (마요+버터밀크)
 ('시저 드레싱', '드레싱'),       -- 로메인, 파마산, 엔초비 풍미
@@ -101,7 +101,7 @@ INSERT INTO ingredients (name, category) VALUES
 ('바베큐 소스', '드레싱'),       -- 폭립, 풀드포크
 ('버팔로 윙 소스', '드레싱'),    -- 시큼하고 매운 핫소스 버터
 ('살사 베르데', '드레싱'),       -- 그린 살사 (허브 소스)
-('스위트 어니언 소스', '드레싱'),Q -- 서브웨이 스타일 (달콤한 양파)
+('스위트 어니언 소스', '드레싱'),-- 서브웨이 스타일 (달콤한 양파)
 
 -- 3. 디핑 및 샌드위치 스프레드 (Dips & Spreads)
 ('타르타르 소스', '드레싱'),     -- 생선까스, 피쉬 앤 칩스
@@ -114,3 +114,8 @@ INSERT INTO ingredients (name, category) VALUES
 ('치폴레 마요네즈', '드레싱')    -- 훈연 고추의 매콤한 맛
 
 ON CONFLICT (name) DO NOTHING;
+
+select id, name, spices.category
+from spices
+where category = '드레싱'
+order by id;

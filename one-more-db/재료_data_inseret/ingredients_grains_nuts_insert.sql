@@ -123,3 +123,8 @@ INSERT INTO ingredients (name, category) VALUES
 ('그레이트 노던 빈', '곡류/견과') -- 흰 콩의 일종
 
 ON CONFLICT (name) DO NOTHING;
+
+ select id, name, ingredients.category
+ from ingredients
+ where category = '곡류/견과'
+ order by  id;

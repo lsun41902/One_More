@@ -154,3 +154,8 @@ INSERT INTO ingredients (name, category) VALUES
 ('실곤약', '채소')       -- 스키야키
 
 ON CONFLICT (name) DO NOTHING;
+
+select id, name, ingredients.category
+from ingredients
+where category = '채소'
+order by  id;

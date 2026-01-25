@@ -1,4 +1,4 @@
-INSERT INTO ingredients (name, category) VALUES
+INSERT INTO spices (name, category) VALUES
 -- 1. 한국 요리 필수 기본 육수 (Basic Korean Broths)
 ('사골 육수', '육수용'),        -- 떡국, 부대찌개, 김치찌개 베이스 (시판 팩)
 ('멸치 육수', '육수용'),        -- 된장찌개, 국수 (액상/티백)
@@ -25,7 +25,7 @@ INSERT INTO ingredients (name, category) VALUES
 
 ON CONFLICT (name) DO NOTHING;
 
-INSERT INTO ingredients (name, category) VALUES
+INSERT INTO spices (name, category) VALUES
 -- 1. 일식 육수 및 다시 베이스 (Japanese Dashi & Broth)
 ('혼다시', '육수용'),          -- 가다랑어 풍미 조미료 (일식의 미원)
 ('시로다시', '육수용'),        -- 백다시 (색을 내지 않는 맑은 육수)
@@ -62,7 +62,7 @@ INSERT INTO ingredients (name, category) VALUES
 
 ON CONFLICT (name) DO NOTHING;
 
-INSERT INTO ingredients (name, category) VALUES
+INSERT INTO spices (name, category) VALUES
 -- 1. 서양 가정식 및 캔/팩 육수 (Broths & Bouillons)
 ('치킨 브로스', '육수용'),       -- 스톡보다 가볍고 간이 된 서양 기본 육수
 ('비프 브로스', '육수용'),       -- 스튜, 그레이비 소스 베이스
@@ -100,3 +100,8 @@ INSERT INTO ingredients (name, category) VALUES
 ('그레이비 믹스', '육수용')      -- 가루형 육수 소스
 
 ON CONFLICT (name) DO NOTHING;
+
+SELECT id, name, category
+FROM spices
+WHERE category = '육수용'
+ORDER BY id;

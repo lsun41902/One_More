@@ -161,5 +161,7 @@ INSERT INTO ingredients (name, category) VALUES
 
 ON CONFLICT (name) DO NOTHING;
 
-select *
-from ingredients
+select id, name, ingredients.category
+ from ingredients
+ where category = '수산물'
+ order by  id;

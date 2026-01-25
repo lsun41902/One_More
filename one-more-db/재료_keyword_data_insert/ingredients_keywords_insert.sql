@@ -1,0 +1,7311 @@
+-- -- [재료명: 돼지고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('돈육'), ('돼지'), ('pork')
+-- ) AS k(word)
+-- WHERE i.name = '돼지고기';
+--
+-- -- [재료명: 삼겹살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('삼겹'), ('오겹살'), ('pork belly')
+-- ) AS k(word)
+-- WHERE i.name = '삼겹살';
+--
+-- -- [재료명: 앞다리살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('전지'), ('전지살'), ('앞다리')
+-- ) AS k(word)
+-- WHERE i.name = '앞다리살';
+--
+-- -- [재료명: 김치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kimchi'), ('배추김치'), ('묵은지')
+-- ) AS k(word)
+-- WHERE i.name = '김치';
+--
+-- -- [재료명: 양파]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('onion'), ('양파채'), ('다진 양파')
+-- ) AS k(word)
+-- WHERE i.name = '양파';
+--
+-- -- [재료명: 두부]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tofu'), ('모두부'), ('bean curd')
+-- ) AS k(word)
+-- WHERE i.name = '두부';
+--
+-- -- [재료명: 달걀]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('계란'), ('egg'), ('에그')
+-- ) AS k(word)
+-- WHERE i.name = '달걀';
+--
+-- -- [재료명: 명태]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('동태'), ('북어'), ('황태')
+-- ) AS k(word)
+-- WHERE i.name = '명태';
+--
+-- -- [재료명: 쌀]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('rice'), ('백미'), ('밥')
+-- ) AS k(word)
+-- WHERE i.name = '쌀';
+--
+-- -- [재료명: 달걀 노른자]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('노른자'), ('계란 노른자'), ('yolk')
+-- ) AS k(word)
+-- WHERE i.name = '달걀 노른자';
+--
+-- -- [재료명: 달걀 흰자]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('계란 흰자'), ('egg white'), ('난백')
+-- ) AS k(word)
+-- WHERE i.name = '달걀 흰자';
+--
+-- -- [재료명: 메추리알]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('quail egg'), ('메추리'), ('새알')
+-- ) AS k(word)
+-- WHERE i.name = '메추리알';
+--
+-- -- [재료명: 깐 메추리알]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('깐메추리알'), ('삶은 메추리알'), ('peeled quail egg')
+-- ) AS k(word)
+-- WHERE i.name = '깐 메추리알';
+--
+-- -- [재료명: 오리알]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('duck egg'), ('청둥오리알')
+-- ) AS k(word)
+-- WHERE i.name = '오리알';
+--
+-- -- [재료명: 구운 달걀]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('구운 계란'), ('baked egg'), ('맥반석 계란')
+-- ) AS k(word)
+-- WHERE i.name = '구운 달걀';
+--
+-- -- [재료명: 훈제란]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('훈제 계란'), ('smoked egg'), ('찜질방 계란')
+-- ) AS k(word)
+-- WHERE i.name = '훈제란';
+--
+-- -- [재료명: 반숙란]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('반숙 계란'), ('soft boiled egg'), ('감동란')
+-- ) AS k(word)
+-- WHERE i.name = '반숙란';
+--
+-- -- [재료명: 수란]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('poached egg'), ('물계란')
+-- ) AS k(word)
+-- WHERE i.name = '수란';
+--
+-- -- [재료명: 우유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('milk'), ('흰 우유'), ('밀크')
+-- ) AS k(word)
+-- WHERE i.name = '우유';
+--
+-- -- [재료명: 저지방 우유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('low fat milk'), ('다이어트 우유'), ('무지방 우유')
+-- ) AS k(word)
+-- WHERE i.name = '저지방 우유';
+--
+
+-- -- [재료명: 무지방 우유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('non-fat milk'), ('skim milk'), ('탈지유')
+-- ) AS k(word)
+-- WHERE i.name = '무지방 우유';
+--
+-- -- [재료명: 락토프리 우유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lactose free'), ('소화가 잘되는 우유'), ('유당불내증 우유')
+-- ) AS k(word)
+-- WHERE i.name = '락토프리 우유';
+--
+-- -- [재료명: 멸균 우유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sterilized milk'), ('팩우유'), ('보관 우유')
+-- ) AS k(word)
+-- WHERE i.name = '멸균 우유';
+--
+-- -- [재료명: 초코 우유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chocolate milk'), ('초콜릿 우유'), ('초코에몽')
+-- ) AS k(word)
+-- WHERE i.name = '초코 우유';
+--
+-- -- [재료명: 딸기 우유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('strawberry milk'), ('딸기맛 우유')
+-- ) AS k(word)
+-- WHERE i.name = '딸기 우유';
+--
+-- -- [재료명: 바나나맛 우유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('banana milk'), ('뚱바'), ('단지우유')
+-- ) AS k(word)
+-- WHERE i.name = '바나나맛 우유';
+--
+-- -- [재료명: 커피 우유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('coffee milk'), ('커피맛 우유'), ('삼각커피우유')
+-- ) AS k(word)
+-- WHERE i.name = '커피 우유';
+--
+-- -- [재료명: 검은콩 우유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('black bean milk'), ('서리태 우유'), ('검은참깨 우유')
+-- ) AS k(word)
+-- WHERE i.name = '검은콩 우유';
+--
+-- -- [재료명: 산양유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('goat milk'), ('염소유'), ('산양유 단백질')
+-- ) AS k(word)
+-- WHERE i.name = '산양유';
+--
+-- -- [재료명: 체다 치즈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cheddar'), ('노란 치즈'), ('체다')
+-- ) AS k(word)
+-- WHERE i.name = '체다 치즈';
+--
+-- -- [재료명: 슬라이스 치즈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('slice cheese'), ('네모 치즈'), ('샌드위치 치즈')
+-- ) AS k(word)
+-- WHERE i.name = '슬라이스 치즈';
+--
+-- -- [재료명: 모짜렐라 치즈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mozzarella'), ('생모짜렐라'), ('보코치니')
+-- ) AS k(word)
+-- WHERE i.name = '모짜렐라 치즈';
+--
+-- -- [재료명: 피자 치즈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pizza cheese'), ('슈레드 치즈'), ('눈꽃 치즈')
+-- ) AS k(word)
+-- WHERE i.name = '피자 치즈';
+--
+-- -- [재료명: 스트링 치즈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('string cheese'), ('찢어먹는 치즈')
+-- ) AS k(word)
+-- WHERE i.name = '스트링 치즈';
+--
+-- -- [재료명: 크림 치즈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cream cheese'), ('발라먹는 치즈'), ('베이글 치즈')
+-- ) AS k(word)
+-- WHERE i.name = '크림 치즈';
+
+-- -- [재료명: 리코타 치즈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('ricotta'), ('리코타 샐러드'), ('리코타')
+-- ) AS k(word)
+-- WHERE i.name = '리코타 치즈';
+--
+-- -- [재료명: 파마산 치즈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('parmesan'), ('파마산 가루'), ('파르메산')
+-- ) AS k(word)
+-- WHERE i.name = '파마산 치즈';
+--
+-- -- [재료명: 까망베르 치즈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('camembert'), ('카망베르'), ('까망베르')
+-- ) AS k(word)
+-- WHERE i.name = '까망베르 치즈';
+--
+-- -- [재료명: 브리 치즈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('brie'), ('브리')
+-- ) AS k(word)
+-- WHERE i.name = '브리 치즈';
+--
+-- -- [재료명: 고다 치즈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('gouda'), ('하우다 치즈')
+-- ) AS k(word)
+-- WHERE i.name = '고다 치즈';
+--
+-- -- [재료명: 큐브 치즈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cube cheese'), ('조각 치즈'), ('벨큐브')
+-- ) AS k(word)
+-- WHERE i.name = '큐브 치즈';
+--
+-- -- [재료명: 버터]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('butter'), ('빠다')
+-- ) AS k(word)
+-- WHERE i.name = '버터';
+--
+-- -- [재료명: 무염 버터]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('unsalted butter'), ('베이킹 버터')
+-- ) AS k(word)
+-- WHERE i.name = '무염 버터';
+--
+-- -- [재료명: 가염 버터]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('salted butter'), ('테이블 버터')
+-- ) AS k(word)
+-- WHERE i.name = '가염 버터';
+--
+-- -- [재료명: 생크림]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('fresh cream'), ('유크림'), ('크림')
+-- ) AS k(word)
+-- WHERE i.name = '생크림';
+--
+-- -- [재료명: 휘핑크림]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('whipping cream'), ('휘핑'), ('가당 크림')
+-- ) AS k(word)
+-- WHERE i.name = '휘핑크림';
+--
+-- -- [재료명: 사워크림]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sour cream'), ('사우어크림'), ('신 크림')
+-- ) AS k(word)
+-- WHERE i.name = '사워크림';
+--
+-- -- [재료명: 연유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('condensed milk'), ('돌체'), ('밀크잼')
+-- ) AS k(word)
+-- WHERE i.name = '연유';
+--
+-- -- [재료명: 전지분유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('whole milk powder'), ('분유')
+-- ) AS k(word)
+-- WHERE i.name = '전지분유';
+--
+-- -- [재료명: 플레인 요거트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('plain yogurt'), ('무가당 요거트'), ('요거트')
+-- ) AS k(word)
+-- WHERE i.name = '플레인 요거트';
+
+-- [재료명: 그릭 요거트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('greek yogurt'), ('꾸덕한 요거트'), ('그릭')
+-- ) AS k(word)
+-- WHERE i.name = '그릭 요거트';
+--
+-- -- [재료명: 마시는 요거트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('drinking yogurt'), ('드링킹 요거트')
+-- ) AS k(word)
+-- WHERE i.name = '마시는 요거트';
+--
+-- -- [재료명: 액상 요구르트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('yogurt drink'), ('야쿠르트'), ('요구르트')
+-- ) AS k(word)
+-- WHERE i.name = '액상 요구르트';
+--
+-- -- [재료명: 사과]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('apple'), ('부사'), ('홍로')
+-- ) AS k(word)
+-- WHERE i.name = '사과';
+--
+-- -- [재료명: 배]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pear'), ('배즙'), ('신고배')
+-- ) AS k(word)
+-- WHERE i.name = '배';
+--
+-- -- [재료명: 귤]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tangerine'), ('mandarin'), ('밀감')
+-- ) AS k(word)
+-- WHERE i.name = '귤';
+--
+-- -- [재료명: 수박]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('watermelon')
+-- ) AS k(word)
+-- WHERE i.name = '수박';
+--
+-- -- [재료명: 참외]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('korean melon'), ('oriental melon')
+-- ) AS k(word)
+-- WHERE i.name = '참외';
+--
+-- -- [재료명: 딸기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('strawberry'), ('스트로베리')
+-- ) AS k(word)
+-- WHERE i.name = '딸기';
+--
+-- -- [재료명: 복숭아]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('peach'), ('백도'), ('황도')
+-- ) AS k(word)
+-- WHERE i.name = '복숭아';
+--
+-- -- [재료명: 자두]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('plum'), ('피자두')
+-- ) AS k(word)
+-- WHERE i.name = '자두';
+--
+-- -- [재료명: 감]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('persimmon'), ('단감')
+-- ) AS k(word)
+-- WHERE i.name = '감';
+--
+-- -- [재료명: 홍시]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('soft persimmon'), ('연시')
+-- ) AS k(word)
+-- WHERE i.name = '홍시';
+--
+-- -- [재료명: 곶감]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dried persimmon'), ('건시'), ('반건시')
+-- ) AS k(word)
+-- WHERE i.name = '곶감';
+--
+-- -- [재료명: 포도]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('grape'), ('거봉'), ('머루포도')
+-- ) AS k(word)
+-- WHERE i.name = '포도';
+
+-- -- [재료명: 거봉]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kyoho grape'), ('왕포도'), ('큰 포도')
+-- ) AS k(word)
+-- WHERE i.name = '거봉';
+--
+-- -- [재료명: 청포도]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('green grape'), ('청포도 사탕'), ('칠레 포도')
+-- ) AS k(word)
+-- WHERE i.name = '청포도';
+--
+-- -- [재료명: 샤인머스캣]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('shine muscat'), ('망고포도'), ('샤머')
+-- ) AS k(word)
+-- WHERE i.name = '샤인머스캣';
+--
+-- -- [재료명: 살구]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('apricot'), ('건살구')
+-- ) AS k(word)
+-- WHERE i.name = '살구';
+--
+-- -- [재료명: 매실]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('green plum'), ('매실청'), ('청매실')
+-- ) AS k(word)
+-- WHERE i.name = '매실';
+--
+-- -- [재료명: 유자]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('yuzu'), ('citron'), ('유자청')
+-- ) AS k(word)
+-- WHERE i.name = '유자';
+--
+-- -- [재료명: 모과]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('quince'), ('모과청')
+-- ) AS k(word)
+-- WHERE i.name = '모과';
+--
+-- -- [재료명: 석류]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pomegranate'), ('석류알'), ('석류즙')
+-- ) AS k(word)
+-- WHERE i.name = '석류';
+--
+-- -- [재료명: 무화과]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('fig'), ('건무화과'), ('말린 무화과')
+-- ) AS k(word)
+-- WHERE i.name = '무화과';
+--
+-- -- [재료명: 바나나]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('banana'), ('몽키바나나'), ('바나나칩')
+-- ) AS k(word)
+-- WHERE i.name = '바나나';
+--
+-- -- [재료명: 파인애플]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pineapple'), ('파인애풀'), ('통조림 파인애플')
+-- ) AS k(word)
+-- WHERE i.name = '파인애플';
+--
+-- -- [재료명: 키위]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kiwifruit'), ('참다래'), ('골드키위')
+-- ) AS k(word)
+-- WHERE i.name = '키위';
+--
+-- -- [재료명: 오렌지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('orange'), ('오렌지 주스')
+-- ) AS k(word)
+-- WHERE i.name = '오렌지';
+--
+-- -- [재료명: 레몬]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lemon'), ('레몬즙'), ('레몬제스트')
+-- ) AS k(word)
+-- WHERE i.name = '레몬';
+--
+-- -- [재료명: 라임]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lime'), ('라임즙'), ('라임제스트')
+-- ) AS k(word)
+-- WHERE i.name = '라임';
+
+-- [재료명: 자몽]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('grapefruit'), ('그레이프프루트')
+-- ) AS k(word)
+-- WHERE i.name = '자몽';
+--
+-- -- [재료명: 망고]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mango'), ('냉동 망고'), ('망고바')
+-- ) AS k(word)
+-- WHERE i.name = '망고';
+--
+-- -- [재료명: 애플망고]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('apple mango'), ('제주 애플망고')
+-- ) AS k(word)
+-- WHERE i.name = '애플망고';
+--
+-- -- [재료명: 체리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cherry'), ('버찌'), ('체리통조림')
+-- ) AS k(word)
+-- WHERE i.name = '체리';
+--
+-- -- [재료명: 블루베리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('blueberry'), ('냉동 블루베리'), ('생블루베리')
+-- ) AS k(word)
+-- WHERE i.name = '블루베리';
+--
+-- -- [재료명: 라즈베리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('raspberry'), ('산딸기'), ('냉동 라즈베리')
+-- ) AS k(word)
+-- WHERE i.name = '라즈베리';
+--
+-- -- [재료명: 아보카도]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('avocado'), ('숲의 버터'), ('냉동 아보카도')
+-- ) AS k(word)
+-- WHERE i.name = '아보카도';
+--
+-- -- [재료명: 멜론]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('melon'), ('메론'), ('머스크멜론')
+-- ) AS k(word)
+-- WHERE i.name = '멜론';
+--
+-- -- [재료명: 코코넛]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('coconut'), ('야자'), ('코코넛밀크')
+-- ) AS k(word)
+-- WHERE i.name = '코코넛';
+--
+-- -- [재료명: 두리안]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('durian'), ('생두리안')
+-- ) AS k(word)
+-- WHERE i.name = '두리안';
+--
+-- -- [재료명: 리치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lychee'), ('라이치'), ('냉동 리치')
+-- ) AS k(word)
+-- WHERE i.name = '리치';
+--
+-- -- [재료명: 용안]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('longan'), ('롱간'), ('용안육')
+-- ) AS k(word)
+-- WHERE i.name = '용안';
+--
+-- -- [재료명: 망고스틴]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mangosteen'), ('냉동 망고스틴')
+-- ) AS k(word)
+-- WHERE i.name = '망고스틴';
+--
+-- -- [재료명: 람부탄]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('rambutan'), ('털과일')
+-- ) AS k(word)
+-- WHERE i.name = '람부탄';
+--
+-- -- [재료명: 용과]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dragon fruit'), ('드래곤후르츠'), ('피타야')
+-- ) AS k(word)
+-- WHERE i.name = '용과';
+--
+-- -- [재료명: 잭푸르트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('jackfruit'), ('잭프루트')
+-- ) AS k(word)
+-- WHERE i.name = '잭푸르트';
+--
+-- -- [재료명: 스타푸르트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('starfruit'), ('별과일'), ('카람볼라')
+-- ) AS k(word)
+-- WHERE i.name = '스타푸르트';
+--
+-- -- [재료명: 포멜로]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pomelo'), ('왕귤'), ('백자몽')
+-- ) AS k(word)
+-- WHERE i.name = '포멜로';
+--
+-- -- [재료명: 금귤]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kumquat'), ('낑깡'), ('금감')
+-- ) AS k(word)
+-- WHERE i.name = '금귤';
+--
+-- -- [재료명: 비파]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('loquat'), ('비파열매')
+-- ) AS k(word)
+-- WHERE i.name = '비파';
+
+-- [재료명: 산사 열매]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hawthorn'), ('산사'), ('산사자')
+-- ) AS k(word)
+-- WHERE i.name = '산사 열매';
+--
+-- -- [재료명: 하미과]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hami melon'), ('황제 멜론'), ('중국 멜론')
+-- ) AS k(word)
+-- WHERE i.name = '하미과';
+--
+-- -- [재료명: 파파야]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('papaya'), ('그린 파파야'), ('개구리참외')
+-- ) AS k(word)
+-- WHERE i.name = '파파야';
+--
+-- -- [재료명: 구아바]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('guava'), ('구아바잎')
+-- ) AS k(word)
+-- WHERE i.name = '구아바';
+--
+-- -- [재료명: 패션후르츠]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('passion fruit'), ('백향과'), ('패션프루트')
+-- ) AS k(word)
+-- WHERE i.name = '패션후르츠';
+--
+-- -- [재료명: 사탕수수]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sugarcane'), ('케인')
+-- ) AS k(word)
+-- WHERE i.name = '사탕수수';
+--
+-- -- [재료명: 석가]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sugar apple'), ('슈가애플'), ('석가두')
+-- ) AS k(word)
+-- WHERE i.name = '석가';
+--
+-- -- [재료명: 불수감]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('buddhas hand'), ('불수')
+-- ) AS k(word)
+-- WHERE i.name = '불수감';
+--
+-- -- [재료명: 납작복숭아]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+-- CROSS JOIN (
+--     VALUES
+--         ('donut peach'), ('도넛 복숭아'), ('flat peach')
+-- ) AS k(word)
+-- WHERE i.name = '납작복숭아';
+--
+-- -- [재료명: 영귤]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+-- CROSS JOIN (
+--     VALUES
+--         ('sudachi'), ('스다치')
+-- ) AS k(word)
+-- WHERE i.name = '영귤';
+--
+-- -- [재료명: 카보스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+-- CROSS JOIN (
+--     VALUES
+--         ('kabosu'), ('카보스 즙')
+-- ) AS k(word)
+-- WHERE i.name = '카보스';
+--
+-- -- [재료명: 시콰사]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+-- CROSS JOIN (
+--     VALUES
+--         ('shikuwasa'), ('히라미 레몬')
+-- ) AS k(word)
+-- WHERE i.name = '시콰사';
+--
+-- -- [재료명: 하귤]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+-- CROSS JOIN (
+--     VALUES
+--         ('summer orange'), ('나츠미캉'), ('여름귤')
+-- ) AS k(word)
+-- WHERE i.name = '하귤';
+--
+-- -- [재료명: 블랙베리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+-- CROSS JOIN (
+--     VALUES
+--         ('blackberry'), ('검은 딸기')
+-- ) AS k(word)
+-- WHERE i.name = '블랙베리';
+--
+-- -- [재료명: 크랜베리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+-- CROSS JOIN (
+--     VALUES
+--         ('cranberry'), ('덩굴월귤'), ('건크랜베리')
+-- ) AS k(word)
+-- WHERE i.name = '크랜베리';
+--
+-- -- [재료명: 아사이베리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+-- CROSS JOIN (
+--     VALUES
+--         ('acai berry'), ('아사이')
+-- ) AS k(word)
+-- WHERE i.name = '아사이베리';
+--
+-- -- [재료명: 블랙사파이어 포도]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+-- CROSS JOIN (
+--     VALUES
+--         ('sweet sapphire'), ('가지포도'), ('문드롭 포도')
+-- ) AS k(word)
+-- WHERE i.name = '블랙사파이어 포도';
+--
+-- -- [재료명: 오디]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+-- CROSS JOIN (
+--     VALUES
+--         ('mulberry'), ('뽕나무 열매'), ('오디즙')
+-- ) AS k(word)
+-- WHERE i.name = '오디';
+--
+-- -- [재료명: 으름]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+-- CROSS JOIN (
+--     VALUES
+--         ('akebia'), ('한국 바나나'), ('목통')
+-- ) AS k(word)
+-- WHERE i.name = '으름';
+
+-- [재료명: 블랙커런트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('blackcurrant'), ('카시스'), ('까막까치밥나무')
+-- ) AS k(word)
+-- WHERE i.name = '블랙커런트';
+--
+-- -- [재료명: 레드커런트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('redcurrant'), ('붉은 까치밥나무')
+-- ) AS k(word)
+-- WHERE i.name = '레드커런트';
+--
+-- -- [재료명: 구스베리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('gooseberry'), ('서양 까치밥나무')
+-- ) AS k(word)
+-- WHERE i.name = '구스베리';
+--
+-- -- [재료명: 링곤베리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lingonberry'), ('월귤'), ('카우베리')
+-- ) AS k(word)
+-- WHERE i.name = '링곤베리';
+--
+-- -- [재료명: 엘더베리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('elderberry'), ('삼부커스')
+-- ) AS k(word)
+-- WHERE i.name = '엘더베리';
+--
+-- -- [재료명: 보이젠베리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('boysenberry')
+-- ) AS k(word)
+-- WHERE i.name = '보이젠베리';
+--
+-- -- [재료명: 빌베리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bilberry'), ('야생 블루베리')
+-- ) AS k(word)
+-- WHERE i.name = '빌베리';
+--
+-- -- [재료명: 아로니아]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('aronia'), ('초크베리'), ('킹스베리')
+-- ) AS k(word)
+-- WHERE i.name = '아로니아';
+--
+-- -- [재료명: 산딸기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('wild strawberry'), ('산딸기청')
+-- ) AS k(word)
+-- WHERE i.name = '산딸기';
+--
+-- -- [재료명: 주니퍼베리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('juniper berry'), ('노간주나무 열매'), ('두송자')
+-- ) AS k(word)
+-- WHERE i.name = '주니퍼베리';
+--
+-- -- [재료명: 캔탈루프 멜론]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cantaloupe'), ('주황 멜론'), ('칸탈로프')
+-- ) AS k(word)
+-- WHERE i.name = '캔탈루프 멜론';
+--
+-- -- [재료명: 허니듀 멜론]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('honeydew'), ('초록 멜론'), ('허니듀')
+-- ) AS k(word)
+-- WHERE i.name = '허니듀 멜론';
+--
+-- -- [재료명: 서양배]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('western pear'), ('양배')
+-- ) AS k(word)
+-- WHERE i.name = '서양배';
+--
+-- -- [재료명: 천도복숭아]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('nectarine'), ('승도복숭아'), ('털없는 복숭아')
+-- ) AS k(word)
+-- WHERE i.name = '천도복숭아';
+--
+-- -- [재료명: 플럼코트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('plumcot'), ('자두 살구'), ('하모니')
+-- ) AS k(word)
+-- WHERE i.name = '플럼코트';
+--
+-- -- [재료명: 블러드 오렌지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('blood orange'), ('핏빛 오렌지')
+-- ) AS k(word)
+-- WHERE i.name = '블러드 오렌지';
+--
+-- -- [재료명: 베르가못]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bergamot'), ('버가못')
+-- ) AS k(word)
+-- WHERE i.name = '베르가못';
+--
+-- -- [재료명: 핑거 라임]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('finger lime'), ('캐비어 라임'), ('핑거라임')
+-- ) AS k(word)
+-- WHERE i.name = '핑거 라임';
+--
+-- -- [재료명: 마르멜로]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('quince'), ('서양 모과'), ('마르멜로 잼')
+-- ) AS k(word)
+-- WHERE i.name = '마르멜로';
+--
+-- -- [재료명: 대추야자]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('date palm'), ('데이츠'), ('만수르 간식')
+-- ) AS k(word)
+-- WHERE i.name = '대추야자';
+
+-- [재료명: 푸룬]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('prune'), ('건자두'), ('말린 자두')
+-- ) AS k(word)
+-- WHERE i.name = '푸룬';
+--
+-- -- [재료명: 건포도]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('raisin'), ('레즌'), ('말린 포도')
+-- ) AS k(word)
+-- WHERE i.name = '건포도';
+--
+-- -- [재료명: 설타나]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sultana'), ('청건포도'), ('황색 건포도')
+-- ) AS k(word)
+-- WHERE i.name = '설타나';
+--
+-- -- [재료명: 건크랜베리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dried cranberry'), ('말린 크랜베리')
+-- ) AS k(word)
+-- WHERE i.name = '건크랜베리';
+--
+-- -- [재료명: 건살구]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dried apricot'), ('말린 살구')
+-- ) AS k(word)
+-- WHERE i.name = '건살구';
+--
+-- -- [재료명: 건무화과]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dried fig'), ('말린 무화과'), ('반건조 무화과')
+-- ) AS k(word)
+-- WHERE i.name = '건무화과';
+--
+-- -- [재료명: 루바브]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('rhubarb'), ('대황'), ('장군풀')
+-- ) AS k(word)
+-- WHERE i.name = '루바브';
+--
+-- -- [재료명: 플랜틴]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('plantain'), ('요리용 바나나'), ('쿠킹 바나나')
+-- ) AS k(word)
+-- WHERE i.name = '플랜틴';
+--
+-- -- [재료명: 토마틸로]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tomatillo'), ('멕시코 토마토'), ('껍질 토마토')
+-- ) AS k(word)
+-- WHERE i.name = '토마틸로';
+--
+-- -- [재료명: 아세로라]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('acerola'), ('서인도 체리')
+-- ) AS k(word)
+-- WHERE i.name = '아세로라';
+--
+-- -- [재료명: 찹쌀]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('glutinous rice'), ('sticky rice'), ('찰밥')
+-- ) AS k(word)
+-- WHERE i.name = '찹쌀';
+--
+-- -- [재료명: 현미]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('brown rice'), ('미강')
+-- ) AS k(word)
+-- WHERE i.name = '현미';
+--
+-- -- [재료명: 발아현미]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sprouted brown rice'), ('발아미'), ('싹틔운 현미')
+-- ) AS k(word)
+-- WHERE i.name = '발아현미';
+--
+-- -- [재료명: 흑미]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('black rice'), ('검은쌀'), ('검정쌀')
+-- ) AS k(word)
+-- WHERE i.name = '흑미';
+--
+-- -- [재료명: 보리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('barley'), ('보리쌀'), ('꽁보리')
+-- ) AS k(word)
+-- WHERE i.name = '보리';
+--
+-- -- [재료명: 늘보리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('겉보리'), ('압맥')
+-- ) AS k(word)
+-- WHERE i.name = '늘보리';
+--
+-- -- [재료명: 찰보리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('glutinous barley'), ('찰보리쌀'), ('찰쌀보리')
+-- ) AS k(word)
+-- WHERE i.name = '찰보리';
+--
+-- -- [재료명: 귀리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('oat'), ('오트밀'), ('오트')
+-- ) AS k(word)
+-- WHERE i.name = '귀리';
+--
+-- -- [재료명: 수수]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sorghum'), ('찰수수'), ('수수쌀')
+-- ) AS k(word)
+-- WHERE i.name = '수수';
+
+-- [재료명: 찰수수]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('glutinous sorghum'), ('수수쌀'), ('찰수수쌀')
+-- ) AS k(word)
+-- WHERE i.name = '찰수수';
+--
+-- -- [재료명: 조]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('millet'), ('좁쌀')
+-- ) AS k(word)
+-- WHERE i.name = '조';
+--
+-- -- [재료명: 기장]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('proso millet'), ('기장쌀')
+-- ) AS k(word)
+-- WHERE i.name = '기장';
+--
+-- -- [재료명: 율무]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('adlay'), ('율무쌀'), ('job''s tears')
+-- ) AS k(word)
+-- WHERE i.name = '율무';
+--
+-- -- [재료명: 메밀]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('buckwheat'), ('메밀쌀')
+-- ) AS k(word)
+-- WHERE i.name = '메밀';
+--
+-- -- [재료명: 옥수수]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('corn'), ('강냉이'), ('옥시기')
+-- ) AS k(word)
+-- WHERE i.name = '옥수수';
+--
+-- -- [재료명: 찰옥수수]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('waxy corn'), ('찰강냉이'), ('대학찰옥수수')
+-- ) AS k(word)
+-- WHERE i.name = '찰옥수수';
+--
+-- -- [재료명: 초당옥수수]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('super sweet corn'), ('초당'), ('생옥수수')
+-- ) AS k(word)
+-- WHERE i.name = '초당옥수수';
+--
+-- -- [재료명: 백태]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('white soybean'), ('메주콩'), ('노란콩')
+-- ) AS k(word)
+-- WHERE i.name = '백태';
+--
+-- -- [재료명: 서리태]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('black soybean'), ('검은콩'), ('속청')
+-- ) AS k(word)
+-- WHERE i.name = '서리태';
+--
+-- -- [재료명: 흑태]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('black bean'), ('검정콩')
+-- ) AS k(word)
+-- WHERE i.name = '흑태';
+--
+-- -- [재료명: 쥐눈이콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('small black bean'), ('약콩'), ('서목태')
+-- ) AS k(word)
+-- WHERE i.name = '쥐눈이콩';
+--
+-- -- [재료명: 완두콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pea'), ('green pea'), ('완두')
+-- ) AS k(word)
+-- WHERE i.name = '완두콩';
+--
+-- -- [재료명: 강낭콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kidney bean'), ('강남콩')
+-- ) AS k(word)
+-- WHERE i.name = '강낭콩';
+--
+-- -- [재료명: 적강낭콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('red kidney bean'), ('붉은 강낭콩')
+-- ) AS k(word)
+-- WHERE i.name = '적강낭콩';
+--
+-- -- [재료명: 팥]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('red bean'), ('azuki bean'), ('적두')
+-- ) AS k(word)
+-- WHERE i.name = '팥';
+--
+-- -- [재료명: 녹두]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mung bean'), ('녹두빈대떡')
+-- ) AS k(word)
+-- WHERE i.name = '녹두';
+--
+-- -- [재료명: 동부콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cowpea'), ('동부')
+-- ) AS k(word)
+-- WHERE i.name = '동부콩';
+--
+-- -- [재료명: 작두콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sword bean'), ('작두')
+-- ) AS k(word)
+-- WHERE i.name = '작두콩';
+--
+-- -- [재료명: 렌틸콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lentil'), ('렌즈콩')
+-- ) AS k(word)
+-- WHERE i.name = '렌틸콩';
+
+-- [재료명: 병아리콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chickpea'), ('이집트콩'), ('칙피')
+-- ) AS k(word)
+-- WHERE i.name = '병아리콩';
+--
+-- -- [재료명: 아몬드]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('almond'), ('통아몬드'), ('생아몬드')
+-- ) AS k(word)
+-- WHERE i.name = '아몬드';
+--
+-- -- [재료명: 구운 아몬드]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('roasted almond'), ('볶은 아몬드'), ('구운아몬드')
+-- ) AS k(word)
+-- WHERE i.name = '구운 아몬드';
+--
+-- -- [재료명: 아몬드 슬라이스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sliced almond'), ('슬라이스 아몬드'), ('납작 아몬드')
+-- ) AS k(word)
+-- WHERE i.name = '아몬드 슬라이스';
+--
+-- -- [재료명: 아몬드 분태]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('diced almond'), ('다진 아몬드'), ('아몬드 조각')
+-- ) AS k(word)
+-- WHERE i.name = '아몬드 분태';
+--
+-- -- [재료명: 호두]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('walnut'), ('통호두'), ('깐호두')
+-- ) AS k(word)
+-- WHERE i.name = '호두';
+--
+-- -- [재료명: 호두 분태]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chopped walnut'), ('다진 호두'), ('호두 조각')
+-- ) AS k(word)
+-- WHERE i.name = '호두 분태';
+--
+-- -- [재료명: 땅콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('peanut'), ('생땅콩'), ('피땅콩')
+-- ) AS k(word)
+-- WHERE i.name = '땅콩';
+--
+-- -- [재료명: 볶은 땅콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('roasted peanut'), ('구운 땅콩'), ('볶음 땅콩')
+-- ) AS k(word)
+-- WHERE i.name = '볶은 땅콩';
+--
+-- -- [재료명: 땅콩 분태]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chopped peanut'), ('다진 땅콩'), ('땅콩 가루')
+-- ) AS k(word)
+-- WHERE i.name = '땅콩 분태';
+--
+-- -- [재료명: 삶은 땅콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('boiled peanut'), ('찐 땅콩'), ('삶은 피땅콩')
+-- ) AS k(word)
+-- WHERE i.name = '삶은 땅콩';
+--
+-- -- [재료명: 캐슈넛]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cashew nut'), ('캐슈너트'), ('cashew')
+-- ) AS k(word)
+-- WHERE i.name = '캐슈넛';
+--
+-- -- [재료명: 피스타치오]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pistachio'), ('피스타치오 아몬드')
+-- ) AS k(word)
+-- WHERE i.name = '피스타치오';
+--
+-- -- [재료명: 마카다미아]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('macadamia'), ('마카다미아넛')
+-- ) AS k(word)
+-- WHERE i.name = '마카다미아';
+--
+-- -- [재료명: 피칸]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pecan'), ('피칸너트')
+-- ) AS k(word)
+-- WHERE i.name = '피칸';
+--
+-- -- [재료명: 헤이즐넛]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hazelnut'), ('개암'), ('헤이즐럿')
+-- ) AS k(word)
+-- WHERE i.name = '헤이즐넛';
+--
+-- -- [재료명: 브라질너트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('brazil nut'), ('브라질 너트')
+-- ) AS k(word)
+-- WHERE i.name = '브라질너트';
+--
+-- -- [재료명: 해바라기씨]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sunflower seed'), ('해씨'), ('해바라기씨앗')
+-- ) AS k(word)
+-- WHERE i.name = '해바라기씨';
+--
+-- -- [재료명: 호박씨]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pumpkin seed'), ('말린 호박씨')
+-- ) AS k(word)
+-- WHERE i.name = '호박씨';
+--
+-- -- [재료명: 참깨]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sesame'), ('통깨'), ('볶은깨')
+-- ) AS k(word)
+-- WHERE i.name = '참깨';
+
+-- [재료명: 통깨]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sesame seeds'), ('참깨'), ('볶은 통깨')
+-- ) AS k(word)
+-- WHERE i.name = '통깨';
+--
+-- -- [재료명: 검은깨]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('black sesame'), ('흑임자'), ('검정깨')
+-- ) AS k(word)
+-- WHERE i.name = '검은깨';
+--
+-- -- [재료명: 들깨]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('perilla seeds'), ('통들깨')
+-- ) AS k(word)
+-- WHERE i.name = '들깨';
+--
+-- -- [재료명: 햄프씨드]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hemp seed'), ('대마씨'), ('햄프시드')
+-- ) AS k(word)
+-- WHERE i.name = '햄프씨드';
+--
+-- -- [재료명: 치아씨드]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chia seed'), ('치아시드')
+-- ) AS k(word)
+-- WHERE i.name = '치아씨드';
+--
+-- -- [재료명: 아마씨]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('flaxseed'), ('아마씨드'), ('린시드')
+-- ) AS k(word)
+-- WHERE i.name = '아마씨';
+--
+-- -- [재료명: 바질 시드]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('basil seed'), ('바질씨드'), ('바질씨')
+-- ) AS k(word)
+-- WHERE i.name = '바질 시드';
+--
+-- -- [재료명: 카카오 닙스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cacao nibs'), ('카카오닙'), ('카카오 열매')
+-- ) AS k(word)
+-- WHERE i.name = '카카오 닙스';
+--
+-- -- [재료명: 퀴노아]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('quinoa'), ('키노아'), ('볶은 퀴노아')
+-- ) AS k(word)
+-- WHERE i.name = '퀴노아';
+--
+-- -- [재료명: 밤]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chestnut'), ('생밤'), ('알밤')
+-- ) AS k(word)
+-- WHERE i.name = '밤';
+--
+-- -- [재료명: 깐 밤]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('peeled chestnut'), ('생율'), ('깐밤')
+-- ) AS k(word)
+-- WHERE i.name = '깐 밤';
+--
+-- -- [재료명: 군밤]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('roasted chestnut'), ('구운 밤'), ('에어프라이어 밤')
+-- ) AS k(word)
+-- WHERE i.name = '군밤';
+--
+-- -- [재료명: 맛밤]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('matbam'), ('찐밤'), ('간식 밤')
+-- ) AS k(word)
+-- WHERE i.name = '맛밤';
+--
+-- -- [재료명: 약단밤]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sweet chestnut'), ('단밤'), ('칼집 밤')
+-- ) AS k(word)
+-- WHERE i.name = '약단밤';
+--
+-- -- [재료명: 대추]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('jujube'), ('생대추')
+-- ) AS k(word)
+-- WHERE i.name = '대추';
+--
+-- -- [재료명: 건대추]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dried jujube'), ('말린 대추'), ('홍조')
+-- ) AS k(word)
+-- WHERE i.name = '건대추';
+--
+-- -- [재료명: 대추채]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sliced jujube'), ('대추 고명'), ('건대추채')
+-- ) AS k(word)
+-- WHERE i.name = '대추채';
+--
+-- -- [재료명: 잣]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pine nut'), ('가평잣'), ('백잣')
+-- ) AS k(word)
+-- WHERE i.name = '잣';
+--
+-- -- [재료명: 도토리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('acorn'), ('상수리')
+-- ) AS k(word)
+-- WHERE i.name = '도토리';
+--
+-- -- [재료명: 코코넛 칩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('coconut chips'), ('구운 코코넛'), ('말린 코코넛')
+-- ) AS k(word)
+-- WHERE i.name = '코코넛 칩';
+
+-- -- [재료명: 코코넛 슬라이스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('coconut slice'), ('코코넛 칩'), ('말린 코코넛')
+-- ) AS k(word)
+-- WHERE i.name = '코코넛 슬라이스';
+--
+-- -- [재료명: 아마란스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('amaranth'), ('아마란스 씨앗'), ('신이 내린 곡물')
+-- ) AS k(word)
+-- WHERE i.name = '아마란스';
+--
+-- -- [재료명: 테프]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('teff'), ('세상에서 가장 작은 곡물')
+-- ) AS k(word)
+-- WHERE i.name = '테프';
+--
+-- -- [재료명: 카무트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kamut'), ('호라산 밀'), ('khorasan wheat')
+-- ) AS k(word)
+-- WHERE i.name = '카무트';
+--
+-- -- [재료명: 스펠트 밀]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('spelt'), ('딩켈 밀'), ('고대 밀')
+-- ) AS k(word)
+-- WHERE i.name = '스펠트 밀';
+--
+-- -- [재료명: 파로]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('farro'), ('엠머 밀'), ('파로 곡물')
+-- ) AS k(word)
+-- WHERE i.name = '파로';
+--
+-- -- [재료명: 프리카]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('freekeh'), ('프리케'), ('태운 밀')
+-- ) AS k(word)
+-- WHERE i.name = '프리카';
+--
+-- -- [재료명: 불거]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bulgur'), ('부르굴'), ('벌거')
+-- ) AS k(word)
+-- WHERE i.name = '불거';
+--
+-- -- [재료명: 와일드 라이스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('wild rice'), ('인디언 라이스'), ('줄풀')
+-- ) AS k(word)
+-- WHERE i.name = '와일드 라이스';
+--
+-- -- [재료명: 호밀]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('rye'), ('라이밀'), ('호밀쌀')
+-- ) AS k(word)
+-- WHERE i.name = '호밀';
+--
+-- -- [재료명: 쿠스쿠스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('couscous'), ('좁쌀 파스타'), ('세몰리나')
+-- ) AS k(word)
+-- WHERE i.name = '쿠스쿠스';
+--
+-- -- [재료명: 포니오]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('fonio'), ('포니오 곡물')
+-- ) AS k(word)
+-- WHERE i.name = '포니오';
+--
+-- -- [재료명: 피]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('barnyard millet'), ('식용 피'), ('피쌀')
+-- ) AS k(word)
+-- WHERE i.name = '피';
+--
+-- -- [재료명: 사차인치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sacha inchi'), ('스타씨드'), ('오메가넛')
+-- ) AS k(word)
+-- WHERE i.name = '사차인치';
+--
+-- -- [재료명: 타이거넛츠]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tiger nut'), ('기름골'), ('타이거너트')
+-- ) AS k(word)
+-- WHERE i.name = '타이거넛츠';
+--
+-- -- [재료명: 연자육]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lotus seed'), ('연꽃 씨앗'), ('연밥')
+-- ) AS k(word)
+-- WHERE i.name = '연자육';
+--
+-- -- [재료명: 양귀비씨]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('poppy seed'), ('포피시드')
+-- ) AS k(word)
+-- WHERE i.name = '양귀비씨';
+--
+-- -- [재료명: 니젤라 씨드]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('nigella seed'), ('블랙 쿠민'), ('흑종초')
+-- ) AS k(word)
+-- WHERE i.name = '니젤라 씨드';
+--
+-- -- [재료명: 캔들넛]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('candlenut'), ('쿠쿠이')
+-- ) AS k(word)
+-- WHERE i.name = '캔들넛';
+--
+-- -- [재료명: 필리넛]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pili nut'), ('필리너트')
+-- ) AS k(word)
+-- WHERE i.name = '필리넛';
+
+-- -- [재료명: 바루넛]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('baru nut'), ('바루씨앗')
+-- ) AS k(word)
+-- WHERE i.name = '바루넛';
+--
+-- -- [재료명: 파바빈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('fava bean'), ('잠두'), ('broad bean')
+-- ) AS k(word)
+-- WHERE i.name = '파바빈';
+--
+-- -- [재료명: 리마콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lima bean'), ('버터콩')
+-- ) AS k(word)
+-- WHERE i.name = '리마콩';
+--
+-- -- [재료명: 핀토콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pinto bean'), ('얼룩콩')
+-- ) AS k(word)
+-- WHERE i.name = '핀토콩';
+--
+-- -- [재료명: 루핀빈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lupin bean'), ('루피니빈')
+-- ) AS k(word)
+-- WHERE i.name = '루핀빈';
+--
+-- -- [재료명: 네이비빈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('navy bean'), ('흰강낭콩')
+-- ) AS k(word)
+-- WHERE i.name = '네이비빈';
+--
+-- -- [재료명: 크랜베리빈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cranberry bean'), ('호랑이콩')
+-- ) AS k(word)
+-- WHERE i.name = '크랜베리빈';
+--
+-- -- [재료명: 블랙 터틀빈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('black turtle bean'), ('검정 강낭콩')
+-- ) AS k(word)
+-- WHERE i.name = '블랙 터틀빈';
+--
+-- -- [재료명: 카넬리니 빈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cannellini bean'), ('화이트 키드니 빈')
+-- ) AS k(word)
+-- WHERE i.name = '카넬리니 빈';
+--
+-- -- [재료명: 제비콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hyacinth bean'), ('까치콩'), ('백편두')
+-- ) AS k(word)
+-- WHERE i.name = '제비콩';
+--
+-- -- [재료명: 그레이트 노던 빈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('great northern bean')
+-- ) AS k(word)
+-- WHERE i.name = '그레이트 노던 빈';
+--
+-- -- [재료명: 오겹살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork belly skin on'), ('껍데기 삼겹살')
+-- ) AS k(word)
+-- WHERE i.name = '오겹살';
+--
+-- -- [재료명: 대패 삼겹살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('thin pork belly'), ('대패')
+-- ) AS k(word)
+-- WHERE i.name = '대패 삼겹살';
+--
+-- -- [재료명: 돼지 목살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork neck'), ('목심'), ('돼지목살')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 목살';
+--
+-- -- [재료명: 돼지 앞다리살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork front leg'), ('전지'), ('불고기감')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 앞다리살';
+--
+-- -- [재료명: 돼지 뒷다리살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork hind leg'), ('후지'), ('다짐육')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 뒷다리살';
+--
+-- -- [재료명: 돼지 갈비]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork ribs'), ('돼지갈비'), ('갈비')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 갈비';
+--
+-- -- [재료명: 돼지 등갈비]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('back ribs'), ('쪽갈비'), ('폭립')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 등갈비';
+
+-- -- [재료명: 돼지 등심]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork loin'), ('돈가스용 고기'), ('잡채용 고기')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 등심';
+--
+-- -- [재료명: 돼지 안심]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork tenderloin'), ('돼지안심'), ('장조림용 돼지고기')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 안심';
+--
+-- -- [재료명: 항정살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork jowl'), ('천겹살'), ('모서리살')
+-- ) AS k(word)
+-- WHERE i.name = '항정살';
+--
+-- -- [재료명: 가브리살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork cheek meat'), ('등심덧살'), ('황제살')
+-- ) AS k(word)
+-- WHERE i.name = '가브리살';
+--
+-- -- [재료명: 갈매기살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork skirt meat'), ('횡격막'), ('안창고기')
+-- ) AS k(word)
+-- WHERE i.name = '갈매기살';
+--
+-- -- [재료명: 돼지 껍데기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork rinds'), ('껍데기'), ('돼지껍질')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 껍데기';
+--
+-- -- [재료명: 다진 돼지고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('minced pork'), ('돼지 민찌'), ('갈은 돼지고기')
+-- ) AS k(word)
+-- WHERE i.name = '다진 돼지고기';
+--
+-- -- [재료명: 찌개용 돼지고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork for stew'), ('찌개 고기'), ('김치찌개 고기')
+-- ) AS k(word)
+-- WHERE i.name = '찌개용 돼지고기';
+--
+-- -- [재료명: 보쌈용 돼지고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork for bossam'), ('수육용 고기'), ('삶은 고기')
+-- ) AS k(word)
+-- WHERE i.name = '보쌈용 돼지고기';
+--
+-- -- [재료명: 소고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef'), ('쇠고기'), ('우육')
+-- ) AS k(word)
+-- WHERE i.name = '소고기';
+--
+-- -- [재료명: 한우]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('korean beef'), ('한우 고기'), ('투쁠')
+-- ) AS k(word)
+-- WHERE i.name = '한우';
+--
+-- -- [재료명: 차돌박이]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef brisket point'), ('차돌'), ('얇은 소고기')
+-- ) AS k(word)
+-- WHERE i.name = '차돌박이';
+--
+-- -- [재료명: 우삼겹]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef plate'), ('업진살'), ('삼겹양지')
+-- ) AS k(word)
+-- WHERE i.name = '우삼겹';
+--
+-- -- [재료명: 양지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef brisket'), ('국거리 양지'), ('양지머리')
+-- ) AS k(word)
+-- WHERE i.name = '양지';
+--
+-- -- [재료명: 사태]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef shank'), ('아롱사태'), ('장조림용 소고기')
+-- ) AS k(word)
+-- WHERE i.name = '사태';
+--
+-- -- [재료명: 소갈비]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef ribs'), ('갈비찜용'), ('통갈비')
+-- ) AS k(word)
+-- WHERE i.name = '소갈비';
+--
+-- -- [재료명: LA갈비]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('la galbi'), ('lateral cut ribs'), ('엘에이갈비')
+-- ) AS k(word)
+-- WHERE i.name = 'LA갈비';
+--
+-- -- [재료명: 불고기용 소고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bulgogi beef'), ('소불고기감'), ('얇게 썬 소고기')
+-- ) AS k(word)
+-- WHERE i.name = '불고기용 소고기';
+--
+-- -- [재료명: 국거리용 소고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef for soup'), ('소고기 국거리'), ('썰은 소고기')
+-- ) AS k(word)
+-- WHERE i.name = '국거리용 소고기';
+--
+-- -- [재료명: 다진 소고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('minced beef'), ('소고기 민찌'), ('갈은 소고기')
+-- ) AS k(word)
+-- WHERE i.name = '다진 소고기';
+
+-- -- [재료명: 채끝살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('striploin'), ('채끝'), ('뉴욕스트립')
+-- ) AS k(word)
+-- WHERE i.name = '채끝살';
+--
+-- -- [재료명: 안심]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tenderloin'), ('쇠고기 안심'), ('스테이크 안심')
+-- ) AS k(word)
+-- WHERE i.name = '안심';
+--
+-- -- [재료명: 등심]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sirloin'), ('쇠고기 등심'), ('꽃등심')
+-- ) AS k(word)
+-- WHERE i.name = '등심';
+--
+-- -- [재료명: 육회용 소고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef tartare'), ('육회'), ('육사시미')
+-- ) AS k(word)
+-- WHERE i.name = '육회용 소고기';
+--
+-- -- [재료명: 소꼬리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('oxtail'), ('꼬리곰탕'), ('알꼬리')
+-- ) AS k(word)
+-- WHERE i.name = '소꼬리';
+--
+-- -- [재료명: 스지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef tendon'), ('소 힘줄'), ('도가니')
+-- ) AS k(word)
+-- WHERE i.name = '스지';
+--
+-- -- [재료명: 닭고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicken'), ('계육'), ('생닭')
+-- ) AS k(word)
+-- WHERE i.name = '닭고기';
+--
+-- -- [재료명: 닭가슴살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicken breast'), ('닭가슴'), ('다이어트 닭')
+-- ) AS k(word)
+-- WHERE i.name = '닭가슴살';
+--
+-- -- [재료명: 닭다리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicken leg'), ('drumstick'), ('북채')
+-- ) AS k(word)
+-- WHERE i.name = '닭다리';
+--
+-- -- [재료명: 닭안심]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicken tenderloin'), ('치킨 텐더'), ('닭안심살')
+-- ) AS k(word)
+-- WHERE i.name = '닭안심';
+--
+-- -- [재료명: 닭볶음탕용 닭]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('braised spicy chicken'), ('절단육'), ('볶음탕용')
+-- ) AS k(word)
+-- WHERE i.name = '닭볶음탕용 닭';
+--
+-- -- [재료명: 오리고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('duck meat'), ('생오리'), ('오리 로스')
+-- ) AS k(word)
+-- WHERE i.name = '오리고기';
+--
+-- -- [재료명: 훈제오리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('smoked duck'), ('오리훈제'), ('훈제오리고기')
+-- ) AS k(word)
+-- WHERE i.name = '훈제오리';
+--
+-- -- [재료명: 소고기 안심]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef tenderloin'), ('안심 스테이크'), ('텐더로인')
+-- ) AS k(word)
+-- WHERE i.name = '소고기 안심';
+--
+-- -- [재료명: 소고기 등심]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef sirloin'), ('등심 구이'), ('소등심')
+-- ) AS k(word)
+-- WHERE i.name = '소고기 등심';
+--
+-- -- [재료명: 립아이]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('ribeye'), ('꽃등심 스테이크'), ('립아이 스테이크')
+-- ) AS k(word)
+-- WHERE i.name = '립아이';
+--
+-- -- [재료명: 티본 스테이크]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('t-bone'), ('티본'), ('tbone steak')
+-- ) AS k(word)
+-- WHERE i.name = '티본 스테이크';
+--
+-- -- [재료명: 엘본 스테이크]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('l-bone'), ('엘본'), ('lbone steak')
+-- ) AS k(word)
+-- WHERE i.name = '엘본 스테이크';
+--
+-- -- [재료명: 포터하우스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('porterhouse'), ('포터하우스 스테이크'), ('왕 티본')
+-- ) AS k(word)
+-- WHERE i.name = '포터하우스';
+
+-- -- [재료명: 토마호크]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tomahawk'), ('도끼 고기'), ('뼈 등심')
+-- ) AS k(word)
+-- WHERE i.name = '토마호크';
+--
+-- -- [재료명: 부채살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('oyster blade'), ('top blade'), ('낙엽살')
+-- ) AS k(word)
+-- WHERE i.name = '부채살';
+--
+-- -- [재료명: 살치살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chuck flap tail'), ('눈꽃살'), ('윗등심살')
+-- ) AS k(word)
+-- WHERE i.name = '살치살';
+--
+-- -- [재료명: 우둔살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('top round'), ('볼기살'), ('육포용 고기')
+-- ) AS k(word)
+-- WHERE i.name = '우둔살';
+--
+-- -- [재료명: 홍두깨살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('eye of round'), ('장조림용'), ('육회용')
+-- ) AS k(word)
+-- WHERE i.name = '홍두깨살';
+--
+-- -- [재료명: 스튜용 소고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef stew meat'), ('카레용 소고기'), ('깍둑썰기 소고기')
+-- ) AS k(word)
+-- WHERE i.name = '스튜용 소고기';
+--
+-- -- [재료명: 통삼겹살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('whole pork belly'), ('수육용 삼겹살'), ('통삼겹')
+-- ) AS k(word)
+-- WHERE i.name = '통삼겹살';
+--
+-- -- [재료명: 베이컨]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bacon'), ('훈제 삼겹살')
+-- ) AS k(word)
+-- WHERE i.name = '베이컨';
+--
+-- -- [재료명: 판체타]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pancetta'), ('이탈리아 베이컨'), ('염장 삼겹살')
+-- ) AS k(word)
+-- WHERE i.name = '판체타';
+--
+-- -- [재료명: 프로슈토]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('prosciutto'), ('생햄'), ('이탈리아 햄')
+-- ) AS k(word)
+-- WHERE i.name = '프로슈토';
+--
+-- -- [재료명: 하몽]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('jamon'), ('스페인 햄'), ('이베리코 하몽')
+-- ) AS k(word)
+-- WHERE i.name = '하몽';
+--
+-- -- [재료명: 살라미]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('salami'), ('건조 소시지'), ('페퍼 살라미')
+-- ) AS k(word)
+-- WHERE i.name = '살라미';
+--
+-- -- [재료명: 페퍼로니]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pepperoni'), ('피자 햄'), ('매운 소시지')
+-- ) AS k(word)
+-- WHERE i.name = '페퍼로니';
+--
+-- -- [재료명: 초리조]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chorizo'), ('초리소'), ('스페인 소시지')
+-- ) AS k(word)
+-- WHERE i.name = '초리조';
+--
+-- -- [재료명: 잠봉]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('jambon'), ('잠봉뵈르 햄'), ('익힌 햄')
+-- ) AS k(word)
+-- WHERE i.name = '잠봉';
+--
+-- -- [재료명: 소시지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sausage'), ('소세지'), ('비엔나')
+-- ) AS k(word)
+-- WHERE i.name = '소시지';
+--
+-- -- [재료명: 킬바사]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kielbasa'), ('말발굽 소시지'), ('폴란드 소시지')
+-- ) AS k(word)
+-- WHERE i.name = '킬바사';
+
+-- -- [재료명: 닭봉]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicken drumette'), ('닭어깨'), ('윙봉')
+-- ) AS k(word)
+-- WHERE i.name = '닭봉';
+--
+-- -- [재료명: 닭날개]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicken wing'), ('버팔로윙'), ('윙')
+-- ) AS k(word)
+-- WHERE i.name = '닭날개';
+--
+-- -- [재료명: 통닭]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('whole chicken'), ('옛날통닭'), ('백숙용 닭')
+-- ) AS k(word)
+-- WHERE i.name = '통닭';
+--
+-- -- [재료명: 칠면조]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('turkey'), ('터키'), ('자이언트 통닭')
+-- ) AS k(word)
+-- WHERE i.name = '칠면조';
+--
+-- -- [재료명: 오리 가슴살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('duck breast'), ('오리 스테이크'), ('오리 안심')
+-- ) AS k(word)
+-- WHERE i.name = '오리 가슴살';
+--
+-- -- [재료명: 양갈비]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lamb chops'), ('프렌치랙'), ('양고기')
+-- ) AS k(word)
+-- WHERE i.name = '양갈비';
+--
+-- -- [재료명: 잡채용 돼지고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork for japchae'), ('돼지 등심 채'), ('채썬 고기')
+-- ) AS k(word)
+-- WHERE i.name = '잡채용 돼지고기';
+--
+-- -- [재료명: 짜장용 돼지고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('diced pork'), ('카레용 돼지고기'), ('깍둑썰기 고기')
+-- ) AS k(word)
+-- WHERE i.name = '짜장용 돼지고기';
+--
+-- -- [재료명: 돼지 귀]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pig ear'), ('머릿고기')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 귀';
+--
+-- -- [재료명: 돼지 족발]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pig trotter'), ('족발'), ('미니족')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 족발';
+--
+-- -- [재료명: 돼지 간]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork liver'), ('순대 간')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 간';
+--
+-- -- [재료명: 돼지 위]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork stomach'), ('오소리감투')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 위';
+--
+-- -- [재료명: 돼지 막창]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork entrails'), ('돼지 창자')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 막창';
+--
+-- -- [재료명: 돼지 대창]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('large intestine'), ('돼지 내장')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 대창';
+--
+-- -- [재료명: 햄]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('ham'), ('스팸'), ('통조림 햄')
+-- ) AS k(word)
+-- WHERE i.name = '햄';
+--
+-- -- [재료명: 소고기 사태]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef shank'), ('아롱사태'), ('장조림용 소고기')
+-- ) AS k(word)
+-- WHERE i.name = '소고기 사태';
+
+-- -- [재료명: 소 힘줄]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef tendon'), ('스지'), ('도가니')
+-- ) AS k(word)
+-- WHERE i.name = '소 힘줄';
+--
+-- -- [재료명: 소 위]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef tripe'), ('양깃머리'), ('벌집양')
+-- ) AS k(word)
+-- WHERE i.name = '소 위';
+--
+-- -- [재료명: 천엽]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('omasum'), ('처녑'), ('간천엽')
+-- ) AS k(word)
+-- WHERE i.name = '천엽';
+--
+-- -- [재료명: 닭다리살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicken thigh'), ('닭정육'), ('순살 닭고기')
+-- ) AS k(word)
+-- WHERE i.name = '닭다리살';
+--
+-- -- [재료명: 닭발]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicken feet'), ('무뼈닭발'), ('통닭발')
+-- ) AS k(word)
+-- WHERE i.name = '닭발';
+--
+-- -- [재료명: 양고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lamb'), ('mutton'), ('램')
+-- ) AS k(word)
+-- WHERE i.name = '양고기';
+--
+-- -- [재료명: 양꼬치용 양고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lamb skewers'), ('큐브 양고기'), ('깍둑 양고기')
+-- ) AS k(word)
+-- WHERE i.name = '양꼬치용 양고기';
+--
+-- -- [재료명: 훠궈용 양고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hot pot lamb'), ('샤브샤브 양고기'), ('대패 양고기')
+-- ) AS k(word)
+-- WHERE i.name = '훠궈용 양고기';
+--
+-- -- [재료명: 소 곱창]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef small intestine'), ('소곱창'), ('한우 곱창')
+-- ) AS k(word)
+-- WHERE i.name = '소 곱창';
+--
+-- -- [재료명: 소 대창]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef large intestine'), ('소대창'), ('대창 구이')
+-- ) AS k(word)
+-- WHERE i.name = '소 대창';
+--
+-- -- [재료명: 소 막창]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef abomasum'), ('홍창'), ('소막창')
+-- ) AS k(word)
+-- WHERE i.name = '소 막창';
+--
+-- -- [재료명: 소 염통]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef heart'), ('염통'), ('염통꼬치')
+-- ) AS k(word)
+-- WHERE i.name = '소 염통';
+--
+-- -- [재료명: 소 간]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef liver'), ('생간'), ('소간')
+-- ) AS k(word)
+-- WHERE i.name = '소 간';
+--
+-- -- [재료명: 육사시미]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef sashimi'), ('뭉티기'), ('생고기')
+-- ) AS k(word)
+-- WHERE i.name = '육사시미';
+--
+-- -- [재료명: 안창살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('outside skirt'), ('안창'), ('특수부위')
+-- ) AS k(word)
+-- WHERE i.name = '안창살';
+--
+-- -- [재료명: 토시살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hanging tender'), ('간받이살'), ('안거미살')
+-- ) AS k(word)
+-- WHERE i.name = '토시살';
+--
+-- -- [재료명: 제비추리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('neck chain'), ('제비추리 구이')
+-- ) AS k(word)
+-- WHERE i.name = '제비추리';
+--
+-- -- [재료명: 치마살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('flank steak'), ('치마양지'), ('양지 치마살')
+-- ) AS k(word)
+-- WHERE i.name = '치마살';
+--
+-- -- [재료명: 업진살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('short plate'), ('우삼겹'), ('업진')
+-- ) AS k(word)
+-- WHERE i.name = '업진살';
+--
+-- -- [재료명: 소 갈비살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('rib meat'), ('늑간살'), ('황제갈비살')
+-- ) AS k(word)
+-- WHERE i.name = '소 갈비살';
+
+-- -- [재료명: 도가니]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef knee cartilage'), ('소 무릎'), ('도가니탕')
+-- ) AS k(word)
+-- WHERE i.name = '도가니';
+--
+-- -- [재료명: 사골]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beef leg bone'), ('곰탕용 뼈'), ('사골국')
+-- ) AS k(word)
+-- WHERE i.name = '사골';
+--
+-- -- [재료명: 우족]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('ox foot'), ('소발'), ('우족탕')
+-- ) AS k(word)
+-- WHERE i.name = '우족';
+--
+-- -- [재료명: 돼지 곱창]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork small intestine'), ('야채곱창'), ('알곱창')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 곱창';
+--
+-- -- [재료명: 돼지 허파]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork lung'), ('순대 허파'), ('부속 고기')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 허파';
+--
+-- -- [재료명: 돼지 염통]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pork heart'), ('순대 염통'), ('염통 꼬치')
+-- ) AS k(word)
+-- WHERE i.name = '돼지 염통';
+--
+-- -- [재료명: 암뽕]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pig uterus'), ('새끼보'), ('암퇘지 뽕')
+-- ) AS k(word)
+-- WHERE i.name = '암뽕';
+--
+-- -- [재료명: 머리고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pig head meat'), ('돼지머리'), ('돼지머리고기')
+-- ) AS k(word)
+-- WHERE i.name = '머리고기';
+--
+-- -- [재료명: 편육]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pressed meat'), ('눌린 고기'), ('돼지 편육')
+-- ) AS k(word)
+-- WHERE i.name = '편육';
+--
+-- -- [재료명: 미니족]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mini trotter'), ('아기족발'), ('미니족발')
+-- ) AS k(word)
+-- WHERE i.name = '미니족';
+--
+-- -- [재료명: 순대]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('korean sausage'), ('sundae'), ('찰순대')
+-- ) AS k(word)
+-- WHERE i.name = '순대';
+--
+-- -- [재료명: 생오리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('raw duck'), ('오리 로스'), ('통오리')
+-- ) AS k(word)
+-- WHERE i.name = '생오리';
+--
+-- -- [재료명: 닭 근위]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicken gizzard'), ('닭똥집'), ('모래주머니')
+-- ) AS k(word)
+-- WHERE i.name = '닭 근위';
+--
+-- -- [재료명: 닭 껍질]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicken skin'), ('닭껍데기'), ('닭껍질 튀김')
+-- ) AS k(word)
+-- WHERE i.name = '닭 껍질';
+--
+-- -- [재료명: 닭 목살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicken neck'), ('세세리'), ('닭목살 구이')
+-- ) AS k(word)
+-- WHERE i.name = '닭 목살';
+--
+-- -- [재료명: 닭 연골]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicken cartilage'), ('오돌뼈'), ('닭무릎연골')
+-- ) AS k(word)
+-- WHERE i.name = '닭 연골';
+--
+-- -- [재료명: 염소 고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('goat meat'), ('흑염소'), ('염소탕용')
+-- ) AS k(word)
+-- WHERE i.name = '염소 고기';
+--
+-- -- [재료명: 순두부]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('soft tofu'), ('sundubu'), ('순두부찌개용')
+-- ) AS k(word)
+-- WHERE i.name = '순두부';
+--
+-- -- [재료명: 연두부]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('silken tofu'), ('떠먹는 두부')
+-- ) AS k(word)
+-- WHERE i.name = '연두부';
+--
+-- -- [재료명: 유부]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('fried tofu curd'), ('유부초밥용'), ('조미 유부')
+-- ) AS k(word)
+-- WHERE i.name = '유부';
+
+-- -- [재료명: 콩비지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('비지'), ('soybean pulp'), ('okara')
+-- ) AS k(word)
+-- WHERE i.name = '콩비지';
+--
+-- -- [재료명: 건두부]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dried tofu'), ('포두부'), ('쌈두부')
+-- ) AS k(word)
+-- WHERE i.name = '건두부';
+--
+-- -- [재료명: 푸주]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('fuzhu'), ('줄기 두부'), ('말린 두부')
+-- ) AS k(word)
+-- WHERE i.name = '푸주';
+--
+-- -- [재료명: 떡국떡]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sliced rice cake'), ('떡국용 떡'), ('썰은 가래떡')
+-- ) AS k(word)
+-- WHERE i.name = '떡국떡';
+--
+-- -- [재료명: 떡볶이떡]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tteokbokki rice cake'), ('밀떡'), ('쌀떡')
+-- ) AS k(word)
+-- WHERE i.name = '떡볶이떡';
+--
+-- -- [재료명: 가래떡]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bar rice cake'), ('통가래떡'), ('물떡')
+-- ) AS k(word)
+-- WHERE i.name = '가래떡';
+--
+-- -- [재료명: 조랭이떡]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('snowman rice cake'), ('조랭이'), ('눈사람 떡')
+-- ) AS k(word)
+-- WHERE i.name = '조랭이떡';
+--
+-- -- [재료명: 도토리묵]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('acorn jelly'), ('상수리묵'), ('도토리묵 무침')
+-- ) AS k(word)
+-- WHERE i.name = '도토리묵';
+--
+-- -- [재료명: 청포묵]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mung bean jelly'), ('녹두묵'), ('탕평채')
+-- ) AS k(word)
+-- WHERE i.name = '청포묵';
+--
+-- -- [재료명: 동부묵]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dongbu jelly'), ('동부콩묵'), ('하얀 묵')
+-- ) AS k(word)
+-- WHERE i.name = '동부묵';
+--
+-- -- [재료명: 소면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('somyeon'), ('thin noodles'), ('잔치국수')
+-- ) AS k(word)
+-- WHERE i.name = '소면';
+--
+-- -- [재료명: 중면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('jungmyeon'), ('medium noodles'), ('국수 중면')
+-- ) AS k(word)
+-- WHERE i.name = '중면';
+--
+-- -- [재료명: 당면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('glass noodles'), ('잡채'), ('고구마 전분 면')
+-- ) AS k(word)
+-- WHERE i.name = '당면';
+--
+-- -- [재료명: 라면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('ramen'), ('instant noodles'), ('라면사리')
+-- ) AS k(word)
+-- WHERE i.name = '라면';
+--
+-- -- [재료명: 우동면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('udon'), ('우동사리'), ('가락국수')
+-- ) AS k(word)
+-- WHERE i.name = '우동면';
+--
+-- -- [재료명: 칼국수면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kal-guksu'), ('kalguksu'), ('칼국수 생면')
+-- ) AS k(word)
+-- WHERE i.name = '칼국수면';
+--
+-- -- [재료명: 쫄면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('jjolmyeon'), ('chewy noodles'), ('쫄면사리')
+-- ) AS k(word)
+-- WHERE i.name = '쫄면';
+--
+-- -- [재료명: 냉면사리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cold noodles'), ('냉면'), ('함흥냉면')
+-- ) AS k(word)
+-- WHERE i.name = '냉면사리';
+--
+-- -- [재료명: 메밀면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('buckwheat noodles'), ('소바'), ('막국수')
+-- ) AS k(word)
+-- WHERE i.name = '메밀면';
+
+-- -- [재료명: 쌀국수면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('rice noodles'), ('쌀면'), ('포')
+-- ) AS k(word)
+-- WHERE i.name = '쌀국수면';
+--
+-- -- [재료명: 파스타면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pasta'), ('스파게티 면'), ('spaghetti')
+-- ) AS k(word)
+-- WHERE i.name = '파스타면';
+--
+-- -- [재료명: 라이스 페이퍼]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('rice paper'), ('월남쌈피'), ('반짱')
+-- ) AS k(word)
+-- WHERE i.name = '라이스 페이퍼';
+--
+-- -- [재료명: 만두]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dumpling'), ('찐만두'), ('냉동만두')
+-- ) AS k(word)
+-- WHERE i.name = '만두';
+--
+-- -- [재료명: 물만두]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('boiled dumpling'), ('수교'), ('물만두용')
+-- ) AS k(word)
+-- WHERE i.name = '물만두';
+--
+-- -- [재료명: 군만두]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('fried dumpling'), ('튀김만두'), ('야끼만두')
+-- ) AS k(word)
+-- WHERE i.name = '군만두';
+--
+-- -- [재료명: 왕만두]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('king dumpling'), ('왕교자'), ('찐빵만두')
+-- ) AS k(word)
+-- WHERE i.name = '왕만두';
+--
+-- -- [재료명: 교자]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('gyoza'), ('교자만두'), ('일본식 만두')
+-- ) AS k(word)
+-- WHERE i.name = '교자';
+--
+-- -- [재료명: 떡갈비]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tteokgalbi'), ('너비아니'), ('갈비산적')
+-- ) AS k(word)
+-- WHERE i.name = '떡갈비';
+--
+-- -- [재료명: 동그랑땡]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('meatball'), ('완자'), ('고기전')
+-- ) AS k(word)
+-- WHERE i.name = '동그랑땡';
+--
+-- -- [재료명: 김말이]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('seaweed roll'), ('김말이 튀김'), ('잡채말이')
+-- ) AS k(word)
+-- WHERE i.name = '김말이';
+--
+-- -- [재료명: 식빵]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('white bread'), ('토스트용 빵'), ('우유식빵')
+-- ) AS k(word)
+-- WHERE i.name = '식빵';
+--
+-- -- [재료명: 모닝빵]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dinner roll'), ('롤빵'), ('모닝롤')
+-- ) AS k(word)
+-- WHERE i.name = '모닝빵';
+--
+-- -- [재료명: 바게트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('baguette'), ('바게트 빵'), ('마늘빵용')
+-- ) AS k(word)
+-- WHERE i.name = '바게트';
+--
+-- -- [재료명: 또띠아]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tortilla'), ('토르티야'), ('또띠야')
+-- ) AS k(word)
+-- WHERE i.name = '또띠아';
+--
+-- -- [재료명: 빵가루]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bread crumbs'), ('습식 빵가루'), ('튀김가루')
+-- ) AS k(word)
+-- WHERE i.name = '빵가루';
+--
+-- -- [재료명: 스위트콘]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sweet corn'), ('옥수수 통조림'), ('캔옥수수')
+-- ) AS k(word)
+-- WHERE i.name = '스위트콘';
+--
+-- -- [재료명: 단무지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pickled radish'), ('다쿠앙'), ('김밥 단무지')
+-- ) AS k(word)
+-- WHERE i.name = '단무지';
+
+-- -- [재료명: 쌈무]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('무쌈'), ('radish wrap'), ('절임무')
+-- ) AS k(word)
+-- WHERE i.name = '쌈무';
+--
+-- -- [재료명: 낫토]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('natto'), ('나또'), ('생청국장')
+-- ) AS k(word)
+-- WHERE i.name = '낫토';
+--
+-- -- [재료명: 유바]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('yuba'), ('두부껍질'), ('건조 유바')
+-- ) AS k(word)
+-- WHERE i.name = '유바';
+--
+-- -- [재료명: 코야도후]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('koya tofu'), ('동두부'), ('얼린 두부')
+-- ) AS k(word)
+-- WHERE i.name = '코야도후';
+--
+-- -- [재료명: 아츠아게]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('atsuage'), ('튀긴 두부'), ('두부 튀김')
+-- ) AS k(word)
+-- WHERE i.name = '아츠아게';
+--
+-- -- [재료명: 조미 유부]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('seasoned tofu'), ('유부초밥용'), ('양념 유부')
+-- ) AS k(word)
+-- WHERE i.name = '조미 유부';
+--
+-- -- [재료명: 유부 주머니]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kinchaku'), ('유부 만두'), ('유부 전골용')
+-- ) AS k(word)
+-- WHERE i.name = '유부 주머니';
+--
+-- -- [재료명: 두유]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('soymilk'), ('콩물'), ('무첨가 두유')
+-- ) AS k(word)
+-- WHERE i.name = '두유';
+--
+-- -- [재료명: 가마보코]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kamaboko'), ('찐어묵'), ('판어묵')
+-- ) AS k(word)
+-- WHERE i.name = '가마보코';
+--
+-- -- [재료명: 나루토마키]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('narutomaki'), ('라면 어묵'), ('회오리 어묵')
+-- ) AS k(word)
+-- WHERE i.name = '나루토마키';
+--
+-- -- [재료명: 치쿠와]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chikuwa'), ('구운 어묵'), ('봉어묵')
+-- ) AS k(word)
+-- WHERE i.name = '치쿠와';
+--
+-- -- [재료명: 한펜]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hanpen'), ('흰 어묵'), ('부드러운 어묵')
+-- ) AS k(word)
+-- WHERE i.name = '한펜';
+--
+-- -- [재료명: 사츠마아게]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('satsumaage'), ('튀긴 어묵'), ('일본식 어묵')
+-- ) AS k(word)
+-- WHERE i.name = '사츠마아게';
+--
+-- -- [재료명: 카니카마]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('crab stick'), ('게맛살'), ('크래미')
+-- ) AS k(word)
+-- WHERE i.name = '카니카마';
+--
+-- -- [재료명: 어육 소시지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('fish sausage'), ('천하장사'), ('간식 소시지')
+-- ) AS k(word)
+-- WHERE i.name = '어육 소시지';
+--
+-- -- [재료명: 우메보시]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('umeboshi'), ('매실 장아찌'), ('일본 매실')
+-- ) AS k(word)
+-- WHERE i.name = '우메보시';
+--
+-- -- [재료명: 베니쇼가]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beni shoga'), ('붉은 생강'), ('초생강')
+-- ) AS k(word)
+-- WHERE i.name = '베니쇼가';
+--
+-- -- [재료명: 가리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('gari'), ('스시 생강'), ('초절임 생강')
+-- ) AS k(word)
+-- WHERE i.name = '가리';
+--
+-- -- [재료명: 멘마]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('menma'), ('죽순 절임'), ('라멘 고명')
+-- ) AS k(word)
+-- WHERE i.name = '멘마';
+--
+-- -- [재료명: 후쿠진즈케]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('fukujinzuke'), ('오복채'), ('카레 단무지')
+-- ) AS k(word)
+-- WHERE i.name = '후쿠진즈케';
+
+-- -- [재료명: 시오콘부]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('shiokombu'), ('염장 다시마'), ('다시마 채')
+-- ) AS k(word)
+-- WHERE i.name = '시오콘부';
+--
+-- -- [재료명: 타코와사비]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tako wasabi'), ('문어 와사비'), ('낙지 와사비')
+-- ) AS k(word)
+-- WHERE i.name = '타코와사비';
+--
+-- -- [재료명: 김 조림]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('seaweed paste'), ('노리츠쿠다니'), ('김 잼')
+-- ) AS k(word)
+-- WHERE i.name = '김 조림';
+--
+-- -- [재료명: 후리카케]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('furikake'), ('밥가루'), ('밥이랑')
+-- ) AS k(word)
+-- WHERE i.name = '후리카케';
+--
+-- -- [재료명: 오차즈케 가루]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('ochazuke'), ('오차즈케'), ('녹차밥')
+-- ) AS k(word)
+-- WHERE i.name = '오차즈케 가루';
+--
+-- -- [재료명: 라멘 생면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('ramen noodles'), ('라멘 사리'), ('생라멘')
+-- ) AS k(word)
+-- WHERE i.name = '라멘 생면';
+--
+-- -- [재료명: 야키소바 면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('yakisoba'), ('볶음면'), ('중화면')
+-- ) AS k(word)
+-- WHERE i.name = '야키소바 면';
+--
+-- -- [재료명: 키리모찌]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kirimochi'), ('짱구 떡'), ('구워먹는 떡')
+-- ) AS k(word)
+-- WHERE i.name = '키리모찌';
+--
+-- -- [재료명: 당고]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dango'), ('일본 경단'), ('미타라시')
+-- ) AS k(word)
+-- WHERE i.name = '당고';
+--
+-- -- [재료명: 덴카스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tenkasu'), ('아게다마'), ('튀김 부스러기')
+-- ) AS k(word)
+-- WHERE i.name = '덴카스';
+--
+-- -- [재료명: 고체 카레]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('curry roux'), ('카레 루'), ('일본 카레')
+-- ) AS k(word)
+-- WHERE i.name = '고체 카레';
+--
+-- -- [재료명: 스파게티니]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('spaghettini'), ('얇은 스파게티')
+-- ) AS k(word)
+-- WHERE i.name = '스파게티니';
+--
+-- -- [재료명: 페투치네]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('fettuccine'), ('페투치니'), ('납작 파스타')
+-- ) AS k(word)
+-- WHERE i.name = '페투치네';
+--
+-- -- [재료명: 링귀니]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('linguine'), ('링귀네'), ('납작면')
+-- ) AS k(word)
+-- WHERE i.name = '링귀니';
+--
+-- -- [재료명: 펜네]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('penne'), ('펜네 파스타'), ('숏파스타')
+-- ) AS k(word)
+-- WHERE i.name = '펜네';
+--
+-- -- [재료명: 푸실리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('fusilli'), ('나사 파스타'), ('꼬불 파스타')
+-- ) AS k(word)
+-- WHERE i.name = '푸실리';
+--
+-- -- [재료명: 마카로니]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('macaroni'), ('마카로니 샐러드')
+-- ) AS k(word)
+-- WHERE i.name = '마카로니';
+--
+-- -- [재료명: 라자냐 면]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lasagna'), ('라자니아'), ('라자냐')
+-- ) AS k(word)
+-- WHERE i.name = '라자냐 면';
+--
+-- -- [재료명: 리가토니]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('rigatoni'), ('튜브 파스타')
+-- ) AS k(word)
+-- WHERE i.name = 'Liga토니'; -- 오타 수정: WHERE i.name = '리가토니'; 로 실행되어야 합니다. 아래 쿼리로 사용하세요.
+--
+-- -- [재료명: 리가토니] (재작성)
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('rigatoni'), ('원통 파스타')
+-- ) AS k(word)
+-- WHERE i.name = '리가토니';
+
+-- -- [재료명: 파르팔레]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('farfalle'), ('나비 파스타'), ('리본 파스타')
+-- ) AS k(word)
+-- WHERE i.name = '파르팔레';
+--
+-- -- [재료명: 카펠리니]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('capellini'), ('엔젤헤어'), ('angel hair')
+-- ) AS k(word)
+-- WHERE i.name = '카펠리니';
+--
+-- -- [재료명: 뇨끼]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('gnocchi'), ('감자 뇨끼'), ('이탈리아 수제비')
+-- ) AS k(word)
+-- WHERE i.name = '뇨끼';
+--
+-- -- [재료명: 라비올리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('ravioli'), ('이탈리아 만두')
+-- ) AS k(word)
+-- WHERE i.name = '라비올리';
+--
+-- -- [재료명: 홀토마토]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('whole tomato'), ('토마토 홀'), ('토마토 통조림')
+-- ) AS k(word)
+-- WHERE i.name = '홀토마토';
+--
+-- -- [재료명: 토마토 페이스트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tomato paste'), ('농축 토마토')
+-- ) AS k(word)
+-- WHERE i.name = '토마토 페이스트';
+--
+-- -- [재료명: 썬드라이 토마토]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sun dried tomato'), ('말린 토마토'), ('건조 토마토')
+-- ) AS k(word)
+-- WHERE i.name = '썬드라이 토마토';
+--
+-- -- [재료명: 블랙 올리브]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('black olive'), ('검은 올리브'), ('올리브 절임')
+-- ) AS k(word)
+-- WHERE i.name = '블랙 올리브';
+--
+-- -- [재료명: 그린 올리브]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('green olive'), ('초록 올리브')
+-- ) AS k(word)
+-- WHERE i.name = '그린 올리브';
+--
+-- -- [재료명: 케이퍼]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('caper'), ('케이퍼 절임')
+-- ) AS k(word)
+-- WHERE i.name = '케이퍼';
+--
+-- -- [재료명: 딜 피클]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dill pickle'), ('오이 피클'), ('통피클')
+-- ) AS k(word)
+-- WHERE i.name = '딜 피클';
+--
+-- -- [재료명: 할라피뇨 절임]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('jalapeno'), ('할라피뇨'), ('고추 절임')
+-- ) AS k(word)
+-- WHERE i.name = '할라피뇨 절임';
+--
+-- -- [재료명: 베이크드 빈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('baked beans'), ('부대찌개 콩'), ('베이크드 빈스')
+-- ) AS k(word)
+-- WHERE i.name = '베이크드 빈';
+--
+-- -- [재료명: 병아리콩 통조림]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('canned chickpea'), ('병아리콩 캔'), ('삶은 병아리콩')
+-- ) AS k(word)
+-- WHERE i.name = '병아리콩 통조림';
+--
+-- -- [재료명: 렌틸콩 통조림]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('canned lentil'), ('렌틸콩 캔'), ('삶은 렌틸콩')
+-- ) AS k(word)
+-- WHERE i.name = '렌틸콩 통조림';
+--
+-- -- [재료명: 사워크라우트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sauerkraut'), ('독일 김치'), ('양배추 절임')
+-- ) AS k(word)
+-- WHERE i.name = '사워크라우트';
+
+-- -- [재료명: 베이글]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bagel'), ('플레인 베이글'), ('어니언 베이글')
+-- ) AS k(word)
+-- WHERE i.name = '베이글';
+--
+-- -- [재료명: 치아바타]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('ciabatta'), ('이탈리아 빵'), ('샌드위치 빵')
+-- ) AS k(word)
+-- WHERE i.name = '치아바타';
+--
+-- -- [재료명: 크루아상]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('croissant'), ('크로와상'), ('크로플')
+-- ) AS k(word)
+-- WHERE i.name = '크루아상';
+--
+-- -- [재료명: 잉글리시 머핀]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('english muffin'), ('맥모닝 빵')
+-- ) AS k(word)
+-- WHERE i.name = '잉글리시 머핀';
+--
+-- -- [재료명: 햄버거 번]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hamburger bun'), ('버거빵'), ('햄버거 빵')
+-- ) AS k(word)
+-- WHERE i.name = '햄버거 번';
+--
+-- -- [재료명: 핫도그 번]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hot dog bun'), ('핫도그 빵'), ('소세지 빵')
+-- ) AS k(word)
+-- WHERE i.name = '핫도그 번';
+--
+-- -- [재료명: 피자 도우]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pizza dough'), ('피자 반죽'), ('피자 도오')
+-- ) AS k(word)
+-- WHERE i.name = '피자 도우';
+--
+-- -- [재료명: 크루통]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('crouton'), ('식빵 조각'), ('스프 고명')
+-- ) AS k(word)
+-- WHERE i.name = '크루통';
+--
+-- -- [재료명: 나초칩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('nacho chips'), ('나쵸'), ('또띠아 칩')
+-- ) AS k(word)
+-- WHERE i.name = '나초칩';
+--
+-- -- [재료명: 타코 쉘]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('taco shell'), ('하드 타코'), ('타코 피')
+-- ) AS k(word)
+-- WHERE i.name = '타코 쉘';
+--
+-- -- [재료명: 시리얼]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cereal'), ('씨리얼'), ('콘푸레이크')
+-- ) AS k(word)
+-- WHERE i.name = '시리얼';
+--
+-- -- [재료명: 오트밀]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('oatmeal'), ('귀리죽'), ('오트')
+-- ) AS k(word)
+-- WHERE i.name = '오트밀';
+--
+-- -- [재료명: 그래놀라]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('granola'), ('구운 귀리')
+-- ) AS k(word)
+-- WHERE i.name = '그래놀라';
+--
+-- -- [재료명: 해쉬브라운]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hash brown'), ('해시브라운'), ('감자전')
+-- ) AS k(word)
+-- WHERE i.name = '해쉬브라운';
+--
+-- -- [재료명: 감자튀김]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('french fries'), ('감튀'), ('프렌치 프라이')
+-- ) AS k(word)
+-- WHERE i.name = '감자튀김';
+--
+-- -- [재료명: 어니언링]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('onion ring'), ('양파 튀김'), ('양파링')
+-- ) AS k(word)
+-- WHERE i.name = '어니언링';
+
+-- -- [재료명: 핫케이크 가루]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pancake mix'), ('팬케이크 가루'), ('핫케익 가루')
+-- ) AS k(word)
+-- WHERE i.name = '핫케이크 가루';
+--
+-- -- [재료명: 호떡 믹스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hoddeok mix'), ('호떡 가루')
+-- ) AS k(word)
+-- WHERE i.name = '호떡 믹스';
+--
+-- -- [재료명: 부침가루]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('korean pancake mix'), ('부침개 가루'), ('전 가루')
+-- ) AS k(word)
+-- WHERE i.name = '부침가루';
+--
+-- -- [재료명: 튀김가루]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('frying mix'), ('튀김 반죽'), ('튀김옷')
+-- ) AS k(word)
+-- WHERE i.name = '튀김가루';
+--
+-- -- [재료명: 전분]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('starch'), ('녹말가루'), ('감자전분')
+-- ) AS k(word)
+-- WHERE i.name = '전분';
+--
+-- -- [재료명: 찹쌀가루]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('glutinous rice flour'), ('찹쌀분'), ('마른 찹쌀가루')
+-- ) AS k(word)
+-- WHERE i.name = '찹쌀가루';
+--
+-- -- [재료명: 들깨가루]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('perilla seed powder'), ('거피 들깨가루'), ('들깨')
+-- ) AS k(word)
+-- WHERE i.name = '들깨가루';
+--
+-- -- [재료명: 콩가루]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bean powder'), ('콩고물'), ('인절미 가루')
+-- ) AS k(word)
+-- WHERE i.name = '콩가루';
+--
+-- -- [재료명: 도토리묵 가루]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('acorn starch'), ('도토리 가루')
+-- ) AS k(word)
+-- WHERE i.name = '도토리묵 가루';
+--
+-- -- [재료명: 젤라틴]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('gelatin'), ('판젤라틴'), ('젤라틴 가루')
+-- ) AS k(word)
+-- WHERE i.name = '젤라틴';
+--
+-- -- [재료명: 초콜릿]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chocolate'), ('초콜렛'), ('커버춰')
+-- ) AS k(word)
+-- WHERE i.name = '초콜릿';
+--
+-- -- [재료명: 초코칩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chocolate chip'), ('초코 청크'), ('베이킹 초코')
+-- ) AS k(word)
+-- WHERE i.name = '초코칩';
+--
+-- -- [재료명: 코코아 파우더]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cocoa powder'), ('카카오 파우더'), ('코코아 가루')
+-- ) AS k(word)
+-- WHERE i.name = '코코아 파우더';
+--
+-- -- [재료명: 마시멜로]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('marshmallow'), ('마시멜로우')
+-- ) AS k(word)
+-- WHERE i.name = '마시멜로';
+--
+-- -- [재료명: 타피오카 펄]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tapioca pearl'), ('버블티 펄'), ('블랙펄')
+-- ) AS k(word)
+-- WHERE i.name = '타피오카 펄';
+--
+-- -- [재료명: 누룽지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('scorched rice'), ('눌은밥'), ('숭늉')
+-- ) AS k(word)
+-- WHERE i.name = '누룽지';
+--
+-- -- [재료명: 김부각]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('seaweed chips'), ('김튀김')
+-- ) AS k(word)
+-- WHERE i.name = '김부각';
+--
+-- -- [재료명: 딸기잼]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('strawberry jam'), ('딸기쨈')
+-- ) AS k(word)
+-- WHERE i.name = '딸기잼';
+--
+-- -- [재료명: 사과잼]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('apple jam'), ('사과쨈')
+-- ) AS k(word)
+-- WHERE i.name = '사과잼';
+--
+-- -- [재료명: 땅콩버터]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('peanut butter'), ('땅콩잼'), ('피넛버터')
+-- ) AS k(word)
+-- WHERE i.name = '땅콩버터';
+--
+-- -- [재료명: 누텔라]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('nutella'), ('초코잼'), ('헤이즐넛 스프레드')
+-- ) AS k(word)
+-- WHERE i.name = '누텔라';
+--
+-- -- [재료명: 메이플 시럽]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('maple syrup'), ('핫케이크 시럽')
+-- ) AS k(word)
+-- WHERE i.name = '메이플 시럽';
+--
+-- -- [재료명: 황도 통조림]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('canned yellow peach'), ('황도 캔'), ('복숭아 통조림')
+-- ) AS k(word)
+-- WHERE i.name = '황도 통조림';
+--
+-- -- [재료명: 파인애플 통조림]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('canned pineapple'), ('파인애플 캔')
+-- ) AS k(word)
+-- WHERE i.name = '파인애플 통조림';
+
+-- -- [재료명: 후르츠 칵테일]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('fruit cocktail'), ('믹스 후르츠'), ('과일 통조림')
+-- ) AS k(word)
+-- WHERE i.name = '후르츠 칵테일';
+--
+-- -- [재료명: 번데기 통조림]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('silkworm pupa'), ('뻔데기'), ('통조림 번데기')
+-- ) AS k(word)
+-- WHERE i.name = '번데기 통조림';
+--
+-- -- [재료명: 골뱅이 통조림]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('whelk'), ('유동골뱅이'), ('골뱅이 캔')
+-- ) AS k(word)
+-- WHERE i.name = '골뱅이 통조림';
+--
+-- -- [재료명: 국물용 멸치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('soup anchovy'), ('국멸치'), ('다시멸치')
+-- ) AS k(word)
+-- WHERE i.name = '국물용 멸치';
+--
+-- -- [재료명: 볶음용 멸치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('stir-fry anchovy'), ('잔멸치'), ('지리멸치')
+-- ) AS k(word)
+-- WHERE i.name = '볶음용 멸치';
+--
+-- -- [재료명: 디포리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dried herring'), ('밴댕이'), ('국물용 디포리')
+-- ) AS k(word)
+-- WHERE i.name = '디포리';
+--
+-- -- [재료명: 다시마]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kelp'), ('건다시마'), ('육수용 다시마')
+-- ) AS k(word)
+-- WHERE i.name = '다시마';
+--
+-- -- [재료명: 미역]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('seaweed'), ('마른 미역'), ('건미역')
+-- ) AS k(word)
+-- WHERE i.name = '미역';
+--
+-- -- [재료명: 북어채]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dried pollock'), ('북어'), ('찢은 북어')
+-- ) AS k(word)
+-- WHERE i.name = '북어채';
+--
+-- -- [재료명: 황태채]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hwangtae'), ('황태'), ('황태포')
+-- ) AS k(word)
+-- WHERE i.name = '황태채';
+--
+-- -- [재료명: 건새우]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dried shrimp'), ('보리새우'), ('마른 새우')
+-- ) AS k(word)
+-- WHERE i.name = '건새우';
+--
+-- -- [재료명: 바지락]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('manila clam'), ('바지락살'), ('바지락 조개')
+-- ) AS k(word)
+-- WHERE i.name = '바지락';
+--
+-- -- [재료명: 홍합]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mussel'), ('담치'), ('홍합살')
+-- ) AS k(word)
+-- WHERE i.name = '홍합';
+--
+-- -- [재료명: 미더덕]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('warty sea squirt'), ('참미더덕'), ('미더덕 찜')
+-- ) AS k(word)
+-- WHERE i.name = '미더덕';
+--
+-- -- [재료명: 오만둥이]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('white sea squirt'), ('오만득이'), ('주름 미더덕')
+-- ) AS k(word)
+-- WHERE i.name = '오만둥이';
+
+-- -- [재료명: 재첩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('marsh clam'), ('재첩국'), ('가막조개')
+-- ) AS k(word)
+-- WHERE i.name = '재첩';
+--
+-- -- [재료명: 고등어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mackerel'), ('참고등어'), ('생고등어')
+-- ) AS k(word)
+-- WHERE i.name = '고등어';
+--
+-- -- [재료명: 자반고등어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('salted mackerel'), ('간고등어'), ('염장 고등어')
+-- ) AS k(word)
+-- WHERE i.name = '자반고등어';
+--
+-- -- [재료명: 갈치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hairtail'), ('은갈치'), ('먹갈치')
+-- ) AS k(word)
+-- WHERE i.name = '갈치';
+--
+-- -- [재료명: 삼치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('spanish mackerel'), ('대삼치'), ('삼치구이용')
+-- ) AS k(word)
+-- WHERE i.name = '삼치';
+--
+-- -- [재료명: 조기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('yellow croaker'), ('참조기'), ('생선 조기')
+-- ) AS k(word)
+-- WHERE i.name = '조기';
+--
+-- -- [재료명: 굴비]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dried yellow croaker'), ('영광굴비'), ('보리굴비')
+-- ) AS k(word)
+-- WHERE i.name = '굴비';
+--
+-- -- [재료명: 가자미]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('flatfish'), ('flounder'), ('참가자미')
+-- ) AS k(word)
+-- WHERE i.name = '가자미';
+--
+-- -- [재료명: 임연수어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('atka mackerel'), ('임연수'), ('이면수')
+-- ) AS k(word)
+-- WHERE i.name = '임연수어';
+--
+-- -- [재료명: 꽁치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pacific saury'), ('saury'), ('생꽁치')
+-- ) AS k(word)
+-- WHERE i.name = '꽁치';
+--
+-- -- [재료명: 병어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pomfret'), ('butterfish'), ('병치')
+-- ) AS k(word)
+-- WHERE i.name = '병어';
+--
+-- -- [재료명: 동태]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('frozen pollock'), ('얼린 명태'), ('동태포')
+-- ) AS k(word)
+-- WHERE i.name = '동태';
+--
+-- -- [재료명: 코다리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('semi-dried pollock'), ('반건조 명태'), ('코다리찜용')
+-- ) AS k(word)
+-- WHERE i.name = '코다리';
+--
+-- -- [재료명: 대구]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cod'), ('codfish'), ('생대구')
+-- ) AS k(word)
+-- WHERE i.name = '대구';
+--
+-- -- [재료명: 아귀]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('monkfish'), ('anglerfish'), ('아구')
+-- ) AS k(word)
+-- WHERE i.name = '아귀';
+
+-- -- [재료명: 도루묵]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sandfish'), ('알도루묵'), ('은어')
+-- ) AS k(word)
+-- WHERE i.name = '도루묵';
+--
+-- -- [재료명: 오징어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('squid'), ('물오징어'), ('생오징어')
+-- ) AS k(word)
+-- WHERE i.name = '오징어';
+--
+-- -- [재료명: 오징어채]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dried shredded squid'), ('진미채'), ('일미')
+-- ) AS k(word)
+-- WHERE i.name = '오징어채';
+--
+-- -- [재료명: 낙지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('long-legged octopus'), ('산낙지'), ('세발낙지')
+-- ) AS k(word)
+-- WHERE i.name = '낙지';
+--
+-- -- [재료명: 문어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('octopus'), ('자숙문어'), ('피문어')
+-- ) AS k(word)
+-- WHERE i.name = '문어';
+--
+-- -- [재료명: 쭈꾸미]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('webfoot octopus'), ('주꾸미'), ('쭈꾸미 볶음용')
+-- ) AS k(word)
+-- WHERE i.name = '쭈꾸미';
+--
+-- -- [재료명: 꽃게]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('blue crab'), ('암꽃게'), ('숫꽃게')
+-- ) AS k(word)
+-- WHERE i.name = '꽃게';
+--
+-- -- [재료명: 대하]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('jumbo shrimp'), ('왕새우'), ('흰다리새우')
+-- ) AS k(word)
+-- WHERE i.name = '대하';
+--
+-- -- [재료명: 새우살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('peeled shrimp'), ('칵테일 새우'), ('깐새우')
+-- ) AS k(word)
+-- WHERE i.name = '새우살';
+--
+-- -- [재료명: 전복]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('abalone'), ('활전복'), ('참전복')
+-- ) AS k(word)
+-- WHERE i.name = '전복';
+--
+-- -- [재료명: 꼬막]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cockle'), ('참꼬막'), ('새꼬막')
+-- ) AS k(word)
+-- WHERE i.name = '꼬막';
+--
+-- -- [재료명: 굴]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('oyster'), ('석화'), ('생굴')
+-- ) AS k(word)
+-- WHERE i.name = '굴';
+--
+-- -- [재료명: 소라]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('conch'), ('참소라'), ('뿔소라')
+-- ) AS k(word)
+-- WHERE i.name = '소라';
+--
+-- -- [재료명: 골뱅이]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sea snail'), ('whelk'), ('백골뱅이')
+-- ) AS k(word)
+-- WHERE i.name = '골뱅이';
+--
+-- -- [재료명: 매생이]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('seaweed fulvescens'), ('매생이국용'), ('감태')
+-- ) AS k(word)
+-- WHERE i.name = '매생이';
+
+-- -- [재료명: 연어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('salmon'), ('훈제연어'), ('생연어')
+-- ) AS k(word)
+-- WHERE i.name = '연어';
+--
+-- -- [재료명: 참다랑어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bluefin tuna'), ('혼마구로'), ('생참치')
+-- ) AS k(word)
+-- WHERE i.name = '참다랑어';
+--
+-- -- [재료명: 참치 뱃살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('otoro'), ('오도로'), ('대뱃살')
+-- ) AS k(word)
+-- WHERE i.name = '참치 뱃살';
+--
+-- -- [재료명: 황새치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('swordfish'), ('메카도로'), ('새치')
+-- ) AS k(word)
+-- WHERE i.name = '황새치';
+--
+-- -- [재료명: 눈다랑어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bigeye tuna'), ('복육'), ('눈다랑어 뱃살')
+-- ) AS k(word)
+-- WHERE i.name = '눈다랑어';
+--
+-- -- [재료명: 광어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('flatfish'), ('넙치'), ('엔가와')
+-- ) AS k(word)
+-- WHERE i.name = '광어';
+--
+-- -- [재료명: 우럭]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('rockfish'), ('조피볼락'), ('우럭회')
+-- ) AS k(word)
+-- WHERE i.name = '우럭';
+--
+-- -- [재료명: 도미]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sea bream'), ('참돔'), ('도미회')
+-- ) AS k(word)
+-- WHERE i.name = '도미';
+--
+-- -- [재료명: 방어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('yellowtail'), ('대방어'), ('부리')
+-- ) AS k(word)
+-- WHERE i.name = '방어';
+--
+-- -- [재료명: 전갱이]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('horse mackerel'), ('아지'), ('매가리')
+-- ) AS k(word)
+-- WHERE i.name = '전갱이';
+--
+-- -- [재료명: 농어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sea bass'), ('농어회'), ('브란지노')
+-- ) AS k(word)
+-- WHERE i.name = '농어';
+--
+-- -- [재료명: 숭어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mullet'), ('보리숭어'), ('가숭어')
+-- ) AS k(word)
+-- WHERE i.name = '숭어';
+--
+-- -- [재료명: 은어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sweetfish'), ('은어구이'), ('아유')
+-- ) AS k(word)
+-- WHERE i.name = '은어';
+--
+-- -- [재료명: 시샤모]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('capelin'), ('열빙어'), ('알배기')
+-- ) AS k(word)
+-- WHERE i.name = '시샤모';
+--
+-- -- [재료명: 메로]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('toothfish'), ('메로구이'), ('chilean sea bass')
+-- ) AS k(word)
+-- WHERE i.name = '메로';
+
+-- -- [재료명: 아귀 간]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('monkfish liver'), ('안키모'), ('바다의 푸아그라')
+-- ) AS k(word)
+-- WHERE i.name = '아귀 간';
+--
+-- -- [재료명: 복어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pufferfish'), ('blowfish'), ('복지리용')
+-- ) AS k(word)
+-- WHERE i.name = '복어';
+--
+-- -- [재료명: 쥐치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('filefish'), ('객주리'), ('쥐포 고기')
+-- ) AS k(word)
+-- WHERE i.name = '쥐치';
+--
+-- -- [재료명: 민물장어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('eel'), ('우나기'), ('뱀장어')
+-- ) AS k(word)
+-- WHERE i.name = '민물장어';
+--
+-- -- [재료명: 붕장어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sea eel'), ('아나고'), ('바다장어')
+-- ) AS k(word)
+-- WHERE i.name = '붕장어';
+--
+-- -- [재료명: 꼼장어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hagfish'), ('먹장어'), ('곰장어')
+-- ) AS k(word)
+-- WHERE i.name = '꼼장어';
+--
+-- -- [재료명: 성게알]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sea urchin roe'), ('우니'), ('uni')
+-- ) AS k(word)
+-- WHERE i.name = '성게알';
+--
+-- -- [재료명: 연어알]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('salmon roe'), ('이쿠라'), ('ikura')
+-- ) AS k(word)
+-- WHERE i.name = '연어알';
+--
+-- -- [재료명: 날치알]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('flying fish roe'), ('토비코'), ('알밥용')
+-- ) AS k(word)
+-- WHERE i.name = '날치알';
+--
+-- -- [재료명: 명란]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pollock roe'), ('명란젓'), ('멘타이코')
+-- ) AS k(word)
+-- WHERE i.name = '명란';
+--
+-- -- [재료명: 청어알]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('herring roe'), ('카즈노코'), ('비빔밥용 알')
+-- ) AS k(word)
+-- WHERE i.name = '청어알';
+--
+-- -- [재료명: 상어알]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('caviar'), ('캐비어'), ('철갑상어알')
+-- ) AS k(word)
+-- WHERE i.name = '상어알';
+--
+-- -- [재료명: 단새우]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sweet shrimp'), ('아마에비'), ('홍새우')
+-- ) AS k(word)
+-- WHERE i.name = '단새우';
+--
+-- -- [재료명: 블랙타이거 새우]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('black tiger shrimp'), ('킹프라운'), ('왕새우')
+-- ) AS k(word)
+-- WHERE i.name = '블랙타이거 새우';
+--
+-- -- [재료명: 딱새우]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('red banded lobster'), ('가시발새우'), ('제주 딱새우')
+-- ) AS k(word)
+-- WHERE i.name = '딱새우';
+--
+
+-- -- [재료명: 랍스터]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lobster'), ('바닷가재'), ('랍스타')
+-- ) AS k(word)
+-- WHERE i.name = '랍스터';
+--
+-- -- [재료명: 킹크랩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('king crab'), ('왕게'), ('알래스카 게')
+-- ) AS k(word)
+-- WHERE i.name = '킹크랩';
+--
+-- -- [재료명: 대게]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('snow crab'), ('영덕대게'), ('박달대게')
+-- ) AS k(word)
+-- WHERE i.name = '대게';
+--
+-- -- [재료명: 가리비]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('scallop'), ('참가리비'), ('비단가리비')
+-- ) AS k(word)
+-- WHERE i.name = '가리비';
+--
+-- -- [재료명: 관자]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('scallop muscle'), ('패주'), ('조개관자')
+-- ) AS k(word)
+-- WHERE i.name = '관자';
+--
+-- -- [재료명: 백합]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hard clam'), ('대합'), ('상합')
+-- ) AS k(word)
+-- WHERE i.name = '백합';
+--
+-- -- [재료명: 모시조개]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('manila clam'), ('가무락'), ('흑조개')
+-- ) AS k(word)
+-- WHERE i.name = '모시조개';
+--
+-- -- [재료명: 한치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mitre squid'), ('화살오징어'), ('한치오징어')
+-- ) AS k(word)
+-- WHERE i.name = '한치';
+--
+-- -- [재료명: 갑오징어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cuttlefish'), ('참오징어'), ('찰오징어')
+-- ) AS k(word)
+-- WHERE i.name = '갑오징어';
+--
+-- -- [재료명: 가쓰오부시]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('katsuobushi'), ('가다랑어포'), ('하나가쓰오')
+-- ) AS k(word)
+-- WHERE i.name = '가쓰오부시';
+--
+-- -- [재료명: 연어 필렛]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('salmon fillet'), ('순살 연어'), ('연어살')
+-- ) AS k(word)
+-- WHERE i.name = '연어 필렛';
+--
+-- -- [재료명: 훈제 연어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('smoked salmon'), ('슬라이스 연어'), ('훈제연어살')
+-- ) AS k(word)
+-- WHERE i.name = '훈제 연어';
+--
+-- -- [재료명: 대구 필렛]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cod fillet'), ('순살 대구'), ('대구살')
+-- ) AS k(word)
+-- WHERE i.name = '대구 필렛';
+--
+-- -- [재료명: 해덕]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('haddock'), ('해덕 대구')
+-- ) AS k(word)
+-- WHERE i.name = '해덕';
+--
+-- -- [재료명: 틸라피아]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tilapia'), ('역돔'), ('민물돔')
+-- ) AS k(word)
+-- WHERE i.name = '틸라피아';
+
+-- -- [재료명: 넙치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('광어'), ('halibut'), ('flatfish')
+-- ) AS k(word)
+-- WHERE i.name = '넙치';
+--
+-- -- [재료명: 가자미 필렛]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('가자미살'), ('순살 가자미'), ('flounder fillet')
+-- ) AS k(word)
+-- WHERE i.name = '가자미 필렛';
+--
+-- -- [재료명: 달고기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('존도리'), ('John Dory'), ('달고기살')
+-- ) AS k(word)
+-- WHERE i.name = '달고기';
+--
+-- -- [재료명: 송어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('trout'), ('무지개송어'), ('산천어')
+-- ) AS k(word)
+-- WHERE i.name = '송어';
+--
+-- -- [재료명: 메기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('catfish'), ('민물메기'), ('메기살')
+-- ) AS k(word)
+-- WHERE i.name = '메기';
+--
+-- -- [재료명: 아귀 살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('아구살'), ('순살 아귀'), ('monkfish meat')
+-- ) AS k(word)
+-- WHERE i.name = '아귀 살';
+--
+-- -- [재료명: 농어 필렛]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sea bass fillet'), ('농어살'), ('순살 농어')
+-- ) AS k(word)
+-- WHERE i.name = '농어 필렛';
+--
+-- -- [재료명: 황새치 뱃살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('메카도로'), ('swordfish belly'), ('황새치살')
+-- ) AS k(word)
+-- WHERE i.name = '황새치 뱃살';
+--
+-- -- [재료명: 정어리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sardine'), ('생정어리'), ('정어리살')
+-- ) AS k(word)
+-- WHERE i.name = '정어리';
+--
+-- -- [재료명: 청어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('herring'), ('과메기용 청어'), ('생청어')
+-- ) AS k(word)
+-- WHERE i.name = '청어';
+--
+-- -- [재료명: 랍스터 테일]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('랍스터 꼬리'), ('바닷가재 꼬리'), ('lobster tail')
+-- ) AS k(word)
+-- WHERE i.name = '랍스터 테일';
+--
+-- -- [재료명: 랑구스틴]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('langoustine'), ('가시발새우'), ('스캠피')
+-- ) AS k(word)
+-- WHERE i.name = '랑구스틴';
+--
+-- -- [재료명: 크레이피쉬]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('crayfish'), ('crawfish'), ('닭새우')
+-- ) AS k(word)
+-- WHERE i.name = '크레이피쉬';
+--
+-- -- [재료명: 칵테일 새우]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cocktail shrimp'), ('자숙새우'), ('깐새우')
+-- ) AS k(word)
+-- WHERE i.name = '칵테일 새우';
+--
+-- -- [재료명: 킹프론]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('king prawn'), ('왕새우'), ('큰새우')
+-- ) AS k(word)
+-- WHERE i.name = '킹프론';
+
+-- -- [재료명: 소프트쉘 크랩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('soft shell crab'), ('껍질째 먹는 게'), ('게 튀김용')
+-- ) AS k(word)
+-- WHERE i.name = '소프트쉘 크랩';
+--
+-- -- [재료명: 스노우 크랩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('snow crab'), ('대게'), ('냉동 대게')
+-- ) AS k(word)
+-- WHERE i.name = '스노우 크랩';
+--
+-- -- [재료명: 게살]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('crab meat'), ('리얼게살'), ('순살 게')
+-- ) AS k(word)
+-- WHERE i.name = '게살';
+--
+-- -- [재료명: 그린홍합]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('green mussel'), ('초록입홍합'), ('뉴질랜드 홍합')
+-- ) AS k(word)
+-- WHERE i.name = '그린홍합';
+--
+-- -- [재료명: 맛조개]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('razor clam'), ('죽합'), ('대맛')
+-- ) AS k(word)
+-- WHERE i.name = '맛조개';
+--
+-- -- [재료명: 백합 조개]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('hard clam'), ('백합'), ('생백합')
+-- ) AS k(word)
+-- WHERE i.name = '백합 조개';
+--
+-- -- [재료명: 오징어 링]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('squid ring'), ('깔라마리'), ('튀김용 오징어')
+-- ) AS k(word)
+-- WHERE i.name = '오징어 링';
+--
+-- -- [재료명: 베이비 이카]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('baby squid'), ('꼬마 오징어'), ('한치 새끼')
+-- ) AS k(word)
+-- WHERE i.name = '베이비 이카';
+--
+-- -- [재료명: 문어 다리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('octopus leg'), ('자숙 문어'), ('대문어 다리')
+-- ) AS k(word)
+-- WHERE i.name = '문어 다리';
+--
+-- -- [재료명: 해산물 믹스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('seafood mix'), ('모둠 해물'), ('냉동 해물')
+-- ) AS k(word)
+-- WHERE i.name = '해산물 믹스';
+--
+-- -- [재료명: 엔초비]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('anchovy'), ('안초비'), ('서양 멸치')
+-- ) AS k(word)
+-- WHERE i.name = '엔초비';
+--
+-- -- [재료명: 오징어 먹물]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('squid ink'), ('블랙 잉크'), ('네로 디 세피아')
+-- ) AS k(word)
+-- WHERE i.name = '오징어 먹물';
+--
+-- -- [재료명: 에스카르고]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('escargot'), ('식용 달팽이'), ('프랑스 달팽이')
+-- ) AS k(word)
+-- WHERE i.name = '에스카르고';
+--
+-- -- [재료명: 캐비어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('caviar'), ('철갑상어알'), ('블랙 캐비어')
+-- ) AS k(word)
+-- WHERE i.name = '캐비어';
+--
+-- -- [재료명: 럼피쉬 알]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lumpfish roe'), ('인조 캐비어'), ('날치알 대용')
+-- ) AS k(word)
+-- WHERE i.name = '럼피쉬 알';
+
+-- -- [재료명: 보타르가]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bottarga'), ('어란'), ('숭어알 절임')
+-- ) AS k(word)
+-- WHERE i.name = '보타르가';
+--
+-- -- [재료명: 캔참치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('참치캔'), ('canned tuna'), ('통조림 참치')
+-- ) AS k(word)
+-- WHERE i.name = '캔참치';
+--
+-- -- [재료명: 훈제 굴]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('smoked oyster'), ('굴 통조림'), ('훈제 굴 캔')
+-- ) AS k(word)
+-- WHERE i.name = '훈제 굴';
+--
+-- -- [재료명: 훈제 청어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kippers'), ('훈제 생선'), ('smoked herring')
+-- ) AS k(word)
+-- WHERE i.name = '훈제 청어';
+--
+-- -- [재료명: 수리미]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('surimi'), ('게맛살 원료'), ('연육')
+-- ) AS k(word)
+-- WHERE i.name = '수리미';
+--
+-- -- [재료명: 해삼]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sea cucumber'), ('말린 해삼'), ('건해삼')
+-- ) AS k(word)
+-- WHERE i.name = '해삼';
+--
+-- -- [재료명: 해파리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('jellyfish'), ('냉채용 해파리'), ('염장 해파리')
+-- ) AS k(word)
+-- WHERE i.name = '해파리';
+--
+-- -- [재료명: 만새기]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mahi mahi'), ('마히마히'), ('dorado')
+-- ) AS k(word)
+-- WHERE i.name = '만새기';
+--
+-- -- [재료명: 능성어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('grouper'), ('구루퍼'), ('바리')
+-- ) AS k(word)
+-- WHERE i.name = '능성어';
+--
+-- -- [재료명: 은대구]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sablefish'), ('black cod'), ('은대구 필렛')
+-- ) AS k(word)
+-- WHERE i.name = '은대구';
+--
+-- -- [재료명: 홍어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('skate'), ('삭힌 홍어'), ('홍어회')
+-- ) AS k(word)
+-- WHERE i.name = '홍어';
+--
+-- -- [재료명: 잉어]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('carp'), ('민물 잉어'), ('잉어찜용')
+-- ) AS k(word)
+-- WHERE i.name = '잉어';
+--
+-- -- [재료명: 옥돔]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('tilefish'), ('제주 옥돔'), ('말린 옥돔')
+-- ) AS k(word)
+-- WHERE i.name = '옥돔';
+--
+-- -- [재료명: 거북손]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('goose barnacle'), ('거북이손'), ('검은머리 거북손')
+-- ) AS k(word)
+-- WHERE i.name = '거북손';
+--
+-- -- [재료명: 피조개]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('ark shell'), ('피꼬막'), ('피조개살')
+-- ) AS k(word)
+-- WHERE i.name = '피조개';
+--
+-- -- [재료명: 배추]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('napa cabbage'), ('통배추'), ('김장배추')
+-- ) AS k(word)
+-- WHERE i.name = '배추';
+--
+-- -- [재료명: 양배추]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cabbage'), ('양배추채'), ('코울슬로')
+-- ) AS k(word)
+-- WHERE i.name = '양배추';
+--
+-- -- [재료명: 상추]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lettuce'), ('꽃상추'), ('적상추')
+-- ) AS k(word)
+-- WHERE i.name = '상추';
+--
+-- -- [재료명: 깻잎]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('perilla leaves'), ('들깨잎'), ('추렴')
+-- ) AS k(word)
+-- WHERE i.name = '깻잎';
+--
+-- -- [재료명: 시금치]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('spinach'), ('섬초'), ('포항초')
+-- ) AS k(word)
+-- WHERE i.name = '시금치';
+--
+-- -- [재료명: 미나리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('water parsley'), ('돌미나리'), ('청도미나리')
+-- ) AS k(word)
+-- WHERE i.name = '미나리';
+--
+-- -- [재료명: 쑥갓]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('crown daisy'), ('쑥갓나물')
+-- ) AS k(word)
+-- WHERE i.name = '쑥갓';
+--
+-- -- [재료명: 부추]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chives'), ('정구지'), ('솔')
+-- ) AS k(word)
+-- WHERE i.name = '부추';
+--
+-- -- [재료명: 청경채]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bok choy'), ('박초이'), ('청경채나물')
+-- ) AS k(word)
+-- WHERE i.name = '청경채';
+--
+-- -- [재료명: 아욱]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mallow'), ('아욱국'), ('아욱잎')
+-- ) AS k(word)
+-- WHERE i.name = '아욱';
+--
+-- -- [재료명: 근대]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('swiss chard'), ('근대국'), ('근대잎')
+-- ) AS k(word)
+-- WHERE i.name = '근대';
+--
+-- -- [재료명: 열무]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('young radish'), ('열무김치용'), ('어린무')
+-- ) AS k(word)
+-- WHERE i.name = '열무';
+--
+-- -- [재료명: 얼갈이배추]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('얼갈이'), ('우거지용'), ('winter cabbage')
+-- ) AS k(word)
+-- WHERE i.name = '얼갈이배추';
+--
+-- -- [재료명: 무]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('radish'), ('무우'), ('다이콘')
+-- ) AS k(word)
+-- WHERE i.name = '무';
+--
+-- -- [재료명: 당근]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('carrot'), ('홍당무'), ('당근채')
+-- ) AS k(word)
+-- WHERE i.name = '당근';
+--
+-- -- [재료명: 연근]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lotus root'), ('연뿌리'), ('조림용 연근')
+-- ) AS k(word)
+-- WHERE i.name = '연근';
+--
+-- -- [재료명: 우엉]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('burdock'), ('우엉채'), ('우엉뿌리')
+-- ) AS k(word)
+-- WHERE i.name = '우엉';
+--
+-- -- [재료명: 도라지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bellflower root'), ('깐도라지'), ('길경')
+-- ) AS k(word)
+-- WHERE i.name = '도라지';
+--
+-- -- [재료명: 더덕]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('deodeok'), ('사삼'), ('더덕무침용')
+-- ) AS k(word)
+-- WHERE i.name = '더덕';
+--
+-- -- [재료명: 감자]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('potato'), ('수미감자'), ('하지감자')
+-- ) AS k(word)
+-- WHERE i.name = '감자';
+
+-- -- [재료명: 고구마]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sweet potato'), ('밤고구마'), ('호박고구마')
+-- ) AS k(word)
+-- WHERE i.name = '고구마';
+--
+-- -- [재료명: 대파]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('파'), ('scallion'), ('대파채')
+-- ) AS k(word)
+-- WHERE i.name = '대파';
+--
+-- -- [재료명: 쪽파]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chives'), ('실파'), ('양념파')
+-- ) AS k(word)
+-- WHERE i.name = '쪽파';
+--
+-- -- [재료명: 마늘]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('garlic'), ('통마늘'), ('다진마늘')
+-- ) AS k(word)
+-- WHERE i.name = '마늘';
+--
+-- -- [재료명: 생강]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('ginger'), ('다진생강'), ('생강채')
+-- ) AS k(word)
+-- WHERE i.name = '생강';
+--
+-- -- [재료명: 고추]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chili'), ('풋고추'), ('홍고추')
+-- ) AS k(word)
+-- WHERE i.name = '고추';
+--
+-- -- [재료명: 애호박]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('zucchini'), ('쥬키니'), ('호박')
+-- ) AS k(word)
+-- WHERE i.name = '애호박';
+--
+-- -- [재료명: 오이]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cucumber'), ('가시오이'), ('백오이')
+-- ) AS k(word)
+-- WHERE i.name = '오이';
+--
+-- -- [재료명: 가지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('eggplant'), ('물가지'), ('가시가지')
+-- ) AS k(word)
+-- WHERE i.name = '가지';
+--
+-- -- [재료명: 숙주]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mung bean sprouts'), ('숙주나물'), ('녹두나물')
+-- ) AS k(word)
+-- WHERE i.name = '숙주';
+--
+-- -- [재료명: 공심채]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('morning glory'), ('water spinach'), ('모닝글로리')
+-- ) AS k(word)
+-- WHERE i.name = '공심채';
+--
+-- -- [재료명: 카이란]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('gai lan'), ('chinese broccoli'), ('가이란')
+-- ) AS k(word)
+-- WHERE i.name = '카이란';
+--
+-- -- [재료명: 초이삼]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('choy sum'), ('초이심'), ('유채나물')
+-- ) AS k(word)
+-- WHERE i.name = '초이삼';
+--
+-- -- [재료명: 갓]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mustard greens'), ('돌산갓'), ('청갓')
+-- ) AS k(word)
+-- WHERE i.name = '갓';
+--
+-- -- [재료명: 고수]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('coriander'), ('cilantro'), ('실란트로')
+-- ) AS k(word)
+-- WHERE i.name = '고수';
+--
+-- -- [재료명: 샐러리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('celery'), ('셀러리'), ('양미나리')
+-- ) AS k(word)
+-- WHERE i.name = '샐러리';
+--
+-- -- [재료명: 파프리카]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('paprika'), ('bell pepper'), ('단고추')
+-- ) AS k(word)
+-- WHERE i.name = '파프리카';
+--
+-- -- [재료명: 피망]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('green pepper'), ('청피망'), ('피망채')
+-- ) AS k(word)
+-- WHERE i.name = '피망';
+--
+-- -- [재료명: 목이버섯]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('wood ear mushroom'), ('목이'), ('흐르레기')
+-- ) AS k(word)
+-- WHERE i.name = '목이버섯';
+--
+-- -- [재료명: 표고버섯]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('shiitake'), ('표고'), ('말린표고')
+-- ) AS k(word)
+-- WHERE i.name = '표고버섯';
+
+-- -- [재료명: 팽이버섯]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('enoki'), ('팽이'), ('팽이송이')
+-- ) AS k(word)
+-- WHERE i.name = '팽이버섯';
+--
+-- -- [재료명: 새송이버섯]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('king oyster'), ('새송이'), ('큰느타리')
+-- ) AS k(word)
+-- WHERE i.name = '새송이버섯';
+--
+-- -- [재료명: 은이버섯]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('흰목이버섯'), ('은이'), ('snow fungus')
+-- ) AS k(word)
+-- WHERE i.name = '은이버섯';
+--
+-- -- [재료명: 죽순]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('bamboo shoot'), ('죽순채'), ('맹종죽')
+-- ) AS k(word)
+-- WHERE i.name = '죽순';
+--
+-- -- [재료명: 마]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('참마'), ('산약'), ('yam')
+-- ) AS k(word)
+-- WHERE i.name = '마';
+--
+-- -- [재료명: 토란]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('taro'), ('알토란'), ('토련')
+-- ) AS k(word)
+-- WHERE i.name = '토란';
+--
+-- -- [재료명: 영콘]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('baby corn'), ('어린옥수수'), ('미니옥수수')
+-- ) AS k(word)
+-- WHERE i.name = '영콘';
+--
+-- -- [재료명: 여주]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('고야'), ('bitter melon'), ('비터멜론')
+-- ) AS k(word)
+-- WHERE i.name = '여주';
+--
+-- -- [재료명: 마늘쫑]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('마늘종'), ('마늘싹'), ('garlic scapes')
+-- ) AS k(word)
+-- WHERE i.name = '마늘쫑';
+--
+-- -- [재료명: 바질]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('basil'), ('스위트바질'), ('바실')
+-- ) AS k(word)
+-- WHERE i.name = '바질';
+--
+-- -- [재료명: 로즈마리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('rosemary'), ('로즈메리'), ('미진향')
+-- ) AS k(word)
+-- WHERE i.name = '로즈마리';
+--
+-- -- [재료명: 타임]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('thyme'), ('백리향'), ('서양백리향')
+-- ) AS k(word)
+-- WHERE i.name = '타임';
+--
+-- -- [재료명: 오레가노]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('oregano'), ('오리가노'), ('꽃박하')
+-- ) AS k(word)
+-- WHERE i.name = '오레가노';
+--
+-- -- [재료명: 딜]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('dill'), ('시라'), ('서양회향')
+-- ) AS k(word)
+-- WHERE i.name = '딜';
+--
+-- -- [재료명: 파슬리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('parsley'), ('가루파슬리'), ('컬리파슬리')
+-- ) AS k(word)
+-- WHERE i.name = '파슬리';
+--
+-- -- [재료명: 이탈리안 파슬리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('italian parsley'), ('생파슬리'), ('잎파슬리')
+-- ) AS k(word)
+-- WHERE i.name = '이탈리안 파슬리';
+--
+-- -- [재료명: 애플민트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('applemint'), ('사과박하'), ('민트')
+-- ) AS k(word)
+-- WHERE i.name = '애플민트';
+--
+-- -- [재료명: 스피어민트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('spearmint'), ('양박하'), ('박하')
+-- ) AS k(word)
+-- WHERE i.name = '스피어민트';
+--
+-- -- [재료명: 세이지]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sage'), ('살비아'), ('약용살비아')
+-- ) AS k(word)
+-- WHERE i.name = '세이지';
+--
+-- -- [재료명: 차이브]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chives'), ('서양부추'), ('차이브스')
+-- ) AS k(word)
+-- WHERE i.name = '차이브';
+
+-- -- [재료명: 양상추]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('lettuce'), ('iceberg lettuce'), ('양상치')
+-- ) AS k(word)
+-- WHERE i.name = '양상추';
+--
+-- -- [재료명: 로메인]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('romaine'), ('로마상추'), ('로메인상추')
+-- ) AS k(word)
+-- WHERE i.name = '로메인';
+--
+-- -- [재료명: 루꼴라]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('arugula'), ('로켓'), ('아루굴라')
+-- ) AS k(word)
+-- WHERE i.name = '루꼴라';
+--
+-- -- [재료명: 라디치오]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('radicchio'), ('레드치커리'), ('이탈리안치커리')
+-- ) AS k(word)
+-- WHERE i.name = '라디치오';
+--
+-- -- [재료명: 치커리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chicory'), ('쌈치커리')
+-- ) AS k(word)
+-- WHERE i.name = '치커리';
+--
+-- -- [재료명: 케일]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('kale'), ('쌈케일'), ('녹즙케일')
+-- ) AS k(word)
+-- WHERE i.name = '케일';
+--
+-- -- [재료명: 비타민]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('다채'), ('비타민채'), ('vitamin greens')
+-- ) AS k(word)
+-- WHERE i.name = '비타민';
+--
+-- -- [재료명: 적근대]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('red chard'), ('빨간근대'), ('쌈근대')
+-- ) AS k(word)
+-- WHERE i.name = '적근대';
+--
+-- -- [재료명: 버터헤드 레터스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('butterhead'), ('버터헤드'), ('버터상추')
+-- ) AS k(word)
+-- WHERE i.name = '버터헤드 레터스';
+--
+-- -- [재료명: 엔다이브]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('endive'), ('치콘'), ('벨기에치커리')
+-- ) AS k(word)
+-- WHERE i.name = '엔다이브';
+--
+-- -- [재료명: 크레송]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('watercress'), ('물냉이'), ('크레숑')
+-- ) AS k(word)
+-- WHERE i.name = '크레송';
+--
+-- -- [재료명: 아스파라거스]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('asparagus'), ('아스파라'), ('그린아스파라거스')
+-- ) AS k(word)
+-- WHERE i.name = '아스파라거스';
+--
+-- -- [재료명: 브로콜리]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('broccoli'), ('브로컬리'), ('브로콜리니')
+-- ) AS k(word)
+-- WHERE i.name = '브로콜리';
+--
+-- -- [재료명: 콜리플라워]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cauliflower'), ('콜리'), ('꽃양배추')
+-- ) AS k(word)
+-- WHERE i.name = '콜리플라워';
+--
+-- -- [재료명: 그린빈]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('green bean'), ('껍질콩'), ('줄기콩')
+-- ) AS k(word)
+-- WHERE i.name = '그린빈';
+
+-- -- [재료명: 샬롯]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('shallot'), ('미니 양파'), ('등심양파')
+-- ) AS k(word)
+-- WHERE i.name = '샬롯';
+--
+-- -- [재료명: 비트]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beet'), ('레드비트'), ('비트루트')
+-- ) AS k(word)
+-- WHERE i.name = '비트';
+--
+-- -- [재료명: 방울토마토]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('cherry tomato'), ('방토'), ('대추토마토')
+-- ) AS k(word)
+-- WHERE i.name = '방울토마토';
+--
+-- -- [재료명: 주키니 호박]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('zucchini'), ('돼지호박'), ('서양호박')
+-- ) AS k(word)
+-- WHERE i.name = '주키니 호박';
+--
+-- -- [재료명: 시소]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('shiso'), ('일본 깻잎'), ('차조기')
+-- ) AS k(word)
+-- WHERE i.name = '시소';
+--
+-- -- [재료명: 무순]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('radish sprouts'), ('무싹'), ('무순채')
+-- ) AS k(word)
+-- WHERE i.name = '무순';
+--
+-- -- [재료명: 실파]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('chives'), ('어린 파'), ('재래파')
+-- ) AS k(word)
+-- WHERE i.name = '실파';
+--
+-- -- [재료명: 미츠바]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mitsuba'), ('삼엽채'), ('파드득나물')
+-- ) AS k(word)
+-- WHERE i.name = '미츠바';
+--
+-- -- [재료명: 쑥]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('mugwort'), ('애쑥'), ('참쑥')
+-- ) AS k(word)
+-- WHERE i.name = '쑥';
+--
+-- -- [재료명: 오크라]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('okra'), ('오쿠라'), ('레이디핑거')
+-- ) AS k(word)
+-- WHERE i.name = '오크라';
+--
+-- -- [재료명: 꽈리고추]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('shishito pepper'), ('꽈리'), ('조림고추')
+-- ) AS k(word)
+-- WHERE i.name = '꽈리고추';
+--
+-- -- [재료명: 단호박]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('sweet pumpkin'), ('밤단호박'), ('kabocha')
+-- ) AS k(word)
+-- WHERE i.name = '단호박';
+--
+-- -- [재료명: 풋콩]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('edamame'), ('에다마메'), ('자숙풋콩')
+-- ) AS k(word)
+-- WHERE i.name = '풋콩';
+--
+-- -- [재료명: 은행]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('ginkgo nut'), ('은행알'), ('깐은행')
+-- ) AS k(word)
+-- WHERE i.name = '은행';
+--
+-- -- [재료명: 고추냉이]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('wasabi'), ('와사비'), ('생와사비')
+-- ) AS k(word)
+-- WHERE i.name = '고추냉이';
+--
+-- -- [재료명: 만가닥버섯]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('beech mushroom'), ('백만송이버섯'), ('해송이버섯')
+-- ) AS k(word)
+-- WHERE i.name = '만가닥버섯';
+--
+-- -- [재료명: 잎새버섯]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('maitake'), ('마이타케'), ('춤버섯')
+-- ) AS k(word)
+-- WHERE i.name = '잎새버섯';
+--
+-- -- [재료명: 송이버섯]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('pine mushroom'), ('자연송이'), ('송이')
+-- ) AS k(word)
+-- WHERE i.name = '송이버섯';
+--
+-- -- [재료명: 곤약]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('konjac'), ('판곤약'), ('묵곤약')
+-- ) AS k(word)
+-- WHERE i.name = '곤약';
+--
+-- -- [재료명: 실곤약]
+-- INSERT INTO ingredient_keywords (ingredient_id, keyword)
+-- SELECT i.id, k.word
+-- FROM ingredients i
+--          CROSS JOIN (
+--     VALUES
+--         ('konjac noodles'), ('곤약면'), ('곤약사리')
+-- ) AS k(word)
+-- WHERE i.name = '실곤약';

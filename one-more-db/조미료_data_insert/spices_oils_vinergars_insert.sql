@@ -1,4 +1,4 @@
- INSERT INTO ingredients (name, category) VALUES
+ INSERT INTO spices (name, category) VALUES
 -- 1. 오일 (액체형 지방)
 ('참기름', '오일'),          -- 나물 무침, 비빔밥 필수
 ('들기름', '오일'),          -- 나물 볶음, 김 구이
@@ -27,7 +27,7 @@
 
 ON CONFLICT (name) DO NOTHING;
 
-INSERT INTO ingredients (name, category) VALUES
+INSERT INTO spices (name, category) VALUES
 -- 1. 중식/일식 필수 오일 (Oils)
 ('땅콩기름', '오일'),        -- 중식 볶음 요리의 핵심 (낙화생유)
 ('화조유', '오일'),          -- 산초기름 (마라탕 얼얼한 맛)
@@ -66,7 +66,7 @@ INSERT INTO ingredients (name, category) VALUES
 
 ON CONFLICT (name) DO NOTHING;
 
-INSERT INTO ingredients (name, category) VALUES
+INSERT INTO spices (name, category) VALUES
 -- 1. 서양 요리주 (Cooking Wines & Spirits)
 ('화이트 와인', '요리주'),      -- 파스타, 해산물 잡내 제거
 ('레드 와인', '요리주'),        -- 스테이크 소스, 스튜 (꼬꼬뱅)
@@ -104,3 +104,11 @@ INSERT INTO ingredients (name, category) VALUES
 ('코코아 버터', '유지')        -- 초콜릿 가공, 제과
 
 ON CONFLICT (name) DO NOTHING;
+
+ SELECT id, name, category
+ FROM spices
+ WHERE category = '요리주'
+    OR category = '유지'
+    OR category = '식초'
+    or category = '오일'
+ ORDER BY id;

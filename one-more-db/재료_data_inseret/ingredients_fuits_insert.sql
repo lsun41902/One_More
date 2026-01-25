@@ -116,3 +116,8 @@ INSERT INTO ingredients (name, category) VALUES
 ('아세로라', '과일')          -- 비타민 C
 
 ON CONFLICT (name) DO NOTHING;
+
+select id, name, ingredients.category
+from ingredients
+where category = '과일'
+order by  id;

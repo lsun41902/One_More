@@ -1,5 +1,5 @@
 -- 1. 한식 장류 및 소스
-INSERT INTO ingredients (name, category) VALUES
+INSERT INTO spices (name, category) VALUES
 ('고추장', '장류'),
 ('된장', '장류'),
 ('쌈장', '장류'),
@@ -33,7 +33,7 @@ INSERT INTO ingredients (name, category) VALUES
 ON CONFLICT (name) DO NOTHING;
 
 -- 2. 중식 및 일식 장류/소스
-INSERT INTO ingredients (name, category) VALUES
+INSERT INTO spices (name, category) VALUES
 ('굴소스', '소스'),
 ('두반장', '장류'),
 ('해선장', '장류'),
@@ -62,11 +62,11 @@ INSERT INTO ingredients (name, category) VALUES
 ('야키소바 소스', '소스'),
 ('참깨 드레싱', '소스'),
 ('시로다시', '소스'),
-('초대리', '소스') -- ❗수정됨: 여기 쉼표(,)를 제거했습니다.
+('초대리', '소스')
 ON CONFLICT (name) DO NOTHING;
 
 -- 3. 서양식 소스
-INSERT INTO ingredients (name, category) VALUES
+INSERT INTO spices (name, category) VALUES
 ('케첩', '소스'),
 ('마요네즈', '소스'),
 ('머스터드 소스', '소스'),
@@ -108,3 +108,10 @@ INSERT INTO ingredients (name, category) VALUES
 ('트러플 오일', '소스'),
 ('메이플 시럽', '소스') -- 여기 쉼표 없음 (OK)
 ON CONFLICT (name) DO NOTHING;
+
+SELECT id, name, category
+FROM spices
+WHERE category = '소스'
+   OR category = '장류'
+ORDER BY id;
+

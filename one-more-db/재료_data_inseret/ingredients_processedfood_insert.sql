@@ -182,3 +182,8 @@ INSERT INTO ingredients (name, category) VALUES
 ('골뱅이 통조림', '가공품')      -- 골뱅이 무침
 
 ON CONFLICT (name) DO NOTHING;
+
+select id, name, ingredients.category
+from ingredients
+where category = '가공품'
+order by  id;

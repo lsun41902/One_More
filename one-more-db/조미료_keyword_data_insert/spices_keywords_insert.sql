@@ -1,0 +1,4109 @@
+-- -- [조미료명: 소금]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('천일염'), ('맛소금'), ('salt')
+-- ) AS k(word)
+-- WHERE i.name = '소금';
+--
+-- -- [조미료명: 설탕]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('백설탕'), ('황설탕'), ('sugar')
+-- ) AS k(word)
+-- WHERE i.name = '설탕';
+--
+-- -- [조미료명: 키위 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('키위 소스'), ('kiwi dressing'), ('그린 드레싱')
+-- ) AS k(word)
+-- WHERE i.name = '키위 드레싱';
+--
+-- -- [조미료명: 파인애플 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('파인애플 소스'), ('pineapple dressing'), ('파인 소스')
+-- ) AS k(word)
+-- WHERE i.name = '파인애플 드레싱';
+--
+-- -- [조미료명: 딸기 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('딸기 소스'), ('strawberry dressing'), ('베리 소스')
+-- ) AS k(word)
+-- WHERE i.name = '딸기 드레싱';
+--
+-- -- [조미료명: 유자 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('유자 소스'), ('yuzu dressing'), ('유자청 소스')
+-- ) AS k(word)
+-- WHERE i.name = '유자 드레싱';
+--
+-- -- [조미료명: 사과 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('사과 소스'), ('apple dressing'), ('애플 소스')
+-- ) AS k(word)
+-- WHERE i.name = '사과 드레싱';
+--
+-- -- [조미료명: 블루베리 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('블루베리 소스'), ('blueberry dressing')
+-- ) AS k(word)
+-- WHERE i.name = '블루베리 드레싱';
+--
+-- -- [조미료명: 망고 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('망고 소스'), ('mango dressing'), ('트로피컬 소스')
+-- ) AS k(word)
+-- WHERE i.name = '망고 드레싱';
+--
+-- -- [조미료명: 한라봉 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('한라봉 소스'), ('hallabong dressing'), ('감귤 소스')
+-- ) AS k(word)
+-- WHERE i.name = '한라봉 드레싱';
+--
+-- -- [조미료명: 자몽 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('자몽 소스'), ('grapefruit dressing')
+-- ) AS k(word)
+-- WHERE i.name = '자몽 드레싱';
+--
+-- -- [조미료명: 흑임자 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('흑임자 소스'), ('black sesame dressing'), ('검은깨 소스')
+-- ) AS k(word)
+-- WHERE i.name = '흑임자 드레싱';
+--
+-- -- [조미료명: 참깨 흑임자 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('참깨 소스'), ('sesame dressing'), ('깨 소스')
+-- ) AS k(word)
+-- WHERE i.name = '참깨 흑임자 드레싱';
+--
+-- -- [조미료명: 들깨 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('들깨 소스'), ('perilla dressing'), ('들깨가루 소스')
+-- ) AS k(word)
+-- WHERE i.name = '들깨 드레싱';
+--
+-- -- [조미료명: 요거트 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('요거트 소스'), ('yogurt dressing'), ('플레인 소스')
+-- ) AS k(word)
+-- WHERE i.name = '요거트 드레싱';
+
+-- -- [조미료명: 어니언 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('양파 드레싱'), ('onion dressing'), ('양파 소스')
+-- ) AS k(word)
+-- WHERE i.name = '어니언 드레싱';
+--
+-- -- [조미료명: 케이준 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('cajun dressing'), ('케이준 소스'), ('치킨샐러드 소스')
+-- ) AS k(word)
+-- WHERE i.name = '케이준 드레싱';
+--
+-- -- [조미료명: 갈릭 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('garlic dressing'), ('마늘 드레싱'), ('갈릭 소스')
+-- ) AS k(word)
+-- WHERE i.name = '갈릭 드레싱';
+--
+-- -- [조미료명: 양파절임 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고깃집 소스'), ('참소스'), ('양파 간장')
+-- ) AS k(word)
+-- WHERE i.name = '양파절임 소스';
+--
+-- -- [조미료명: 파채 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('파무침 양념'), ('파절이 소스'), ('파채 양념')
+-- ) AS k(word)
+-- WHERE i.name = '파채 소스';
+--
+-- -- [조미료명: 겨자 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('머스타드'), ('mustard'), ('연겨자')
+-- ) AS k(word)
+-- WHERE i.name = '겨자 소스';
+--
+-- -- [조미료명: 청양마요 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('청양마요'), ('매콤마요'), ('먹태 소스')
+-- ) AS k(word)
+-- WHERE i.name = '청양마요 소스';
+--
+-- -- [조미료명: 와사비 마요 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('와사비마요'), ('고추냉이 마요'), ('wasabi mayo')
+-- ) AS k(word)
+-- WHERE i.name = '와사비 마요 소스';
+--
+-- -- [조미료명: 스리라차 마요]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('sriracha mayo'), ('스리라차 마요네즈'), ('매운 마요')
+-- ) AS k(word)
+-- WHERE i.name = '스리라차 마요';
+--
+-- -- [조미료명: 불닭 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('매운 소스'), ('buldak sauce'), ('핵불닭')
+-- ) AS k(word)
+-- WHERE i.name = '불닭 소스';
+--
+-- -- [조미료명: 비빔장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('비빔 양념'), ('비빔국수 양념'), ('만능 비빔장')
+-- ) AS k(word)
+-- WHERE i.name = '비빔장';
+--
+-- -- [조미료명: 떡볶이 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('떡볶이 양념'), ('tteokbokki sauce'), ('국물 떡볶이 소스')
+-- ) AS k(word)
+-- WHERE i.name = '떡볶이 소스';
+--
+-- -- [조미료명: 닭강정 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('양념치킨 소스'), ('닭강정 양념'), ('달콤 양념')
+-- ) AS k(word)
+-- WHERE i.name = '닭강정 소스';
+--
+-- -- [조미료명: 소떡소떡 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('소떡 양념'), ('소떡 소스'), ('휴게소 소스')
+-- ) AS k(word)
+-- WHERE i.name = '소떡소떡 소스';
+--
+-- -- [조미료명: 탕수육 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('탕수 소스'), ('tangsuyuk sauce'), ('찍먹 소스')
+-- ) AS k(word)
+-- WHERE i.name = '탕수육 소스';
+
+-- -- [조미료명: 땅콩 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('피넛 소스'), ('peanut sauce'), ('월남쌈 소스')
+-- ) AS k(word)
+-- WHERE i.name = '땅콩 소스';
+--
+-- -- [조미료명: 멜젓]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('멸치 젓갈'), ('제주 멜젓'), ('고기 젓갈')
+-- ) AS k(word)
+-- WHERE i.name = '멜젓';
+--
+-- -- [조미료명: 참깨 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고마 드레싱'), ('sesame dressing'), ('깨 드레싱')
+-- ) AS k(word)
+-- WHERE i.name = '참깨 드레싱';
+--
+-- -- [조미료명: 와후 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('일본식 드레싱'), ('와후 소스'), ('간장 드레싱')
+-- ) AS k(word)
+-- WHERE i.name = '와후 드레싱';
+--
+-- -- [조미료명: 시소 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('차조기 드레싱'), ('일본 깻잎 소스'), ('shiso dressing')
+-- ) AS k(word)
+-- WHERE i.name = '시소 드레싱';
+--
+-- -- [조미료명: 유자 폰즈]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('유자 간장'), ('폰즈 소스'), ('ponzu')
+-- ) AS k(word)
+-- WHERE i.name = '유자 폰즈';
+--
+-- -- [조미료명: 논오일 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('무지방 드레싱'), ('오일프리'), ('다이어트 드레싱')
+-- ) AS k(word)
+-- WHERE i.name = '논오일 드레싱';
+--
+-- -- [조미료명: 생강 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('쇼가 드레싱'), ('생강 소스'), ('ginger dressing')
+-- ) AS k(word)
+-- WHERE i.name = '생강 드레싱';
+--
+-- -- [조미료명: 우메보시 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('매실 드레싱'), ('일본 매실 소스'), ('umeboshi dressing')
+-- ) AS k(word)
+-- WHERE i.name = '우메보시 드레싱';
+--
+-- -- [조미료명: 와사비 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고추냉이 드레싱'), ('와사비 소스'), ('wasabi dressing')
+-- ) AS k(word)
+-- WHERE i.name = '와사비 드레싱';
+--
+-- -- [조미료명: 명란 마요네즈]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('명란 마요'), ('멘타이 마요'), ('mentaiko mayo')
+-- ) AS k(word)
+-- WHERE i.name = '명란 마요네즈';
+--
+-- -- [조미료명: 카라시 마요]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('겨자 마요'), ('일본 겨자 마요'), ('karashi mayo')
+-- ) AS k(word)
+-- WHERE i.name = '카라시 마요';
+--
+-- -- [조미료명: 돈까스 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('돈가스 소스'), ('tonkatsu sauce'), ('우스터 소스')
+-- ) AS k(word)
+-- WHERE i.name = '돈까스 소스';
+--
+-- -- [조미료명: 장어 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('우나기 소스'), ('장어 양념'), ('타레 소스')
+-- ) AS k(word)
+-- WHERE i.name = '장어 소스';
+--
+-- -- [조미료명: 텐동 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('튀김 덮밥 소스'), ('텐다시'), ('tendon sauce')
+-- ) AS k(word)
+-- WHERE i.name = '텐동 소스';
+--
+
+-- -- [조미료명: 튀김 간장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('텐다시'), ('덴다시'), ('tempura sauce')
+-- ) AS k(word)
+-- WHERE i.name = '튀김 간장';
+--
+-- -- [조미료명: 소바 쯔유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('쯔유'), ('메밀 소바 육수'), ('tsuyu')
+-- ) AS k(word)
+-- WHERE i.name = '소바 쯔유';
+--
+-- -- [조미료명: 오코노미야키 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('오코노미 소스'), ('일식 부침개 소스'), ('okonomiyaki sauce')
+-- ) AS k(word)
+-- WHERE i.name = '오코노미야키 소스';
+--
+-- -- [조미료명: 타코야키 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('타코 소스'), ('문어빵 소스'), ('takoyaki sauce')
+-- ) AS k(word)
+-- WHERE i.name = '타코야키 소스';
+--
+-- -- [조미료명: 야키소바 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('볶음 우동 소스'), ('볶음면 소스'), ('yakisoba sauce')
+-- ) AS k(word)
+-- WHERE i.name = '야키소바 소스';
+--
+-- -- [조미료명: 규동 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('소고기 덮밥 소스'), ('덮밥 양념'), ('gyudon sauce')
+-- ) AS k(word)
+-- WHERE i.name = '규동 소스';
+--
+-- -- [조미료명: 유린기 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('유린기 양념'), ('중식 간장 소스'), ('yuringi sauce')
+-- ) AS k(word)
+-- WHERE i.name = '유린기 소스';
+--
+-- -- [조미료명: 마늘 냉채 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('마늘 소스'), ('냉채 양념'), ('garlic sauce')
+-- ) AS k(word)
+-- WHERE i.name = '마늘 냉채 소스';
+--
+-- -- [조미료명: 해파리 냉채 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('해파리 소스'), ('냉채 소스'), ('jellyfish sauce')
+-- ) AS k(word)
+-- WHERE i.name = '해파리 냉채 소스';
+--
+-- -- [조미료명: 마장 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('즈마장'), ('참깨 소스'), ('majiang')
+-- ) AS k(word)
+-- WHERE i.name = '마장 소스';
+--
+-- -- [조미료명: 땅콩 버터 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('피넛버터 소스'), ('땅콩 소스'), ('peanut butter sauce')
+-- ) AS k(word)
+-- WHERE i.name = '땅콩 버터 소스';
+--
+-- -- [조미료명: 라조장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('라조유'), ('고추기름 소스'), ('chili oil sauce')
+-- ) AS k(word)
+-- WHERE i.name = '라조장';
+--
+-- -- [조미료명: 흑식초 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('중식 식초'), ('검은식초'), ('black vinegar sauce')
+-- ) AS k(word)
+-- WHERE i.name = '흑식초 드레싱';
+--
+-- -- [조미료명: 칠리 새우 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('칠리 소스'), ('중식 칠리'), ('chili shrimp sauce')
+-- ) AS k(word)
+-- WHERE i.name = '칠리 새우 소스';
+--
+-- -- [조미료명: 크림 새우 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('크림 소스'), ('마요 새우 소스'), ('cream shrimp sauce')
+-- ) AS k(word)
+-- WHERE i.name = '크림 새우 소스';
+--
+
+-- -- [조미료명: 레몬 치킨 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('lemon chicken sauce'), ('레몬 소스'), ('상큼한 소스')
+-- ) AS k(word)
+-- WHERE i.name = '레몬 치킨 소스';
+--
+-- -- [조미료명: 딤섬 간장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('dimsum sauce'), ('딤섬 소스'), ('초간장')
+-- ) AS k(word)
+-- WHERE i.name = '딤섬 간장';
+--
+-- -- [조미료명: 랜치 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('ranch'), ('랜치 소스'), ('하얀 소스')
+-- ) AS k(word)
+-- WHERE i.name = '랜치 드레싱';
+--
+-- -- [조미료명: 시저 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('caesar'), ('시저 소스'), ('엔초비 드레싱')
+-- ) AS k(word)
+-- WHERE i.name = '시저 드레싱';
+--
+-- -- [조미료명: 발사믹 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('balsamic'), ('발사믹 식초'), ('발사믹 소스')
+-- ) AS k(word)
+-- WHERE i.name = '발사믹 드레싱';
+--
+-- -- [조미료명: 사우전드 아일랜드]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('thousand island'), ('아일랜드 드레싱'), ('케요네즈')
+-- ) AS k(word)
+-- WHERE i.name = '사우전드 아일랜드';
+--
+-- -- [조미료명: 이탈리안 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('italian'), ('이탈리안 소스'), ('오일 드레싱')
+-- ) AS k(word)
+-- WHERE i.name = '이탈리안 드레싱';
+--
+-- -- [조미료명: 프렌치 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('french'), ('프렌치 소스'), ('비네그레트')
+-- ) AS k(word)
+-- WHERE i.name = '프렌치 드레싱';
+--
+-- -- [조미료명: 블루치즈 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('blue cheese'), ('고르곤졸라 드레싱'), ('치즈 드레싱')
+-- ) AS k(word)
+-- WHERE i.name = '블루치즈 드레싱';
+--
+-- -- [조미료명: 그릭 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('greek'), ('그리스식 드레싱'), ('페타 소스')
+-- ) AS k(word)
+-- WHERE i.name = '그릭 드레싱';
+--
+-- -- [조미료명: 그린 가디스 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('green goddess'), ('허브 드레싱'), ('녹색 드레싱')
+-- ) AS k(word)
+-- WHERE i.name = '그린 가디스 드레싱';
+--
+-- -- [조미료명: 허니 머스터드 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('honey mustard'), ('꿀 머스타드'), ('머스타드 소스')
+-- ) AS k(word)
+-- WHERE i.name = '허니 머스터드 드레싱';
+--
+-- -- [조미료명: 오리엔탈 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('oriental'), ('간장 드레싱'), ('오리엔탈 소스')
+-- ) AS k(word)
+-- WHERE i.name = '오리엔탈 드레싱';
+--
+-- -- [조미료명: 라즈베리 비네그레트]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('raspberry vinaigrette'), ('라즈베리 식초 소스'), ('산딸기 드레싱')
+-- ) AS k(word)
+-- WHERE i.name = '라즈베리 비네그레트';
+--
+-- -- [조미료명: 포피시드 드레싱]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('poppy seed'), ('양귀비 씨앗 드레싱'), ('씨앗 드레싱')
+-- ) AS k(word)
+-- WHERE i.name = '포피시드 드레싱';
+
+-- -- [조미료명: 홀랜다이즈 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('hollandaise'), ('에그 베네딕트 소스'), ('버터 소스')
+-- ) AS k(word)
+-- WHERE i.name = '홀랜다이즈 소스';
+--
+-- -- [조미료명: 베어네이즈 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('bearnaise'), ('베어네즈'), ('스테이크 소스')
+-- ) AS k(word)
+-- WHERE i.name = '베어네이즈 소스';
+--
+-- -- [조미료명: 치미추리 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('chimichurri'), ('아르헨티나 소스'), ('허브 소스')
+-- ) AS k(word)
+-- WHERE i.name = '치미추리 소스';
+--
+-- -- [조미료명: 그레이비 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('gravy'), ('육즙 소스'), ('매쉬드 포테이토 소스')
+-- ) AS k(word)
+-- WHERE i.name = '그레이비 소스';
+--
+-- -- [조미료명: 홀스래디쉬 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('horseradish'), ('서양 고추냉이'), ('연어 소스')
+-- ) AS k(word)
+-- WHERE i.name = '홀스래디쉬 소스';
+--
+-- -- [조미료명: 바베큐 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('bbq sauce'), ('비비큐 소스'), ('바비큐 소스')
+-- ) AS k(word)
+-- WHERE i.name = '바베큐 소스';
+--
+-- -- [조미료명: 버팔로 윙 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('buffalo sauce'), ('핫윙 소스'), ('미국식 매운 소스')
+-- ) AS k(word)
+-- WHERE i.name = '버팔로 윙 소스';
+--
+-- -- [조미료명: 살사 베르데]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('salsa verde'), ('그린 살사'), ('녹색 살사')
+-- ) AS k(word)
+-- WHERE i.name = '살사 베르데';
+--
+-- -- [조미료명: 스위트 어니언 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('sweet onion'), ('단양파 소스'), ('서브웨이 양파 소스')
+-- ) AS k(word)
+-- WHERE i.name = '스위트 어니언 소스';
+--
+-- -- [조미료명: 타르타르 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('tartar sauce'), ('생선까스 소스'), ('타타르')
+-- ) AS k(word)
+-- WHERE i.name = '타르타르 소스';
+--
+-- -- [조미료명: 아이올리 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('aioli'), ('마늘 마요네즈'), ('갈릭 마요')
+-- ) AS k(word)
+-- WHERE i.name = '아이올리 소스';
+--
+-- -- [조미료명: 칵테일 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('cocktail sauce'), ('쉬림프 소스'), ('해산물 딥')
+-- ) AS k(word)
+-- WHERE i.name = '칵테일 소스';
+--
+-- -- [조미료명: 나초 치즈 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('nacho cheese'), ('치즈 딥'), ('체다치즈 소스')
+-- ) AS k(word)
+-- WHERE i.name = '나초 치즈 소스';
+--
+-- -- [조미료명: 사워크림]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('sour cream'), ('사워 소스'), ('발효 생크림')
+-- ) AS k(word)
+-- WHERE i.name = '사워크림';
+--
+-- -- [조미료명: 과카몰리]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('guacamole'), ('아보카도 소스'), ('아보카도 딥')
+-- ) AS k(word)
+-- WHERE i.name = '과카몰리';
+
+-- -- [조미료명: 트러플 마요네즈]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('트러플 마요'), ('송로버섯 마요네즈'), ('truffle mayo')
+-- ) AS k(word)
+-- WHERE i.name = '트러플 마요네즈';
+--
+-- -- [조미료명: 치폴레 마요네즈]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('치폴레 마요'), ('훈제고추 마요'), ('chipotle mayo')
+-- ) AS k(word)
+-- WHERE i.name = '치폴레 마요네즈';
+--
+-- -- [조미료명: 들기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('perilla oil'), ('들깨기름'), ('생들기름')
+-- ) AS k(word)
+-- WHERE i.name = '들기름';
+--
+-- -- [조미료명: 식용유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('cooking oil'), ('튀김유'), ('vegetable oil')
+-- ) AS k(word)
+-- WHERE i.name = '식용유';
+--
+-- -- [조미료명: 콩기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('대두유'), ('soybean oil'), ('식용유')
+-- ) AS k(word)
+-- WHERE i.name = '콩기름';
+--
+-- -- [조미료명: 옥수수유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('옥수수기름'), ('corn oil'), ('배아유')
+-- ) AS k(word)
+-- WHERE i.name = '옥수수유';
+--
+-- -- [조미료명: 카놀라유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('canola oil'), ('유채유'), ('식용유')
+-- ) AS k(word)
+-- WHERE i.name = '카놀라유';
+--
+-- -- [조미료명: 포도씨유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('grapeseed oil'), ('포도씨기름'), ('식용유')
+-- ) AS k(word)
+-- WHERE i.name = '포도씨유';
+--
+-- -- [조미료명: 고추장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('gochujang'), ('매운양념'), ('볶음고추장')
+-- ) AS k(word)
+-- WHERE i.name = '고추장';
+--
+-- -- [조미료명: 된장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('doenjang'), ('soybean paste'), ('메주')
+-- ) AS k(word)
+-- WHERE i.name = '된장';
+--
+-- -- [조미료명: 쌈장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('ssamjang'), ('고기된장'), ('양념쌈장')
+-- ) AS k(word)
+-- WHERE i.name = '쌈장';
+--
+-- -- [조미료명: 참기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('sesame oil'), ('참깨기름'), ('고소한기름')
+-- ) AS k(word)
+-- WHERE i.name = '참기름';
+--
+-- -- [조미료명: 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('vinegar'), ('사과식초'), ('양조식초')
+-- ) AS k(word)
+-- WHERE i.name = '식초';
+--
+-- -- [조미료명: 올리브 오일]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('olive oil'), ('엑스트라 버진'), ('압착유')
+-- ) AS k(word)
+-- WHERE i.name = '올리브 오일';
+--
+-- -- [조미료명: 다진 마늘]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('minced garlic'), ('간마늘'), ('빻은마늘')
+-- ) AS k(word)
+-- WHERE i.name = '다진 마늘';
+
+-- -- [조미료명: 굴소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('oyster sauce'), ('이금기'), ('중식 소스')
+-- ) AS k(word)
+-- WHERE i.name = '굴소스';
+--
+-- -- [조미료명: 해바라기유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('해바라기씨유'), ('sunflower oil'), ('식용유')
+-- ) AS k(word)
+-- WHERE i.name = '해바라기유';
+--
+-- -- [조미료명: 현미유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('쌀눈유'), ('미강유'), ('rice bran oil')
+-- ) AS k(word)
+-- WHERE i.name = '현미유';
+--
+-- -- [조미료명: 올리브유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('olive oil'), ('기름'), ('압착유')
+-- ) AS k(word)
+-- WHERE i.name = '올리브유';
+--
+-- -- [조미료명: 엑스트라 버진 올리브유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('EVOO'), ('최상급 올리브유'), ('샐러드용 올리브유')
+-- ) AS k(word)
+-- WHERE i.name = '엑스트라 버진 올리브유';
+--
+-- -- [조미료명: 퓨어 올리브유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('정제 올리브유'), ('튀김용 올리브유'), ('pure olive oil')
+-- ) AS k(word)
+-- WHERE i.name = '퓨어 올리브유';
+--
+-- -- [조미료명: 아보카도 오일]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('avocado oil'), ('아보카도유'), ('건강오일')
+-- ) AS k(word)
+-- WHERE i.name = '아보카도 오일';
+--
+-- -- [조미료명: 고추기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('라유'), ('chili oil'), ('고추유')
+-- ) AS k(word)
+-- WHERE i.name = '고추기름';
+--
+-- -- [조미료명: 양조식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('화이트 식초'), ('brewed vinegar'), ('일반 식초')
+-- ) AS k(word)
+-- WHERE i.name = '양조식초';
+--
+-- -- [조미료명: 2배 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('진한 식초'), ('고농도 식초'), ('강식초')
+-- ) AS k(word)
+-- WHERE i.name = '2배 식초';
+--
+-- -- [조미료명: 감식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('persimmon vinegar'), ('전통 식초'), ('감초')
+-- ) AS k(word)
+-- WHERE i.name = '감식초';
+--
+-- -- [조미료명: 막걸리 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('발효 식초'), ('전통주 식초'), ('막식초')
+-- ) AS k(word)
+-- WHERE i.name = '막걸리 식초';
+--
+-- -- [조미료명: 홍초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('마시는 식초'), ('석류초'), ('과일 식초')
+-- ) AS k(word)
+-- WHERE i.name = '홍초';
+--
+-- -- [조미료명: 라드]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('돼지기름'), ('돈지'), ('lard')
+-- ) AS k(word)
+-- WHERE i.name = '라드';
+--
+-- -- [조미료명: 땅콩기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('peanut oil'), ('낙화생유'), ('고소한 기름')
+-- ) AS k(word)
+-- WHERE i.name = '땅콩기름';
+
+-- -- [조미료명: 화조유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('산초기름'), ('화자오유'), ('Szechuan oil')
+-- ) AS k(word)
+-- WHERE i.name = '화조유';
+--
+-- -- [조미료명: 파기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('대파기름'), ('scallion oil'), ('향신유')
+-- ) AS k(word)
+-- WHERE i.name = '파기름';
+--
+-- -- [조미료명: 마늘 기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('마늘유'), ('garlic oil'), ('갈릭 오일')
+-- ) AS k(word)
+-- WHERE i.name = '마늘 기름';
+--
+-- -- [조미료명: 새우 기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('에비유'), ('shrimp oil'), ('새우유')
+-- ) AS k(word)
+-- WHERE i.name = '새우 기름';
+--
+-- -- [조미료명: 생강 기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('생강유'), ('ginger oil'), ('향신유')
+-- ) AS k(word)
+-- WHERE i.name = '생강 기름';
+--
+-- -- [조미료명: 미강유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('쌀눈유'), ('현미유'), ('rice bran oil')
+-- ) AS k(word)
+-- WHERE i.name = '미강유';
+--
+-- -- [조미료명: 채종유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('유채유'), ('카놀라유'), ('rapeseed oil')
+-- ) AS k(word)
+-- WHERE i.name = '채종유';
+--
+-- -- [조미료명: 홍유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고추기름'), ('라유'), ('chili oil')
+-- ) AS k(word)
+-- WHERE i.name = '홍유';
+--
+-- -- [조미료명: 호두 기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('walnut oil'), ('호두유'), ('견과유')
+-- ) AS k(word)
+-- WHERE i.name = '호두 기름';
+--
+-- -- [조미료명: 코코넛 오일]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('야자유'), ('coconut oil'), ('코코넛유')
+-- ) AS k(word)
+-- WHERE i.name = '코코넛 오일';
+--
+-- -- [조미료명: 팜유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('palm oil'), ('야자유'), ('식물성 유지')
+-- ) AS k(word)
+-- WHERE i.name = '팜유';
+--
+-- -- [조미료명: 차유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('차씨유'), ('카멜리아 오일'), ('tea seed oil')
+-- ) AS k(word)
+-- WHERE i.name = '차유';
+--
+-- -- [조미료명: 진장 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('흑식초'), ('중국 식초'), ('Chinkiang vinegar')
+-- ) AS k(word)
+-- WHERE i.name = '진장 식초';
+--
+-- -- [조미료명: 산서 노진초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('산서식초'), ('노진초'), ('aged vinegar')
+-- ) AS k(word)
+-- WHERE i.name = '산서 노진초';
+--
+-- -- [조미료명: 적식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('아카즈'), ('스시 식초'), ('red vinegar')
+-- ) AS k(word)
+-- WHERE i.name = '적식초';
+
+-- -- [조미료명: 백식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('화이트 식초'), ('투명 식초'), ('white vinegar')
+-- ) AS k(word)
+-- WHERE i.name = '백식초';
+--
+-- -- [조미료명: 흑초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('검은 식초'), ('현미 흑초'), ('kurozu')
+-- ) AS k(word)
+-- WHERE i.name = '흑초';
+--
+-- -- [조미료명: 곡물 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('현미 식초'), ('보리 식초'), ('grain vinegar')
+-- ) AS k(word)
+-- WHERE i.name = '곡물 식초';
+--
+-- -- [조미료명: 다시마 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('다시마초'), ('마제소바 식초'), ('kombu vinegar')
+-- ) AS k(word)
+-- WHERE i.name = '다시마 식초';
+--
+-- -- [조미료명: 스시 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('초대리'), ('배합초'), ('sushi vinegar')
+-- ) AS k(word)
+-- WHERE i.name = '스시 식초';
+--
+-- -- [조미료명: 가쓰오 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('가다랑어 식초'), ('가쓰오부시 식초'), ('katsuo vinegar')
+-- ) AS k(word)
+-- WHERE i.name = '가쓰오 식초';
+--
+-- -- [조미료명: 유자 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('유자초'), ('yuzu vinegar'), ('과일 식초')
+-- ) AS k(word)
+-- WHERE i.name = '유자 식초';
+--
+-- -- [조미료명: 매실 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('매실초'), ('plum vinegar'), ('우메스')
+-- ) AS k(word)
+-- WHERE i.name = '매실 식초';
+--
+-- -- [조미료명: 우지]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('쇠기름'), ('비프 탈로'), ('beef tallow')
+-- ) AS k(word)
+-- WHERE i.name = '우지';
+--
+-- -- [조미료명: 닭기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('치유'), ('치킨 오일'), ('chicken fat')
+-- ) AS k(word)
+-- WHERE i.name = '닭기름';
+--
+-- -- [조미료명: 오리 기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('오리유'), ('duck fat'), ('오리 지방')
+-- ) AS k(word)
+-- WHERE i.name = '오리 기름';
+--
+-- -- [조미료명: 양기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('양유'), ('mutton fat'), ('lamb tallow')
+-- ) AS k(word)
+-- WHERE i.name = '양기름';
+--
+-- -- [조미료명: 쇼트닝]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('쇼트닝 유지'), ('제과용 유지'), ('shortening')
+-- ) AS k(word)
+-- WHERE i.name = '쇼트닝';
+--
+-- -- [조미료명: 마가린]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('식물성 버터'), ('마가린 유지'), ('margarine')
+-- ) AS k(word)
+-- WHERE i.name = '마가린';
+--
+-- -- [조미료명: 화이트 와인]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('백포도주'), ('요리용 와인'), ('white wine')
+-- ) AS k(word)
+-- WHERE i.name = '화이트 와인';
+
+-- -- [조미료명: 레드 와인]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('적포도주'), ('red wine'), ('뱅루즈')
+-- ) AS k(word)
+-- WHERE i.name = '레드 와인';
+--
+-- -- [조미료명: 쉐리 와인]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('셰리주'), ('sherry'), ('주정강화와인')
+-- ) AS k(word)
+-- WHERE i.name = '쉐리 와인';
+--
+-- -- [조미료명: 포트 와인]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('포르투'), ('port wine'), ('주정강화와인')
+-- ) AS k(word)
+-- WHERE i.name = '포트 와인';
+--
+-- -- [조미료명: 마르살라 와인]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('마살라'), ('marsala'), ('이탈리아와인')
+-- ) AS k(word)
+-- WHERE i.name = '마르살라 와인';
+--
+-- -- [조미료명: 마데이라 와인]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('마데이라주'), ('madeira'), ('주정강화와인')
+-- ) AS k(word)
+-- WHERE i.name = '마데이라 와인';
+--
+-- -- [조미료명: 드라이 버무스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('베르무트'), ('vermouth'), ('식전주')
+-- ) AS k(word)
+-- WHERE i.name = '드라이 버무스';
+--
+-- -- [조미료명: 브랜디]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('brandy'), ('과실주'), ('식후주')
+-- ) AS k(word)
+-- WHERE i.name = '브랜디';
+--
+-- -- [조미료명: 코냑]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('꼬냑'), ('cognac'), ('고급브랜디')
+-- ) AS k(word)
+-- WHERE i.name = '코냑';
+--
+-- -- [조미료명: 럼]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('럼주'), ('rum'), ('사탕수수주')
+-- ) AS k(word)
+-- WHERE i.name = '럼';
+--
+-- -- [조미료명: 다크 럼]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('블랙럼'), ('dark rum'), ('숙성럼')
+-- ) AS k(word)
+-- WHERE i.name = '다크 럼';
+--
+-- -- [조미료명: 키르슈]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('키르시'), ('체리 브랜디'), ('kirsch')
+-- ) AS k(word)
+-- WHERE i.name = '키르슈';
+--
+-- -- [조미료명: 칼바도스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('깔바도스'), ('사과 브랜디'), ('calvados')
+-- ) AS k(word)
+-- WHERE i.name = '칼바도스';
+--
+-- -- [조미료명: 흑맥주]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('스타우트'), ('stout'), ('기네스')
+-- ) AS k(word)
+-- WHERE i.name = '흑맥주';
+--
+-- -- [조미료명: 라거 맥주]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('라거'), ('lager'), ('발효맥주')
+-- ) AS k(word)
+-- WHERE i.name = '라거 맥주';
+--
+-- -- [조미료명: 그랑 마니에르]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('그랑 마르니에'), ('grand marnier'), ('오렌지리큐르')
+-- ) AS k(word)
+-- WHERE i.name = '그랑 마니에르';
+
+-- -- [조미료명: 쿠앵트로]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('코인트로'), ('오렌지 리큐르'), ('cointreau')
+-- ) AS k(word)
+-- WHERE i.name = '쿠앵트로';
+--
+-- -- [조미료명: 몰트 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('맥아 식초'), ('malt vinegar'), ('보리 식초')
+-- ) AS k(word)
+-- WHERE i.name = '몰트 식초';
+--
+-- -- [조미료명: 샴페인 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('샴페인초'), ('champagne vinegar')
+-- ) AS k(word)
+-- WHERE i.name = '샴페인 식초';
+--
+-- -- [조미료명: 셰리 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('셰리초'), ('sherry vinegar'), ('주정 식초')
+-- ) AS k(word)
+-- WHERE i.name = '셰리 식초';
+--
+-- -- [조미료명: 화이트 발사믹 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('화이트 발사믹'), ('white balsamic'), ('백발사믹')
+-- ) AS k(word)
+-- WHERE i.name = '화이트 발사믹 식초';
+--
+-- -- [조미료명: 라즈베리 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('산딸기 식초'), ('raspberry vinegar'), ('베리 식초')
+-- ) AS k(word)
+-- WHERE i.name = '라즈베리 식초';
+--
+-- -- [조미료명: 타라곤 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('tarragon vinegar'), ('에스트라곤 식초'), ('허브 식초')
+-- ) AS k(word)
+-- WHERE i.name = '타라곤 식초';
+--
+-- -- [조미료명: 호두 오일]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('호두유'), ('walnut oil'), ('견과유')
+-- ) AS k(word)
+-- WHERE i.name = '호두 오일';
+--
+-- -- [조미료명: 헤이즐넛 오일]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('hazelnut oil'), ('개암나무 오일'), ('헤이즐넛유')
+-- ) AS k(word)
+-- WHERE i.name = '헤이즐넛 오일';
+--
+-- -- [조미료명: 호박씨 오일]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('호박씨유'), ('pumpkin seed oil')
+-- ) AS k(word)
+-- WHERE i.name = '호박씨 오일';
+--
+-- -- [조미료명: 아몬드 오일]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('아몬드유'), ('almond oil'), ('스위트 아몬드 오일')
+-- ) AS k(word)
+-- WHERE i.name = '아몬드 오일';
+--
+-- -- [조미료명: 스프레이 오일]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('뿌리는 기름'), ('오일 스프레이'), ('spray oil')
+-- ) AS k(word)
+-- WHERE i.name = '스프레이 오일';
+--
+-- -- [조미료명: 기]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('기 버터'), ('ghee'), ('정제 버터')
+-- ) AS k(word)
+-- WHERE i.name = '기';
+--
+-- -- [조미료명: 코코아 버터]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('카카오 버터'), ('cocoa butter'), ('cacao butter')
+-- ) AS k(word)
+-- WHERE i.name = '코코아 버터';
+--
+-- -- [조미료명: 청국장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('담북장'), ('cheonggukjang'), ('발효콩')
+-- ) AS k(word)
+-- WHERE i.name = '청국장';
+
+-- -- [조미료명: 춘장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('짜장 소스'), ('검은 된장'), ('chunjang')
+-- ) AS k(word)
+-- WHERE i.name = '춘장';
+--
+-- -- [조미료명: 막장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('막된장'), ('makjang'), ('빠개장')
+-- ) AS k(word)
+-- WHERE i.name = '막장';
+--
+-- -- [조미료명: 진간장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('조림간장'), ('jin-ganjang'), ('찜간장')
+-- ) AS k(word)
+-- WHERE i.name = '진간장';
+--
+-- -- [조미료명: 국간장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('집간장'), ('guk-ganjang'), ('청장')
+-- ) AS k(word)
+-- WHERE i.name = '국간장';
+--
+-- -- [조미료명: 양조간장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('왜간장'), ('brewed soy sauce'), ('생간장')
+-- ) AS k(word)
+-- WHERE i.name = '양조간장';
+--
+-- -- [조미료명: 조선간장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('재래간장'), ('한식간장'), ('전통간장')
+-- ) AS k(word)
+-- WHERE i.name = '조선간장';
+--
+-- -- [조미료명: 맛간장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('만능간장'), ('조림간장'), ('flavored soy sauce')
+-- ) AS k(word)
+-- WHERE i.name = '맛간장';
+--
+-- -- [조미료명: 초고추장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('초장'), ('chogochujang'), ('회초장')
+-- ) AS k(word)
+-- WHERE i.name = '초고추장';
+--
+-- -- [조미료명: 멸치액젓]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('멸치장'), ('anchovy sauce'), ('젓국')
+-- ) AS k(word)
+-- WHERE i.name = '멸치액젓';
+--
+-- -- [조미료명: 까나리액젓]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('까나리'), ('sand lance sauce'), ('액젓')
+-- ) AS k(word)
+-- WHERE i.name = '까나리액젓';
+--
+-- -- [조미료명: 참치액]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('참치액젓'), ('tuna sauce'), ('가쓰오액')
+-- ) AS k(word)
+-- WHERE i.name = '참치액';
+--
+-- -- [조미료명: 꽃게액젓]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('게액젓'), ('crab sauce'), ('꽃게장')
+-- ) AS k(word)
+-- WHERE i.name = '꽃게액젓';
+--
+-- -- [조미료명: 새우젓]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('육젓'), ('salted shrimp'), ('추젓')
+-- ) AS k(word)
+-- WHERE i.name = '새우젓';
+--
+-- -- [조미료명: 갈치속젓]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('갈치젓'), ('salted hairtail'), ('속젓')
+-- ) AS k(word)
+-- WHERE i.name = '갈치속젓';
+--
+-- -- [조미료명: 매실청]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('매실액'), ('plum extract'), ('매실엑기스')
+-- ) AS k(word)
+-- WHERE i.name = '매실청';
+
+-- -- [조미료명: 물엿]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('corn syrup'), ('요리당'), ('시럽')
+-- ) AS k(word)
+-- WHERE i.name = '물엿';
+--
+-- -- [조미료명: 올리고당]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('oligosaccharide'), ('건강당'), ('액당')
+-- ) AS k(word)
+-- WHERE i.name = '올리고당';
+--
+-- -- [조미료명: 조청]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('rice syrup'), ('쌀조청'), ('꿀물엿')
+-- ) AS k(word)
+-- WHERE i.name = '조청';
+--
+-- -- [조미료명: 미림]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('mirin'), ('맛술'), ('요리주')
+-- ) AS k(word)
+-- WHERE i.name = '미림';
+--
+-- -- [조미료명: 사과식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('apple vinegar'), ('사과초'), ('과일식초')
+-- ) AS k(word)
+-- WHERE i.name = '사과식초';
+--
+-- -- [조미료명: 현미식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('brown rice vinegar'), ('현미초'), ('곡물식초')
+-- ) AS k(word)
+-- WHERE i.name = '현미식초';
+--
+-- -- [조미료명: 연겨자]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('yellow mustard'), ('겨자'), ('머스타드')
+-- ) AS k(word)
+-- WHERE i.name = '연겨자';
+--
+-- -- [조미료명: 불고기 양념]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('bulgogi sauce'), ('고기 양념'), ('갈비 양념')
+-- ) AS k(word)
+-- WHERE i.name = '불고기 양념';
+--
+-- -- [조미료명: 양념치킨 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('치킨 소스'), ('닭강정 소스'), ('seasoned chicken sauce')
+-- ) AS k(word)
+-- WHERE i.name = '양념치킨 소스';
+--
+-- -- [조미료명: 두반장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('doubanjiang'), ('매운 된장'), ('사천 소스')
+-- ) AS k(word)
+-- WHERE i.name = '두반장';
+--
+-- -- [조미료명: 해선장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('hoisin sauce'), ('호이신'), ('월남쌈 소스')
+-- ) AS k(word)
+-- WHERE i.name = '해선장';
+--
+-- -- [조미료명: 노두유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('노추'), ('dark soy sauce'), ('검은 간장')
+-- ) AS k(word)
+-- WHERE i.name = '노두유';
+--
+-- -- [조미료명: 마라 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('마라 양념'), ('마라탕 소스'), ('mala sauce')
+-- ) AS k(word)
+-- WHERE i.name = '마라 소스';
+--
+-- -- [조미료명: 흑식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('black vinegar'), ('흑초'), ('진장 식초')
+-- ) AS k(word)
+-- WHERE i.name = '흑식초';
+--
+-- -- [조미료명: 소흥주]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('shaoxing wine'), ('요리용 술'), ('중국 술')
+-- ) AS k(word)
+-- WHERE i.name = '소흥주';
+
+-- -- [조미료명: 치킨스톡]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('닭육수'), ('치킨베이스'), ('닭고기다시')
+-- ) AS k(word)
+-- WHERE i.name = '치킨스톡';
+--
+-- -- [조미료명: XO 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('XO소스'), ('해물소스'), ('엑스오')
+-- ) AS k(word)
+-- WHERE i.name = 'XO 소스';
+--
+-- -- [조미료명: 칠리 갈릭 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('칠리갈릭'), ('고추마늘소스'), ('갈릭칠리')
+-- ) AS k(word)
+-- WHERE i.name = '칠리 갈릭 소스';
+--
+-- -- [조미료명: 미소 된장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('미소'), ('일본된장'), ('왜된장')
+-- ) AS k(word)
+-- WHERE i.name = '미소 된장';
+--
+-- -- [조미료명: 백미소]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('백미소'), ('흰된장'), ('시로미소')
+-- ) AS k(word)
+-- WHERE i.name = '백미소';
+--
+-- -- [조미료명: 적미소]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('적미소'), ('빨간된장'), ('아카미소')
+-- ) AS k(word)
+-- WHERE i.name = '적미소';
+--
+-- -- [조미료명: 유즈코쇼]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('유자후추'), ('유자고추'), ('유즈코쇼')
+-- ) AS k(word)
+-- WHERE i.name = '유즈코쇼';
+--
+-- -- [조미료명: 생와사비]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고추냉이'), ('생고추냉이'), ('와사비')
+-- ) AS k(word)
+-- WHERE i.name = '생와사비';
+--
+-- -- [조미료명: 쯔유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('국수장국'), ('메밀육수'), ('쯔유')
+-- ) AS k(word)
+-- WHERE i.name = '쯔유';
+--
+-- -- [조미료명: 폰즈 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('폰즈'), ('유자간장'), ('초간장')
+-- ) AS k(word)
+-- WHERE i.name = '폰즈 소스';
+--
+-- -- [조미료명: 데리야끼 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('데리야키'), ('볶음소스'), ('데리야끼')
+-- ) AS k(word)
+-- WHERE i.name = '데리야끼 소스';
+--
+-- -- [조미료명: 우스터 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('우스타'), ('우스터'), ('스테이크소스')
+-- ) AS k(word)
+-- WHERE i.name = '우스터 소스';
+--
+-- -- [조미료명: 타코야끼 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('타코야키'), ('문어빵소스'), ('타코야끼')
+-- ) AS k(word)
+-- WHERE i.name = '타코야끼 소스';
+--
+-- -- [조미료명: 시로다시]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('백다시'), ('흰육수'), ('시로다시')
+-- ) AS k(word)
+-- WHERE i.name = '시로다시';
+--
+-- -- [조미료명: 초대리]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('배합초'), ('초밥식초'), ('단초물')
+-- ) AS k(word)
+-- WHERE i.name = '초대리';
+
+-- -- [조미료명: 케첩]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('케찹'), ('토마토 케찹'), ('ketchup')
+-- ) AS k(word)
+-- WHERE i.name = '케첩';
+--
+-- -- [조미료명: 마요네즈]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('마요'), ('mayonnaise'), ('마요네즈 드레싱')
+-- ) AS k(word)
+-- WHERE i.name = '마요네즈';
+--
+-- -- [조미료명: 머스터드 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('머스타드'), ('mustard'), ('겨자소스')
+-- ) AS k(word)
+-- WHERE i.name = '머스터드 소스';
+--
+-- -- [조미료명: 허니 머스터드]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('꿀 머스타드'), ('honey mustard'), ('허니머스타드')
+-- ) AS k(word)
+-- WHERE i.name = '허니 머스터드';
+--
+-- -- [조미료명: 디종 머스터드]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('디종'), ('dijon'), ('프랑스 머스타드')
+-- ) AS k(word)
+-- WHERE i.name = '디종 머스터드';
+--
+-- -- [조미료명: 홀그레인 머스터드]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('씨겨자'), ('통겨자'), ('wholegrain')
+-- ) AS k(word)
+-- WHERE i.name = '홀그레인 머스터드';
+--
+-- -- [조미료명: 스테이크 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고기소스'), ('steak sauce'), ('에이원소스')
+-- ) AS k(word)
+-- WHERE i.name = '스테이크 소스';
+--
+-- -- [조미료명: 핫소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('매운소스'), ('hot sauce'), ('피자 소스')
+-- ) AS k(word)
+-- WHERE i.name = '핫소스';
+--
+-- -- [조미료명: 타바스코 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('타바스코'), ('tabasco'), ('핫소스')
+-- ) AS k(word)
+-- WHERE i.name = '타바스코 소스';
+--
+-- -- [조미료명: 스리라차 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('스리라차'), ('sriracha'), ('닭표소스')
+-- ) AS k(word)
+-- WHERE i.name = '스리라차 소스';
+--
+-- -- [조미료명: 스위트 칠리 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('칠리소스'), ('월남쌈 소스'), ('sweet chili')
+-- ) AS k(word)
+-- WHERE i.name = '스위트 칠리 소스';
+--
+-- -- [조미료명: 토마토 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('파스타 소스'), ('tomato sauce'), ('스파게티 소스')
+-- ) AS k(word)
+-- WHERE i.name = '토마토 소스';
+--
+-- -- [조미료명: 마리나라 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('토마토베이스'), ('marinara'), ('기본 파스타 소스')
+-- ) AS k(word)
+-- WHERE i.name = '마리나라 소스';
+--
+-- -- [조미료명: 볼로네제 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('미트 소스'), ('bolognese'), ('고기 토마토 소스')
+-- ) AS k(word)
+-- WHERE i.name = '볼로네제 소스';
+--
+-- -- [조미료명: 크림 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('화이트 소스'), ('cream sauce'), ('까르보나라 소스')
+-- ) AS k(word)
+-- WHERE i.name = '크림 소스';
+
+-- -- [조미료명: 알프레도 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('크림 소스'), ('화이트 소스'), ('alfredo')
+-- ) AS k(word)
+-- WHERE i.name = '알프레도 소스';
+--
+-- -- [조미료명: 로제 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('토마토 크림 소스'), ('핑크 소스'), ('rose sauce')
+-- ) AS k(word)
+-- WHERE i.name = '로제 소스';
+--
+-- -- [조미료명: 아라비아따 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('매운 토마토 소스'), ('아라비아타'), ('arrabbiata')
+-- ) AS k(word)
+-- WHERE i.name = '아라비아따 소스';
+--
+-- -- [조미료명: 바질 페스토]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('바질 소스'), ('페스토'), ('pesto')
+-- ) AS k(word)
+-- WHERE i.name = '바질 페스토';
+--
+-- -- [조미료명: 갈릭 디핑 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('갈릭 소스'), ('피자 소스'), ('마늘 디핑')
+-- ) AS k(word)
+-- WHERE i.name = '갈릭 디핑 소스';
+--
+-- -- [조미료명: 살사 소스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('살사'), ('멕시칸 소스'), ('나초 소스')
+-- ) AS k(word)
+-- WHERE i.name = '살사 소스';
+--
+-- -- [조미료명: 발사믹 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('발사믹'), ('포도 식초'), ('balsamic')
+-- ) AS k(word)
+-- WHERE i.name = '발사믹 식초';
+--
+-- -- [조미료명: 발사믹 글레이즈]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('발사믹 소스'), ('발사믹 크림'), ('balsamic glaze')
+-- ) AS k(word)
+-- WHERE i.name = '발사믹 글레이즈';
+--
+-- -- [조미료명: 화이트 와인 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('화이트 와인초'), ('백포도주 식초'), ('white wine vinegar')
+-- ) AS k(word)
+-- WHERE i.name = '화이트 와인 식초';
+--
+-- -- [조미료명: 레드 와인 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('레드 와인초'), ('적포도주 식초'), ('red wine vinegar')
+-- ) AS k(word)
+-- WHERE i.name = '레드 와인 식초';
+--
+-- -- [조미료명: 사과 식초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('사과초'), ('과일 식초'), ('apple vinegar')
+-- ) AS k(word)
+-- WHERE i.name = '사과 식초';
+--
+-- -- [조미료명: 트러플 오일]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('송로버섯 기름'), ('트러플 기름'), ('truffle oil')
+-- ) AS k(word)
+-- WHERE i.name = '트러플 오일';
+--
+-- -- [조미료명: 메이플 시럽]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('단풍나무 시럽'), ('메이플'), ('maple syrup')
+-- ) AS k(word)
+-- WHERE i.name = '메이플 시럽';
+--
+-- -- [조미료명: 굵은 소금]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('천일염'), ('왕소금'), ('간수 뺀 소금')
+-- ) AS k(word)
+-- WHERE i.name = '굵은 소금';
+--
+-- -- [조미료명: 꽃소금]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('재제염'), ('요리용 소금'), ('깨끗한 소금')
+-- ) AS k(word)
+-- WHERE i.name = '꽃소금';
+
+-- -- [조미료명: 맛소금]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('msg 소금'), ('가공 소금'), ('감칠맛 소금')
+-- ) AS k(word)
+-- WHERE i.name = '맛소금';
+--
+-- -- [조미료명: 구운 소금]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('가열염'), ('구운염'), ('roasted salt')
+-- ) AS k(word)
+-- WHERE i.name = '구운 소금';
+--
+-- -- [조미료명: 죽염]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('대나무 소금'), ('약소금'), ('bamboo salt')
+-- ) AS k(word)
+-- WHERE i.name = '죽염';
+--
+-- -- [조미료명: 허브맛 솔트]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('허브 소금'), ('허브솔트'), ('herb salt')
+-- ) AS k(word)
+-- WHERE i.name = '허브맛 솔트';
+--
+-- -- [조미료명: 함초 소금]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('퉁퉁마디 소금'), ('건강 소금'), ('함초염')
+-- ) AS k(word)
+-- WHERE i.name = '함초 소금';
+--
+-- -- [조미료명: 황설탕]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('노란 설탕'), ('브라운 슈가'), ('brown sugar')
+-- ) AS k(word)
+-- WHERE i.name = '황설탕';
+--
+-- -- [조미료명: 흑설탕]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('검은 설탕'), ('블랙 슈가'), ('black sugar')
+-- ) AS k(word)
+-- WHERE i.name = '흑설탕';
+--
+-- -- [조미료명: 자일로스 설탕]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('자일로스'), ('xylose sugar'), ('건강 설탕')
+-- ) AS k(word)
+-- WHERE i.name = '자일로스 설탕';
+--
+-- -- [조미료명: 스테비아]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('천연 감미료'), ('0칼로리 설탕'), ('stevia')
+-- ) AS k(word)
+-- WHERE i.name = '스테비아';
+--
+-- -- [조미료명: 뉴슈가]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('사카린'), ('당원'), ('감미료')
+-- ) AS k(word)
+-- WHERE i.name = '뉴슈가';
+--
+-- -- [조미료명: 신화당]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('사카린'), ('인공 감미료'), ('단맛 가루')
+-- ) AS k(word)
+-- WHERE i.name = '신화당';
+--
+-- -- [조미료명: 고춧가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고추가루'), ('red pepper powder'), ('칠리 파우더')
+-- ) AS k(word)
+-- WHERE i.name = '고춧가루';
+--
+-- -- [조미료명: 고운 고춧가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고운 가루'), ('다대기 가루'), ('미세 고춧가루')
+-- ) AS k(word)
+-- WHERE i.name = '고운 고춧가루';
+--
+-- -- [조미료명: 청양고추가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('매운 고춧가루'), ('청양가루'), ('매운 가루')
+-- ) AS k(word)
+-- WHERE i.name = '청양고추가루';
+--
+-- -- [조미료명: 실고추]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고명 고추'), ('shredded chili'), ('실고춧가루')
+-- ) AS k(word)
+-- WHERE i.name = '실고추';
+
+-- -- [조미료명: 고추씨]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고추씨앗'), ('매운맛'), ('chili seeds')
+-- ) AS k(word)
+-- WHERE i.name = '고추씨';
+--
+-- -- [조미료명: 캡사이신 분말]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('캡사이신 가루'), ('매운 가루'), ('capsaicin powder')
+-- ) AS k(word)
+-- WHERE i.name = '캡사이신 분말';
+--
+-- -- [조미료명: 통후추]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('후추알'), ('페퍼콘'), ('whole pepper')
+-- ) AS k(word)
+-- WHERE i.name = '통후추';
+--
+-- -- [조미료명: 백후추]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('흰후추'), ('화이트 페퍼'), ('white pepper')
+-- ) AS k(word)
+-- WHERE i.name = '백후추';
+--
+-- -- [조미료명: 깨소금]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('볶은 깨'), ('갈은 깨'), ('깨가루')
+-- ) AS k(word)
+-- WHERE i.name = '깨소금';
+--
+-- -- [조미료명: 미원]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('MSG'), ('엠에스지'), ('감칠맛')
+-- ) AS k(word)
+-- WHERE i.name = '미원';
+--
+-- -- [조미료명: 쇠고기 다시다]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('소고기 다시다'), ('beef dashida'), ('고향의 맛')
+-- ) AS k(word)
+-- WHERE i.name = '쇠고기 다시다';
+--
+-- -- [조미료명: 멸치 다시다]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('멸치 다시'), ('anchovy dashida'), ('국물 다시다')
+-- ) AS k(word)
+-- WHERE i.name = '멸치 다시다';
+--
+-- -- [조미료명: 조개 다시다]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('조개 다시'), ('해물 다시다'), ('clam dashida')
+-- ) AS k(word)
+-- WHERE i.name = '조개 다시다';
+--
+-- -- [조미료명: 멸치 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('멸치가루'), ('천연 조미료'), ('anchovy powder')
+-- ) AS k(word)
+-- WHERE i.name = '멸치 가루';
+--
+-- -- [조미료명: 새우 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('새우가루'), ('건새우 가루'), ('shrimp powder')
+-- ) AS k(word)
+-- WHERE i.name = '새우 가루';
+--
+-- -- [조미료명: 표고버섯 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('표고 가루'), ('버섯 가루'), ('mushroom powder')
+-- ) AS k(word)
+-- WHERE i.name = '표고버섯 가루';
+--
+-- -- [조미료명: 다시마 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('다시마가루'), ('해조류 가루'), ('kelp powder')
+-- ) AS k(word)
+-- WHERE i.name = '다시마 가루';
+--
+-- -- [조미료명: 생강 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('생강가루'), ('진저 파우더'), ('ginger powder')
+-- ) AS k(word)
+-- WHERE i.name = '생강 가루';
+--
+-- -- [조미료명: 마늘 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('마늘가루'), ('갈릭 파우더'), ('garlic powder')
+-- ) AS k(word)
+-- WHERE i.name = '마늘 가루';
+
+-- -- [조미료명: 양파 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('어니언 파우더'), ('양파분말'), ('onion powder')
+-- ) AS k(word)
+-- WHERE i.name = '양파 가루';
+--
+-- -- [조미료명: 산초 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('산초분'), ('산초'), ('추어탕 가루')
+-- ) AS k(word)
+-- WHERE i.name = '산초 가루';
+--
+-- -- [조미료명: 제피 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('초피가루'), ('젠피'), ('초피')
+-- ) AS k(word)
+-- WHERE i.name = '제피 가루';
+--
+-- -- [조미료명: 겨자 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('겨자분'), ('머스타드 파우더'), ('mustard powder')
+-- ) AS k(word)
+-- WHERE i.name = '겨자 가루';
+--
+-- -- [조미료명: 메주 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('메주분말'), ('된장가루'), ('고추장 메주')
+-- ) AS k(word)
+-- WHERE i.name = '메주 가루';
+--
+-- -- [조미료명: 엿기름]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('엿기름가루'), ('질금'), ('malt')
+-- ) AS k(word)
+-- WHERE i.name = '엿기름';
+--
+-- -- [조미료명: 계피 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('시나몬 파우더'), ('계피분'), ('cinnamon powder')
+-- ) AS k(word)
+-- WHERE i.name = '계피 가루';
+--
+-- -- [조미료명: 통계피]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('시나몬 스틱'), ('계피막대'), ('whole cinnamon')
+-- ) AS k(word)
+-- WHERE i.name = '통계피';
+--
+-- -- [조미료명: 감초]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('감초뿌리'), ('licorice'), ('한방재료')
+-- ) AS k(word)
+-- WHERE i.name = '감초';
+--
+-- -- [조미료명: 월계수 잎]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('월계수잎'), ('bay leaf'), ('고기잡내제거')
+-- ) AS k(word)
+-- WHERE i.name = '월계수 잎';
+--
+-- -- [조미료명: 치자]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('치자열매'), ('노란물'), ('gardenia')
+-- ) AS k(word)
+-- WHERE i.name = '치자';
+--
+-- -- [조미료명: 바질 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('바질 파우더'), ('말린 바질'), ('basil')
+-- ) AS k(word)
+-- WHERE i.name = '바질 가루';
+--
+-- -- [조미료명: 오레가노]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('oregano'), ('오레가노 홀'), ('피자 허브')
+-- ) AS k(word)
+-- WHERE i.name = '오레가노';
+--
+-- -- [조미료명: 파슬리 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('파슬리 후레이크'), ('parsley'), ('허브가루')
+-- ) AS k(word)
+-- WHERE i.name = '파슬리 가루';
+--
+-- -- [조미료명: 로즈마리 홀]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('로즈마리'), ('rosemary'), ('로즈마리 잎')
+-- ) AS k(word)
+-- WHERE i.name = '로즈마리 홀';
+
+-- -- [조미료명: 타임]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('thyme'), ('백리향'), ('타임 허브')
+-- ) AS k(word)
+-- WHERE i.name = '타임';
+--
+-- -- [조미료명: 딜 위드]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('dill'), ('허브 딜'), ('말린 딜')
+-- ) AS k(word)
+-- WHERE i.name = '딜 위드';
+--
+-- -- [조미료명: 타라곤]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('tarragon'), ('에스트라곤'), ('타라곤 허브')
+-- ) AS k(word)
+-- WHERE i.name = '타라곤';
+--
+-- -- [조미료명: 세이지]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('sage'), ('약쑥'), ('세이지 허브')
+-- ) AS k(word)
+-- WHERE i.name = '세이지';
+--
+-- -- [조미료명: 마조람]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('marjoram'), ('마요라나'), ('마조람 허브')
+-- ) AS k(word)
+-- WHERE i.name = '마조람';
+--
+-- -- [조미료명: 펜넬 씨드]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('fennel'), ('회향'), ('휀넬')
+-- ) AS k(word)
+-- WHERE i.name = '펜넬 씨드';
+--
+-- -- [조미료명: 민트 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('mint'), ('박하가루'), ('페퍼민트')
+-- ) AS k(word)
+-- WHERE i.name = '민트 가루';
+--
+-- -- [조미료명: 파프리카 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('paprika'), ('안매운 고춧가루'), ('레드페퍼 파우더')
+-- ) AS k(word)
+-- WHERE i.name = '파프리카 가루';
+--
+-- -- [조미료명: 훈제 파프리카 가루]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('smoked paprika'), ('스모크 파프리카'), ('훈연 가루')
+-- ) AS k(word)
+-- WHERE i.name = '훈제 파프리카 가루';
+--
+-- -- [조미료명: 카이엔 페퍼]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('cayenne'), ('카옌페퍼'), ('매운 고춧가루')
+-- ) AS k(word)
+-- WHERE i.name = '카이엔 페퍼';
+--
+-- -- [조미료명: 크러쉬드 레드 페퍼]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고추홀'), ('레드페퍼 홀'), ('crushed pepper')
+-- ) AS k(word)
+-- WHERE i.name = '크러쉬드 레드 페퍼';
+--
+-- -- [조미료명: 칠리 파우더]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('chili'), ('칠리가루'), ('멕시코 고춧가루')
+-- ) AS k(word)
+-- WHERE i.name = '칠리 파우더';
+--
+-- -- [조미료명: 큐민]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('cumin'), ('쯔란'), ('커민')
+-- ) AS k(word)
+-- WHERE i.name = '큐민';
+--
+-- -- [조미료명: 터메릭]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('turmeric'), ('강황'), ('울금')
+-- ) AS k(word)
+-- WHERE i.name = '터메릭';
+
+-- -- [조미료명: 넛맥]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('육두구'), ('nutmeg'), ('넛맥 가루')
+-- ) AS k(word)
+-- WHERE i.name = '넛맥';
+--
+-- -- [조미료명: 클로브]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('정향'), ('clove'), ('정향나무')
+-- ) AS k(word)
+-- WHERE i.name = '클로브';
+--
+-- -- [조미료명: 카다멈]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('카다몸'), ('소두구'), ('cardamom')
+-- ) AS k(word)
+-- WHERE i.name = '카다멈';
+--
+-- -- [조미료명: 코리안더 씨드]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고수 씨앗'), ('고수 씨'), ('coriander')
+-- ) AS k(word)
+-- WHERE i.name = '코리안더 씨드';
+--
+-- -- [조미료명: 올스파이스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('allspice'), ('자메이카 후추'), ('백미향')
+-- ) AS k(word)
+-- WHERE i.name = '올스파이스';
+--
+-- -- [조미료명: 스타아니스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('팔각'), ('팔각향'), ('star anise')
+-- ) AS k(word)
+-- WHERE i.name = '스타아니스';
+--
+-- -- [조미료명: 샤프란]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('사프란'), ('saffron'), ('샤프런')
+-- ) AS k(word)
+-- WHERE i.name = '샤프란';
+--
+-- -- [조미료명: 바닐라 빈]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('vanilla bean'), ('바닐라열매'), ('바닐라빈')
+-- ) AS k(word)
+-- WHERE i.name = '바닐라 빈';
+--
+-- -- [조미료명: 이탈리안 시즈닝]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('허브믹스'), ('이탈리안허브'), ('italian seasoning')
+-- ) AS k(word)
+-- WHERE i.name = '이탈리안 시즈닝';
+--
+-- -- [조미료명: 케이준 시즈닝]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('케이준 가루'), ('cajun'), ('케이준 스파이스')
+-- ) AS k(word)
+-- WHERE i.name = '케이준 시즈닝';
+--
+-- -- [조미료명: 타코 시즈닝]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('타코 가루'), ('멕시코 시즈닝'), ('taco')
+-- ) AS k(word)
+-- WHERE i.name = '타코 시즈닝';
+--
+-- -- [조미료명: 스테이크 시즈닝]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('스테이크 가루'), ('고기 시즈닝'), ('steak seasoning')
+-- ) AS k(word)
+-- WHERE i.name = '스테이크 시즈닝';
+--
+-- -- [조미료명: 갈릭 솔트]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('마늘 소금'), ('갈릭 소금'), ('garlic salt')
+-- ) AS k(word)
+-- WHERE i.name = '갈릭 솔트';
+--
+-- -- [조미료명: 트러플 소금]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('송로버섯 소금'), ('트러플 솔트'), ('truffle salt')
+-- ) AS k(word)
+-- WHERE i.name = '트러플 소금';
+--
+-- -- [조미료명: 핑크 솔트]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('히말라야 소금'), ('핑크 솔트'), ('pink salt')
+-- ) AS k(word)
+-- WHERE i.name = '핑크 솔트';
+--
+-- -- [조미료명: 레몬 페퍼]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('레몬 후추'), ('상큼한 후추'), ('lemon pepper')
+-- ) AS k(word)
+-- WHERE i.name = '레몬 페퍼';
+
+-- -- [조미료명: 사골 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('사골국'), ('사골곰탕'), ('bone broth')
+-- ) AS k(word)
+-- WHERE i.name = '사골 육수';
+--
+-- -- [조미료명: 멸치 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('멸치다시'), ('멸치장국'), ('anchovy stock')
+-- ) AS k(word)
+-- WHERE i.name = '멸치 육수';
+--
+-- -- [조미료명: 다시마 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('다시마물'), ('다시마장국'), ('kelp stock')
+-- ) AS k(word)
+-- WHERE i.name = '다시마 육수';
+--
+-- -- [조미료명: 고기 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('육수'), ('고기국물'), ('meat stock')
+-- ) AS k(word)
+-- WHERE i.name = '고기 육수';
+--
+-- -- [조미료명: 황태 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('북어육수'), ('황태국물'), ('pollack stock')
+-- ) AS k(word)
+-- WHERE i.name = '황태 육수';
+--
+-- -- [조미료명: 조개 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('조개국물'), ('모시조개육수'), ('clam stock')
+-- ) AS k(word)
+-- WHERE i.name = '조개 육수';
+--
+-- -- [조미료명: 해물 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('해물다시'), ('해물장국'), ('seafood stock')
+-- ) AS k(word)
+-- WHERE i.name = '해물 육수';
+--
+-- -- [조미료명: 동치미 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('동치미국물'), ('김치육수'), ('dongchimi')
+-- ) AS k(word)
+-- WHERE i.name = '동치미 육수';
+--
+-- -- [조미료명: 냉면 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('물냉면육수'), ('냉면국물'), ('naengmyeon stock')
+-- ) AS k(word)
+-- WHERE i.name = '냉면 육수';
+--
+-- -- [조미료명: 비프스톡]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('비프베이스'), ('소고기스톡'), ('beef stock')
+-- ) AS k(word)
+-- WHERE i.name = '비프스톡';
+--
+-- -- [조미료명: 코인 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('동전육수'), ('고체육수'), ('한알육수')
+-- ) AS k(word)
+-- WHERE i.name = '코인 육수';
+--
+-- -- [조미료명: 국시장국]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('국수장국'), ('국수육수'), ('소면육수')
+-- ) AS k(word)
+-- WHERE i.name = '국시장국';
+--
+-- -- [조미료명: 가쓰오부시 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('가다랑어육수'), ('가쓰오육수'), ('bonito stock')
+-- ) AS k(word)
+-- WHERE i.name = '가쓰오부시 육수';
+--
+-- -- [조미료명: 우동 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('우동장국'), ('우동국물'), ('udon broth')
+-- ) AS k(word)
+-- WHERE i.name = '우동 육수';
+--
+-- -- [조미료명: 메밀소바 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('소바장국'), ('쯔유'), ('soba broth')
+-- ) AS k(word)
+-- WHERE i.name = '메밀소바 육수';
+
+-- -- [조미료명: 샤브샤브 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('샤브 육수'), ('샤브샤브 베이스'), ('shabu broth')
+-- ) AS k(word)
+-- WHERE i.name = '샤브샤브 육수';
+--
+-- -- [조미료명: 마라탕 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('마라 육수'), ('마라탕 소스'), ('mala broth')
+-- ) AS k(word)
+-- WHERE i.name = '마라탕 육수';
+--
+-- -- [조미료명: 사골 곰탕]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('곰탕 국물'), ('진한 사골'), ('beef bone soup')
+-- ) AS k(word)
+-- WHERE i.name = '사골 곰탕';
+--
+-- -- [조미료명: 혼다시]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('가쓰오부시 가루'), ('hondashi'), ('다시 가루')
+-- ) AS k(word)
+-- WHERE i.name = '혼다시';
+--
+-- -- [조미료명: 멘쯔유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('소바 장국'), ('mentsuyu'), ('면사랑 장국')
+-- ) AS k(word)
+-- WHERE i.name = '멘쯔유';
+--
+-- -- [조미료명: 가쓰오 장국]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('가쓰오 육수'), ('가다랑어 장국'), ('katsuo dashi')
+-- ) AS k(word)
+-- WHERE i.name = '가쓰오 장국';
+--
+-- -- [조미료명: 돈코츠 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('돼지 사골'), ('돈골 육수'), ('tonkotsu broth')
+-- ) AS k(word)
+-- WHERE i.name = '돈코츠 육수';
+--
+-- -- [조미료명: 소유 라멘 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('간장 라멘'), ('소유 베이스'), ('shoyu ramen')
+-- ) AS k(word)
+-- WHERE i.name = '소유 라멘 육수';
+--
+-- -- [조미료명: 미소 라멘 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('된장 라멘'), ('미소 베이스'), ('miso ramen')
+-- ) AS k(word)
+-- WHERE i.name = '미소 라멘 육수';
+--
+-- -- [조미료명: 시오 라멘 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('소금 라멘'), ('시오 베이스'), ('shio ramen')
+-- ) AS k(word)
+-- WHERE i.name = '시오 라멘 육수';
+--
+-- -- [조미료명: 토리 파이탄]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('닭 백탕'), ('닭 진국'), ('tori paitan')
+-- ) AS k(word)
+-- WHERE i.name = '토리 파이탄';
+--
+-- -- [조미료명: 오뎅 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('어묵 국물'), ('어묵 육수'), ('oden broth')
+-- ) AS k(word)
+-- WHERE i.name = '오뎅 육수';
+--
+-- -- [조미료명: 스키야키 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('스키야키 소스'), ('관동식 육수'), ('sukiyaki broth')
+-- ) AS k(word)
+-- WHERE i.name = '스키야키 육수';
+--
+-- -- [조미료명: 텐쯔유]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('튀김 간장'), ('덴다시'), ('tentsuyu')
+-- ) AS k(word)
+-- WHERE i.name = '텐쯔유';
+--
+-- -- [조미료명: 다시마 엑기스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('다시마 농축액'), ('다시마 추출물'), ('kelp extract')
+-- ) AS k(word)
+-- WHERE i.name = '다시마 엑기스';
+
+-- -- [조미료명: 가리비 엑기스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('가리비 농축액'), ('가리비 베이스'), ('scallop extract')
+-- ) AS k(word)
+-- WHERE i.name = '가리비 엑기스';
+--
+-- -- [조미료명: 게 엑기스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('게 농축액'), ('꽃게 엑기스'), ('crab extract')
+-- ) AS k(word)
+-- WHERE i.name = '게 엑기스';
+--
+-- -- [조미료명: 치킨 파우더]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('닭고기 가루'), ('치킨 스톡 가루'), ('chicken powder')
+-- ) AS k(word)
+-- WHERE i.name = '치킨 파우더';
+--
+-- -- [조미료명: 농축 치킨스톡]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('진한 치킨스톡'), ('액상 치킨스톡'), ('concentrated chicken stock')
+-- ) AS k(word)
+-- WHERE i.name = '농축 치킨스톡';
+--
+-- -- [조미료명: 사골 분말]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('사골 가루'), ('곰탕 분말'), ('bone powder')
+-- ) AS k(word)
+-- WHERE i.name = '사골 분말';
+--
+-- -- [조미료명: 상탕 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('중식 상탕'), ('고급 육수'), ('shangtang')
+-- ) AS k(word)
+-- WHERE i.name = '상탕 육수';
+--
+-- -- [조미료명: 청탕 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('맑은 중식 육수'), ('청탕'), ('clear soup')
+-- ) AS k(word)
+-- WHERE i.name = '청탕 육수';
+--
+-- -- [조미료명: 백탕 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('하얀 육수'), ('중식 백탕'), ('white soup')
+-- ) AS k(word)
+-- WHERE i.name = '백탕 육수';
+--
+-- -- [조미료명: 홍탕 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('매운 육수'), ('마라 홍탕'), ('spicy soup')
+-- ) AS k(word)
+-- WHERE i.name = '홍탕 육수';
+--
+-- -- [조미료명: 토마토 탕 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('토마토 베이스'), ('토마토 마라탕'), ('tomato soup')
+-- ) AS k(word)
+-- WHERE i.name = '토마토 탕 육수';
+--
+-- -- [조미료명: 버섯 탕 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('버섯 육수 베이스'), ('버섯탕 소스'), ('mushroom soup')
+-- ) AS k(word)
+-- WHERE i.name = '버섯 탕 육수';
+--
+-- -- [조미료명: 우육면 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('우육탕'), ('소고기 면 육수'), ('beef noodle broth')
+-- ) AS k(word)
+-- WHERE i.name = '우육면 육수';
+--
+-- -- [조미료명: 짬뽕 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('짬뽕 소스'), ('짬뽕 국물 베이스'), ('jjamppong broth')
+-- ) AS k(word)
+-- WHERE i.name = '짬뽕 육수';
+--
+-- -- [조미료명: 나가사키 짬뽕 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('백짬뽕 육수'), ('나가사키 베이스'), ('nagasaki broth')
+-- ) AS k(word)
+-- WHERE i.name = '나가사키 짬뽕 육수';
+--
+-- -- [조미료명: 해물 육수 페이스트]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('해물 페이스트'), ('해산물 베이스'), ('seafood paste')
+-- ) AS k(word)
+-- WHERE i.name = '해물 육수 페이스트';
+
+-- -- [조미료명: 노계 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('노계국물'), ('늙은닭육수'), ('노계다시')
+-- ) AS k(word)
+-- WHERE i.name = '노계 육수';
+--
+-- -- [조미료명: 치킨 브로스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('닭육수'), ('닭국물'), ('chicken broth')
+-- ) AS k(word)
+-- WHERE i.name = '치킨 브로스';
+--
+-- -- [조미료명: 비프 브로스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('소고기육수'), ('소고기국물'), ('beef broth')
+-- ) AS k(word)
+-- WHERE i.name = '비프 브로스';
+--
+-- -- [조미료명: 베지터블 브로스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('야채육수'), ('채수'), ('vegetable broth')
+-- ) AS k(word)
+-- WHERE i.name = '베지터블 브로스';
+--
+-- -- [조미료명: 치킨 부이용 큐브]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고체치킨스톡'), ('치킨부용'), ('치킨큐브')
+-- ) AS k(word)
+-- WHERE i.name = '치킨 부이용 큐브';
+--
+-- -- [조미료명: 비프 부이용 큐브]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고체비프스톡'), ('비프부용'), ('비프큐브')
+-- ) AS k(word)
+-- WHERE i.name = '비프 부이용 큐브';
+--
+-- -- [조미료명: 야채 부이용 큐브]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('채수큐브'), ('야채부용'), ('베지터블큐브')
+-- ) AS k(word)
+-- WHERE i.name = '야채 부이용 큐브';
+--
+-- -- [조미료명: 비프 콘소메]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('소고기콘소메'), ('콘소메'), ('맑은소고기육수')
+-- ) AS k(word)
+-- WHERE i.name = '비프 콘소메';
+--
+-- -- [조미료명: 클램 쥬스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('조개육수'), ('조개즙'), ('clam juice')
+-- ) AS k(word)
+-- WHERE i.name = '클램 쥬스';
+--
+-- -- [조미료명: 칠면조 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('터키스톡'), ('터키육수'), ('turkey stock')
+-- ) AS k(word)
+-- WHERE i.name = '칠면조 육수';
+--
+-- -- [조미료명: 본 브로스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('사골육수'), ('뼈육수'), ('bone broth')
+-- ) AS k(word)
+-- WHERE i.name = '본 브로스';
+--
+-- -- [조미료명: 브라운 스톡]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('브라운육수'), ('볶은육수'), ('brown stock')
+-- ) AS k(word)
+-- WHERE i.name = '브라운 스톡';
+--
+-- -- [조미료명: 화이트 스톡]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('화이트육수'), ('맑은스톡'), ('white stock')
+-- ) AS k(word)
+-- WHERE i.name = '화이트 스톡';
+--
+-- -- [조미료명: 송아지 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('빌스톡'), ('송아지스톡'), ('veal stock')
+-- ) AS k(word)
+-- WHERE i.name = '송아지 육수';
+--
+-- -- [조미료명: 피쉬 스톡]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('생선육수'), ('생선스톡'), ('fish stock')
+-- ) AS k(word)
+-- WHERE i.name = '피쉬 스톡';
+
+-- -- [조미료명: 랍스터 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('랍스터스톡'), ('바닷가재육수'), ('lobster stock')
+-- ) AS k(word)
+-- WHERE i.name = '랍스터 육수';
+--
+-- -- [조미료명: 새우 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('새우베이스'), ('새우국물'), ('shrimp stock')
+-- ) AS k(word)
+-- WHERE i.name = '새우 육수';
+--
+-- -- [조미료명: 램 스톡]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('양고기육수'), ('양스톡'), ('lamb stock')
+-- ) AS k(word)
+-- WHERE i.name = '램 스톡';
+--
+-- -- [조미료명: 데미글라스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('데미그라스'), ('브라운소스'), ('demi-glace')
+-- ) AS k(word)
+-- WHERE i.name = '데미글라스';
+--
+-- -- [조미료명: 주 드 비앙드]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('고기주즙'), ('비앙드'), ('jus de viande')
+-- ) AS k(word)
+-- WHERE i.name = '주 드 비앙드';
+--
+-- -- [조미료명: 쿠르 부이용]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('쿠르부용'), ('단기육수'), ('court bouillon')
+-- ) AS k(word)
+-- WHERE i.name = '쿠르 부이용';
+--
+-- -- [조미료명: 머쉬룸 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('버섯육수'), ('버섯베이스'), ('mushroom stock')
+-- ) AS k(word)
+-- WHERE i.name = '머쉬룸 육수';
+--
+-- -- [조미료명: 포르치니 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('그물버섯육수'), ('포르치니베이스'), ('porcini stock')
+-- ) AS k(word)
+-- WHERE i.name = '포르치니 육수';
+--
+-- -- [조미료명: 어니언 스프 베이스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('양파스프'), ('양파육수'), ('onion soup base')
+-- ) AS k(word)
+-- WHERE i.name = '어니언 스프 베이스';
+--
+-- -- [조미료명: 파마산 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('치즈육수'), ('치즈껍질육수'), ('parmesan broth')
+-- ) AS k(word)
+-- WHERE i.name = '파마산 육수';
+--
+-- -- [조미료명: 로스트 갈릭 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('구운마늘육수'), ('갈릭베이스'), ('roasted garlic stock')
+-- ) AS k(word)
+-- WHERE i.name = '로스트 갈릭 육수';
+--
+-- -- [조미료명: 햄 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('햄스톡'), ('훈제고기육수'), ('ham stock')
+-- ) AS k(word)
+-- WHERE i.name = '햄 육수';
+--
+-- -- [조미료명: 미르포아 베이스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('향신채소베이스'), ('미르푸아'), ('mirepoix')
+-- ) AS k(word)
+-- WHERE i.name = '미르포아 베이스';
+--
+-- -- [조미료명: 토마토 야채 육수]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('토마토채수'), ('토마토야채'), ('tomato vegetable stock')
+-- ) AS k(word)
+-- WHERE i.name = '토마토 야채 육수';
+--
+-- -- [조미료명: 베터 댄 부이용]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('베터댄부용'), ('농축부이용'), ('better than bouillon')
+-- ) AS k(word)
+-- WHERE i.name = '베터 댄 부이용';
+--
+-- -- [조미료명: 그레이비 믹스]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('그레이비 가루'), ('스테이크 소스 가루'), ('gravy mix')
+-- ) AS k(word)
+-- WHERE i.name = '그레이비 믹스';
+--
+-- -- [조미료명: 간장]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('soy sauce'), ('진간장'), ('양조간장')
+-- ) AS k(word)
+-- WHERE i.name = '간장';
+--
+-- -- [조미료명: 후추]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('black pepper'), ('후춧가루'), ('가루후추')
+-- ) AS k(word)
+-- WHERE i.name = '후추';
+--
+-- -- [조미료명: 맛술]
+-- INSERT INTO spice_keywords (spice_id, keyword)
+-- SELECT i.id, k.word
+-- FROM spices i
+--          CROSS JOIN (
+--     VALUES
+--         ('미림'), ('요리주'), ('cooking wine')
+-- ) AS k(word)
+-- WHERE i.name = '맛술';
+
+-- -- 동일한 조미료에 중복으로 등록된 키워드 찾기
+-- SELECT
+--     s.name AS spice_name,
+--     sk.keyword,
+--     COUNT(*) AS occurrence_count
+-- FROM spice_keywords sk
+--          JOIN spices s ON sk.spice_id = s.id
+-- GROUP BY s.name, sk.keyword
+-- HAVING COUNT(*) > 1;
+--
+-- -- 키워드가 하나도 등록되지 않은 조미료 찾기
+-- SELECT
+--     s.id,
+--     s.name
+-- FROM spices s
+--          LEFT JOIN spice_keywords sk ON s.id = sk.spice_id
+-- WHERE sk.spice_id IS NULL;
