@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 8000
 
 # 6. 서버 실행
-CMD ["python", "one_more_server.py"]
+CMD ["python", "main.py"]

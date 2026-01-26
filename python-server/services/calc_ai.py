@@ -1,6 +1,6 @@
 import os
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from dotenv import load_dotenv
+from core.config import settings
 from collections import deque
 import shutil
 import json
@@ -12,30 +12,49 @@ from PIL import Image
 from google.api_core import exceptions
 from langchain_core.documents import Document
 from langchain_classic.chains import RetrievalQA
-from langchain_community.vectorstores import Chroma
+
 import pandas as pd
 import traceback
 import csv
 import time
 import re
-from langchain_community.embeddings import HuggingFaceEmbeddings
 
-load_dotenv()
 
-openai_llm = ChatOpenAI(model="gpt-4o-mini")
-
-genai_api_key = os.getenv("GOOGLE_API_KEY")
+genai_api_key = settings.GOOGLE_API_KEY
 genai.configure(api_key=genai_api_key)
 
-genai_embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-small")
-# genai_embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-genai_persist_dir = "./chroma_db"
-genai_vectorstore = Chroma(
-    persist_directory=genai_persist_dir,
-    embedding_function=genai_embeddings
-)
 
-UPLOAD_DIR = "./uploads"
+# [수정] 전역 변수에서 무거운 객체 생성을 제거하고 None으로 초기화합니다.
+openai_llm = None
+genai_embeddings = None
+genai_vectorstore = None
+
+def get_openai_llm():
+    global openai_llm
+    if openai_llm is None:
+        from langchain_openai import ChatOpenAI
+        openai_llm = ChatOpenAI(model="gpt-4o-mini")
+    return openai_llm
+
+
+def get_vectorstore():
+    global genai_embeddings, genai_vectorstore
+    if genai_vectorstore is None:
+        # [중요] 실제 호출될 때 비로소 라이브러리를 로드하고 모델을 읽어옵니다.
+        from langchain_community.embeddings import HuggingFaceEmbeddings
+        from langchain_community.vectorstores import Chroma
+
+        print("🔄 AI 모델 및 벡터 DB 로딩 중... (최초 1회 실행)")
+        genai_embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-small")
+        # genai_embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+        genai_persist_dir = "../chroma_db"
+        genai_vectorstore = Chroma(
+            persist_directory=genai_persist_dir,
+            embedding_function=genai_embeddings
+        )
+    return genai_vectorstore
+
+UPLOAD_DIR = "../uploads"
 
 recipe_titles = deque(maxlen=9)
 
@@ -57,7 +76,7 @@ multimodel_candidates = [
 
 class AnalyzeOpenAi:
     def __init__(self):
-        pass
+        get_openai_llm()
 
     def get_recipe(self, msg):
         return openai_llm.invoke(msg)
@@ -78,17 +97,13 @@ class AnalyzeGenai:
                     shutil.copyfileobj(image.file, buffer)
                 self.saved_file_paths.append(file_path)
         # [추천] 변수들을 여기서 미리 선언해두면 나중에 찾기 편합니다.
-        self.image_prompt_json = None
-        self.default_recipe_prompt_json = None
-        self.another_recipe_prompt_json = None
-        self.more_recipe_prompt_json = None
         self.get_json_temp_path()
 
     #region 기본 json형식 설정
     #기본 json형식 설정
     def get_json_temp_path(self):
         current_path = os.path.dirname(os.path.abspath(__file__))
-        temp_json_path = "temp_json"
+        temp_json_path = "../temp_json"
         image_json_path = os.path.join(current_path, temp_json_path, "temp_for_image_json.txt")
         self.image_prompt_json = self.load_temp_json(image_json_path)
 
@@ -262,9 +277,10 @@ class AnalyzeGenai:
             print(f"에러 메시지: {e}")
             traceback.print_exc()
     # endregion
-    def get_chef_recipe(self, preference, ingredients, spice):
+    def get_chef_recipe(self, preference, ingredients, spice,temp=""):
         # 벡터 DB 에서 검색 하기
-        retriever = genai_vectorstore.as_retriever(search_kwargs={"k": 3})  # 관련 레시피 3개 검색
+        vectorstore = get_vectorstore()
+        retriever = vectorstore.as_retriever(search_kwargs={"k": 3})  # 관련 레시피 3개 검색
         for model_name in model_candidates:
             try:
                 print("현재 모델 이름:", model_name)
@@ -282,6 +298,7 @@ class AnalyzeGenai:
                     return_source_documents=True  # 어떤 레시피를 참고했는지 알려달라고 설정
                 )
                 prompt = f"""
+                {temp}
                 너는 세계 최고의 요리사야. 
                 아래 제공된 [취향 정보],[식재료 정보],[조미료 정보]를 바탕으로 내가 원하는 레시피 3개를 추천해줘.
                 만약 정보에 없는 내용이라면 지어내지 말고 "모르겠습니다"라고 답해줘. 답변은 한글로 상세하게.
@@ -318,6 +335,8 @@ class AnalyzeGenai:
                 # 횟수 초과(Quota) 오류 발생
                 print(f"현재 모델 이름:{model_name} 한도 초과! 모델로 전환하여 다시 시도합니다.")
                 pass
+            except json.decoder.JSONDecodeError:
+                self.get_chef_recipe(preference, ingredients, spice,'json형식이 안맞았어. 다시 확인해서 보내줘')
 
         return None
     #endregion
