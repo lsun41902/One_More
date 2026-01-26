@@ -49,7 +49,7 @@ public class RecipeController {
         }
     }
 
-    // 레시피 생성
+    //  레시피 생성
     @Operation(summary = "2단계: 레시피 생성 요청", description = "action 값(initial, basic, more)에 따라 알맞은 레시피 생성 API를 호출합니다.")
     @PostMapping("/generate")
     public List<RecipeResponse> generateRecipe(

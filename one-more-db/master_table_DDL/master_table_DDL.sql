@@ -28,6 +28,7 @@ CREATE TABLE ingredients (
 -- 2-3. 조미료 마스터 테이블 (표준 이름)
 CREATE TABLE spices (
     id SERIAL PRIMARY KEY,
+    category VARCHAR(20) NOT NULL,
     name VARCHAR(100) NOT NULL UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -80,6 +81,3 @@ CREATE TABLE recipes (
 	reference_link TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-
-
