@@ -43,7 +43,7 @@ async def analyze(request: RequestRecipe):
 #endregion
 
 #region 레시피 - 재료가 더 있다면
-@router.post("/recipes-generate-more",
+@router.post("/more",
     tags=["레시피"],
     summary="추가 재료 레시피(3) 추천",
     description="추가로 재료가 더 있다면 이런 음식도 가능해요!")
