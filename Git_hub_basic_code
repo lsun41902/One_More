@@ -12,7 +12,7 @@ git stash : 현재 수정사항을 잠시 따로 저장해두기. (그래야 다
 
 git add .: git 폴더에 내 작업내용 저장.(로컬저장이랑 달라서 따로 해줘야함)
 
-git commit 브랜치이름 -m : '내 현재 브랜치'에 커밋 (메시지 꼭 달아줘야함)
+git commit -m : '내 현재 브랜치'에 커밋 (메시지 꼭 달아줘야함)
 
 git push 이름 브랜치 : 해당 이름으로 현재 브랜치에서 git 브랜치로 푸쉬.
 EX) git push SeungEun java-server
