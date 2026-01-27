@@ -47,7 +47,11 @@ def get_vectorstore():
         print("🔄 AI 모델 및 벡터 DB 로딩 중... (최초 1회 실행)")
         genai_embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-small")
         # genai_embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-        genai_persist_dir = "../chroma_db"
+        current_dir = os.path.dirname(os.path.abspath(__file__))  # services 폴더
+        genai_persist_dir = os.path.join(current_dir, "..", "chroma_db")
+
+        # 제대로 잡혔는지 확인 출력
+        print(f"📍 연결된 DB 경로: {os.path.abspath(genai_persist_dir)}")
         genai_vectorstore = Chroma(
             persist_directory=genai_persist_dir,
             embedding_function=genai_embeddings
