@@ -198,7 +198,7 @@
 -- ) AS k(word)
 -- WHERE i.name = '저지방 우유';
 --
-
+--
 -- -- [재료명: 무지방 우유]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -348,7 +348,7 @@
 --         ('cream cheese'), ('발라먹는 치즈'), ('베이글 치즈')
 -- ) AS k(word)
 -- WHERE i.name = '크림 치즈';
-
+--
 -- -- [재료명: 리코타 치즈]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -498,8 +498,8 @@
 --         ('plain yogurt'), ('무가당 요거트'), ('요거트')
 -- ) AS k(word)
 -- WHERE i.name = '플레인 요거트';
-
--- [재료명: 그릭 요거트]
+--
+-- -- [재료명: 그릭 요거트]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
 -- FROM ingredients i
@@ -648,7 +648,7 @@
 --         ('grape'), ('거봉'), ('머루포도')
 -- ) AS k(word)
 -- WHERE i.name = '포도';
-
+--
 -- -- [재료명: 거봉]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -798,8 +798,8 @@
 --         ('lime'), ('라임즙'), ('라임제스트')
 -- ) AS k(word)
 -- WHERE i.name = '라임';
-
--- [재료명: 자몽]
+--
+-- -- [재료명: 자몽]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
 -- FROM ingredients i
@@ -998,8 +998,8 @@
 --         ('loquat'), ('비파열매')
 -- ) AS k(word)
 -- WHERE i.name = '비파';
-
--- [재료명: 산사 열매]
+--
+-- -- [재료명: 산사 열매]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
 -- FROM ingredients i
@@ -1188,8 +1188,8 @@
 --         ('akebia'), ('한국 바나나'), ('목통')
 -- ) AS k(word)
 -- WHERE i.name = '으름';
-
--- [재료명: 블랙커런트]
+--
+-- -- [재료명: 블랙커런트]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
 -- FROM ingredients i
@@ -1388,8 +1388,8 @@
 --         ('date palm'), ('데이츠'), ('만수르 간식')
 -- ) AS k(word)
 -- WHERE i.name = '대추야자';
-
--- [재료명: 푸룬]
+--
+-- -- [재료명: 푸룬]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
 -- FROM ingredients i
@@ -1578,8 +1578,8 @@
 --         ('sorghum'), ('찰수수'), ('수수쌀')
 -- ) AS k(word)
 -- WHERE i.name = '수수';
-
--- [재료명: 찰수수]
+--
+-- -- [재료명: 찰수수]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
 -- FROM ingredients i
@@ -1778,8 +1778,8 @@
 --         ('lentil'), ('렌즈콩')
 -- ) AS k(word)
 -- WHERE i.name = '렌틸콩';
-
--- [재료명: 병아리콩]
+--
+-- -- [재료명: 병아리콩]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
 -- FROM ingredients i
@@ -1978,8 +1978,8 @@
 --         ('sesame'), ('통깨'), ('볶은깨')
 -- ) AS k(word)
 -- WHERE i.name = '참깨';
-
--- [재료명: 통깨]
+--
+-- -- [재료명: 통깨]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
 -- FROM ingredients i
@@ -2178,7 +2178,7 @@
 --         ('coconut chips'), ('구운 코코넛'), ('말린 코코넛')
 -- ) AS k(word)
 -- WHERE i.name = '코코넛 칩';
-
+--
 -- -- [재료명: 코코넛 슬라이스]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -2378,7 +2378,7 @@
 --         ('pili nut'), ('필리너트')
 -- ) AS k(word)
 -- WHERE i.name = '필리넛';
-
+--
 -- -- [재료명: 바루넛]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -2558,7 +2558,7 @@
 --         ('back ribs'), ('쪽갈비'), ('폭립')
 -- ) AS k(word)
 -- WHERE i.name = '돼지 등갈비';
-
+--
 -- -- [재료명: 돼지 등심]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -2758,7 +2758,7 @@
 --         ('minced beef'), ('소고기 민찌'), ('갈은 소고기')
 -- ) AS k(word)
 -- WHERE i.name = '다진 소고기';
-
+--
 -- -- [재료명: 채끝살]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -2948,7 +2948,7 @@
 --         ('porterhouse'), ('포터하우스 스테이크'), ('왕 티본')
 -- ) AS k(word)
 -- WHERE i.name = '포터하우스';
-
+--
 -- -- [재료명: 토마호크]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -3118,7 +3118,7 @@
 --         ('kielbasa'), ('말발굽 소시지'), ('폴란드 소시지')
 -- ) AS k(word)
 -- WHERE i.name = '킬바사';
-
+--
 -- -- [재료명: 닭봉]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -3278,7 +3278,7 @@
 --         ('beef shank'), ('아롱사태'), ('장조림용 소고기')
 -- ) AS k(word)
 -- WHERE i.name = '소고기 사태';
-
+--
 -- -- [재료명: 소 힘줄]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -3478,7 +3478,7 @@
 --         ('rib meat'), ('늑간살'), ('황제갈비살')
 -- ) AS k(word)
 -- WHERE i.name = '소 갈비살';
-
+--
 -- -- [재료명: 도가니]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -3678,7 +3678,7 @@
 --         ('fried tofu curd'), ('유부초밥용'), ('조미 유부')
 -- ) AS k(word)
 -- WHERE i.name = '유부';
-
+--
 -- -- [재료명: 콩비지]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -3868,7 +3868,7 @@
 --         ('buckwheat noodles'), ('소바'), ('막국수')
 -- ) AS k(word)
 -- WHERE i.name = '메밀면';
-
+--
 -- -- [재료명: 쌀국수면]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -4048,7 +4048,7 @@
 --         ('pickled radish'), ('다쿠앙'), ('김밥 단무지')
 -- ) AS k(word)
 -- WHERE i.name = '단무지';
-
+--
 -- -- [재료명: 쌈무]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -4248,7 +4248,7 @@
 --         ('fukujinzuke'), ('오복채'), ('카레 단무지')
 -- ) AS k(word)
 -- WHERE i.name = '후쿠진즈케';
-
+--
 -- -- [재료명: 시오콘부]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -4448,7 +4448,7 @@
 --         ('rigatoni'), ('원통 파스타')
 -- ) AS k(word)
 -- WHERE i.name = '리가토니';
-
+--
 -- -- [재료명: 파르팔레]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -4608,7 +4608,7 @@
 --         ('sauerkraut'), ('독일 김치'), ('양배추 절임')
 -- ) AS k(word)
 -- WHERE i.name = '사워크라우트';
-
+--
 -- -- [재료명: 베이글]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -4768,7 +4768,7 @@
 --         ('onion ring'), ('양파 튀김'), ('양파링')
 -- ) AS k(word)
 -- WHERE i.name = '어니언링';
-
+--
 -- -- [재료명: 핫케이크 가루]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -5008,7 +5008,7 @@
 --         ('canned pineapple'), ('파인애플 캔')
 -- ) AS k(word)
 -- WHERE i.name = '파인애플 통조림';
-
+--
 -- -- [재료명: 후르츠 칵테일]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -5158,7 +5158,7 @@
 --         ('white sea squirt'), ('오만득이'), ('주름 미더덕')
 -- ) AS k(word)
 -- WHERE i.name = '오만둥이';
-
+--
 -- -- [재료명: 재첩]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -5308,7 +5308,7 @@
 --         ('monkfish'), ('anglerfish'), ('아구')
 -- ) AS k(word)
 -- WHERE i.name = '아귀';
-
+--
 -- -- [재료명: 도루묵]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -5458,7 +5458,7 @@
 --         ('seaweed fulvescens'), ('매생이국용'), ('감태')
 -- ) AS k(word)
 -- WHERE i.name = '매생이';
-
+--
 -- -- [재료명: 연어]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -5608,7 +5608,7 @@
 --         ('toothfish'), ('메로구이'), ('chilean sea bass')
 -- ) AS k(word)
 -- WHERE i.name = '메로';
-
+--
 -- -- [재료명: 아귀 간]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -5759,7 +5759,7 @@
 -- ) AS k(word)
 -- WHERE i.name = '딱새우';
 --
-
+--
 -- -- [재료명: 랍스터]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -5909,7 +5909,7 @@
 --         ('tilapia'), ('역돔'), ('민물돔')
 -- ) AS k(word)
 -- WHERE i.name = '틸라피아';
-
+--
 -- -- [재료명: 넙치]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -6059,7 +6059,7 @@
 --         ('king prawn'), ('왕새우'), ('큰새우')
 -- ) AS k(word)
 -- WHERE i.name = '킹프론';
-
+--
 -- -- [재료명: 소프트쉘 크랩]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -6209,7 +6209,7 @@
 --         ('lumpfish roe'), ('인조 캐비어'), ('날치알 대용')
 -- ) AS k(word)
 -- WHERE i.name = '럼피쉬 알';
-
+--
 -- -- [재료명: 보타르가]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -6559,7 +6559,7 @@
 --         ('potato'), ('수미감자'), ('하지감자')
 -- ) AS k(word)
 -- WHERE i.name = '감자';
-
+--
 -- -- [재료명: 고구마]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -6759,7 +6759,7 @@
 --         ('shiitake'), ('표고'), ('말린표고')
 -- ) AS k(word)
 -- WHERE i.name = '표고버섯';
-
+--
 -- -- [재료명: 팽이버섯]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -6959,7 +6959,7 @@
 --         ('chives'), ('서양부추'), ('차이브스')
 -- ) AS k(word)
 -- WHERE i.name = '차이브';
-
+--
 -- -- [재료명: 양상추]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
@@ -7109,7 +7109,7 @@
 --         ('green bean'), ('껍질콩'), ('줄기콩')
 -- ) AS k(word)
 -- WHERE i.name = '그린빈';
-
+--
 -- -- [재료명: 샬롯]
 -- INSERT INTO ingredient_keywords (ingredient_id, keyword)
 -- SELECT i.id, k.word
