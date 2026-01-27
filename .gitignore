@@ -49,7 +49,7 @@ __pycache__/
 python-server/.env
 python-server/uploads/*
 python-server/chroma_db/*
-python-server/temp_data/*
+#python-server/temp_data/*
 #python-server/temp_json/*
 *.tar
 

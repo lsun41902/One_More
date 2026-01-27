@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from router import analysis, recipes
+from router import analysis, recipes, test
 
 #region 전역변수 선언
 #기본 셋팅
@@ -15,6 +15,7 @@ app = FastAPI()
 
 app.include_router(recipes.router)
 app.include_router(analysis.router)
+app.include_router(test.router)
 
 @app.get("/")
 async def root():
