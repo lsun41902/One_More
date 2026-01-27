@@ -1,19 +1,25 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button, Alert } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>내 첫 번째 버튼</Text>
-      
-      {/* 여기에 버튼을 추가했습니다 */}
-      <View style={styles.buttonContainer}>
-        <Button
-          title="여기를 눌러보세요"
-          color="#007AFF" // 아이폰 기본 파란색
-          onPress={() => Alert.alert('성공!', '버튼이 작동합니다.')}
-        />
-      </View>
+      <Text style={styles.title}>나의 입맛</Text>
+
+      {/* 컨테이너 */}
+      <view style={styles.chipsContainer}>
+        <TouchableOpacity style={styles.chip}>
+          <Text style={styles.chipText}>한식</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={(styles.chip, styles.chipActive)}>
+          <Text style={styles.chipText}>중식</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.chip}>
+          <Text style={styles.chipText}>일식</Text>
+        </TouchableOpacity>
+      </view>
     </View>
   );
 }
@@ -21,19 +27,39 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 60,
+    alignItems: "center",
+    backgroundColor: "#fff",
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: "15",
   },
-  buttonContainer: {
-    marginTop: 10,
-    padding: 10,
-    borderRadius: 8,
-    backgroundColor: '#f0f0f0', // 버튼 배경을 살짝 구분
+  chipsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: 8,
+  },
+  chip: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    backgroundColor: "#f9f9f9",
+  },
+  chipActive: {
+    backgroundColor: "#007AFF",
+    borderColor: "#007AFF",
+  },
+  chipText: {
+    color: "#333",
+    fontSize: 14,
+  },
+  chipTextActive: {
+    color: "#fff",
+    fontWeight: "bold",
   },
 });
