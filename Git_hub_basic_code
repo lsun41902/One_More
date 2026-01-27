@@ -23,3 +23,11 @@ git pull SeungEun master: 해당 이름으로 마스터브랜치에서 데이터
 git push SeungEun java-server:master : 내브랜치:푸쉬할브랜치 :  그냥 푸쉬할 브렌치만 적으면, 내 브렌치도 푸쉬할 브랜치로 인식해서 에러가 남
 EX) git push SeungEun master : 내 브랜치는 java-server이기 때문에 master로서 master에 올리지 못해서 에러남.
 
+1. 내 브랜치 확인
+2. git add .
+3. git commit -m "메시지 입력"
+4. git push origin java-server
+5. 마스터로 브랜치 변경
+6. git pull origin master
+7. git merge java-server
+8. 다시 내 브랜치로 이동.
