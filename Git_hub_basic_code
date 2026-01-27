@@ -31,3 +31,4 @@ EX) git push SeungEun master : 내 브랜치는 java-server이기 때문에 mast
 6. git pull origin master
 7. git merge java-server
 8. 다시 내 브랜치로 이동.
+8. 다시 내 브랜치로 이동.
