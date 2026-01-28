@@ -82,9 +82,10 @@ public class RealAiClientService implements AiClientService {
                     );
             PythonResponseWrapper<IngredientAnalysisResponse> response = responseEntity.getBody();
             return response != null ? response.result() : Collections.emptyList();
+
         } catch (Exception e) {
             log.error("이미지 분석 통신 오류 (URI: {}): {}", uri, e.getMessage());
-            throw new RuntimeException("AI 서버 통신 오류: " + e.getMessage());
+            throw new RuntimeException("AI 이미지 분석 서비스 연결 실패: " + e.getMessage());
         }
 
     }
