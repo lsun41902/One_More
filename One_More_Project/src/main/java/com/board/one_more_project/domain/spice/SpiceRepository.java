@@ -1,18 +1,24 @@
 package com.board.one_more_project.domain.spice;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
-@Repository // Spring Bean으로 등록하여 DI(의존성 주입) 가능하게 설정
 public interface SpiceRepository extends JpaRepository<Spice, Long> {
 
-    /**
-     * [Derived Query Method]
-     * 메서드 이름을 분석하여 JPQL을 자동 생성합니다.
-     * SQL: SELECT * FROM spices ORDER BY name ASC;
-     * * @return 이름 오름차순으로 정렬된 Spice 엔티티 리스트
-     */
     List<Spice> findAllByOrderByNameAsc();
+
+    // 테이블명을 spices로 정확히 수정 및 반환 타입 int 변경
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query(value = "UPDATE spices SET embedding = cast(:embedding as vector) WHERE id = :id", nativeQuery = true)
+    int updateEmbedding(@Param("id") Long id, @Param("embedding") String embedding);
+
+    @Query(value = "SELECT * FROM spices " +
+            "ORDER BY embedding <=> cast(:queryVector as vector) " +
+            "LIMIT :limit", nativeQuery = true)
+    List<Spice> findNearestSpices(@Param("queryVector") String queryVector, @Param("limit") int limit);
 }

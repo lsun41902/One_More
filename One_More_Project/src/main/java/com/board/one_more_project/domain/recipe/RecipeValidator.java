@@ -9,7 +9,7 @@ import java.util.List;
 public class RecipeValidator {
 
     // 1단계: 이미지 분석 요청 검증
-    public void validateFiles(List<MultipartFile> files, List<String> preferences) {
+    public void validateFiles(List<MultipartFile> files) {
         // 1. 파일이 아예 없는지 확인
         if (files == null || files.isEmpty()) {
             throw new IllegalArgumentException("업로드된 파일이 없습니다.");
@@ -19,8 +19,6 @@ public class RecipeValidator {
         if (files.size() > 3) {
             throw new IllegalArgumentException("사진은 최대 3장까지만 업로드 가능합니다.");
         }
-
-        checkPreferenceLength(preferences);
     }
 
     // 2단계: 레시피 생성 요청 검증
@@ -36,7 +34,6 @@ public class RecipeValidator {
         if (!hasValidIngredient) {
             throw new IllegalArgumentException("유효한 재료 이름이 하나도 없습니다.");
         }
-
         checkPreferenceLength(preferences);
     }
 

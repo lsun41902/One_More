@@ -1,17 +1,24 @@
 package com.board.one_more_project.domain.ingredient;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
-@Repository // 스프링에게 "이건 DB 접근용 클래스야"라고 알려줍니다.
 public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
 
-    /**
-     * [쿼리 메서드]
-     * 모든 재료를 가져오되, 카테고리 이름 순(ㄱ~ㅎ) -> 재료 이름 순(ㄱ~ㅎ)으로 정렬합니다.
-     * SQL: SELECT * FROM ingredients ORDER BY category ASC, name ASC;
-     */
     List<Ingredient> findAllByOrderByCategoryAscNameAsc();
+
+    // 반환 타입을 int로 변경하고 clearAutomatically 추가하여 PSQLException 방지
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query(value = "UPDATE ingredients SET embedding = cast(:embedding as vector) WHERE id = :id", nativeQuery = true)
+    int updateEmbedding(@Param("id") Long id, @Param("embedding") String embedding);
+
+    @Query(value = "SELECT * FROM ingredients " +
+            "ORDER BY embedding <=> cast(:queryVector as vector) " +
+            "LIMIT :limit", nativeQuery = true)
+    List<Ingredient> findNearestIngredients(@Param("queryVector") String queryVector, @Param("limit") int limit);
 }

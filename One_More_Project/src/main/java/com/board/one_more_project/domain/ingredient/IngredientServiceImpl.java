@@ -2,34 +2,46 @@ package com.board.one_more_project.domain.ingredient;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.ai.embedding.EmbeddingModel; // Spring AI 표준 인터페이스
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor // final이 붙은 필드(Repository)를 자동으로 주입해주는 생성자를 만듦
-@Transactional(readOnly = true) // 이 클래스 안에서는 데이터를 '읽기'만 하겠다고 선언 (성능 최적화)
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class IngredientServiceImpl implements IngredientService {
 
-    // 창고지기(Repository)를 불러옵니다.
     private final IngredientRepository ingredientRepository;
+    private final EmbeddingModel embeddingModel; // Ollama 구현체가 자동으로 주입됨
 
     @Override
     public List<IngredientResponse> getAllIngredients() {
-        log.info("모든 재료 데이터 조회 요청 시작");
-
-        // 1. Repository에게 부탁해서 DB에 있는 모든 재료를 가져옵니다.
-        // (아까 Repository에 만들어둔 정렬 기능 사용)
         return ingredientRepository.findAllByOrderByCategoryAscNameAsc()
-                .stream() // 리스트를 하나씩 흘려보내는 파이프라인 시작
-
-                // 2. Entity(창고 물건) -> DTO(포장된 상품) 변환
-                // IngredientResponse 클래스에 만들어둔 static 메서드(from)를 사용합니다.
+                .stream()
                 .map(IngredientResponse::from)
+                .toList();
+    }
 
-                // 3. 다시 리스트로 묶어서 반환
+    @Override
+    public List<IngredientResponse> searchIngredients(String keyword) {
+        log.info("Ollama 기반 의미론적 검색 시작: {}", keyword);
+
+        // 1. Spring AI를 이용한 로컬 임베딩 생성
+        // embed() 메서드는 내부적으로 Ollama API를 호출하여 float[]를 반환함
+        float[] vector = embeddingModel.embed(keyword);
+
+        // 2. pgvector 검색을 위해 배열을 문자열 포맷으로 변환
+        String vectorString = Arrays.toString(vector);
+
+        // 3. Repository의 Native Query 호출
+        List<Ingredient> results = ingredientRepository.findNearestIngredients(vectorString, 10);
+
+        return results.stream()
+                .map(IngredientResponse::from)
                 .toList();
     }
 }

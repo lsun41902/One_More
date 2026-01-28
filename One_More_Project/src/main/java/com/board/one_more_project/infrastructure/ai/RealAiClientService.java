@@ -43,16 +43,16 @@ public class RealAiClientService implements AiClientService {
     }
     //region 이미지 분석 함수
     @Override
-    public List<IngredientAnalysisResponse> analyzeImageReceipt(List<MultipartFile> files, List<String> preferences, String userId) {
-        return sendImageRequest("/analyze-image-receipts", files, preferences, userId);
+    public List<IngredientAnalysisResponse> analyzeImageReceipt(List<MultipartFile> files, String userId) {
+        return sendImageRequest("/analyze-image-receipts", files, userId);
     }
 
     @Override
-    public List<IngredientAnalysisResponse> analyzeImageIngredients(List<MultipartFile> files, List<String> preferences, String userId) {
-        return sendImageRequest("/analyze-image-ingredients", files, preferences, userId);
+    public List<IngredientAnalysisResponse> analyzeImageIngredients(List<MultipartFile> files, String userId) {
+        return sendImageRequest("/analyze-image-ingredients", files, userId);
     }
 
-    private List<IngredientAnalysisResponse> sendImageRequest(String uri, List<MultipartFile> files, List<String> preferences, String userId) {
+    private List<IngredientAnalysisResponse> sendImageRequest(String uri, List<MultipartFile> files, String userId) {
         log.info("[prod] 이미지 분석 요청: URI={}, Count={}, User={}", uri, files.size(), userId);
 
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
@@ -64,11 +64,6 @@ public class RealAiClientService implements AiClientService {
             }
         }
 
-        if (preferences != null) {
-            for (String pref : preferences) {
-                body.add("preference", pref);
-            }
-        }
         body.add("userId", userId);
 
         HttpHeaders headers = new HttpHeaders();

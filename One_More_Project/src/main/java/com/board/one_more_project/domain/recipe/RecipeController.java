@@ -31,18 +31,17 @@ public class RecipeController {
     @PostMapping(value = "/analyze", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public List<IngredientAnalysisResponse> analyzeImage(
             @Parameter(description = "식재료 사진 또는 영수증 파일") @RequestParam("files") List<MultipartFile> files,
-            @Parameter(description = "유저의 요리 취향") @RequestParam("preferences") List<String> preferences,
             @Parameter(description = "데이터 타입 (image: 식재료, receipt: 영수증)") @RequestParam("type") String type,
             @Parameter(description = "유저 식별 ID") @RequestParam(value = "userId", defaultValue = "user_01") String userId
     ) {
         log.info("1단계 분석 요청: {}장, type={}", files.size(), type);
-        validator.validateFiles(files, preferences);
+        validator.validateFiles(files);
 
         // Routing
         if ("receipt".equalsIgnoreCase(type)) { // 영수증 분석 서비스 호출 (/analyze-image-receipts)
-            return aiClientService.analyzeImageReceipt(files, preferences, userId);
+            return aiClientService.analyzeImageReceipt(files, userId);
         } else { // 일반 식재료 이미지 분석 (/analyze-image-ingredients)
-            return aiClientService.analyzeImageIngredients(files, preferences, userId);
+            return aiClientService.analyzeImageIngredients(files, userId);
         }
     }
 
