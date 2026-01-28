@@ -18,6 +18,9 @@ public class Spice {
     @Column(nullable = false, unique = true) // Not Null, Unique 제약조건 설정
     private String name;
 
+//    @Column(name = "embedding", columnDefinition = "vector(768)")
+//    private float[] embedding;
+
     @Column(name = "created_at")
     private OffsetDateTime createdAt;
 

@@ -7,31 +7,31 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @Tag(name = "Master Data", description = "취향, 재료, 조미료 등 마스터 데이터 조회")
 @Slf4j
-@RestController // @Controller + @ResponseBody: Return 값을 JSON으로 직렬화(Jackson 라이브러리 사용)
-@RequestMapping("/api/spices") // 엔드포인트 URI 매핑
+@RestController
+@RequestMapping("/api/spices")
 @RequiredArgsConstructor
 public class SpiceController {
 
-    // 의존성 주입: 비즈니스 로직을 수행할 Service Bean 주입
     private final SpiceService spiceService;
 
-    @Operation(summary = "조미료 목록 조회", description = "모든 조미료(Spices) 목록을 이름순으로 반환합니다.")
-    @GetMapping // HTTP GET Method 매핑
+    @Operation(summary = "조미료 목록 조회", description = "모든 조미료 목록을 이름순으로 반환합니다.")
+    @GetMapping
     public ResponseEntity<List<SpiceResponse>> getAllSpices() {
         log.info("GET /api/spices 요청 수신");
+        return ResponseEntity.ok(spiceService.getAllSpices());
+    }
 
-        // Service 계층 호출
-        List<SpiceResponse> spices = spiceService.getAllSpices();
-
-        log.info("조미료 데이터 {}개 반환", spices.size());
-
-        // ResponseEntity를 사용하여 HTTP Status 200(OK)와 함께 응답
-        return ResponseEntity.ok(spices);
+    @Operation(summary = "조미료 검색 (AI 유사도)", description = "키워드와 유사한 조미료를 검색합니다.")
+    @GetMapping("/search")
+    public ResponseEntity<List<SpiceResponse>> searchSpices(@RequestParam("q") String keyword) {
+        log.info("GET /api/spices/search?q={} 요청 수신", keyword);
+        return ResponseEntity.ok(spiceService.searchSpices(keyword));
     }
 }

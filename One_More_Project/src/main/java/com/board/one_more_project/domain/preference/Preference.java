@@ -20,6 +20,9 @@ public class Preference {
     @Column(nullable = false)
     private String name;
 
+//    @Column(name = "embedding", columnDefinition = "vector(768)")
+//    private float[] embedding;
+
     @Column(name = "created_at")
     private OffsetDateTime createdAt;
 

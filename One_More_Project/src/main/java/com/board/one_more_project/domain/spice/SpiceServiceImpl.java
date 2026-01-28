@@ -2,27 +2,48 @@ package com.board.one_more_project.domain.spice;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.ai.embedding.EmbeddingModel; // Spring AI 인터페이스
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
-@Service // Spring Context에 Bean으로 등록
-@RequiredArgsConstructor // 생성자 주입(Constructor Injection) 방식을 위한 Lombok 어노테이션
-@Transactional(readOnly = true) // 트랜잭션 범위를 설정하며, 조회 최적화를 위해 읽기 전용으로 설정
+@Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class SpiceServiceImpl implements SpiceService {
 
-    // 의존성 주입 (Dependency Injection): Repository Bean을 주입받습니다.
     private final SpiceRepository spiceRepository;
+    private final EmbeddingModel embeddingModel; // Ollama 구현체가 자동 주입됨
 
     @Override
     public List<SpiceResponse> getAllSpices() {
-        log.info("모든 조미료 데이터 조회 요청(Transaction Start)");
-
-        return spiceRepository.findAllByOrderByNameAsc() // 1. Persistence Context를 통해 Entity 조회
+        log.info("모든 조미료 데이터 조회 요청");
+        return spiceRepository.findAllByOrderByNameAsc()
                 .stream()
-                .map(SpiceResponse::from) // 2. Entity -> DTO 매핑 (데이터 캡슐화)
+                .map(SpiceResponse::from)
+                .toList();
+    }
+
+    /**
+     * [의미론적 검색]
+     * Ollama를 통해 검색어를 벡터화하고 DB 유사도 쿼리를 실행합니다.
+     */
+    @Override
+    public List<SpiceResponse> searchSpices(String keyword) {
+        log.info("조미료 검색 시작 (Ollama): {}", keyword);
+
+        // 1. 검색어 임베딩 생성
+        float[] vector = embeddingModel.embed(keyword);
+
+        // 2. pgvector 유사도 검색 수행
+        List<Spice> results = spiceRepository.findNearestSpices(Arrays.toString(vector), 10);
+
+        // 3. DTO 변환 후 반환
+        return results.stream()
+                .map(SpiceResponse::from)
                 .toList();
     }
 }

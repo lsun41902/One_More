@@ -24,9 +24,14 @@ public class Ingredient {
     @Column(name = "created_at")
     private OffsetDateTime createdAt;
 
+//    // Ollama의 float[] 결과와 매핑하기 위해 타입을 float[]로 변경
+//    @Column(name = "embedding", columnDefinition = "vector(768)")
+//    private float[] embedding;
+
     // 데이터가 저장되기 전에 실행되는 로직
     @PrePersist
     public void onPrePersist() {
         this.createdAt = OffsetDateTime.now();
     }
+
 }

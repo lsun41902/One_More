@@ -14,4 +14,7 @@ public interface SpiceService {
      * @return DTO로 변환된 조미료 리스트
      */
     List<SpiceResponse> getAllSpices();
+
+    List<SpiceResponse> searchSpices(String keyword);
+
 }

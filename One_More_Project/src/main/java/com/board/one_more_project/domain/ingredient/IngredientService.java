@@ -14,4 +14,7 @@ public interface IngredientService {
      * * @return 가공된 재료 목록 (DTO 리스트)
      */
     List<IngredientResponse> getAllIngredients();
+
+    List<IngredientResponse> searchIngredients(String keyword);
+
 }

@@ -22,6 +22,11 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' } // Spring AI 마일스톤 저장소
+}
+
+ext {
+    set('springAiVersion', "1.0.0-M4") // Spring AI 버전 관리 (BOM)
 }
 
 dependencies {
@@ -30,6 +35,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'
+
+    // NoSuchMethodError 방지를 위해 Swagger 관련 라이브러리 버전 강제 고정
+    // Spring AI가 하위 버전을 가져오는 것을 방지하기 위해 2.2.25로 명시함
+    implementation 'io.swagger.core.v3:swagger-annotations:2.2.25'
+    implementation 'io.swagger.core.v3:swagger-models:2.2.25'
+
     implementation 'io.projectreactor:reactor-core'
     implementation 'org.postgresql:postgresql'
 
@@ -39,6 +50,14 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter' // Spring AI Ollama 스타터
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+    }
 }
 
 test {

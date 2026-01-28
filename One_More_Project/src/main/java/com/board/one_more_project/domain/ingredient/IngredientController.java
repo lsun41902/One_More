@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,5 +33,15 @@ public class IngredientController {
 
         // 2. 결과(DTO 리스트)를 200 OK 신호와 함께 반환합니다.
         return ResponseEntity.ok(ingredients);
+    }
+
+    @Operation(summary = "재료 검색 (AI 유사도 기반)", description = "입력한 키워드와 의미적으로 가장 유사한 재료 10개를 반환합니다.")
+    @GetMapping("/search")
+    public ResponseEntity<List<IngredientResponse>> searchIngredients(@RequestParam("q") String keyword) {
+        log.info("GET /api/ingredients/search?q={} 요청 수신", keyword);
+
+        List<IngredientResponse> results = ingredientService.searchIngredients(keyword);
+
+        return ResponseEntity.ok(results);
     }
 }
