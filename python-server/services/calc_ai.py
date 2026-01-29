@@ -12,6 +12,11 @@ from PIL import Image
 from google.api_core import exceptions
 from langchain_core.documents import Document
 from langchain_classic.chains import RetrievalQA
+from sentence_transformers import SentenceTransformer, util, InputExample,losses
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_community.vectorstores.utils import DistanceStrategy # 1. 임포트 추가
+import torch
 
 import pandas as pd
 import traceback
@@ -38,25 +43,61 @@ def get_openai_llm():
 
 
 def get_vectorstore():
-    global genai_embeddings, genai_vectorstore
-    if genai_vectorstore is None:
-        # [중요] 실제 호출될 때 비로소 라이브러리를 로드하고 모델을 읽어옵니다.
-        from langchain_community.embeddings import HuggingFaceEmbeddings
-        from langchain_community.vectorstores import Chroma
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(current_dir, "..", "my_food_model")
+    index_path = os.path.join(current_dir, "..", "faiss_my_food_model_index")
 
-        print("🔄 AI 모델 및 벡터 DB 로딩 중... (최초 1회 실행)")
-        genai_embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-small")
-        # genai_embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-        current_dir = os.path.dirname(os.path.abspath(__file__))  # services 폴더
-        genai_persist_dir = os.path.join(current_dir, "..", "chroma_db")
+    embeddings = HuggingFaceEmbeddings(
+        model_name=model_path,
+        model_kwargs={'device': 'cuda'}
+    )
 
-        # 제대로 잡혔는지 확인 출력
-        print(f"📍 연결된 DB 경로: {os.path.abspath(genai_persist_dir)}")
-        genai_vectorstore = Chroma(
-            persist_directory=genai_persist_dir,
-            embedding_function=genai_embeddings
-        )
-    return genai_vectorstore
+    # load_local 할 때 distance_strategy를 명시적으로 지정합니다. ✅
+    vectorstore = FAISS.load_local(
+        index_path,
+        embeddings,
+        allow_dangerous_deserialization=True,
+        distance_strategy=DistanceStrategy.COSINE # 여기에 추가!
+    )
+
+    print("✅ 코사인 유사도 전략으로 인덱스를 성공적으로 로드했습니다!")
+    return vectorstore
+
+def get_real_recipe_ingredient(user_input):
+    # 지금까지 학습된 중간 모델 로드
+    model = SentenceTransformer('./my_food_model')
+
+    # 내 레시피 데이터의 일부 (100개 정도만 테스트)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(current_dir, "..", "temp_data", "refined_recipe_data.csv")
+    try:
+        df = pd.read_csv(path, encoding='utf-8-sig')
+    except UnicodeDecodeError:
+        df = pd.read_csv(path, encoding='euc-kr')
+    db_embeddings = model.encode(df['ingredient'].astype(str).tolist())
+
+    # 사용자 입력과 유사도 체크
+    user_vec = model.encode(user_input)
+
+    # 1. 유사도 계산
+    scores = util.cos_sim(user_vec, db_embeddings)[0]
+
+    # 2. 가장 높은 점수 순으로 상위 3개 인덱스 추출
+    top_results = torch.topk(scores, k=3)
+
+    print(f"\n입력하신 재료: {user_input}")
+    print("-" * 50)
+    real_ingredient = []
+    for score, idx in zip(top_results.values, top_results.indices):
+        recipe_idx = idx.item()
+        print(f"✅ 유사도 점수: {score:.4f}")
+        # 보통 CKG_NM(요리명) 컬럼이 따로 있다면 그걸 출력하는 게 좋습니다.
+        # 없다면 원문인 CKG_MTRL_CN을 보여줍니다.
+        print(f"추천 요리 내용: {df.iloc[recipe_idx]['CKG_MTRL_CN']}...")
+        print(f"매칭된 키워드: {df.iloc[recipe_idx]['ingredient']}")
+        print("-" * 50)
+        real_ingredient.append(df.iloc[recipe_idx]['CKG_MTRL_CN'])
+    return real_ingredient
 
 UPLOAD_DIR = "../uploads"
 
@@ -284,7 +325,28 @@ class AnalyzeGenai:
     def get_chef_recipe(self, preference, ingredients, spice,temp=""):
         # 벡터 DB 에서 검색 하기
         vectorstore = get_vectorstore()
-        retriever = vectorstore.as_retriever(search_kwargs={"k": 3})  # 관련 레시피 3개 검색
+        print(f"📊 현재 사용 중인 거리 전략: {vectorstore.distance_strategy}")
+        retriever = vectorstore.as_retriever(
+            search_type="mmr",
+            search_kwargs={
+                "k": 3,
+                "fetch_k": 10,  # 먼저 후보 10개를 뽑은 뒤
+                "lambda_mult": 0.5  # 0에 가까울수록 "다양성" 강조, 1에 가까울수록 "유사도" 강조
+            }
+        )
+        try:
+            search_query = ", ".join([item.ingredient for item in ingredients])
+        except TypeError:
+            # 혹시 몰라 대비하는 딕셔너리 방식 (에러나면 이쪽으로 실행)
+            search_query = ", ".join([item['ingredient'] for item in ingredients])
+        docs_and_scores = vectorstore.similarity_search_with_score(search_query, k=3)
+        retrieved_docs = [doc for doc, score in docs_and_scores]
+
+        print("\n=== 🎯 검색 결과 및 유사도 점수 ===")
+        for i, (doc, score) in enumerate(docs_and_scores):
+            print(f"[{i + 1}] 점수: {score:.4f}")  # 점수가 낮을수록(0에 가까울수록) 유사함
+            print(f"내용: {doc.page_content}...")  # 앞부분만 살짝 출력
+            print("-" * 30)
         for model_name in model_candidates:
             try:
                 print("현재 모델 이름:", model_name)
@@ -303,19 +365,21 @@ class AnalyzeGenai:
                 )
                 prompt = f"""
                 {temp}
-                너는 세계 최고의 요리사야. 
-                아래 제공된 [취향 정보],[식재료 정보],[조미료 정보]를 바탕으로 내가 원하는 레시피 3개를 추천해줘.
+                {retrieved_docs}
+                너는 한국의 요리사야. 내가 앞에 넣은 데이터는 다른 요리사가 사용한 재료와 요리결과물이야. (요리 이름은 simple하게 바꿔줘)
+                [필요 재료]랑 [유저가 보유한 식재료, 조미료, 맛 취향] 을 비교해서
+                유사한 [요리사가 사용한 재료]를 이용해 만들수 있는 요리 레시피를 3개 추천해줘.
                 만약 정보에 없는 내용이라면 지어내지 말고 "모르겠습니다"라고 답해줘. 답변은 한글로 상세하게.
                 Return the response in a VALID JSON format. 
                 Do not include any conversational text or markdown code blocks (like ```json).
                 
-                [취향 정보]:
+                [유저의 맛 취향]:
                 {preference}
                 
-                [식재료 정보]:
+                [유저가 보유한 식재료]:
                 {ingredients}
                 
-                [조미료 정보]:
+                [유저가 보유한 조미료]:
                 {spice}
                 
                 Output Format:{self.another_recipe_prompt_json}

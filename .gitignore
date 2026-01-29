@@ -47,10 +47,12 @@ Thumbs.db
 .venv/
 __pycache__/
 python-server/.env
-python-server/uploads/*
-python-server/chroma_db/*
-#python-server/temp_data/*
+python-server/uploads/
+python-server/chroma_db/
+python-server/temp_data/
 #python-server/temp_json/*
+python-server/my_food_model/
+python-server/faiss_my_food_model_index/
 *.tar
 
 # --- 이승은 코드합치는 개인도구
