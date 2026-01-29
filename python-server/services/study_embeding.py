@@ -65,7 +65,6 @@ def study_embedding_indexing():
 
     # [수정] 학습 함수에서 저장한 위치와 동일하게 맞추는 것이 좋습니다.
     model_path = os.path.join(current_dir, "..", "my_food_model")
-    # model_path = os.path.join(current_dir, "my_food_model") # 만약 같은 폴더면 이렇게
 
     print(f"⏳ 모델 로딩 중... (경로: {model_path})")
     try:
