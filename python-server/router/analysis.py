@@ -7,7 +7,6 @@ router = APIRouter(prefix="/analyze-image-",tags=["AI분석"])
 #region 분석 - 사진 - 영수증
 #이미지로 입력받은 재료 분석후 레시피 추천하기
 @router.post("receipts",
-          tags=["AI분석"],
           summary="이미지 영수증 분석",
           description="영수증에서 재료들을 분석하여 재료를 확인."
           )
@@ -26,7 +25,6 @@ async def analyze_images_receipts(request: RequestAnalyze = Depends()):
 #region 분석 - 사진 - 재료
 #이미지로 입력받은 재료 분석후 레시피 추천하기
 @router.post("ingredients",
-          tags=["AI분석"],
           summary="이미지 재료 분석",
           description="이미지로 전달 받은 재료들을 분석하여 재료를 확인."
           )

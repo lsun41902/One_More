@@ -5,10 +5,9 @@ import re
 from services.dummy_data import clean_ingredients, dummy_test
 from services.study_embeding import study_embedding,study_embedding_indexing
 
-router = APIRouter(prefix="/recipes-generate-",tags=["레시피"])
+router = APIRouter(prefix="/recipes-generate-",tags=["Test"])
 
 @router.post("test2",
-    tags=["Test"],
     summary="조미료 분류",
     description="조미료 걸러내기")
 def test2():
@@ -69,7 +68,6 @@ def test2():
     print(f"총 {len(result_list)}개의 재료가 '{save_path}'에 저장되었습니다.")
 
 @router.post("test",
-    tags=["Test"],
     summary="재료 분류",
     description="재료 걸러내기")
 def test():
@@ -141,7 +139,6 @@ def test():
     return {"result": "test"}
 
 @router.post("test3",
-    tags=["Test"],
     summary="전처리",
     description="전처리 하기")
 def test3():
@@ -149,16 +146,14 @@ def test3():
     return {"result":"더미 데이터 생성 성공"}
 
 @router.post("test4",
-    tags=["Test"],
     summary="더미 데이터 학습",
     description="더미 데이터 학습하기")
 def test4():
     # study_embedding()
-    study_embedding_indexing()
+    # study_embedding_indexing()
     return {"result":"더미 데이터 생성 성공"}
 
 @router.post("test5",
-    tags=["Test"],
     summary="모델 실행",
     description="더미 모델 테스트")
 def test5(text:list[str]):
