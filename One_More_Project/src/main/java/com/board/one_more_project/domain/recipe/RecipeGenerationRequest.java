@@ -19,6 +19,8 @@ public record RecipeGenerationRequest(
         @Schema(description = "유저 식별 ID", example = "user_01")
         String userId,
         // 프론트엔드가 추천(initial)을 원하는지, 기본 재료만(basic)원하는지, 응용 요리만(more)원하는지 알려주는 변수입니다.
-        @Schema(description = "요청 작업 타입 (initial: 최초추천, basic: 기본재료만, more: 추가재료포함)", example = "initial")
+        @Schema(description = "요청 작업 타입 (initial: 최초추천, basic: 기본재료만, more: 추가재료포함, real: 만개의레시피)", example = "real")
         String action
+
+
 ) {}

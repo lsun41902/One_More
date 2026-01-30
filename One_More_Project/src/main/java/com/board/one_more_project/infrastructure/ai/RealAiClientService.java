@@ -107,6 +107,11 @@ public class RealAiClientService implements AiClientService {
         return sendRecipeRequest("/recipes-generate-more", request);
     }
 
+    @Override
+    public List<RecipeResponse> generateRecipeReal(RecipeGenerationRequest request) {
+        return sendRecipeRequest("/recipes-generate-real", request);
+    }
+
     private List<RecipeResponse> sendRecipeRequest(String uri, RecipeGenerationRequest request) {
         log.info("[prod] 레시피 생성 요청 전송: URI={}, User={}", uri, request.userId());
 

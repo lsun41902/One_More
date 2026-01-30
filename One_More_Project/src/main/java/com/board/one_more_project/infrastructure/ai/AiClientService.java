@@ -28,5 +28,8 @@ public interface AiClientService {
     // 추가 재료(응용) 레시피만 생성 (/recipes-generate-more)
     List<RecipeResponse> generateRecipeMore(RecipeGenerationRequest request);
 
+    // 만개의 레시피 기반 추천 (/recipes-generate-real)
+    List<RecipeResponse> generateRecipeReal(RecipeGenerationRequest request);
+
 
 }

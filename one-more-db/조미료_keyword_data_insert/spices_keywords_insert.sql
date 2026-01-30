@@ -1,3 +1,4 @@
+-- 1231323
 -- -- [조미료명: 소금]
 -- INSERT INTO spice_keywords (spice_id, keyword)
 -- SELECT i.id, k.word

@@ -50,4 +50,9 @@ public class MockAiClientService implements AiClientService {
         log.info("[Mock] 응용 레시피 생성. User: {}", request.userId());
         return List.of(new RecipeResponse("응용 요리", "특별합니다", request.ingredients(), List.of(new IngredientDto("치즈", "1장")), List.of("치즈를 넣으세요"), List.of("팁"), null, null));
     }
+
+    @Override
+    public List<RecipeResponse> generateRecipeReal(RecipeGenerationRequest request) {
+        return List.of(new RecipeResponse("만개의 레시피 요리", "역시 맛있어요", request.ingredients(), List.of(new IngredientDto("만개의 레시피 한포기", "한포기")), List.of("레시피를 넣으세요"), List.of("팁"), null, null));
+    }
 }
