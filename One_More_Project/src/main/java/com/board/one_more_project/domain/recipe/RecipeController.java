@@ -71,6 +71,9 @@ public class RecipeController {
             case "more":
                 // more 레시피 (/recipes-generate-more)
                 return aiClientService.generateRecipeMore(request);
+            case "real":
+                // 만개의 레시피 (/recipes-generate-more)
+                return aiClientService.generateRecipeReal(request);
             default:
                 // 약속되지 않은 action 값이 오면 에러 발생
                 throw new IllegalArgumentException("잘못된 요청 타입입니다: " + action);
