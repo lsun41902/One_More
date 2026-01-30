@@ -18,8 +18,8 @@ public class Ingredient {
     @Column(nullable = false, unique = true) // NULL 불가, 중복 불가
     private String name; // 재료 이름 (예: 돼지고기, 양파)
 
-    @Column(length = 50)
-    private String category; // 재료 카테고리 (예: 육류, 채소, 가공품)
+//    @Column(length = 50)
+//    private String category; // 재료 카테고리 (예: 육류, 채소, 가공품)
 
     @Column(name = "created_at")
     private OffsetDateTime createdAt;
