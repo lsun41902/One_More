@@ -18,9 +18,4 @@ public interface PreferenceRepository extends JpaRepository<Preference, Long> {
     @Transactional
     @Query(value = "UPDATE preferences SET embedding = cast(:embedding as vector) WHERE id = :id", nativeQuery = true)
     int updateEmbedding(@Param("id") Long id, @Param("embedding") String embedding);
-
-    @Query(value = "SELECT * FROM preferences " +
-            "ORDER BY embedding <=> cast(:queryVector as vector) " +
-            "LIMIT :limit", nativeQuery = true)
-    List<Preference> findNearestPreferences(@Param("queryVector") String queryVector, @Param("limit") int limit);
 }

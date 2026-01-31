@@ -20,7 +20,7 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
     public List<IngredientResponse> getAllIngredients() {
-        return ingredientRepository.findAllByOrderByCategoryAscNameAsc()
+        return ingredientRepository.findAllByOrderByNameAsc()
                 .stream()
                 .map(IngredientResponse::from)
                 .toList();
