@@ -8,9 +8,6 @@ public record IngredientResponse(
         @Schema(description = "재료 고유 ID", example = "1")
         Long id,
 
-        @Schema(description = "재료 카테고리", example = "육류")
-        String category,
-
         @Schema(description = "재료 이름", example = "돼지고기")
         String name
 ) {
@@ -18,7 +15,6 @@ public record IngredientResponse(
     public static IngredientResponse from(Ingredient entity) {
         return new IngredientResponse(
                 entity.getId(),       // 나중에 프론트에서 ID로 제어할 수도 있어서 추가함
-                entity.getCategory(),
                 entity.getName()
         );
     }

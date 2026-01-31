@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
 
-    List<Ingredient> findAllByOrderByCategoryAscNameAsc();
+    List<Ingredient> findAllByOrderByNameAsc();
 
     // 반환 타입을 int로 변경하고 clearAutomatically 추가하여 PSQLException 방지
     @Modifying(clearAutomatically = true)

@@ -32,14 +32,6 @@ public class PreferenceServiceImpl implements PreferenceService {
     private final IngredientRepository ingredientRepository;
 
     @Override
-    public List<PreferenceResponse> searchPreferences(String keyword) {
-        log.info("취향 검색 시작 (Ollama): {}", keyword);
-        float[] vector = embeddingModel.embed(keyword);
-        List<Preference> results = preferenceRepository.findNearestPreferences(Arrays.toString(vector), 10);
-        return results.stream().map(PreferenceResponse::from).toList();
-    }
-
-    @Override
     public List<PreferenceResponse> getAllPreferences() {
         log.info("모든 취향 데이터 조회 요청 시작");
         return preferenceRepository.findAllByOrderByCategoryAscIdAsc()

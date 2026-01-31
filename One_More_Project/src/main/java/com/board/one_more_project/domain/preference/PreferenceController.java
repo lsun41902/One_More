@@ -26,13 +26,6 @@ public class PreferenceController {
         return ResponseEntity.ok(preferenceService.getAllPreferences());
     }
 
-    @Operation(summary = "취향 검색 (AI 유사도)", description = "키워드와 유사한 취향을 검색합니다.")
-    @GetMapping("/search")
-    public ResponseEntity<List<PreferenceResponse>> searchPreferences(@RequestParam("q") String keyword) {
-        log.info("GET /api/preferences/search?q={} 요청 수신", keyword);
-        return ResponseEntity.ok(preferenceService.searchPreferences(keyword));
-    }
-
     // 취향 분석 및 연관 키워드 추천
     @Operation(summary = "취향 분석 및 연관 키워드 추천", description = "유저가 선택한 취향 리스트를 받아, 어울리는 재료와 조미료를 추천합니다.")
     @PostMapping("/analyze")
