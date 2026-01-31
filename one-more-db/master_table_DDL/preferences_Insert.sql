@@ -133,19 +133,3 @@ INSERT INTO preferences (category, name) VALUES
 ('CONDITION', '도시락 반찬')
 
 ON CONFLICT (name) DO NOTHING; -- 이름 중복 시 에러 없이 넘어감
-
-
--- 'CONDITION' 카테고리의 모든 취향 데이터 조회
-SELECT id, category, name
-FROM preferences
-WHERE category = 'CONDITION'
-ORDER BY id ASC;
-
--- 'STYLE' 카테고리의 모든 취향 데이터 조회
-SELECT id, category, name
-FROM preferences
-WHERE category = 'STYLE'
-ORDER BY id ASC;
-
-SELECT *
-FROM preferences;
