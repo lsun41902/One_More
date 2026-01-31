@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -36,7 +37,7 @@ public class RealAiClientService implements AiClientService {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
 
         factory.setConnectTimeout(5000);
-        factory.setReadTimeout(120000);
+        factory.setReadTimeout(60000);
 
         this.restTemplate = new RestTemplate(factory);
         log.info("[prod] RealAiClientService가 초기화되었습니다. Target URL: {}", aiServerUrl);
@@ -81,7 +82,10 @@ public class RealAiClientService implements AiClientService {
                             new ParameterizedTypeReference<PythonResponseWrapper<IngredientAnalysisResponse>>() {}
                     );
             PythonResponseWrapper<IngredientAnalysisResponse> response = responseEntity.getBody();
-            return response != null ? response.result() : Collections.emptyList();
+            List<IngredientAnalysisResponse> result = response != null ? response.result() : Collections.emptyList();
+
+            log.info("[Fast API 응답] 이미지 분석 완료: 수신된 이미지 결과 수={}", result.size());
+            return result;
 
         } catch (Exception e) {
             log.error("이미지 분석 통신 오류 (URI: {}): {}", uri, e.getMessage());
@@ -136,7 +140,17 @@ public class RealAiClientService implements AiClientService {
                     );
 
             PythonResponseWrapper<RecipeResponse> response = responseEntity.getBody();
-            return response != null ? response.result() : Collections.emptyList();
+            List<RecipeResponse> result = response != null ? response.result() : Collections.emptyList();
+
+            if(!result.isEmpty()) {
+                String titles = result.stream().map(RecipeResponse::title).collect(java.util.stream.Collectors.joining(", "));
+                log.info("[python 응답] 레시피 생성 완료: 생성된 요리들 = [{}]", titles);
+            } else {
+                log.warn("[python 응답] 레시피가 비어 있습니다.");
+            }
+            return result;
+
+
 
         } catch (Exception e) {
             log.error("레시피 생성 통신 오류 (URI: {}): {}", uri, e.getMessage());
