@@ -2,6 +2,12 @@
 INSERT INTO preferences (category, name) VALUES
 
 -- 1. 국가/지역별 상세 (Global)
+('STYLE', '한식'),
+('STYLE', '중식'),
+('STYLE', '일식'),
+('STYLE', '태국 요리'),
+('STYLE', '베트남 요리'),
+('STYLE', '인도 요리'),
 ('STYLE', '태국 요리'),
 ('STYLE', '인도 요리'),
 ('STYLE', '멕시코 요리'),
@@ -54,6 +60,7 @@ ON CONFLICT (name) DO NOTHING; -- 중복 시 에러 없이 스킵
 INSERT INTO preferences (category, name) VALUES
 
 -- 1. 기본 미각 (Basic)
+('TASTE', '맛있게'),
 ('TASTE', '단 맛'),
 ('TASTE', '짠 맛'),
 ('TASTE', '신 맛'),

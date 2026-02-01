@@ -54,7 +54,7 @@ public class PreferenceServiceImpl implements PreferenceService {
         // 초보자 주의: 프롬프트가 명확해야 LLM이 이상한 소리를 안 합니다.
         String userPreferences = String.join(", ", preferences);
         String instruction = "너는 전문 요리사야. 사용자의 취향 [" + userPreferences + "]에 어울리는 "
-                + "식재료 5개와 조미료 3개를 추천해줘. "
+                + "식재료 10개와 조미료 10개를 추천해줘. "
                 + "설명은 생략하고 단어만 쉼표(,)로 구분해서 한 줄로 말해줘. "
                 + "예시: 돼지고기, 양파, 대파, 고추장, 간장";
 
