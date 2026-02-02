@@ -1,5 +1,7 @@
 package com.board.one_more_project.domain.ingredient;
 
+import com.board.one_more_project.domain.ingredient.dto.Ingredient;
+import com.board.one_more_project.domain.ingredient.dto.IngredientResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.embedding.EmbeddingModel; // Spring AI 표준 인터페이스
@@ -13,6 +15,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
+// 비즈니스 로직 실제 구현 계층(business Logic Layer)
 public class IngredientServiceImpl implements IngredientService {
 
     private final IngredientRepository ingredientRepository;

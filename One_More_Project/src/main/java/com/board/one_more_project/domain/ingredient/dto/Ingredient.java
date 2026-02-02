@@ -1,14 +1,15 @@
-package com.board.one_more_project.domain.ingredient;
+package com.board.one_more_project.domain.ingredient.dto;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.OffsetDateTime;
 
-@Entity // 이 클래스는 DB 테이블과 연결된다는 표시입니다.
-@Table(name = "ingredients") // 'ingredients' 테이블과 매핑됩니다.
-@Getter // Lombok: 모든 필드의 Getter 메서드 자동 생성
-@NoArgsConstructor // Lombok: 기본 생성자 자동 생성 (JPA 필수)
+@Entity // DB 테이블과 연결됨
+@Table(name = "ingredients") // 'ingredients' 테이블과 매핑됨
+@Getter
+@NoArgsConstructor
+// ORM(Object-Relational Mapping): 클레스를 DB테이블로 매핑한다. JPA가 이 객체를 보고 DB쿼리를 자동 생성함.
 public class Ingredient {
 
     @Id // PK (Primary Key) 설정

@@ -1,5 +1,5 @@
 package com.board.one_more_project.infrastructure.ai;
-import com.board.one_more_project.domain.ingredient.IngredientAnalysisResponse;
+import com.board.one_more_project.domain.ingredient.dto.IngredientAnalysisResponse;
 import com.board.one_more_project.domain.recipe.RecipeGenerationRequest;
 import com.board.one_more_project.domain.recipe.RecipeResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -11,8 +11,13 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
+import com.board.one_more_project.global.error.exception.AiServerException; // 1단계에서 만든 예외 import
+import org.springframework.web.client.ResourceAccessException; // 중요: 연결 실패 예외
+
+
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -56,23 +61,17 @@ public class RealAiClientService implements AiClientService {
         log.info("[prod] 이미지 분석 요청: URI={}, Count={}, User={}", uri, files.size(), userId);
 
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-
-        // [핵심] 리스트로 받은 파일을 순회하며 동일한 키("files")로 추가
         if (files != null) {
             for (MultipartFile file : files) {
                 body.add("files", file.getResource());
             }
         }
-
         body.add("userId", userId);
-
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-
-        // MultiValueMap body와 headers를 HttpEntity로 합친다.
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
 
-        try {// 2. exchange 메서드를 사용하여 제네릭 타입(Wrapper<List<Response>>)을 명시
+        try {
             ResponseEntity<PythonResponseWrapper<IngredientAnalysisResponse>> responseEntity =
                     restTemplate.exchange(
                             aiServerUrl + uri,
@@ -83,11 +82,19 @@ public class RealAiClientService implements AiClientService {
             PythonResponseWrapper<IngredientAnalysisResponse> response = responseEntity.getBody();
             return response != null ? response.result() : Collections.emptyList();
 
+        } catch (ResourceAccessException e) {
+            // 파이썬 서버가 꺼져있거나 네트워크가 끊긴 경우 (Timeout 포함)
+            log.error("AI 서버 연결 실패 (URI: {}): {}", uri, e.getMessage());
+            throw new AiServerException("현재 AI 분석 서버에 연결할 수 없습니다. 잠시 후 다시 시도해주세요.");
+        } catch (RestClientException e) {
+            // 파이썬 서버가 400, 500 에러를 뱉은 경우
+            log.error("AI 서버 응답 오류 (URI: {}): {}", uri, e.getMessage());
+            throw new AiServerException("AI 분석 중 오류가 발생했습니다. 관리자에게 문의하세요.");
         } catch (Exception e) {
-            log.error("이미지 분석 통신 오류 (URI: {}): {}", uri, e.getMessage());
-            throw new RuntimeException("AI 이미지 분석 서비스 연결 실패: " + e.getMessage());
+            // 그 외 알 수 없는 오류
+            log.error("알 수 없는 오류 (URI: {}): {}", uri, e.getMessage());
+            throw new AiServerException("서비스 처리 중 예기치 않은 오류가 발생했습니다.");
         }
-
     }
     //endregion
 
@@ -120,10 +127,8 @@ public class RealAiClientService implements AiClientService {
         body.put("ingredients", request.ingredients());
         body.put("spices", request.spices());
         body.put("preferences", request.preferences());
-
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-
         HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(body, headers);
 
         try {
@@ -138,9 +143,15 @@ public class RealAiClientService implements AiClientService {
             PythonResponseWrapper<RecipeResponse> response = responseEntity.getBody();
             return response != null ? response.result() : Collections.emptyList();
 
+        } catch (ResourceAccessException e) {
+            log.error("AI 서버 연결 실패 (URI: {}): {}", uri, e.getMessage());
+            throw new AiServerException("현재 AI 요리사 서버가 응답하지 않습니다. (Connection Error)");
+        } catch (RestClientException e) {
+            log.error("AI 서버 응답 오류 (URI: {}): {}", uri, e.getMessage());
+            throw new AiServerException("레시피 생성 중 AI 서버 오류가 발생했습니다.");
         } catch (Exception e) {
-            log.error("레시피 생성 통신 오류 (URI: {}): {}", uri, e.getMessage());
-            throw new RuntimeException("AI 서버 레시피 생성 실패: " + e.getMessage());
+            log.error("알 수 없는 오류 (URI: {}): {}", uri, e.getMessage());
+            throw new AiServerException("서비스 처리 중 예기치 않은 오류가 발생했습니다.");
         }
     }
     //endregion

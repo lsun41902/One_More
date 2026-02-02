@@ -1,4 +1,4 @@
-package com.board.one_more_project.domain.ingredient;
+package com.board.one_more_project.domain.ingredient.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

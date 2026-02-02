@@ -52,6 +52,8 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter' // Spring AI Ollama 스타터
+    // Java와 Kotlin에서 .env 파일을 쉽게 로드하여 환경 변수처럼 사용할 수 있게 해주는 오픈소스 라이브러리
+    implementation 'me.paulschwarz:springboot3-dotenv:5.0.1'
 }
 
 dependencyManagement {

@@ -1,5 +1,6 @@
-package com.board.one_more_project.domain.ingredient;
+package com.board.one_more_project.domain.ingredient.dto;
 
+import com.board.one_more_project.domain.ingredient.IngredientDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 

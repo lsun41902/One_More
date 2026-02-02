@@ -1,6 +1,6 @@
 package com.board.one_more_project.infrastructure.ai.migration;
 
-import com.board.one_more_project.domain.ingredient.Ingredient;
+import com.board.one_more_project.domain.ingredient.dto.Ingredient;
 import com.board.one_more_project.domain.ingredient.IngredientRepository;
 import com.board.one_more_project.domain.spice.Spice;
 import com.board.one_more_project.domain.spice.SpiceRepository;
