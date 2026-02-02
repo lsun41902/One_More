@@ -1,5 +1,6 @@
 package com.board.one_more_project.domain.ingredient;
 
+import com.board.one_more_project.domain.ingredient.dto.IngredientResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +16,9 @@ import java.util.List;
 @Tag(name = "Master Data", description = "취향, 재료, 조미료 등 마스터 데이터 조회") // Swagger 그룹 이름
 @Slf4j
 @RestController // JSON 데이터를 반환하는 컨트롤러임을 선언
-@RequestMapping("/api/ingredients") // 이 컨트롤러의 기본 주소는 http://localhost:8080/api/ingredients
+@RequestMapping("/api/ingredients")
 @RequiredArgsConstructor
+// frontend의 HTTP request를 받는 API Endpoint
 public class IngredientController {
 
     private final IngredientService ingredientService; // 서비스(주방) 연결

@@ -1,6 +1,6 @@
 package com.board.one_more_project.domain.preference;
 
-import com.board.one_more_project.domain.ingredient.IngredientResponse;
+import com.board.one_more_project.domain.ingredient.dto.IngredientResponse;
 import com.board.one_more_project.domain.spice.SpiceResponse;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;

@@ -1,4 +1,5 @@
 # --- Spring Server (으기) ---
+.env
 HELP.md
 .gradle/
 build/

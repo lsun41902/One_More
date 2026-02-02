@@ -1,6 +1,6 @@
 package com.board.one_more_project.infrastructure.ai;
 
-import com.board.one_more_project.domain.ingredient.IngredientAnalysisResponse;
+import com.board.one_more_project.domain.ingredient.dto.IngredientAnalysisResponse;
 import com.board.one_more_project.domain.ingredient.IngredientDto;
 import com.board.one_more_project.domain.recipe.RecipeGenerationRequest;
 import com.board.one_more_project.domain.recipe.RecipeResponse;

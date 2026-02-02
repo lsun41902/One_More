@@ -1,6 +1,6 @@
 package com.board.one_more_project.domain.recipe;
 
-import com.board.one_more_project.domain.ingredient.IngredientAnalysisResponse;
+import com.board.one_more_project.domain.ingredient.dto.IngredientAnalysisResponse;
 import com.board.one_more_project.infrastructure.ai.AiClientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
