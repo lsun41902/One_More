@@ -1,62 +1,121 @@
-# --- Spring Server (으기) ---
-.env
-HELP.md
-.gradle/
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
-!build.gradle
-!settings.gradle
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-Git_hub_basic_code
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+================================================================================================================================================================================
+# Spring Server (backend-spring) Settings
+backend-spring/.env
+backend-spring/HELP.md
+backend-spring/.gradle/
+backend-spring/build/
+!backend-spring/gradle/wrapper/gradle-wrapper.jar
+
+# Build/Output folders inside src
+!backend-spring/**/src/main/**/build/
+!backend-spring/**/src/test/**/build/
+!backend-spring/build.gradle
+!backend-spring/settings.gradle
+
+### STS (Spring Tool Suite) ###
+backend-spring/.apt_generated
+backend-spring/.classpath
+backend-spring/.factorypath
+backend-spring/.project
+backend-spring/.settings
+backend-spring/.springBeans
+backend-spring/.sts4-cache
+backend-spring/bin/
+!backend-spring/**/src/main/**/bin/
+!backend-spring/**/src/test/**/bin/
+
 ### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-### VS Code ###
-.vscode/
+# (루트 .idea와 겹칠 수 있으므로 폴더 하위 .idea 명시)
+backend-spring/.idea
+backend-spring/*.iws
+backend-spring/*.iml
+backend-spring/*.ipr
+backend-spring/out/
+!backend-spring/**/src/main/**/out/
+!backend-spring/**/src/test/**/out/
 
-
-
-
-# --- Python Server (lsun41902) ---
-# --- Project Common ---
-.DS_Store
-Thumbs.db
-
-# --- Python Server
-.venv/
-__pycache__/
-python-server/.env
-python-server/uploads/*
-python-server/chroma_db/*
-python-server/temp_data/*
-#python-server/temp_json/*
-*.tar
-
-# --- 이승은 코드합치는 개인도구
+# --- 개인 도구 및 문서 (루트에 있는 경우) ---
 merge_code.py
 project_context.txt
 restClientUsedService.txt
+Git_hub_basic_code
 Git_hub_basic_code.txt
+
+### NetBeans ###
+backend-spring/nbproject/private/
+backend-spring/nbbuild/
+backend-spring/dist/
+backend-spring/nbdist/
+backend-spring/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+================================================================================================================================================================================
+# Python Server (python-server) Settings
+
+# --- Project Common (Global) ---
+# 공통 무시 파일은 경로 없이 적어도 하위 폴더까지 다 적용돼.
+.DS_Store
+Thumbs.db
+
+# --- Python Server Specific ---
+# 가상환경 및 캐시 (경로 명시 필수)
+python-server/.venv/
+python-server/__pycache__/
+
+# 환경 변수 및 데이터 폴더
+python-server/.env
+python-server/uploads/
+python-server/chroma_db/
+python-server/temp_data/
+# python-server/temp_json/*
+
+# AI 모델 관련 폴더
+python-server/my_food_model/
+python-server/faiss_my_food_model_index/
+
+# 압축 파일
+python-server/*.tar
+
+================================================================================================================================================================================
+
+# Frontend (Expo-frontend) Settings
+# dependencies
+expo-frontend/node_modules/
+
+# Expo
+expo-frontend/.expo/
+expo-frontend/dist/
+expo-frontend/web-build/
+expo-frontend/expo-env.d.ts
+
+# Native folders (중요: 경로를 정확히 지정해야 함)
+expo-frontend/ios/
+expo-frontend/android/
+
+# Native files
+expo-frontend/.kotlin/
+expo-frontend/*.jks
+expo-frontend/*.p8
+expo-frontend/*.p12
+expo-frontend/*.key
+expo-frontend/*.mobileprovision
+
+# Metro & Debug
+expo-frontend/.metro-health-check*
+expo-frontend/npm-debug.*
+expo-frontend/yarn-debug.*
+expo-frontend/yarn-error.*
+
+# local env files
+expo-frontend/.env*.local
+.env
+
+# typescript
+expo-frontend/*.tsbuildinfo
+expo-frontend/app-example/
+
+# test
+expo-frontend/collect_code.py
+expo-frontend/frontend_source.txt
