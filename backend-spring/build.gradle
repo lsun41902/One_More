@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.board'
 version = '0.0.1-SNAPSHOT'
-description = 'One_More_Project'
+description = 'backend-spring'
 
 java {
     toolchain {
