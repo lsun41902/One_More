@@ -20,7 +20,7 @@ export const useImagePickerService = () => {
       return;
     }
 
-    // 현재 이미지가 3장 꽉 찼는지 확인
+    // 현재 이미지가 3장 꽉 찼는지 확인.
     if (selectedImages.length >= MAX_IMAGES) {
       alert(`이미지는 최대 ${MAX_IMAGES}장까지만 선택할 수 있습니다.`);
       return;
