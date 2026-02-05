@@ -1,45 +1,46 @@
-================================================================================================================================================================================
+# ==============================================================================
 # Spring Server (backend-spring) Settings
-backend-spring/.env
-backend-spring/HELP.md
-backend-spring/.gradle/
-backend-spring/build/
-!backend-spring/gradle/wrapper/gradle-wrapper.jar
+# ==============================================================================
+backend/backend-spring/.env
+backend/backend-spring/HELP.md
+backend/backend-spring/.gradle/
+backend/backend-spring/build/
+!backend/backend-spring/gradle/wrapper/gradle-wrapper.jar
 
 # Build/Output folders inside src
-!backend-spring/**/src/main/**/build/
-!backend-spring/**/src/test/**/build/
-!backend-spring/build.gradle
-!backend-spring/settings.gradle
+!backend/backend-spring/**/src/main/**/build/
+!backend/backend-spring/**/src/test/**/build/
+!backend/backend-spring/build.gradle
+!backend/backend-spring/settings.gradle
 
 ### STS (Spring Tool Suite) ###
-backend-spring/.apt_generated
-backend-spring/.classpath
-backend-spring/.factorypath
-backend-spring/.project
-backend-spring/.settings
-backend-spring/.springBeans
-backend-spring/.sts4-cache
-backend-spring/bin/
-!backend-spring/**/src/main/**/bin/
-!backend-spring/**/src/test/**/bin/
+backend/backend-spring/.apt_generated
+backend/backend-spring/.classpath
+backend/backend-spring/.factorypath
+backend/backend-spring/.project
+backend/backend-spring/.settings
+backend/backend-spring/.springBeans
+backend/backend-spring/.sts4-cache
+backend/backend-spring/bin/
+!backend/backend-spring/**/src/main/**/bin/
+!backend/backend-spring/**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-# (루트 .idea와 겹칠 수 있으므로 폴더 하위 .idea 명시)
-backend-spring/.idea
-backend-spring/*.iws
-backend-spring/*.iml
-backend-spring/*.ipr
-backend-spring/out/
-!backend-spring/**/src/main/**/out/
-!backend-spring/**/src/test/**/out/
+# (폴더 하위 .idea 명시해서 충돌 방지)
+backend/backend-spring/.idea
+backend/backend-spring/*.iws
+backend/backend-spring/*.iml
+backend/backend-spring/*.ipr
+backend/backend-spring/out/
+!backend/backend-spring/**/src/main/**/out/
+!backend/backend-spring/**/src/test/**/out/
 
-# --- 개인 도구 및 문서 (루트에 있는 경우) ---
-merge_code.py
-project_context.txt
-restClientUsedService.txt
-Git_hub_basic_code
-Git_hub_basic_code.txt
+### NetBeans ###
+backend/backend-spring/nbproject/private/
+backend/backend-spring/nbbuild/
+backend/backend-spring/dist/
+backend/backend-spring/nbdist/
+backend/backend-spring/.nb-gradle/
 
 ### NetBeans ###
 backend-spring/nbproject/private/
@@ -48,8 +49,7 @@ backend-spring/dist/
 backend-spring/nbdist/
 backend-spring/.nb-gradle/
 
-### VS Code ###
-.vscode/
+
 
 ### spring backend IDE설정 ###
 .idea/
@@ -58,6 +58,7 @@ backend-spring/.nb-gradle/
 ================================================================================================================================================================================
 # Python Server (python-server) Settings
 
+
 # --- Project Common (Global) ---
 # 공통 무시 파일은 경로 없이 적어도 하위 폴더까지 다 적용돼.
 .DS_Store
@@ -65,61 +66,64 @@ Thumbs.db
 
 # --- Python Server Specific ---
 # 가상환경 및 캐시 (경로 명시 필수)
-python-server/.venv/
-python-server/__pycache__/
+ai-server/python-server/.venv/
+ai-server/python-server/__pycache__/
 
 # 환경 변수 및 데이터 폴더
-python-server/.env
-python-server/uploads/
-python-server/chroma_db/
-python-server/temp_data/
-# python-server/temp_json/*
+ai-server/python-server/.env
+ai-server/python-server/uploads/
+ai-server/python-server/chroma_db/
+ai-server/python-server/temp_data/
+# ai-server/python-server/temp_json/*
 
 # AI 모델 관련 폴더
-python-server/my_food_model/
-python-server/faiss_my_food_model_index/
+ai-server/python-server/my_food_model/
+ai-server/python-server/faiss_my_food_model_index/
 
 # 압축 파일
-python-server/*.tar
+ai-server/python-server/*.tar
 
 ================================================================================================================================================================================
-
 # Frontend (Expo-frontend) Settings
+
 # dependencies
-expo-frontend/node_modules/
+frontend/expo-frontend/node_modules/
 
 # Expo
-expo-frontend/.expo/
-expo-frontend/dist/
-expo-frontend/web-build/
-expo-frontend/expo-env.d.ts
+frontend/expo-frontend/.expo/
+frontend/expo-frontend/dist/
+frontend/expo-frontend/web-build/
+frontend/expo-frontend/expo-env.d.ts
 
 # Native folders (중요: 경로를 정확히 지정해야 함)
-expo-frontend/ios/
-expo-frontend/android/
+frontend/expo-frontend/ios/
+frontend/expo-frontend/android/
 
 # Native files
-expo-frontend/.kotlin/
-expo-frontend/*.jks
-expo-frontend/*.p8
-expo-frontend/*.p12
-expo-frontend/*.key
-expo-frontend/*.mobileprovision
+frontend/expo-frontend/.kotlin/
+frontend/expo-frontend/*.jks
+frontend/expo-frontend/*.p8
+frontend/expo-frontend/*.p12
+frontend/expo-frontend/*.key
+frontend/expo-frontend/*.mobileprovision
 
 # Metro & Debug
-expo-frontend/.metro-health-check*
-expo-frontend/npm-debug.*
-expo-frontend/yarn-debug.*
-expo-frontend/yarn-error.*
+frontend/expo-frontend/.metro-health-check*
+frontend/expo-frontend/npm-debug.*
+frontend/expo-frontend/yarn-debug.*
+frontend/expo-frontend/yarn-error.*
 
 # local env files
-expo-frontend/.env*.local
+frontend/expo-frontend/.env*.local
 .env
 
 # typescript
-expo-frontend/*.tsbuildinfo
-expo-frontend/app-example/
+frontend/expo-frontend/*.tsbuildinfo
+frontend/expo-frontend/app-example/
 
 # test
-expo-frontend/collect_code.py
-expo-frontend/frontend_source.txt
+frontend/expo-frontend/collect_code.py
+frontend/expo-frontend/frontend_source.txt
+
+### VS Code ###
+.vscode/
