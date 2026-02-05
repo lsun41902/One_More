@@ -68,6 +68,8 @@ Thumbs.db
 # 가상환경 및 캐시 (경로 명시 필수)
 ai-server/python-server/.venv/
 ai-server/python-server/__pycache__/
+**/__pycache__/
+*.pyc
 
 # 환경 변수 및 데이터 폴더
 ai-server/python-server/.env
