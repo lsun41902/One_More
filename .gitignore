@@ -66,8 +66,8 @@ Thumbs.db
 
 # --- Python Server Specific ---
 # 가상환경 및 캐시 (경로 명시 필수)
-ai-server/python-server/.venv/
-ai-server/python-server/__pycache__/
+.venv/
+__pycache__/
 **/__pycache__/
 *.pyc
 
