@@ -13,8 +13,8 @@ export const Colors = {
   success: "#34C759",
   warning: "#FF9500",
   indigo: "#5856D6",
-  error: "#FF3B30", // 삭제 버튼용 레드
-  overlay: "rgba(0, 0, 0, 0.5)", // 배경 어둡게
+  error: "#FF3B30",
+  overlay: "rgba(0, 0, 0, 0.5)",
 };
 
 export const commonStyles = StyleSheet.create({
@@ -24,8 +24,8 @@ export const commonStyles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   contentContainer: {
-    paddingTop: 60,
-    paddingHorizontal: 20,
+    paddingTop: 50, // 60 -> 50 (상단 여백 축소)
+    paddingHorizontal: 16, // 20 -> 16 (좌우 여백 축소)
   },
   loaderContainer: {
     flex: 1,
@@ -36,21 +36,16 @@ export const commonStyles = StyleSheet.create({
 
   // [Group 3: Typography]
   mainTitle: {
-    fontSize: 24,
+    fontSize: 22, // 24 -> 22
     fontWeight: "bold",
-    marginBottom: 10,
+    marginBottom: 8,
     color: Colors.black,
   },
-  subTitle: {
-    fontSize: 16,
-    color: Colors.gray,
-    marginBottom: 25,
-  },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: 15, // 16 -> 15
     fontWeight: "bold",
     color: Colors.gray,
-    marginBottom: 15,
+    marginBottom: 10, // 15 -> 10
   },
   aiTitle: {
     color: Colors.warning,
@@ -71,11 +66,11 @@ export const commonStyles = StyleSheet.create({
   // [Group 4: Interactive - Search Bar]
   searchBar: {
     backgroundColor: Colors.white,
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    height: 50,
+    borderRadius: 10, // 12 -> 10
+    paddingHorizontal: 12,
+    height: 44, // 50 -> 44 (높이 축소)
     justifyContent: "center",
-    marginBottom: 20,
+    marginBottom: 15, // 20 -> 15
     borderWidth: 1,
     borderColor: Colors.lightGray,
     elevation: 2,
@@ -85,21 +80,21 @@ export const commonStyles = StyleSheet.create({
     shadowRadius: 4,
   },
   searchInput: {
-    fontSize: 16,
+    fontSize: 15, // 16 -> 15
     color: Colors.black,
   },
 
-  // [Group 5: Interactive - Chips]
+  // [Group 5: Interactive - Chips] (여기가 핵심 수정 부분)
   chipWrapper: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 8,
+    gap: 6, // 8 -> 6 (간격 축소)
   },
   chip: {
     backgroundColor: Colors.background,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    borderRadius: 10,
+    paddingHorizontal: 10, // 14 -> 10 (좌우 여백 축소)
+    paddingVertical: 6, // 10 -> 6 (상하 여백 대폭 축소)
+    borderRadius: 8, // 10 -> 8
     borderWidth: 1,
     borderColor: Colors.lightGray,
   },
@@ -109,7 +104,7 @@ export const commonStyles = StyleSheet.create({
   },
   chipText: {
     color: Colors.black,
-    fontSize: 14,
+    fontSize: 13, // 14 -> 13 (글자 크기 축소)
     fontWeight: "500",
   },
   chipTextSelected: {
@@ -118,9 +113,9 @@ export const commonStyles = StyleSheet.create({
   },
   aiChip: {
     backgroundColor: "#FFF4E5",
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    borderRadius: 10,
+    paddingHorizontal: 10, // 14 -> 10
+    paddingVertical: 6, // 10 -> 6
+    borderRadius: 8, // 10 -> 8
     borderWidth: 1,
     borderColor: Colors.warning,
   },
@@ -130,7 +125,7 @@ export const commonStyles = StyleSheet.create({
   },
   aiChipText: {
     color: Colors.warning,
-    fontSize: 14,
+    fontSize: 13, // 14 -> 13
     fontWeight: "bold",
   },
   aiChipTextSelected: {
@@ -141,46 +136,46 @@ export const commonStyles = StyleSheet.create({
   // [Group 6: Interactive - Buttons]
   nextButton: {
     backgroundColor: Colors.success,
-    padding: 18,
-    borderRadius: 16,
+    padding: 16, // 18 -> 16
+    borderRadius: 14,
     alignItems: "center",
     marginTop: 10,
     elevation: 3,
   },
   nextButtonText: {
     color: Colors.white,
-    fontSize: 17,
+    fontSize: 16, // 17 -> 16
     fontWeight: "bold",
   },
   menuButton: {
     backgroundColor: Colors.success,
-    padding: 22,
-    borderRadius: 15,
+    padding: 18, // 22 -> 18
+    borderRadius: 12,
     alignItems: "center",
-    marginBottom: 15,
+    marginBottom: 12, // 15 -> 12
     elevation: 2,
   },
   menuButtonText: {
     color: Colors.white,
-    fontSize: 18,
+    fontSize: 16, // 18 -> 16
     fontWeight: "bold",
   },
   textButton: {
-    marginTop: 20,
+    marginTop: 15, // 20 -> 15
     alignItems: "center",
   },
   textButtonLabel: {
     color: Colors.gray,
-    fontSize: 16,
+    fontSize: 14, // 16 -> 14
     textDecorationLine: "underline",
   },
 
   // [Group 7: Information Display]
   sectionCard: {
     backgroundColor: Colors.white,
-    borderRadius: 20,
-    padding: 20,
-    marginBottom: 20,
+    borderRadius: 16, // 20 -> 16
+    padding: 15, // 20 -> 15 (카드 내부 여백 축소)
+    marginBottom: 15, // 20 -> 15
     elevation: 1,
   },
   aiBorder: {
@@ -190,35 +185,34 @@ export const commonStyles = StyleSheet.create({
   badge: {
     backgroundColor: "#E6F4FE",
     alignSelf: "flex-start",
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 8,
-    marginBottom: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 6,
+    marginBottom: 6,
   },
   badgeText: {
     color: Colors.primary,
     fontWeight: "bold",
-    fontSize: 12,
+    fontSize: 11,
   },
 
   // [Group 8: Image Thumbnails]
   thumbnailRow: {
     flexDirection: "row",
-    justifyContent: "flex-start", // [수정] 왼쪽 정렬
-    gap: 15, // [수정] 아이템 간 간격 고정
-    marginBottom: 30,
+    justifyContent: "flex-start",
+    gap: 10, // 15 -> 10
+    marginBottom: 20,
   },
-  // [신규] 이미지가 들어있는 슬롯의 컨테이너 (크기 고정 필수)
   thumbnailFilled: {
-    width: 100,
-    height: 100,
-    borderRadius: 12,
-    position: "relative", // 삭제 배지를 위해 relative 설정
+    width: 90, // 100 -> 90
+    height: 90, // 100 -> 90
+    borderRadius: 10,
+    position: "relative",
   },
   thumbnailSlot: {
-    width: 100,
-    height: 100,
-    borderRadius: 12,
+    width: 90, // 100 -> 90
+    height: 90, // 100 -> 90
+    borderRadius: 10,
     backgroundColor: Colors.background,
     borderWidth: 1,
     borderColor: Colors.lightGray,
@@ -229,18 +223,18 @@ export const commonStyles = StyleSheet.create({
   thumbnailImage: {
     width: "100%",
     height: "100%",
-    borderRadius: 12,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: Colors.lightGray,
   },
   deleteBadge: {
     position: "absolute",
-    top: -8,
-    right: -8,
+    top: -6,
+    right: -6,
     backgroundColor: Colors.error,
-    width: 24,
-    height: 24,
-    borderRadius: 12,
+    width: 22,
+    height: 22,
+    borderRadius: 11,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 2,
@@ -250,7 +244,7 @@ export const commonStyles = StyleSheet.create({
   deleteText: {
     color: Colors.white,
     fontWeight: "bold",
-    fontSize: 12,
+    fontSize: 10,
   },
   addButtonSmall: {
     width: "100%",
@@ -259,7 +253,7 @@ export const commonStyles = StyleSheet.create({
     alignItems: "center",
   },
   plusText: {
-    fontSize: 30,
+    fontSize: 24,
     color: Colors.placeholder,
     fontWeight: "300",
   },
