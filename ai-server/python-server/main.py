@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from router import analysis, recipes, test
 
-#region 전역변수 선언
-#기본 셋팅
+# region 전역변수 선언
+# 기본 셋팅
 app = FastAPI()
 # app.add_middleware(
 #     CORSMiddleware,
@@ -11,19 +11,21 @@ app = FastAPI()
 #     allow_methods=["*"],
 #     allow_headers=["*"],
 # )
-#endregion
+# endregion
 
 app.include_router(recipes.router)
 app.include_router(analysis.router)
 app.include_router(test.router)
 
+
 @app.get("/")
 async def root():
-    return {"message":"Welcome to One More Project AI server"}
+    return {"message": "Welcome to One More Project AI server"}
 
 
-#메인
+# 메인
 if __name__ == "__main__":
     print("welcome python server!")
     import uvicorn
-    uvicorn.run("main:app",host='0.0.0.0',port=8000,reload=True)
+
+    uvicorn.run("main:app", host='0.0.0.0', port=8000, reload=True)

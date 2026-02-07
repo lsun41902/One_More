@@ -43,7 +43,10 @@ export const useMasterDataService = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   // 백엔드 서버 주소 (실제 기기 테스트 시 PC의 IP 주소로 변경 확인 필수)
-  const SERVER_URL = "http://192.168.22.54:8080";
+  // const SERVER_URL = "http://192.168.22.54:8080";
+
+  // apk테스트를 위한, ngrok 무료 버전 주소.
+  const SERVER_URL = "https://areolar-tad-unimplanted.ngrok-free.dev";
 
   /**
    * [기능 1] 마스터 데이터 초기 로드
@@ -52,7 +55,12 @@ export const useMasterDataService = () => {
   const fetchAllMasterData = async () => {
     try {
       setIsLoading(true);
-      const prefRes = await fetch(`${SERVER_URL}/api/preferences`);
+      const prefRes = await fetch(`${SERVER_URL}/api/preferences`, {
+        // [수정] 헤더 추가
+        headers: {
+          "ngrok-skip-browser-warning": "69420",
+        },
+      });
 
       if (prefRes.ok) {
         const prefData = await prefRes.json();
@@ -88,7 +96,10 @@ export const useMasterDataService = () => {
       setIsLoading(true);
       const response = await fetch(`${SERVER_URL}/api/preferences/analyze`, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420", // [수정] 추가
+        },
         body: JSON.stringify(preferenceList),
       });
 
@@ -118,6 +129,12 @@ export const useMasterDataService = () => {
     try {
       const response = await fetch(
         `${SERVER_URL}/api/ingredients/search?q=${encodeURIComponent(query)}`,
+        {
+          // [수정] 헤더 추가
+          headers: {
+            "ngrok-skip-browser-warning": "69420",
+          },
+        },
       );
       if (response.ok) {
         const data: MasterDataResponse[] = await response.json();
@@ -187,6 +204,10 @@ export const useMasterDataService = () => {
 
       const response = await fetch(`${SERVER_URL}/api/recipe/analyze`, {
         method: "POST",
+        headers: {
+          // [수정] ngrok 건너뛰기 헤더 추가
+          "ngrok-skip-browser-warning": "69420",
+        },
         body: formData,
       });
 
@@ -233,7 +254,11 @@ export const useMasterDataService = () => {
 
       const response = await fetch(`${SERVER_URL}/api/recipe/generate`, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {
+          "Content-Type": "application/json",
+          // [수정] ngrok 건너뛰기 헤더 추가
+          "ngrok-skip-browser-warning": "69420",
+        },
         body: JSON.stringify(requestData),
       });
 

@@ -16,14 +16,14 @@ import {Colors, commonStyles} from "../src/styles/common.styles";
 
 // 수량 선택 옵션 데이터
 const QUANTITY_OPTIONS = [
+  "약간",
+  "적당히",
+  "많이",
   "50g",
   "100g",
   "200g",
   "300g",
   "500g",
-  "약간",
-  "적당히",
-  "많이",
   "1근",
   "1봉지",
   "1조각",
@@ -98,7 +98,7 @@ export default function IngredientsScreen() {
       {/* 1. 내 요리 설정 요약 */}
       <SummaryHeader selections={selections} />
 
-      <Text style={commonStyles.mainTitle}>재료 확인 🛒</Text>
+      <Text style={commonStyles.mainTitle}>재료 확인</Text>
       <Text style={commonStyles.subTitle}>
         AI가 추천한 재료와 분석된 재료입니다.
       </Text>

@@ -5,7 +5,7 @@ import {StyleSheet} from "react-native";
 export const Colors = {
   background: "#F2F2F7",
   white: "#FFFFFF",
-  black: "#1C1C1E",
+  black: "#000000",
   gray: "#8E8E93",
   lightGray: "#E5E5EA",
   placeholder: "#C7C7CC",
@@ -14,7 +14,7 @@ export const Colors = {
   warning: "#FF9500",
   indigo: "#5856D6",
   error: "#FF3B30", // 삭제 버튼용 레드
-  overlay: "rgba(0,0,0,0.5)", // 배경 어둡게
+  overlay: "rgba(0, 0, 0, 0.5)", // 배경 어둡게
 };
 
 export const commonStyles = StyleSheet.create({

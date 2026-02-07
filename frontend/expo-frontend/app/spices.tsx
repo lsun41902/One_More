@@ -40,7 +40,7 @@ export default function SpicesScreen() {
     >
       <SummaryHeader selections={selections} />
 
-      <Text style={commonStyles.mainTitle}>조미료 선택 🧂</Text>
+      <Text style={commonStyles.mainTitle}>조미료 선택</Text>
       <Text style={commonStyles.subTitle}>
         AI가 추천한 조미료와 직접 검색한 조미료입니다.
       </Text>
