@@ -56,7 +56,7 @@ export default function RecipeCheckScreen() {
           AI 셰프가 레시피를 생각 중입니다...
         </Text>
         <Text style={{marginTop: 10, color: Colors.gray}}>
-          잠시만 기다려주세요 🍳
+          잠시만 기다려주세요
         </Text>
       </View>
     );
@@ -70,7 +70,7 @@ export default function RecipeCheckScreen() {
       {/* 1. 상단 요약 헤더 (일관성 유지) */}
       <SummaryHeader selections={selections} />
 
-      <Text style={commonStyles.mainTitle}>준비 완료! 👨‍🍳</Text>
+      <Text style={commonStyles.mainTitle}>준비 완료!</Text>
       <Text style={commonStyles.subTitle}>선택한 내용을 확인해주세요</Text>
 
       {/* 2. 선택 재료 섹션 (카드 스타일) */}
@@ -118,7 +118,7 @@ export default function RecipeCheckScreen() {
         style={commonStyles.nextButton}
         onPress={handleGenerate}
       >
-        <Text style={commonStyles.nextButtonText}>레시피 생성하기 🚀</Text>
+        <Text style={commonStyles.nextButtonText}>레시피 생성하기</Text>
       </TouchableOpacity>
 
       <TouchableOpacity

@@ -31,21 +31,21 @@ export default function SummaryHeader({ selections }: SummaryHeaderProps) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#1C1C1E", // 다크 그레이 (시스템 색상)
+    backgroundColor: "#34C759", // 다크 그레이 (시스템 색상)
     padding: 20,
     borderRadius: 16,
     marginBottom: 20,
     width: "100%",
   },
   title: {
-    color: "#8E8E93",
-    fontSize: 12,
+    color: "#000000",
+    fontSize: 16,
     fontWeight: "bold",
     marginBottom: 12,
   },
   row: { flexDirection: "row", justifyContent: "space-between" },
   itemWrapper: { flex: 1 },
-  label: { color: "#636366", fontSize: 10, marginBottom: 4 },
-  value: { color: "#FFFFFF", fontSize: 15, fontWeight: "bold" },
+  label: { color: "#000000", fontSize: 16, marginBottom: 4 },
+  value: { color: "#FFFFFF", fontSize: 20, fontWeight: "bold" },
   placeholder: { color: "#48484A" }, // 선택 전에는 흐릿하게 표시
 });
