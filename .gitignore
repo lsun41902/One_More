@@ -84,7 +84,7 @@ ai-server/python-server/faiss_my_food_model_index/
 
 # 압축 파일
 ai-server/python-server/*.tar
-ai-serve/uploads
+ai-serve/uploads/
 ================================================================================================================================================================================
 # Frontend (Expo-frontend) Settings
 

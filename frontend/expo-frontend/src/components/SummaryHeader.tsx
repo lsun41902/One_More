@@ -1,12 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 
 // 컴포넌트가 받을 데이터 타입 정의
 interface SummaryHeaderProps {
-  selections: { style: string; taste: string; condition: string };
+  selections: {style: string; taste: string; condition: string};
 }
 
-export default function SummaryHeader({ selections }: SummaryHeaderProps) {
+export default function SummaryHeader({selections}: SummaryHeaderProps) {
   // 값이 없을 때 보여줄 텍스트 처리
   const renderItem = (value: string, label: string) => (
     <View style={styles.itemWrapper}>
@@ -43,9 +43,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 12,
   },
-  row: { flexDirection: "row", justifyContent: "space-between" },
-  itemWrapper: { flex: 1 },
-  label: { color: "#000000", fontSize: 16, marginBottom: 4 },
-  value: { color: "#FFFFFF", fontSize: 20, fontWeight: "bold" },
-  placeholder: { color: "#48484A" }, // 선택 전에는 흐릿하게 표시
+  row: {flexDirection: "row", justifyContent: "space-between"},
+  itemWrapper: {flex: 1},
+  label: {color: "#FFFFFF", fontSize: 12, marginBottom: 4, fontWeight: "bold"},
+  value: {color: "#000000", fontSize: 16, fontWeight: "bold"},
+  placeholder: {color: "#48484A"}, // 선택 전에는 흐릿하게 표시
 });
