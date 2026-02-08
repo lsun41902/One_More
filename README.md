@@ -44,12 +44,14 @@
 ## **3. 시스템 아키텍처 & 데이터 흐름**
 
 3-1 서비스 데이터 플로우:
-
-![diagram-export-2026.-2.-8.-오후-3_43_39.png](attachment:85b5f881-0104-499f-bbb6-c98116addc9a:diagram-export-2026.-2.-8.-오후-3_43_39.png)
+<div align="center">
+  <img src="./assets/3-1_서비스_데이터_플로우.png" width="80" />
+</div>
 
 3-2 시스템 인프라 아키텍처:
-
-![diagram-export-2026.-2.-8.-오후-3_45_43.png](attachment:4069931d-0ec5-4902-ba16-f7159ced9f91:diagram-export-2026.-2.-8.-오후-3_45_43.png)
+<div align="center">
+  <img src="./assets/3-2_시스템_인프라_아키텍처.png" width="80%" />
+</div>
 
 ---
 #### 1. 취향 선택
