@@ -144,6 +144,6 @@
 ---
 
 ## 5. 트러블 슈팅(Troubleshooting)
-- [이미지 전송 오류](assets/이미지 전송 에러 301df1d0a3478072ba9bfe948b97696a.md)
->- 422 Unprocessable Content: [no body] 에러
+- [이미지 전송 오류](assets/이미지%20전송%20에러%20301df1d0a3478072ba9bfe948b97696a.md)
+- >- 422 Unprocessable Content: [no body] 에러
 >- HTTP 전송 객체 문제
