@@ -45,7 +45,7 @@
 
 3-1 서비스 데이터 플로우:
 <div align="center">
-  <img src="./assets/3-1_서비스_데이터_플로우.png" width="80" />
+  <img src="./assets/3-1_서비스_데이터_플로우.png" width="80%" />
 </div>
 
 3-2 시스템 인프라 아키텍처:
