@@ -45,7 +45,7 @@
 | **CI** | **npm** |
 
 
-## **3. 시스템 아키텍처 & 데이터 흐름**
+## **3. 시스템 아키텍처 & 데이터 흐름(System Architecture & Data Flow)**
 
 3-1 서비스 데이터 플로우:
 <div align="center">
