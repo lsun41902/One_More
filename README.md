@@ -142,3 +142,8 @@
 - 실제 ‘만개의 레시피’사이트의 레시피 데이터 출력 구현
 
 ---
+
+## 5. 트러블 슈팅(Troubleshooting)
+- [이미지 전송 오류](./assets/이미지 전송 에러 301df1d0a3478072ba9bfe948b97696a.md)
+>- 422 Unprocessable Content: [no body] 에러
+>- HTTP 전송 객체 문제
