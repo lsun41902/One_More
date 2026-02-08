@@ -1,4 +1,11 @@
 
+#### 2-2. 직접 식재료 선택
+![직접 식재료 선택](./assets/2_2_direct_select_ingredients.gif)
+
+- **식재료 수동 등록**: 사용자가 냉장고에 있는 재료를 키워드로 직접 검색하여 추가할 수 있습니다.
+- **유연한 데이터 입력**: 사진 촬영이 어려운 환경에서도 텍스트 입력을 통해 정확한 재료 정보를 반영합니다.
+- **데이터 분석 연동**: 입력된 재료는 AI 서버 및 백엔드로 전달되어 최적의 레시피를 추천하는 기반이 됩니다.
+
 
 ![1_select_preferences](https://github.com/user-attachments/assets/1d3016fa-daab-47b1-8f5a-656bda240897)
 ![2_2_direct_select_ingredients](https://github.com/user-attachments/assets/b5608a2f-105d-4224-a31a-64babef4821e)
