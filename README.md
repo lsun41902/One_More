@@ -2,8 +2,13 @@
 #### 1. 취향 선택
 ![취향 선택](./assets/select_preferences.gif)
 
-<img src="./assets/select_preferences.gif">
 
+
+#### 2. 식재료 이미지, 영수증 분석
+<div align="center">
+  <img src="./assets/analyse_image.gif" width="35%" />
+  <img src="./assets/analyse_receipt.gif" width="35%" />
+</div>
 
 #### 2-2. 직접 식재료 선택
 ![직접 식재료 선택](./assets/direct_select_ingredients.gif)
