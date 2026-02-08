@@ -7,42 +7,43 @@
   
 
 ## **2. 기술 스택 (Tech Stack)**
-
 - Backend
-
-| Category | Detail (java) |
-| --- | --- |
-| **BackEnd** | **Java 21**, **Spring Boot 3.4.1,**  |
-| **OS** | Windows |
-| **Library & API** | **Spring AI**, **Ollama** (Model: `bge-m3`, `exaone3.5`), **Lombok**, Spring Data JPA,  **RestTemplate** (Server-to-Server Comm) |
-| **IDE** | IntelliJ IDEA (Java), VS Code |
-| **Server** | Apache Tomcat (Spring Boot Embedded), Uvicorn (FastAPI Server) |
-| **Document** | **Swagger** (SpringDoc OpenAPI 3.0) |
-| **CI** | **Gradle** (Build Tool) |
-| **DataBase** | **PostgreSQL** (Relation + **pgvector** Extension) |
-
+    
+    
+    | Category | Detail (java) |
+    | --- | --- |
+    | **BackEnd** | **Java 21**, **Spring Boot 3.4.1,** |
+    | **OS** | Windows |
+    | **Library & API** | **Spring AI**, **Ollama** (Model: `bge-m3`, `exaone3.5`), **Lombok**, Spring Data JPA,  **RestTemplate** (Server-to-Server Comm) |
+    | **IDE** | IntelliJ IDEA (Java), VS Code |
+    | **Server** | Apache Tomcat (Spring Boot Embedded), Uvicorn (FastAPI Server) |
+    | **Document** | **Swagger** (SpringDoc OpenAPI 3.0) |
+    | **CI** | **Gradle** (Build Tool) |
+    | **DataBase** | **PostgreSQL** (Relation + **pgvector** Extension) |
 - AI-server
-
-| Category | Detail (Python) |
-| --- | --- |
-| **BackEnd** | **Python3.11, FastAPI** |
-| **OS** | **Windows 11** |
-| **Library & API** | **AI/LLM(**Google GenAi, LangChain), **Embedding &** **Vector DB (**FAISS, HuggingFace (`jhgan/ko-sroberta-multitask`), **Model Training**(Sentence-Transformers(PyTorch)) |
-| **IDE** | **Pycham** |
-| **Server** | **Uvicorn** (FastAPI Server) |
-| **Document** | **Swagger** (SpringDoc OpenAPI 3.0) |
-| **CI** | **pip** |
-
+    
+    
+    | Category | Detail (Python) |
+    | --- | --- |
+    | **BackEnd** | **Python3.11, FastAPI** |
+    | **OS** | **Windows 11** |
+    | **Library & API** | **AI/LLM(**Google GenAi, LangChain), **Embedding &** **Vector DB (**FAISS, HuggingFace (`jhgan/ko-sroberta-multitask`), **Model Training**(Sentence-Transformers(PyTorch)) |
+    | **IDE** | **Pycham** |
+    | **Server** | **Uvicorn** (FastAPI Server) |
+    | **Document** | **Swagger** (SpringDoc OpenAPI 3.0) |
+    | **CI** | **pip** |
 - Frontend
+    
+    
+    | Category | Detail (TypeScript) |
+    | --- | --- |
+    | **FrontEnd** | **React Native / Expo** |
+    | **OS** | **Windows 11** |
+    | **Library & API** | **Expo Router, React Navigation, React Native Reanimated, Expo Image Picker** |
+    | **IDE** | **VSCode** |
+    | **Server** | **Node.js** |
+    | **CI** | **npm** |
 
-| Category | Detail (TypeScript) |
-| --- | --- |
-| **FrontEnd** | **React Native / Expo** |
-| **OS** | **Windows 11** |
-| **Library & API** | **Expo Router, React Navigation, React Native Reanimated, Expo Image Picker** |
-| **IDE** | **VSCode** |
-| **Server** | **Node.js** |
-| **CI** | **npm** |
 
 
 ## **3. 시스템 아키텍처 & 데이터 흐름(System Architecture & Data Flow)**
