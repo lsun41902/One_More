@@ -119,9 +119,9 @@ export default function IngredientsScreen() {
             확정된 재료 목록 ({ingredients.length})
           </Text>
           <View style={commonStyles.chipWrapper}>
-            {ingredients.map((item) => (
+            {ingredients.map((item, index) => (
               <View
-                key={item.ingredient}
+                key={`${item.ingredient}-${index}`}
                 style={[
                   commonStyles.chip,
                   commonStyles.chipSelected,
@@ -133,9 +133,7 @@ export default function IngredientsScreen() {
                 <TouchableOpacity
                   onPress={() => setActiveIngredientName(item.ingredient)}
                   style={{
-                    paddingRight: 8, // 10 -> 8
-                    borderRightWidth: 1,
-                    borderRightColor: "rgba(255,255,255,0.3)",
+                    paddingRight: 2, // 10 -> 8
                   }}
                 >
                   <Text style={commonStyles.chipTextSelected}>
@@ -147,7 +145,7 @@ export default function IngredientsScreen() {
                 <TouchableOpacity
                   onPress={() => removeIngredient(item.ingredient)}
                   // [수정] paddingVertical을 제거하여 칩 높이가 커지는 것 방지
-                  style={{paddingLeft: 8, paddingVertical: 0}}
+                  style={{paddingLeft: 2, paddingRight: 4, paddingVertical: 0}}
                 >
                   <Text style={[commonStyles.chipTextSelected, {fontSize: 14}]}>
                     ✕
@@ -214,12 +212,6 @@ export default function IngredientsScreen() {
               </TouchableOpacity>
             ))}
           </View>
-          <TouchableOpacity
-            onPress={() => setActiveIngredientName(null)}
-            style={{marginTop: 15, alignItems: "center"}}
-          >
-            <Text style={{color: Colors.gray}}>닫기</Text>
-          </TouchableOpacity>
         </View>
       )}
 
