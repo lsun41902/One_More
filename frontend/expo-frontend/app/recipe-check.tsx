@@ -71,7 +71,6 @@ export default function RecipeCheckScreen() {
       <SummaryHeader selections={selections} />
 
       <Text style={commonStyles.mainTitle}>준비 완료!</Text>
-      <Text style={commonStyles.subTitle}>선택한 내용을 확인해주세요</Text>
 
       {/* 2. 선택 재료 섹션 (카드 스타일) */}
       <View style={commonStyles.sectionCard}>

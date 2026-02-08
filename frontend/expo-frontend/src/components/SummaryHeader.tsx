@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#34C759", // 다크 그레이 (시스템 색상)
     padding: 20,
     borderRadius: 16,
-    marginBottom: 20,
+    marginBottom: 10,
     width: "100%",
   },
   title: {
