@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from schemas.recipe import RequestRecipe
 from services import calc_ai
+from fastapi.concurrency import run_in_threadpool # 상단에 추가
 
 router = APIRouter(prefix="/recipes-generate-",tags=["레시피"])
 # ai.get_rag_embedding()
@@ -12,7 +13,7 @@ router = APIRouter(prefix="/recipes-generate-",tags=["레시피"])
 async def analyze(request: RequestRecipe):
     ShowDebugForText(request)
     ai = calc_ai.AnalyzeGenai()
-    result = ai.get_chef_recipe(request.preferences, request.ingredients, request.spices)
+    result = await run_in_threadpool(ai.get_chef_recipe(request.preferences, request.ingredients, request.spices))
     return {"result": result}
 #endregion
 
@@ -24,7 +25,7 @@ async def analyze(request: RequestRecipe):
 async def analyze(request: RequestRecipe):
     ShowDebugForText(request)
     ai = calc_ai.AnalyzeGenai()
-    result = ai.get_recipe(request.preferences,request.ingredients,request.spices)
+    result = await run_in_threadpool(ai.get_recipe(request.preferences,request.ingredients,request.spices))
     return {"result": result}
 #endregion
 
@@ -35,7 +36,7 @@ async def analyze(request: RequestRecipe):
 async def analyze(request: RequestRecipe):
     ShowDebugForText(request)
     ai = calc_ai.AnalyzeGenai()
-    result = ai.get_another_recipe(request.preferences,request.ingredients,request.spices)
+    result = await run_in_threadpool(ai.get_another_recipe(request.preferences,request.ingredients,request.spices))
     return {"result": result}
 #endregion
 
@@ -46,7 +47,7 @@ async def analyze(request: RequestRecipe):
 async def analyze(request: RequestRecipe):
     ShowDebugForText(request)
     ai = calc_ai.AnalyzeGenai()
-    result = ai.get_another_more_somthing(request.preferences,request.ingredients,request.spices)
+    result = await run_in_threadpool(ai.get_another_more_somthing(request.preferences,request.ingredients,request.spices))
     return {"result": result}
 #endregion
 
