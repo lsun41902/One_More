@@ -39,12 +39,7 @@ export default function SpicesScreen() {
       contentContainerStyle={commonStyles.contentContainer}
     >
       <SummaryHeader selections={selections} />
-
-      <Text style={commonStyles.mainTitle}>조미료 선택 🧂</Text>
-      <Text style={commonStyles.subTitle}>
-        AI가 추천한 조미료와 직접 검색한 조미료입니다.
-      </Text>
-
+      <Text style={commonStyles.mainTitle}>조미료 선택</Text>
       <View style={commonStyles.searchBar}>
         <TextInput
           style={commonStyles.searchInput}
@@ -74,10 +69,32 @@ export default function SpicesScreen() {
             {spices.map((name) => (
               <TouchableOpacity
                 key={name}
-                style={[commonStyles.chip, commonStyles.chipSelected]}
+                style={[
+                  commonStyles.chip,
+                  commonStyles.chipSelected,
+                  // [수정] 재료 화면처럼 내부 요소를 가로로 배치하고 여백을 더 줄임
+                  {
+                    flexDirection: "row",
+                    alignItems: "center",
+                    paddingVertical: 4, // 상하 여백 최소화
+                    paddingRight: 6, // 오른쪽 여백 축소
+                    paddingLeft: 10,
+                  },
+                ]}
                 onPress={() => toggleSpice(name)}
               >
-                <Text style={commonStyles.chipTextSelected}>{name} ✕</Text>
+                <Text style={[commonStyles.chipTextSelected, {marginRight: 4}]}>
+                  {name}
+                </Text>
+                {/* X 버튼을 별도 텍스트로 분리하여 크기 조절 */}
+                <Text
+                  style={[
+                    commonStyles.chipTextSelected,
+                    {fontSize: 12, opacity: 0.8},
+                  ]}
+                >
+                  ✕
+                </Text>
               </TouchableOpacity>
             ))}
           </View>
@@ -114,7 +131,6 @@ export default function SpicesScreen() {
           })}
         </View>
       </View>
-
       {/* 검색 결과 섹션 */}
       {searchText.length > 0 && (
         <View style={commonStyles.sectionCard}>
@@ -146,9 +162,8 @@ export default function SpicesScreen() {
           )}
         </View>
       )}
-
       {/* 하단 액션 버튼들 */}
-      <View style={{marginTop: 20, gap: 10}}>
+      <View style={{marginTop: 1, gap: 10}}>
         <TouchableOpacity
           style={commonStyles.nextButton}
           onPress={() => router.push("/recipe-check")}
@@ -168,7 +183,6 @@ export default function SpicesScreen() {
           </Text>
         </TouchableOpacity>
       </View>
-
       <View style={{height: 50}} />
     </ScrollView>
   );

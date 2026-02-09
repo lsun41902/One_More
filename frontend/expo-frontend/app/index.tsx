@@ -15,10 +15,11 @@ import {Colors, commonStyles} from "../src/styles/common.styles";
 
 export default function HomeScreen() {
   const router = useRouter();
-  const {selections, setSelections, resetAll} = useAppContent(); // [수정] resetAll 가져오기
+  const {selections, setSelections, resetAll} = useAppContent();
   const [localStep, setLocalStep] = useState(0);
   const {preferences, isLoading, analyzePreferences} = useMasterDataService();
 
+  // 질문 데이터 구조 정의 (마스터 데이터 기반)
   const questions = [
     {
       key: "style",
@@ -40,6 +41,7 @@ export default function HomeScreen() {
     },
   ];
 
+  // 선택 핸들러: 선택 시 다음 질문 단계(localStep)로 인덱스 증가
   const handleSelect = async (key: string, value: string) => {
     const updatedSelections = {...selections, [key]: value};
     setSelections(updatedSelections);
@@ -48,6 +50,7 @@ export default function HomeScreen() {
     }
   };
 
+  // 다음 단계 이동: 선택된 취향 리스트를 분석 API로 전송 후 화면 이동
   const handleNextStep = () => {
     const preferenceList = [
       selections.style,
@@ -58,15 +61,16 @@ export default function HomeScreen() {
     router.push("/input-method");
   };
 
-  //  [수정] handleReset
+  // 초기화 핸들러: Global Context와 로컬 스텝 모두 리셋
   const handleReset = () => {
-    resetAll(); // 1. Global Context의 모든 데이터 삭제 (Reset All)
-    setLocalStep(0); // 2. 현재 화면의 질문 단계 초기화
+    resetAll();
+    setLocalStep(0);
   };
 
   const isAllSelected =
     selections.style && selections.taste && selections.condition;
 
+  // 초기 로딩 처리 (마스터 데이터 fetch 중일 때)
   if (isLoading && localStep === 0) {
     return (
       <View style={commonStyles.loaderContainer}>
@@ -80,49 +84,27 @@ export default function HomeScreen() {
       style={commonStyles.safeContainer}
       contentContainerStyle={commonStyles.contentContainer}
     >
+      {/* 상단 요약 헤더: 선택된 값이 실시간으로 반영됨 */}
       <SummaryHeader selections={selections} />
+
       <Text style={commonStyles.mainTitle}>취향 선택</Text>
 
+      {/* 
+          [로직 설명] 질문 리스트 렌더링 루프
+          questions 배열을 순회하며 현재 단계(localStep)에 맞는 질문만 화면에 노출합니다.
+      */}
       {questions.map((q, index) => {
+        // 1. 아직 도달하지 않은 미래의 질문은 렌더링하지 않음 (Skip)
         if (index > localStep) return null;
+
+        // 2. [수정 부분] 이미 선택이 완료된 이전 단계의 질문(History) 처리
+        // 기존에는 여기서 TouchableOpacity를 리턴하여 선택 내용을 보여줬으나,
+        // 요청하신 대로 '없애버리기' 위해 null을 리턴하도록 수정했습니다.
         if (index < localStep) {
-          return (
-            <TouchableOpacity
-              key={q.key}
-              onPress={() => setLocalStep(index)}
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                backgroundColor: "#F2F2F7",
-                padding: 15,
-                borderRadius: 10,
-                marginBottom: 10,
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: "#666",
-                  width: 60,
-                  fontWeight: "600",
-                }}
-              >
-                {q.label}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: "#333",
-                  fontWeight: "bold",
-                  flex: 1,
-                }}
-              >
-                {selections[q.key as keyof typeof selections]}
-              </Text>
-              <Text style={{fontSize: 16, color: Colors.success}}>✔</Text>
-            </TouchableOpacity>
-          );
+          return null;
         }
+
+        // 3. 현재 활성화된 질문 단계 (Active Step)
         if (index === localStep) {
           return (
             <View key={q.key} style={commonStyles.sectionCard}>
@@ -162,6 +144,7 @@ export default function HomeScreen() {
         return null;
       })}
 
+      {/* 모든 질문이 완료되었을 때 나타나는 하단 액션 영역 */}
       {isAllSelected && (
         <View style={{marginTop: 20}}>
           <TouchableOpacity
@@ -183,6 +166,8 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
       )}
+
+      {/* 하단 스크롤 여백 확보 */}
       <View style={{height: 50}} />
     </ScrollView>
   );

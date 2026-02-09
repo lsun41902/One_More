@@ -10,7 +10,7 @@ module.exports = defineConfig([
       "react-native": reactNative,
     },
     rules: {
-      // 💡 <View> 안에 생으로 글자를 쓰는 실수를 잡아주는 규칙
+      // <View> 안에 생으로 글자를 쓰는 실수를 잡아주는 규칙
       "react-native/no-raw-text": [
         "error",
         {

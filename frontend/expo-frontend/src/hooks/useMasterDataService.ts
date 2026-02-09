@@ -43,7 +43,15 @@ export const useMasterDataService = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   // 백엔드 서버 주소 (실제 기기 테스트 시 PC의 IP 주소로 변경 확인 필수)
-  const SERVER_URL = "http://192.168.22.54:8080";
+  // const SERVER_URL = "http://192.168.22.54:8080";
+
+  // apk테스트를 위한, ngrok 무료 버전 주소.
+  const SERVER_URL = "https://areolar-tad-unimplanted.ngrok-free.dev";
+
+  // ngrok 경고페이지 우회용 공통 헤더 정의
+  const COMMON_HEADERS = {
+    "ngrok-skip-browser-warning": "69420",
+  };
 
   /**
    * [기능 1] 마스터 데이터 초기 로드
@@ -52,7 +60,10 @@ export const useMasterDataService = () => {
   const fetchAllMasterData = async () => {
     try {
       setIsLoading(true);
-      const prefRes = await fetch(`${SERVER_URL}/api/preferences`);
+      const prefRes = await fetch(`${SERVER_URL}/api/preferences`, {
+        // [수정] 헤더 추가
+        headers: COMMON_HEADERS,
+      });
 
       if (prefRes.ok) {
         const prefData = await prefRes.json();
@@ -88,7 +99,10 @@ export const useMasterDataService = () => {
       setIsLoading(true);
       const response = await fetch(`${SERVER_URL}/api/preferences/analyze`, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {
+          "Content-Type": "application/json",
+          ...COMMON_HEADERS,
+        },
         body: JSON.stringify(preferenceList),
       });
 
@@ -118,10 +132,12 @@ export const useMasterDataService = () => {
     try {
       const response = await fetch(
         `${SERVER_URL}/api/ingredients/search?q=${encodeURIComponent(query)}`,
+        {
+          headers: COMMON_HEADERS,
+        },
       );
       if (response.ok) {
         const data: MasterDataResponse[] = await response.json();
-        // 검색 결과에서 이름만 추출하여 리스트로 만듭니다.
         setIngredientOptions(data.map((d) => d.name));
       }
     } catch (e) {
@@ -141,6 +157,9 @@ export const useMasterDataService = () => {
     try {
       const response = await fetch(
         `${SERVER_URL}/api/spices/search?q=${encodeURIComponent(query)}`,
+        {
+          headers: COMMON_HEADERS,
+        },
       );
       if (response.ok) {
         const data: MasterDataResponse[] = await response.json();
@@ -187,6 +206,7 @@ export const useMasterDataService = () => {
 
       const response = await fetch(`${SERVER_URL}/api/recipe/analyze`, {
         method: "POST",
+        headers: COMMON_HEADERS,
         body: formData,
       });
 
@@ -200,7 +220,22 @@ export const useMasterDataService = () => {
         if (item.ingredients) detectedList.push(...item.ingredients);
       });
 
-      setIngredients([...ingredients, ...detectedList]);
+      // [수정] 기존 리스트(ingredients)와 새 리스트(detectedList)를 합칠 때 중복 제거
+      const mergedList = [...ingredients];
+
+      detectedList.forEach((newItem) => {
+        // 이미 목록에 같은 이름의 재료가 있는지 확인
+        const exists = mergedList.some(
+          (existingItem) => existingItem.ingredient === newItem.ingredient,
+        );
+
+        // 없으면 추가 (있으면 무시)
+        if (!exists) {
+          mergedList.push(newItem);
+        }
+      });
+
+      setIngredients(mergedList);
       return true;
     } catch (error: any) {
       Alert.alert("분석 실패", error.message);
@@ -233,7 +268,10 @@ export const useMasterDataService = () => {
 
       const response = await fetch(`${SERVER_URL}/api/recipe/generate`, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {
+          ...COMMON_HEADERS,
+          "Content-Type": "application/json", // [필수] JSON 데이터임을 명시
+        },
         body: JSON.stringify(requestData),
       });
 

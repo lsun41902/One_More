@@ -66,7 +66,7 @@ export default function RecipeListScreen() {
       style={commonStyles.safeContainer}
       contentContainerStyle={commonStyles.contentContainer}
     >
-      <Text style={commonStyles.mainTitle}>추천 레시피 🍽️</Text>
+      <Text style={commonStyles.mainTitle}>추천 레시피</Text>
       <Text style={commonStyles.subTitle}>결과가 마음에 드시나요?</Text>
 
       <View style={{gap: 15}}>
@@ -119,11 +119,6 @@ export default function RecipeListScreen() {
                 {/* 기본 재료 개수 출력 */}
                 필요 재료: {recipe.ingredients ? recipe.ingredients.length : 0}
                 개
-                {/* 
-                  [핵심 로직] 추가 재료(+n개) 표시 
-                  - basic, more, real 어떤 타입이든 recipe.more에 데이터가 있으면 표시합니다.
-                  - Unexpected text node 에러 방지를 위해 삼항 연산자(? :)를 사용합니다.
-                */}
                 {recipe.more && recipe.more.length > 0 ? (
                   <Text style={{color: Colors.warning, fontWeight: "bold"}}>
                     {` (+${recipe.more.length}개)`}

@@ -16,14 +16,14 @@ import {Colors, commonStyles} from "../src/styles/common.styles";
 
 // 수량 선택 옵션 데이터
 const QUANTITY_OPTIONS = [
+  "약간",
+  "적당히",
+  "많이",
   "50g",
   "100g",
   "200g",
   "300g",
   "500g",
-  "약간",
-  "적당히",
-  "많이",
   "1근",
   "1봉지",
   "1조각",
@@ -53,15 +53,12 @@ export default function IngredientsScreen() {
 
   /**
    * [로직 1] 재료 추가/수정 토글
-   * 추천 리스트나 검색 리스트에서 재료를 누를 때 사용합니다.
    */
   const toggleIngredient = (name: string) => {
     const existingIndex = ingredients.findIndex((i) => i.ingredient === name);
     if (existingIndex > -1) {
-      // 이미 있으면 수량 수정창을 띄워줍니다. (삭제하지 않음)
       setActiveIngredientName(name);
     } else {
-      // 없으면 새로 추가하고 수량 수정창을 띄웁니다.
       setIngredients([...ingredients, {ingredient: name, quantity: "적당히"}]);
       setActiveIngredientName(name);
     }
@@ -69,7 +66,6 @@ export default function IngredientsScreen() {
 
   /**
    * [로직 2] 재료 삭제 (X 버튼 전용)
-   * 확정된 리스트에서 X를 눌렀을 때만 실행됩니다.
    */
   const removeIngredient = (name: string) => {
     setIngredients(ingredients.filter((i) => i.ingredient !== name));
@@ -98,10 +94,7 @@ export default function IngredientsScreen() {
       {/* 1. 내 요리 설정 요약 */}
       <SummaryHeader selections={selections} />
 
-      <Text style={commonStyles.mainTitle}>재료 확인 🛒</Text>
-      <Text style={commonStyles.subTitle}>
-        AI가 추천한 재료와 분석된 재료입니다.
-      </Text>
+      <Text style={commonStyles.mainTitle}>재료 확인</Text>
 
       {/* 2. 검색창 */}
       <View style={commonStyles.searchBar}>
@@ -126,22 +119,21 @@ export default function IngredientsScreen() {
             확정된 재료 목록 ({ingredients.length})
           </Text>
           <View style={commonStyles.chipWrapper}>
-            {ingredients.map((item) => (
+            {ingredients.map((item, index) => (
               <View
-                key={item.ingredient}
+                key={`${item.ingredient}-${index}`}
                 style={[
                   commonStyles.chip,
                   commonStyles.chipSelected,
-                  {flexDirection: "row", alignItems: "center", paddingRight: 5},
+                  // [수정] paddingRight를 줄여서 전체 길이 축소
+                  {flexDirection: "row", alignItems: "center", paddingRight: 2},
                 ]}
               >
                 {/* [수정] 왼쪽 영역: 이름과 수량 클릭 시 수량 변경 */}
                 <TouchableOpacity
                   onPress={() => setActiveIngredientName(item.ingredient)}
                   style={{
-                    paddingRight: 10,
-                    borderRightWidth: 1,
-                    borderRightColor: "rgba(255,255,255,0.3)",
+                    paddingRight: 2, // 10 -> 8
                   }}
                 >
                   <Text style={commonStyles.chipTextSelected}>
@@ -152,9 +144,10 @@ export default function IngredientsScreen() {
                 {/* [수정] 오른쪽 영역: X 버튼 클릭 시 삭제 */}
                 <TouchableOpacity
                   onPress={() => removeIngredient(item.ingredient)}
-                  style={{paddingLeft: 10, paddingVertical: 5}}
+                  // [수정] paddingVertical을 제거하여 칩 높이가 커지는 것 방지
+                  style={{paddingLeft: 2, paddingRight: 4, paddingVertical: 0}}
                 >
-                  <Text style={[commonStyles.chipTextSelected, {fontSize: 16}]}>
+                  <Text style={[commonStyles.chipTextSelected, {fontSize: 14}]}>
                     ✕
                   </Text>
                 </TouchableOpacity>
@@ -219,12 +212,6 @@ export default function IngredientsScreen() {
               </TouchableOpacity>
             ))}
           </View>
-          <TouchableOpacity
-            onPress={() => setActiveIngredientName(null)}
-            style={{marginTop: 15, alignItems: "center"}}
-          >
-            <Text style={{color: Colors.gray}}>닫기</Text>
-          </TouchableOpacity>
         </View>
       )}
 
@@ -266,7 +253,7 @@ export default function IngredientsScreen() {
       )}
 
       {/* 7. 하단 액션 버튼들 */}
-      <View style={{marginTop: 20, gap: 10}}>
+      <View style={{marginTop: 1, gap: 10}}>
         <TouchableOpacity
           style={commonStyles.nextButton}
           onPress={() => router.push("/spices")}

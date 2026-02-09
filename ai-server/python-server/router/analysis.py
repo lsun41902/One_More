@@ -1,15 +1,16 @@
-from fastapi import APIRouter, Depends,HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from services import calc_ai
 from schemas.recipe import RequestAnalyze
 
-router = APIRouter(prefix="/analyze-image-",tags=["AI분석"])
+router = APIRouter(prefix="/analyze-image-", tags=["AI분석"])
 
-#region 분석 - 사진 - 영수증
-#이미지로 입력받은 재료 분석후 레시피 추천하기
+
+# region 분석 - 사진 - 영수증
+# 이미지로 입력받은 재료 분석후 레시피 추천하기
 @router.post("receipts",
-          summary="이미지 영수증 분석",
-          description="영수증에서 재료들을 분석하여 재료를 확인."
-          )
+             summary="이미지 영수증 분석",
+             description="영수증에서 재료들을 분석하여 재료를 확인."
+             )
 async def analyze_images_receipts(request: RequestAnalyze = Depends()):
     await ShowDebugForImage(request)
     try:
@@ -20,14 +21,16 @@ async def analyze_images_receipts(request: RequestAnalyze = Depends()):
     except Exception as e:
         # 분석 중 에러 처리
         raise HTTPException(status_code=500, detail=f"AI 분석 중 오류 발생: {str(e)}")
-#endregion
 
-#region 분석 - 사진 - 재료
-#이미지로 입력받은 재료 분석후 레시피 추천하기
+
+# endregion
+
+# region 분석 - 사진 - 재료
+# 이미지로 입력받은 재료 분석후 레시피 추천하기
 @router.post("ingredients",
-          summary="이미지 재료 분석",
-          description="이미지로 전달 받은 재료들을 분석하여 재료를 확인."
-          )
+             summary="이미지 재료 분석",
+             description="이미지로 전달 받은 재료들을 분석하여 재료를 확인."
+             )
 async def analyze_images(request: RequestAnalyze = Depends()):
     await ShowDebugForImage(request)
     try:
@@ -38,10 +41,12 @@ async def analyze_images(request: RequestAnalyze = Depends()):
     except Exception as e:
         # 분석 중 에러 처리
         raise HTTPException(status_code=500, detail=f"AI 분석 중 오류 발생: {str(e)}")
-#endregion
 
-#region Debug
-async def ShowDebugForImage(request:RequestAnalyze):
+
+# endregion
+
+# region Debug
+async def ShowDebugForImage(request: RequestAnalyze):
     # 콘솔(터미널)에 바로 찍힙니다.
     print("\n" + "=" * 50)
     print("★ [DEBUG] 요청 도달 성공!")
@@ -76,4 +81,4 @@ async def ShowDebugForImage(request:RequestAnalyze):
 
         # 읽은 데이터를 AI에 넘기기 위해 커서를 다시 맨 앞으로!
         await file.seek(0)
-#endregion
+# endregion
