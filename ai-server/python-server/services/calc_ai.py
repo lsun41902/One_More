@@ -6,16 +6,16 @@ import shutil
 import json
 
 # 제미나이
-from langchain_google_genai import ChatGoogleGenerativeAI,GoogleGenerativeAIEmbeddings
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 import google.generativeai as genai
 from PIL import Image
 from google.api_core import exceptions
 from langchain_core.documents import Document
 from langchain_classic.chains import RetrievalQA
-from sentence_transformers import SentenceTransformer, util, InputExample,losses
+from sentence_transformers import SentenceTransformer, util, InputExample, losses
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain_community.vectorstores.utils import DistanceStrategy # 1. 임포트 추가
+from langchain_community.vectorstores.utils import DistanceStrategy  # 1. 임포트 추가
 import torch
 
 import pandas as pd
@@ -24,15 +24,33 @@ import csv
 import time
 import re
 
-
 genai_api_key = settings.GOOGLE_API_KEY
 genai.configure(api_key=genai_api_key)
-
 
 # [수정] 전역 변수에서 무거운 객체 생성을 제거하고 None으로 초기화합니다.
 openai_llm = None
 genai_embeddings = None
 genai_vectorstore = None
+
+TOP_FOLDER = ".."
+
+recipe_titles = deque(maxlen=9)
+
+model_candidates = [
+    "gemini-2.5-flash-lite",
+    "gemini-2.0-flash",
+    "gemini-3-flash-preview",
+    "gemini-1.5-flash"  # 가장 보수적이고 안전한 선택지
+]
+
+multimodel_candidates = [
+    "gemini-3-flash-preview",  # 2026년 최신, 가장 뛰어난 추론 성능
+    "gemini-2.5-flash",  # 가장 안정적인 고성능 모델
+    "gemini-2.5-flash-lite",  # 속도와 비용 효율 최강
+    "gemini-2.0-flash",  # 구형이지만 여전히 강력한 범용 모델
+    "gemini-1.5-flash"  # 최후의 보루 (하루 1,500회 무료 한도)
+]
+
 
 def get_openai_llm():
     global openai_llm
@@ -44,8 +62,8 @@ def get_openai_llm():
 
 def get_vectorstore():
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    model_path = os.path.join(current_dir, "..", "my_food_model")
-    index_path = os.path.join(current_dir, "..", "faiss_my_food_model_index")
+    model_path = os.path.join(current_dir, TOP_FOLDER, "my_food_model")
+    index_path = os.path.join(current_dir, TOP_FOLDER, "faiss_my_food_model_index")
 
     embeddings = HuggingFaceEmbeddings(
         model_name=model_path,
@@ -57,11 +75,12 @@ def get_vectorstore():
         index_path,
         embeddings,
         allow_dangerous_deserialization=True,
-        distance_strategy=DistanceStrategy.COSINE # 여기에 추가!
+        distance_strategy=DistanceStrategy.COSINE  # 여기에 추가!
     )
 
     print("✅ 코사인 유사도 전략으로 인덱스를 성공적으로 로드했습니다!")
     return vectorstore
+
 
 def get_real_recipe_ingredient(user_input):
     # 지금까지 학습된 중간 모델 로드
@@ -69,7 +88,7 @@ def get_real_recipe_ingredient(user_input):
 
     # 내 레시피 데이터의 일부 (100개 정도만 테스트)
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.join(current_dir, "..", "temp_data", "refined_recipe_data.csv")
+    path = os.path.join(current_dir, TOP_FOLDER, "temp_data", "refined_recipe_data.csv")
     try:
         df = pd.read_csv(path, encoding='utf-8-sig')
     except UnicodeDecodeError:
@@ -99,25 +118,6 @@ def get_real_recipe_ingredient(user_input):
         real_ingredient.append(df.iloc[recipe_idx]['CKG_MTRL_CN'])
     return real_ingredient
 
-UPLOAD_DIR = "../uploads"
-
-recipe_titles = deque(maxlen=9)
-
-model_candidates = [
-    "gemini-2.5-flash-lite",
-    "gemini-2.0-flash",
-    "gemini-3-flash-preview",
-    "gemini-1.5-flash"  # 가장 보수적이고 안전한 선택지
-]
-
-multimodel_candidates = [
-    "gemini-3-flash-preview",  # 2026년 최신, 가장 뛰어난 추론 성능
-    "gemini-2.5-flash",  # 가장 안정적인 고성능 모델
-    "gemini-2.5-flash-lite",  # 속도와 비용 효율 최강
-    "gemini-2.0-flash",  # 구형이지만 여전히 강력한 범용 모델
-    "gemini-1.5-flash"  # 최후의 보루 (하루 1,500회 무료 한도)
-]
-
 
 class AnalyzeOpenAi:
     def __init__(self):
@@ -130,7 +130,9 @@ class AnalyzeOpenAi:
 class AnalyzeGenai:
     # region 생성자
     def __init__(self, images=None, user_id='user_1'):
-        self.image_path = os.path.join(UPLOAD_DIR, user_id)
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        UPLOAD_DIR = "uploads"
+        self.image_path = os.path.join(current_dir, TOP_FOLDER, UPLOAD_DIR, user_id)
         os.makedirs(self.image_path, exist_ok=True)
         self.saved_file_paths = []
         if images:
@@ -144,29 +146,32 @@ class AnalyzeGenai:
         # [추천] 변수들을 여기서 미리 선언해두면 나중에 찾기 편합니다.
         self.get_json_temp_path()
 
-    #region 기본 json형식 설정
-    #기본 json형식 설정
+    # region 기본 json형식 설정
+    # 기본 json형식 설정
     def get_json_temp_path(self):
         current_path = os.path.dirname(os.path.abspath(__file__))
-        temp_json_path = "../temp_json"
-        image_json_path = os.path.join(current_path, temp_json_path, "temp_for_image_json.txt")
+        temp_json_path = "temp_json"
+        image_json_path = os.path.join(current_path, TOP_FOLDER, temp_json_path, "temp_for_image_json.txt")
         self.image_prompt_json = self.load_temp_json(image_json_path)
 
-        default_recipe_json_path = os.path.join(current_path, temp_json_path, "temp_for_default_recipe_json.txt")
+        default_recipe_json_path = os.path.join(current_path, TOP_FOLDER, temp_json_path,
+                                                "temp_for_default_recipe_json.txt")
         self.default_recipe_prompt_json = self.load_temp_json(default_recipe_json_path)
 
-        another_recipe_json_path = os.path.join(current_path, temp_json_path, "temp_for_another_recipe_json.txt")
+        another_recipe_json_path = os.path.join(current_path, TOP_FOLDER, temp_json_path,
+                                                "temp_for_another_recipe_json.txt")
         self.another_recipe_prompt_json = self.load_temp_json(another_recipe_json_path)
 
-        more_recipe_json_path = os.path.join(current_path, temp_json_path, "temp_for_more_recipe_json.txt")
+        more_recipe_json_path = os.path.join(current_path, TOP_FOLDER, temp_json_path, "temp_for_more_recipe_json.txt")
         self.more_recipe_prompt_json = self.load_temp_json(more_recipe_json_path)
 
-    #temp json을 읽어오기
-    def load_temp_json(self,path):
+    # temp json을 읽어오기
+    def load_temp_json(self, path):
         with open(path, "r", encoding="utf-8") as f:
             image_prompt_json = f.read()
         return image_prompt_json
-    #endregion
+
+    # endregion
     # endregion
 
     # region Genai 모델
@@ -188,6 +193,7 @@ class AnalyzeGenai:
         print("✨ 모든 데이터가 안전하게 저장되었습니다!")
 
         return None
+
     def get_text_model(self, prompt):
         for model_name in model_candidates:
             try:
@@ -235,13 +241,13 @@ class AnalyzeGenai:
 
     # endregion
 
-    #region langchain,rag 테스트
+    # region langchain,rag 테스트
     # 파일 복원하기
-    #region csv 한글 깨진거 복구하기
+    # region csv 한글 깨진거 복구하기
     def remake_csv(self):
         current_path = os.path.dirname(os.path.abspath(__file__))
         input_file = os.path.join(current_path, "temp_data", "TB_RECIPE_SEARCH-220701.csv")
-        output_file = os.path.join(current_path, "temp_data",'TB_RECIPE_SEARCH-220701_복원.csv')
+        output_file = os.path.join(current_path, "temp_data", 'TB_RECIPE_SEARCH-220701_복원.csv')
         fixed_rows = []
 
         # 1. 파일을 바이트 단위로 직접 열어서 처리
@@ -262,7 +268,8 @@ class AnalyzeGenai:
             writer.writerows(fixed_rows)
 
         print(f"✅ 복구가 완료되었습니다! '{output_file}' 파일을 확인해 보세요.")
-    #endregion
+
+    # endregion
     # region json정리하기
     def extract_json(self, text):
         # ```json ... ``` 또는 ``` ... ``` 사이의 내용만 추출
@@ -271,6 +278,7 @@ class AnalyzeGenai:
         if match:
             return match.group(1).strip()
         return text.strip()
+
     # endregion
     # region 문서 읽어오기
     def get_docs(self):
@@ -310,6 +318,7 @@ class AnalyzeGenai:
             # 상세한 에러 추적 로그(Traceback)를 전체 출력합니다.
             traceback.print_exc()
         return None
+
     # endregion
     # region 임베딩 작업
     def get_rag_embedding(self):
@@ -321,8 +330,9 @@ class AnalyzeGenai:
             print(f"에러 타입: {type(e).__name__}")
             print(f"에러 메시지: {e}")
             traceback.print_exc()
+
     # endregion
-    def get_chef_recipe(self, preference, ingredients, spice,temp=""):
+    def get_chef_recipe(self, preference, ingredients, spice, temp=""):
         # 벡터 DB 에서 검색 하기
         vectorstore = get_vectorstore()
         print(f"📊 현재 사용 중인 거리 전략: {vectorstore.distance_strategy}")
@@ -394,7 +404,6 @@ class AnalyzeGenai:
                 for i, doc in enumerate(result.get('source_documents')):
                     print(f"[{i + 1}] {doc.page_content}")
 
-
                 clean_json_str = self.extract_json(result.get("result"))
                 result_json = json.loads(clean_json_str)
                 self.save_recipe(result_json)
@@ -404,10 +413,11 @@ class AnalyzeGenai:
                 print(f"현재 모델 이름:{model_name} 한도 초과! 모델로 전환하여 다시 시도합니다.")
                 pass
             except json.decoder.JSONDecodeError:
-                self.get_chef_recipe(preference, ingredients, spice,'json형식이 안맞았어. 다시 확인해서 보내줘')
+                self.get_chef_recipe(preference, ingredients, spice, 'json형식이 안맞았어. 다시 확인해서 보내줘')
 
         return None
-    #endregion
+
+    # endregion
 
     # region 추천한것 외의 추천 레시피 3개
     def get_another_more_somthing(self, preference, ingredients, spice):
