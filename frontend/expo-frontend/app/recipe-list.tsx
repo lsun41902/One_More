@@ -1,6 +1,6 @@
 // app/recipe-list.tsx
-import {useRouter} from "expo-router";
-import React, {useState} from "react";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -9,16 +9,16 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import {useAppContent} from "../src/context/AppContext";
-import {useMasterDataService} from "../src/hooks/useMasterDataService";
-import {Colors, commonStyles} from "../src/styles/common.styles";
-import {RecipeResponse} from "../src/types/recipe";
+import { useAppContent } from "../src/context/AppContext";
+import { useMasterDataService } from "../src/hooks/useMasterDataService";
+import { Colors, commonStyles } from "../src/styles/common.styles";
+import { RecipeResponse } from "../src/types/recipe";
 
 export default function RecipeListScreen() {
   const router = useRouter();
   // Global Context에서 레시피 목록과 초기화 함수를 가져옵니다.
-  const {recipes, setSelectedRecipe, resetAll} = useAppContent();
-  const {generateRecipes} = useMasterDataService();
+  const { recipes, setSelectedRecipe, resetAll } = useAppContent();
+  const { generateRecipes } = useMasterDataService();
 
   // 레시피 재생성(재요청) 중 로딩 상태 관리
   const [isRegenerating, setIsRegenerating] = useState(false);
@@ -67,9 +67,8 @@ export default function RecipeListScreen() {
       contentContainerStyle={commonStyles.contentContainer}
     >
       <Text style={commonStyles.mainTitle}>추천 레시피</Text>
-      <Text style={commonStyles.subTitle}>결과가 마음에 드시나요?</Text>
 
-      <View style={{gap: 15}}>
+      <View style={{ gap: 15 }}>
         {recipes.map((recipe, index) => (
           <TouchableOpacity
             key={`recipe-${index}`}
@@ -115,12 +114,12 @@ export default function RecipeListScreen() {
                 paddingTop: 15,
               }}
             >
-              <Text style={{fontSize: 13, color: Colors.gray}}>
+              <Text style={{ fontSize: 13, color: Colors.gray }}>
                 {/* 기본 재료 개수 출력 */}
                 필요 재료: {recipe.ingredients ? recipe.ingredients.length : 0}
                 개
                 {recipe.more && recipe.more.length > 0 ? (
-                  <Text style={{color: Colors.warning, fontWeight: "bold"}}>
+                  <Text style={{ color: Colors.warning, fontWeight: "bold" }}>
                     {` (+${recipe.more.length}개)`}
                   </Text>
                 ) : null}
@@ -143,7 +142,7 @@ export default function RecipeListScreen() {
       <View
         style={[
           commonStyles.sectionCard,
-          {marginTop: 20, alignItems: "center"},
+          { marginTop: 20, alignItems: "center" },
         ]}
       >
         <Text
@@ -157,17 +156,17 @@ export default function RecipeListScreen() {
           다른 레시피가 필요하신가요?
         </Text>
 
-        <View style={{width: "100%", gap: 10}}>
+        <View style={{ width: "100%", gap: 10 }}>
           {/* 기본 재료만 활용 */}
           <TouchableOpacity
             style={[
               commonStyles.menuButton,
-              {backgroundColor: Colors.lightGray, padding: 15},
+              { backgroundColor: Colors.lightGray, padding: 15 },
             ]}
             onPress={() => handleReGenerate("basic")}
           >
             <Text
-              style={{fontSize: 15, fontWeight: "bold", color: Colors.black}}
+              style={{ fontSize: 15, fontWeight: "bold", color: Colors.black }}
             >
               🏠 장보기 귀찮아 (기본 재료)
             </Text>
@@ -187,7 +186,11 @@ export default function RecipeListScreen() {
             onPress={() => handleReGenerate("more")}
           >
             <Text
-              style={{fontSize: 15, fontWeight: "bold", color: Colors.warning}}
+              style={{
+                fontSize: 15,
+                fontWeight: "bold",
+                color: Colors.warning,
+              }}
             >
               ✨ 추가 재료 활용 (응용 요리)
             </Text>
@@ -207,7 +210,11 @@ export default function RecipeListScreen() {
             onPress={() => handleReGenerate("real")}
           >
             <Text
-              style={{fontSize: 15, fontWeight: "bold", color: Colors.success}}
+              style={{
+                fontSize: 15,
+                fontWeight: "bold",
+                color: Colors.success,
+              }}
             >
               🍳 만개의 레시피 (검증된 맛)
             </Text>
@@ -217,16 +224,16 @@ export default function RecipeListScreen() {
 
       {/* 전체 초기화 및 홈 이동 버튼 */}
       <TouchableOpacity
-        style={{marginTop: 20, alignItems: "center", padding: 15}}
+        style={{ marginTop: 20, alignItems: "center", padding: 15 }}
         onPress={handleGoHome}
       >
-        <Text style={{color: Colors.gray, textDecorationLine: "underline"}}>
+        <Text style={{ color: Colors.gray, textDecorationLine: "underline" }}>
           처음으로 돌아가기 (전체 초기화)
         </Text>
       </TouchableOpacity>
 
       {/* 하단 여백 */}
-      <View style={{height: 50}} />
+      <View style={{ height: 50 }} />
     </ScrollView>
   );
 }
