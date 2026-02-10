@@ -150,7 +150,7 @@ def test3():
     description="더미 데이터 학습하기")
 def test4():
     # study_embedding()
-    # study_embedding_indexing()
+    study_embedding_indexing()
     return {"result":"더미 데이터 생성 성공"}
 
 @router.post("test5",

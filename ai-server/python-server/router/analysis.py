@@ -17,7 +17,7 @@ async def analyze_images_receipts(request: RequestAnalyze = Depends()):
     try:
         # 클래스에 이미지 리스트 전달
         process_image = calc_ai.AnalyzeGenai(request.files, request.userId)
-        result = await run_in_threadpool(process_image.calc_image_receipt())
+        result = await run_in_threadpool(process_image.calc_image_receipt)
         return {"result": result}
     except Exception as e:
         # 분석 중 에러 처리
@@ -37,7 +37,7 @@ async def analyze_images(request: RequestAnalyze = Depends()):
     try:
         # 클래스에 이미지 리스트 전달
         process_image = calc_ai.AnalyzeGenai(request.files, request.userId)
-        result = await run_in_threadpool(process_image.calc_image())
+        result = await run_in_threadpool(process_image.calc_image)
         return {"result": result}
     except Exception as e:
         # 분석 중 에러 처리
