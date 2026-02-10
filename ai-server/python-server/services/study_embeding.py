@@ -101,7 +101,10 @@ def study_embedding_indexing():
         documents.append(
             Document(
                 page_content=f"요리 이름:{title}\n요리사가 사용한 재료: {content}\n필요 재료: {ingredient_list}",
-                metadata={'ingredient': ingredient_list}
+                metadata={
+                    "RCP_TTL": title,  # 제목은 여기!
+                    "ingredient": ingredient_list  # 재료도 여기!
+                }
             )
         )
 

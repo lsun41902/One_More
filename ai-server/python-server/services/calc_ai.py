@@ -52,6 +52,7 @@ multimodel_candidates = [
 ]
 
 
+
 def get_openai_llm():
     global openai_llm
     if openai_llm is None:
@@ -332,90 +333,117 @@ class AnalyzeGenai:
             traceback.print_exc()
 
     # endregion
+
+    # region
     def get_chef_recipe(self, preference, ingredients, spice, temp=""):
         # 벡터 DB 에서 검색 하기
         vectorstore = get_vectorstore()
         print(f"📊 현재 사용 중인 거리 전략: {vectorstore.distance_strategy}")
-        retriever = vectorstore.as_retriever(
-            search_type="mmr",
-            search_kwargs={
-                "k": 3,
-                "fetch_k": 10,  # 먼저 후보 10개를 뽑은 뒤
-                "lambda_mult": 0.5  # 0에 가까울수록 "다양성" 강조, 1에 가까울수록 "유사도" 강조
-            }
-        )
         try:
             search_query = ", ".join([item.ingredient for item in ingredients])
         except TypeError:
             # 혹시 몰라 대비하는 딕셔너리 방식 (에러나면 이쪽으로 실행)
             search_query = ", ".join([item['ingredient'] for item in ingredients])
-        docs_and_scores = vectorstore.similarity_search_with_score(search_query, k=3)
-        retrieved_docs = [doc for doc, score in docs_and_scores]
-
-        print("\n=== 🎯 검색 결과 및 유사도 점수 ===")
-        for i, (doc, score) in enumerate(docs_and_scores):
-            print(f"[{i + 1}] 점수: {score:.4f}")  # 점수가 낮을수록(0에 가까울수록) 유사함
-            print(f"내용: {doc.page_content}...")  # 앞부분만 살짝 출력
+        # retriever = vectorstore.as_retriever(
+        #     search_type="mmr",
+        #     search_kwargs={
+        #         "k": 3,  # 정답 개수
+        #         "fetch_k": 10,  # 먼저 후보 10개를 뽑은 뒤
+        #         "lambda_mult": 0.5  # 0에 가까울수록 "다양성" 강조, 1에 가까울수록 "유사도" 강조
+        #     }
+        # )
+        # docs_and_scores = vectorstore.similarity_search_with_score(search_query, k=3)
+        # retrieved_docs = [doc for doc, score in docs_and_scores]
+        retrieved_docs = vectorstore.max_marginal_relevance_search(search_query, k=3, fetch_k=10, lambda_mult=0.8)
+        context_text = "\n\n".join([d.page_content for d in retrieved_docs])
+        print("\n=== 참조한 소스 문서 ===")
+        for i, doc in enumerate(retrieved_docs):
+            print(f"[{i + 1}] 요리명: {doc.metadata.get('RCP_TTL', 'N/A')}")
+            print(f"내용 요약: {doc.page_content}...")  # 앞 100글자만 출력
             print("-" * 30)
-        for model_name in model_candidates:
-            try:
-                print("현재 모델 이름:", model_name)
-                # 4. 드디어 'rag_chain' 만들기! (RetrievalQA 사용)
-                llm_instance = ChatGoogleGenerativeAI(
-                    model=model_name,
-                    google_api_key=genai_api_key,  # 본인의 API 키 변수명 확인
-                    temperature=0,
-                    response_mime_type="application/json"
-                )
-                rag_chain = RetrievalQA.from_chain_type(
-                    llm=llm_instance,
-                    chain_type="stuff",  # 찾은 문서를 뭉쳐서(stuff) 전달
-                    retriever=retriever,
-                    return_source_documents=True  # 어떤 레시피를 참고했는지 알려달라고 설정
-                )
-                prompt = f"""
-                {temp}
-                {retrieved_docs}
-                너는 한국의 요리사야. 내가 앞에 넣은 데이터는 다른 요리사가 사용한 재료와 요리결과물이야. (요리 이름은 simple하게 바꿔줘)
-                [필요 재료]랑 [유저가 보유한 식재료, 조미료, 맛 취향] 을 비교해서
-                유사한 [요리사가 사용한 재료]를 이용해 만들수 있는 요리 레시피를 3개 추천해줘.
-                만약 정보에 없는 내용이라면 지어내지 말고 "모르겠습니다"라고 답해줘. 답변은 한글로 상세하게.
-                Return the response in a VALID JSON format. 
-                Do not include any conversational text or markdown code blocks (like ```json).
-                
-                [유저의 맛 취향]:
-                {preference}
-                
-                [유저가 보유한 식재료]:
-                {ingredients}
-                
-                [유저가 보유한 조미료]:
-                {spice}
-                
-                Output Format:{self.another_recipe_prompt_json}
-                JSON Output:"""
-                result = rag_chain.invoke({"query": prompt})
 
-                # 1. AI의 답변 출력
-                print("=== AI 답변 ===")
-                print(result.get("result"))
-                # 2. 실제로 참조한 데이터(CSV 행) 출력
-                print("\n=== 참조한 소스 문서 ===")
-                for i, doc in enumerate(result.get('source_documents')):
-                    print(f"[{i + 1}] {doc.page_content}")
+        error_count = 0
+        while error_count < 2:
+            error_count += 1
+            for model_name in model_candidates:
+                try:
+                    print("현재 모델 이름:", model_name)
+                    # 4. 드디어 'rag_chain' 만들기! (RetrievalQA 사용)
+                    llm_instance = ChatGoogleGenerativeAI(
+                        model=model_name,
+                        google_api_key=genai_api_key,  # 본인의 API 키 변수명 확인
+                        temperature=0,
+                        response_mime_type="application/json"
+                    )
+                    # rag_chain = RetrievalQA.from_chain_type(
+                    #     llm=llm_instance,
+                    #     chain_type="stuff",  # 찾은 문서를 뭉쳐서(stuff) 전달
+                    #     retriever=retriever,
+                    #     return_source_documents=True  # 어떤 레시피를 참고했는지 알려달라고 설정
+                    # )
 
-                clean_json_str = self.extract_json(result.get("result"))
-                result_json = json.loads(clean_json_str)
-                self.save_recipe(result_json)
-                return result_json
-            except exceptions.ResourceExhausted:
-                # 횟수 초과(Quota) 오류 발생
-                print(f"현재 모델 이름:{model_name} 한도 초과! 모델로 전환하여 다시 시도합니다.")
-                pass
-            except json.decoder.JSONDecodeError:
-                self.get_chef_recipe(preference, ingredients, spice, 'json형식이 안맞았어. 다시 확인해서 보내줘')
+                    # 맛 취향 (리스트인 경우)
+                    preference_text = ", ".join(preference) if isinstance(preference, list) else preference
 
-        return None
+                    # 식재료 (객체/딕셔너리 리스트인 경우)
+                    ingredients_text = ", ".join([f"{item.ingredient}({item.quantity})"
+                                                  if hasattr(item, 'ingredient') else
+                                                  f"{item['ingredient']}({item['quantity']})"
+                                                  for item in ingredients])
+
+                    # 조미료 (리스트인 경우)
+                    spice_text = ", ".join(spice) if isinstance(spice, list) else spice
+                    prompt = f"""
+                            너는 20년 경력의 베테랑 한국인 요리사야. 
+                            [참고 데이터]는 다른 요리사들의 레시피 정보이고, [유저 정보]는 현재 유저의 상황이야.
+        
+                            [유저 정보]
+                            1. 맛 취향: {preference_text}
+                            2. 보유 식재료: {ingredients_text}
+                            3. 보유 조미료: {spice_text}
+        
+                            [참고 데이터]
+                            {context_text}
+        
+                            [작성 규칙 - 반드시 엄수할 것]
+                            1. 요리 선정: 반드시 [참고 데이터]에 있는 요리 이름(RCP_TTL) 중 3개를 골라라. 
+                                - 없는 요리를 지어내지 마라. (예: 키위 닭볶음탕 같은 메뉴는 참고 데이터에 없으므로 금지)
+                            2. 식재료 선별: 유저의 식재료 중 해당 요리에 '절대 어울리지 않는' 재료는 과감히 제외하라. 
+                               - 예: 닭볶음탕에 키위나 바나나를 넣지 마라. 과일은 후식용이지 요리 재료가 아니다.
+                               - 요리의 본질을 망치는 재료를 넣으면 요리사로서 자격 미달이다.
+                            3. 요리명: 유저가 이해하기 쉽게 '닭볶음탕', '감자조림'처럼 Simple하게 작성해라.
+                            4. 상세 레시피: 조리 순서를 한글로 상세하게 설명하라.
+                            5. 출처 기반: 가급적 [참고 데이터]에 있는 요리 위주로 추천하되, 유저의 조미료(고추장 등)를 활용해 매운맛을 살려라.
+        
+                            [응답 형식]
+                            - 반드시 VALID JSON 형식으로만 답하라.
+                            - Output Format: {self.another_recipe_prompt_json}
+                            - JSON Output:"""
+                    # result = rag_chain.invoke({"query": prompt})
+                    result = llm_instance.invoke(prompt)
+
+                    # 1. AI의 답변 출력
+                    print("=== AI 답변 ===")
+                    ai_result = result.content
+                    print(ai_result)
+
+                    # # 2. 실제로 참조한 데이터(CSV 행) 출력
+                    # print("\n=== 참조한 소스 문서 ===")
+                    # for i, doc in enumerate(result.get('source_documents')):
+                    #     print(f"[{i + 1}] {doc.page_content}")
+
+                    clean_json_str = self.extract_json(ai_result)
+                    result_json = json.loads(clean_json_str)
+                    self.save_recipe(result_json)
+                    return result_json
+                except exceptions.ResourceExhausted:
+                    # 횟수 초과(Quota) 오류 발생
+                    print(f"현재 모델 이름:{model_name} 한도 초과! 모델로 전환하여 다시 시도합니다.")
+                except Exception as e:
+                    print(f"error:{e}")
+
+        else:
+            return None
 
     # endregion
 
@@ -427,7 +455,7 @@ class AnalyzeGenai:
                 나는 {preference} 이런 취향을 가지고 있고, {ingredients} 이런 재료들고 {spice} 이런 조미료를 가지고있어,
                 다른 재료는 없으니 참고해. 사람들이 이미 만든적이 있는 레시피를 기반으로 3개 추천해줬으면 좋겠어. 꼭 3가지를 찾지 못해도 상관없어. 적어도 3가지를 추천해줘. 
                 title 은 제목만 적어줘 예를 들어 (매콤달콤 돼지고기 김치볶음밥) 이런 품사를 제목에 섞지마,
-                ingredients 는 [재료, 정량 얼마] 이런식으로 적어주고, 근거가 없는 요리는 추천하지 않도록 조심해줘. 예를 들면 김치찌게에 방울토마토를 넣기. 이런 음식은 아무도 선호하지 않아. 
+                ingredients 는 [재료, 정량 얼마] 이런식으로 적어주고, 근거가 없는 요리는 추천하지 않도록 조심해줘. 예를 들면 김치찌개에 방울토마토를 넣기. 이런 음식은 아무도 선호하지 않아. 
                 recipe는 손질 방법과, 정량 기준, 조리에 대한 상세한 시간을 꼭 언급해줘. 
                 tip은 1~5개정도 알려주고 title,ingredients,summary,recipe,tip 는 한글로 알려줘,
                 결과는 반드시 JSON 배열로만 응답해줘.
@@ -457,7 +485,7 @@ class AnalyzeGenai:
                 다른 재료는 없으니 참고해. 사람들이 이미 만든적이 있는 레시피를 기반으로 2개 추천해줬으면 좋겠어.
                  
                 그리고, title 은 제목만 적어줘 예를 들어 (매콤달콤 돼지고기 김치볶음밥) 이런 품사를 제목에 섞지마,
-                ingredients 는 [재료, 정량 얼마] 이런식으로 적어주고, 근거가 없는 요리는 추천하지 않도록 조심해줘. 예를 들면 김치찌게에 방울토마토를 넣기. 이런 음식은 아무도 선호하지 않아. 
+                ingredients 는 [재료, 정량 얼마] 이런식으로 적어주고, 근거가 없는 요리는 추천하지 않도록 조심해줘. 예를 들면 김치찌개에 방울토마토를 넣기. 이런 음식은 아무도 선호하지 않아. 
                 recipe는 손질 방법과, 정량 기준, 조리에 대한 상세한 시간을 꼭 언급해줘. 
                 tip은 1~5개정도 알려주고 title,ingredients,summary,recipe,tip 는 한글로 알려줘,
                 결과는 반드시 JSON 배열로만 응답해줘.
@@ -477,7 +505,7 @@ class AnalyzeGenai:
                 나는 {preference} 이런 취향을 가지고 있고, {ingredients} 이런 재료들고 {spice} 이런 조미료를 가지고있어,
                 다른 재료는 없으니 참고해. 사람들이 이미 만든적이 있는 레시피를 기반으로 3개 추천해줬으면 좋겠어. 꼭 3가지를 찾지 못해도 상관없어. 적어도 3가지를 추천해줘. 
                 title 은 제목만 적어줘 예를 들어 (매콤달콤 돼지고기 김치볶음밥) 이런 품사를 제목에 섞지마,
-                ingredients 는 [재료, 정량 얼마] 이런식으로 적어주고, 근거가 없는 요리는 추천하지 않도록 조심해줘. 예를 들면 김치찌게에 방울토마토를 넣기. 이런 음식은 아무도 선호하지 않아. 
+                ingredients 는 [재료, 정량 얼마] 이런식으로 적어주고, 근거가 없는 요리는 추천하지 않도록 조심해줘. 예를 들면 김치찌개에 방울토마토를 넣기. 이런 음식은 아무도 선호하지 않아. 
                 recipe는 손질 방법과, 정량 기준, 조리에 대한 상세한 시간을 꼭 언급해줘. 
                 tip은 1~5개정도 알려주고 title,ingredients,summary,recipe,tip 는 한글로 알려줘,
                 결과는 반드시 JSON 배열로만 응답해줘.
