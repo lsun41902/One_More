@@ -1,24 +1,17 @@
 {
   "cli": {
-    "version": ">= 16.32.0",
-    "appVersionSource": "remote"
+    "version": ">= 10.0.0"
   },
   "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal"
-    },
     "preview": {
-      "distribution": "internal",
       "android": {
-        "buildType": "apk" // 이 줄이 핵심! 폰에 바로 설치 가능한 파일을 만들어줘.
+        "buildType": "apk"
       }
     },
     "production": {
-      "autoIncrement": true
+      "android": {
+        "buildType": "app-bundle"
+      }
     }
-  },
-  "submit": {
-    "production": {}
   }
 }
