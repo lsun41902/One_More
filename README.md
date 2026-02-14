@@ -19,6 +19,7 @@
 | **Document** | **Swagger** (SpringDoc OpenAPI 3.0) |
 | **CI** | **Gradle** (Build Tool) |
 | **DataBase** | **PostgreSQL** (Relation + **pgvector** Extension) |
+
 - AI-server
 
 | Category | Detail (Python) |
