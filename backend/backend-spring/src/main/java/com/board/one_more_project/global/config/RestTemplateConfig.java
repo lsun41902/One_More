@@ -1,4 +1,4 @@
-package com.board.one_more_project.global.config; // 패키지 위치는 상황에 맞게 조정
+package com.board.one_more_project.global.config;
 
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.config.ConnectionConfig;

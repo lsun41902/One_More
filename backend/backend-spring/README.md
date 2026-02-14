@@ -1,47 +1,81 @@
-# Project Context
-- 프로젝트의 흐름
-1. 사용자에게 web페이지에서 입력을 받는다. (이 입력은 사용자의 입력 텍스트들, 선택한 항목의 텍스트들, 촬영한 이미지, 촬영한 영수증이 될 수 있다.)
-2. spring backend에서 입력을 받고, 이미지인지 텍스트인지 분류하고, python 서버로 분석을 위해 전송한다. 
-3. python 서버는 전달받은 데이터가 
-3-1 이미지일 경우, YOLO8을 모델을 통해 이미지 속 객체를 텍스트로 변환 후 LLM으로 전달한다.
-3-2 영수증일 경우, OCR 모델을 통해 영수증 속 텍스트 객체를 텍스트로 변환 후 LLM으로 전달한다.
-3-3 텍스트일 경우 LLM으로 전달한다.
-4. LLM은 전달받은 텍스트를 작성된 prompt에 넣어서 정해진 형식의 레시피를 출력한다. 
-5. LLM이 출력한 레시피를 파이선 서버에서 스프링서버로 전송한다. 
-6. 전달받은 레시피를 사용자에게 전달한다. 
+# Backend Spring — One More Project
 
-# Project properties 
-1. 초반 단계에서는 DB를 만들지 않고, 서버간의 데이터 전송만으로 기능을 구현하고 있다. 
-2. 기술스택은 대략적인 예정이고. 아직 완벽하게 사용중이지 않다. 만약 사용하고 싶은지 확인하고 싶다면, 직접 사용여부를 물어봐라.
+Spring Boot 기반 API 서버. 클라이언트 요청을 받아 PostgreSQL + pgvector로 마스터 데이터를 제공하고, 외부 AI 서버(FastAPI)와 로컬 Ollama(Spring AI)를 사용해 이미지/영수증 분석·레시피 생성·취향 기반 추천을 처리합니다.
 
-# Detailed Technical Stack
-## 1. Main Backend (Java)
-- Framework: Spring Boot 4.0.1 (Java 17)
-- ORM/DB: Spring Data JPA, QueryDSL (동적 필터링용), PostgreSQL + PostGIS (공간 데이터 연산)
-- Security: Spring Security + JWT (Stateless)
-- Infrastructure: Redis (할인 정보 캐싱), JUnit5 (테스트)
+---
 
-## 2. AI Service (Python)
-- Framework: FastAPI (Asynchronous)
-- Vision: YOLOv8 (식재료 객체 탐지), Google Cloud Vision API (영수증 OCR)
-- Image Processing: OpenCV (전처리 및 신선도 분석)
-- Deployment: Docker (AI 환경 격리)
+## 기술 스택 (실제 사용 중)
 
-## 3. Intelligence Layer (LLM)
-- Model: OpenAI GPT-4o (또는 Claude 3.5)
-- Library: LangChain (프롬프트 템플릿 및 체인 관리)
-- Core: 자연어 기반 맥락 분석 및 영양 정보 리포트 요약
+| 구분 | 기술 |
+|------|------|
+| 언어 / 런타임 | Java 21 |
+| 프레임워크 | Spring Boot 3.4.1 |
+| 빌드 | Gradle |
+| DB | PostgreSQL + pgvector (Extension) |
+| ORM | Spring Data JPA |
+| API 문서 | SpringDoc OpenAPI 2.7.0 (Swagger UI) |
+| AI 연동 | Spring AI (Ollama) — 임베딩 `bge-m3`, 채팅 `exaone3.5:2.4b` |
+| 외부 연동 | RestTemplate → FastAPI AI 서버 (이미지/영수증 분석, 레시피 생성) |
+| 기타 | Lombok, springboot3-dotenv, Apache HttpClient 5, JUnit 5 |
 
+---
 
-Get-ChildItem -Recurse -Include *.java, *.properties, *.yml, *.gradle, *.xml | ForEach-Object {
-    "--- FILE: $($_.FullName) ---"
-    Get-Content $_.FullName
-    "`n"
-} | Out-File -FilePath project_context.txt -Encoding utf8NoBOM
+## 프로젝트 내 데이터 흐름
 
+1. 클라이언트 (Expo 앱)에서 입력 수집: 텍스트, 취향 선택, 식재료 이미지 또는 영수증 이미지.
+2. Spring Backend에서 요청 수신 후:
+   - 이미지/영수증 → FastAPI AI 서버로 전송 (`type=image` / `type=receipt` 구분).
+   - 재료/조미료 목록·검색·취향 분석 → PostgreSQL + Ollama(임베딩/채팅) 사용.
+3. AI 서버 (Python)에서:
+   - 이미지: YOLO 등으로 객체 인식 후 텍스트로 변환 → LLM으로 레시피/재료 정보 생성.
+   - 영수증: OCR로 텍스트 추출 → LLM으로 재료·수량 파싱.
+   - 레시피 생성: 재료·조미료·취향을 받아 LLM으로 레시피 생성 (initial / basic / more / real).
+4. Python 서버가 결과를 Spring으로 반환 (`{ "result": [ ... ] }`).
+5. Spring이 클라이언트에 JSON 응답으로 전달.
 
-일단 코드를 추가해야돼. 기존 코드도 약간 다듬어야하고. 
-지금 컨트롤러에서 이미지만 업로드한다고 메서드가 되어있는데. 
-영수증 or 재료사진 둘 중 하나를 받는거라서. 파이썬 서버에서 영수증은 OCR이 분석하고, 재료사진은 yolo가 분석해야하거든.
-백엔드에서 구분해서 보내줘야 파이썬에서 알맞은 모델에 전달할 수 있어.
-dto, service, controller 수정해서 코드 보내줘. (수정할 필요 없으면 안건드려도 괜찮아.)
+---
+
+## 환경 설정 및 실행
+
+### 필요 환경
+
+- Java 21  
+- PostgreSQL (pgvector 확장 설치)  
+- (선택) Ollama 로컬 실행 — 재료/조미료 검색, 취향 추천, 벡터 마이그레이션에 사용  
+- (선택) AI 서버(FastAPI) — 이미지/영수증 분석·레시피 생성용 (`prod` 프로파일 시 필수)
+
+### 설정 파일
+
+- `src/main/resources/application.properties`  
+  - 서버 포트, DB URL, JPA, AI 서버 URL, Ollama URL 등.
+- `.env` (프로젝트 루트)  
+  - `APP_ENV`, `DB_HOST`, `DB_USER`, `DB_PW`, `AI_SERVER_URL`, `OLLAMA_URL`, `ADMIN_SECRET_KEY` 등.
+
+### 프로파일
+
+- `dev` (기본): `MockAiClientService` — AI 서버 없이 Mock 응답.
+- `prod`: `RealAiClientService` — 실제 FastAPI AI 서버 호출.
+
+### 실행
+
+```bash
+# backend-spring 디렉터리에서
+./gradlew bootRun
+```
+
+- Swagger UI: `http://localhost:8080/swagger-ui.html`  
+- API Docs: `http://localhost:8080/api-docs`
+
+---
+
+## API 개요
+
+| 구분 | 경로 | 설명 |
+|------|------|------|
+| Master | `GET /api/ingredients`, `GET /api/ingredients/search?q=` | 재료 목록 / 임베딩 검색 |
+| Master | `GET /api/spices`, `GET /api/spices/search?q=` | 조미료 목록 / 임베딩 검색 |
+| Master | `GET /api/preferences`, `POST /api/preferences/analyze` | 취향 목록 / 취향 기반 재료·조미료 추천 (RAG) |
+| Recipe | `POST /api/recipe/analyze` (multipart, `type=image\|receipt`) | 이미지 또는 영수증 분석 |
+| Recipe | `POST /api/recipe/generate` (JSON, `action=initial\|basic\|more\|real`) | 레시피 생성 |
+| Admin | `POST /api/admin/migration/vectors` (Header: `X-ADMIN-KEY`) | 전체 벡터(임베딩) 마이그레이션 |
+
