@@ -11,7 +11,7 @@
 
 | Category | Detail (java) |
 | --- | --- |
-| **BackEnd** | **Java 21**, **Spring Boot 3.4.1,** |
+| **BackEnd** | **Java 17**, **Spring Boot 3.4.1,** |
 | **OS** | Windows |
 | **Library & API** | **Spring AI**, **Ollama** (Model: `bge-m3`, `exaone3.5`), **Lombok**, Spring Data JPA,  **RestTemplate** (Server-to-Server Comm) |
 | **IDE** | IntelliJ IDEA (Java), VS Code |
