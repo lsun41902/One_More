@@ -66,9 +66,10 @@ def get_vectorstore():
     model_path = os.path.join(current_dir, TOP_FOLDER, "my_food_model")
     index_path = os.path.join(current_dir, TOP_FOLDER, "faiss_my_food_model_index")
 
+    device_type = 'cuda' if torch.cuda.is_available() else 'cpu'
     embeddings = HuggingFaceEmbeddings(
         model_name=model_path,
-        model_kwargs={'device': 'cuda'}
+        model_kwargs={'device': device_type}
     )
 
     # load_local 할 때 distance_strategy를 명시적으로 지정합니다. ✅
