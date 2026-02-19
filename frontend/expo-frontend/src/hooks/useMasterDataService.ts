@@ -46,7 +46,10 @@ export const useMasterDataService = () => {
   // const SERVER_URL = "http://192.168.22.54:8080";
 
   // apk테스트를 위한, ngrok 무료 버전 주소.
-  const SERVER_URL = "https://areolar-tad-unimplanted.ngrok-free.dev";
+  // const SERVER_URL = "https://areolar-tad-unimplanted.ngrok-free.dev";
+
+  // 백엔드 ec2서버 주소
+  const SERVER_URL = "http://44.206.152.45:8080";
 
   // ngrok 경고페이지 우회용 공통 헤더 정의
   const COMMON_HEADERS = {
