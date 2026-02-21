@@ -17,7 +17,6 @@
     "android": {
       "package": "com.firstproject.onemore", // 안드로이드 마켓 배포용 고유 패키지 주소
       "versionCode": 3, // 앱 업데이트 시마다 증가시켜야 하는 정수 형태의 버전 코드
-      "usesCleartextTraffic": true, // HTTP 통신을 허용하는 설정
       "adaptiveIcon": {
         "backgroundColor": "#ffffff", // 안드로이드 적응형 아이콘의 배경색 설정
         "foregroundImage": "./assets/images/refrigerator_character_removebg.png" // 안드로이드 적응형 아이콘의 전경 이미지 경로
@@ -49,15 +48,6 @@
           "backgroundColor": "#ffffff", // 스플래시 화면의 배경색
           "dark": {
             "backgroundColor": "#000000" // 다크 모드 시 스플래시 배경색
-          }
-        }
-      ],
-      [
-        // react native 빌드 설정을 커스터마이징하는 플러그인
-        "expo-build-properties",
-        {
-          "android": {
-            "usesCleartextTraffic": true // HTTP 통신을 허용하는 설정 (안드로이드)
           }
         }
       ]
