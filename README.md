@@ -17,6 +17,7 @@
 | Server | Spring Boot (Port: 8080), FastAPI (Port: 8000) |
 | Security | SSL/TLS (HTTPS), Security Group, ngrok (Local-Cloud Tunneling) |
 
+
 - Backend
 
 | Category | Detail (Java)                                                                                                                    |
@@ -30,6 +31,7 @@
 | **CI** | **Gradle** (Build Tool)                                                                                                          |
 | **DataBase** | **PostgreSQL** (Relation + **pgvector** Extension)                                                                               |
 
+
 - AI-server
 
 | Category | Detail (Python) |
@@ -41,6 +43,8 @@
 | **Server** | **Uvicorn** (FastAPI Server) |
 | **Document** | **Swagger UI** (Built-in OpenAPI) |
 | **CI** | **pip** |
+
+
 - Frontend
 
 | Category | Detail (TypeScript)                                                           |
