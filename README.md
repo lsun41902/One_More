@@ -43,6 +43,7 @@
 | **Server** | **Uvicorn** (FastAPI Server) |
 | **Document** | **Swagger UI** (Built-in OpenAPI) |
 | **CI** | **pip** |
+| **DataBase** | **PostgreSQL** (Relation + **pgvector** Extension)                                                                               |
 
 
 - Frontend
