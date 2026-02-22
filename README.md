@@ -38,7 +38,7 @@
 | --- | --- |
 | **BackEnd** | **Python3.11, FastAPI** |
 | **OS** | **Ubuntu(EC2)** |
-| **Library & API** | AI/LLM(Google GenAi, LangChain), **Embedding &** Vector DB (FAISS, HuggingFace (`jhgan/ko-sroberta-multitask`), **Model Training**(Sentence-Transformers(PyTorch)) |
+| **Library & API** | AI/LLM(Google GenAi, LangChain), **Embedding &** Vector DB (HuggingFace (`jhgan/ko-sroberta-multitask`), **Model Training**(Sentence-Transformers(PyTorch)) |
 | **IDE** | **Pycham** |
 | **Server** | **Uvicorn** (FastAPI Server) |
 | **Document** | **Swagger UI** (Built-in OpenAPI) |
