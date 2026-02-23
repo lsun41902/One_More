@@ -16,7 +16,7 @@
 
     "android": {
       "package": "com.firstproject.onemore", // 안드로이드 마켓 배포용 고유 패키지 주소
-      "versionCode": 1, // 앱 업데이트 시마다 증가시켜야 하는 정수 형태의 버전 코드
+      "versionCode": 3, // 앱 업데이트 시마다 증가시켜야 하는 정수 형태의 버전 코드
       "adaptiveIcon": {
         "backgroundColor": "#ffffff", // 안드로이드 적응형 아이콘의 배경색 설정
         "foregroundImage": "./assets/images/refrigerator_character_removebg.png" // 안드로이드 적응형 아이콘의 전경 이미지 경로

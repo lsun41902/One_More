@@ -46,22 +46,23 @@ export const useMasterDataService = () => {
   // const SERVER_URL = "http://192.168.22.54:8080";
 
   // apk테스트를 위한, ngrok 무료 버전 주소.
-  const SERVER_URL = "https://areolar-tad-unimplanted.ngrok-free.dev";
-
+  // const SERVER_URL = "https://areolar-tad-unimplanted.ngrok-free.dev";
   // ngrok 경고페이지 우회용 공통 헤더 정의
   const COMMON_HEADERS = {
     "ngrok-skip-browser-warning": "69420",
   };
 
-  /**
-   * [기능 1] 마스터 데이터 초기 로드
-   * 앱 시작 시 혹은 첫 화면 진입 시 취향 태그 목록을 가져옵니다.
-   */
+  // 백엔드 ec2서버 엘라스틱ip 주소
+  // const SERVER_URL = "http://44.206.152.45:8080";
+
+  // AWS ALB 및 SSL 인증서가 적용된 보안 서버 주소
+  const SERVER_URL = "https://pado-o.com";
+
+  //[기능 1] 마스터 데이터 초기 로드
   const fetchAllMasterData = async () => {
     try {
       setIsLoading(true);
       const prefRes = await fetch(`${SERVER_URL}/api/preferences`, {
-        // [수정] 헤더 추가
         headers: COMMON_HEADERS,
       });
 
