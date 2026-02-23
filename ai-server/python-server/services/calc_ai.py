@@ -1,21 +1,19 @@
 import os
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from core.config import settings
 from collections import deque
 import shutil
 import json
 
 # 제미나이
-from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from langchain_google_genai import ChatGoogleGenerativeAI
 import google.generativeai as genai
 from PIL import Image
 from google.api_core import exceptions
 from langchain_core.documents import Document
 from langchain_classic.chains import RetrievalQA
-from sentence_transformers import SentenceTransformer, util, InputExample, losses
+from sentence_transformers import SentenceTransformer, util
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_community.vectorstores import FAISS
-from langchain_community.vectorstores.utils import DistanceStrategy  # 1. 임포트 추가
+from langchain_postgres.vectorstores import PGVector
 import torch
 
 import pandas as pd
@@ -61,10 +59,32 @@ def get_openai_llm():
     return openai_llm
 
 
+# def get_vectorstore():
+#     current_dir = os.path.dirname(os.path.abspath(__file__))
+#     model_path = os.path.join(current_dir, TOP_FOLDER, "my_food_model")
+#     index_path = os.path.join(current_dir, TOP_FOLDER, "faiss_my_food_model_index")
+#
+#     device_type = 'cuda' if torch.cuda.is_available() else 'cpu'
+#     embeddings = HuggingFaceEmbeddings(
+#         model_name=model_path,
+#         model_kwargs={'device': device_type}
+#     )
+#
+#     # load_local 할 때 distance_strategy를 명시적으로 지정합니다. ✅
+#     vectorstore = FAISS.load_local(
+#         index_path,
+#         embeddings,
+#         allow_dangerous_deserialization=True,
+#         distance_strategy=DistanceStrategy.COSINE  # 여기에 추가!
+#     )
+#
+#     print("✅ 코사인 유사도 전략으로 인덱스를 성공적으로 로드했습니다!")
+#     return vectorstore
+
 def get_vectorstore():
+    # 1. 임베딩 모델 설정
     current_dir = os.path.dirname(os.path.abspath(__file__))
     model_path = os.path.join(current_dir, TOP_FOLDER, "my_food_model")
-    index_path = os.path.join(current_dir, TOP_FOLDER, "faiss_my_food_model_index")
 
     device_type = 'cuda' if torch.cuda.is_available() else 'cpu'
     embeddings = HuggingFaceEmbeddings(
@@ -72,15 +92,20 @@ def get_vectorstore():
         model_kwargs={'device': device_type}
     )
 
-    # load_local 할 때 distance_strategy를 명시적으로 지정합니다. ✅
-    vectorstore = FAISS.load_local(
-        index_path,
-        embeddings,
-        allow_dangerous_deserialization=True,
-        distance_strategy=DistanceStrategy.COSINE  # 여기에 추가!
-    )
+    # 2. RDS 접속 정보
+    connection_string = "postgresql+psycopg://postgres:12341234@database-1.ciebuksiww4i.us-east-1.rds.amazonaws.com:5432/one-more-db"
 
-    print("✅ 코사인 유사도 전략으로 인덱스를 성공적으로 로드했습니다!")
+    # 3. PGVector 로드
+    # 에러가 났던 content_column 등을 제거하고 기본형으로 선언합니다.
+    vectorstore = PGVector(
+        embeddings=embeddings,
+        connection=connection_string,
+        collection_name="recipe_ai",
+        use_jsonb=True
+    )
+    vectorstore.strategy = "cosine"
+
+    print("✅ RDS 연결 설정 완료!")
     return vectorstore
 
 

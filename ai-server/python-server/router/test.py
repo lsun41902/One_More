@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import re
 from services.dummy_data import clean_ingredients, dummy_test
-from services.study_embeding import study_embedding,study_embedding_indexing
+from services.study_embeding import study_embedding,study_embedding_indexing,initialize_and_insert_data
 
 router = APIRouter(prefix="/recipes-generate-",tags=["Test"])
 
@@ -147,10 +147,11 @@ def test3():
 
 @router.post("test4",
     summary="더미 데이터 학습",
-    description="더미 데이터 학습하기")
+    description="pg에 저장하기")
 def test4():
     # study_embedding()
-    study_embedding_indexing()
+    # study_embedding_indexing()
+    initialize_and_insert_data()
     return {"result":"더미 데이터 생성 성공"}
 
 @router.post("test5",

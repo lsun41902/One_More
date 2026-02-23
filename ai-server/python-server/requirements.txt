@@ -1,16 +1,24 @@
 fastapi
-langchain-community
-langchain-openai
-langchain-google-genai
-langchain-huggingface
-pandas
-Pillow
-protobuf
+uvicorn
+python-multipart
 pydantic
 python-dotenv
+
+# Database
+langchain-postgres
+psycopg[binary]
+pgvector
+
+# AI & LangChain
+langchain-core
+langchain-community
+langchain-google-genai
+langchain-huggingface
+google-generativeai
+
+# Data & ML
+pandas
 sentence-transformers
 torch --index-url https://download.pytorch.org/whl/cpu
-uvicorn
-tf-keras
-google-generativeai
-python-multipart
+Pillow
+tqdm

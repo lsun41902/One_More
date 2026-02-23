@@ -8,6 +8,7 @@ from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
 from tqdm import tqdm # 진행 바 라이브러리
 from langchain_community.vectorstores.utils import DistanceStrategy # 1. 임포트 추가
+import psycopg
 
 
 
@@ -128,3 +129,69 @@ def study_embedding_indexing():
     output_path = os.path.join(current_dir, "..", "faiss_my_food_model_index")
     vectorstore.save_local(output_path)
     print(f"\n✅ DB 생성 완료! 저장 경로: {output_path}")
+
+def initialize_and_insert_data():
+    # 1. 연결 정보 (본인의 DB 정보로 수정)
+    conn_info = "host=localhost dbname=one-more-db user=postgres password=1234"
+
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(current_dir, "..", "my_food_model")
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model = SentenceTransformer(model_path, device=device)
+
+    try:
+        # 2. DB 연결 (psycopg3 사용)
+        with psycopg.connect(conn_info) as conn:
+            with conn.cursor() as cur:
+                print("Checking database schema...")
+
+                # [단계 1] pgvector 확장 설치 (없으면 생성)
+                cur.execute("CREATE EXTENSION IF NOT EXISTS vector;")
+
+                # [단계 2] 테이블 생성 (없으면 생성)
+                cur.execute("""
+                            CREATE TABLE IF NOT EXISTS recipe_ai
+                            (
+                                id bigserial PRIMARY KEY,
+                                title TEXT,
+                                content TEXT,
+                                ingredients TEXT,
+                                embedding vector(768) -- 모델 차원에 맞춰 384 또는 768
+                                );
+                            """)
+
+                # [단계 3] 벡터 검색 최적화를 위한 인덱스 생성 (HNSW)
+                # 데이터가 많을 때 검색 속도를 비약적으로 높여줍니다.
+                cur.execute("""
+                            CREATE INDEX IF NOT EXISTS recipe_ai_idx
+                                ON recipe_ai USING hnsw (embedding vector_cosine_ops);
+                            """)
+
+                conn.commit()
+                print("✅ Schema check completed.")
+
+                # 3. 데이터가 이미 있는지 확인 (중복 삽입 방지)
+                cur.execute("SELECT COUNT(*) FROM recipe_ai;")
+                if cur.fetchone()[0] > 0:
+                    print("⚠️ Data already exists. Skipping insertion.")
+                    return
+
+                # 4. CSV 데이터 로드 및 벡터화/삽입
+                df = pd.read_csv(os.path.join(current_dir, "..", "temp_data", "refined_recipe_data.csv"))
+
+                print(f"🚀 Inserting {len(df)} records to PostgreSQL...")
+
+                # 대량 삽입을 위해 'copy' 기능을 사용하여 속도 극대화
+                with cur.copy("COPY recipe_ai (title, content, ingredients, embedding) FROM STDIN") as copy:
+                    for _, row in tqdm(df.iterrows(), total=len(df)):
+                        if pd.isna(row['CKG_MTRL_CN']): continue
+
+                        text = f"요리:{row['RCP_TTL']}\n재료:{row['CKG_MTRL_CN']}"
+                        vector = model.encode(text).tolist()
+
+                        vector_str = f"[{','.join(map(str, vector))}]"
+                        copy.write_row((row['RCP_TTL'], row['CKG_MTRL_CN'], row['ingredient'], vector_str))
+                print("🎉 All data successfully migrated to PostgreSQL!")
+
+    except Exception as e:
+        print(f"❌ Error: {e}")
