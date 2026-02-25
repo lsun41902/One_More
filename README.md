@@ -164,7 +164,7 @@
 - [이미지 전송 오류](assets/이미지%20전송%20에러%20301df1d0a3478072ba9bfe948b97696a.md)
 >- 422 Unprocessable Content: [no body] 에러
 >- HTTP 전송 객체 문제
-- LangChain Google API 기반 임베딩 사용 시, 대량의 레시피 데이터를 처리할 때 발생하는 토큰 제한 및 API 호출 비용 이슈가 발생
+- LangChain Google API 기반 임베딩 사용 시, 대량의 레시피 데이터를 처리할 때 발생하는 토큰 제한 및 API 호출 비용 이슈가 발생.
 >- `HuggingFaceEmbeddings` 라이브러리를 활용해 모델(`jhgan/ko-sroberta-multitask`)을 로컬 환경에서 직접 구동하도록 처리
 
 ---
@@ -173,21 +173,14 @@
 
 - 각 팀원마다 50$를 제공하는 AWS Academy Learner Lab 계정을 사용함.
 
-### 6.1 네트워크 및 보안
-
-- SSL Termination: ALB에서 HTTPS(443) 인증서 처리 후 내부 서버로 HTTP(8080) 라우팅하여 서버 부하 최적화.
-<div align="center">
-<p>(ALB 리스너 및 타겟 그룹 설정 확인)</p>
-<img src="./assets/springbackend_server_ALB_flow.png" width="90%" />
-</div>
-
-- 보안 그룹 계층화: ALB(80, 443), EC2(8080), RDS(5432) 간 인바운드 소스 참조 설정을 통한 네트워크 격리.
-
-- 하이브리드 통신: 다수의 고성능 AI모델(EXAONE 3.5)를 안정적으로 사용할 수 있는 EC2서버를 확보할 수 없어서, AI모델을 로컬PC에 배치하고 ngrok 터널링 기반 클라우드 백엔드와 로컬 AI 서버(Ollama) 간 보안 인터페이스 구축.
-
-### 6.2 가용성 및 확장성
+### 6.1 가용성 및 확장성
 
 - Auto Scaling Group: us-east-1a, 1b 가용 영역 분산 및 AMI 기반 인스턴스 자동 확장 환경 조성.
+- AI 부하 분산: FastAPI 클러스터를 별도 로드밸런서 하단에 배치하여 대량 분석 요청 처리 성능 확보.
+<div align="center">
+<p>(AI Server 로드밸런싱 설정 확인)</p>
+<img src="./assets/Fast_api_ai_server_ALB_flow.png" width="90%" />
+</div>
 
 <div align="center">
 <p>(다중 서버 인스턴스에서 동시 요청을 처리하는 로그 확인)</p>
@@ -196,13 +189,50 @@
 
 - 인스턴스 사이징: JVM 런타임 안정성 및 초기 부팅 리소스 부하를 고려한 t3.medium 규격 채택.
 - 상태 검사(Health Check): 애플리케이션 내 전용 엔드포인트(/health) 구축을 통한 실시간 가동 상태 검증 및 자동 복구.
+- 하이브리드 통신: 다수의 고성능 AI모델(EXAONE 3.5:7.8B)를 안정적으로 사용할 수 있는 EC2서버를 확보할 수 없어서, AI모델을 로컬PC에 배치하고 ngrok 터널링 기반 클라우드 백엔드와 로컬 AI 서버(Ollama) 간 보안 인터페이스 구축.
 
-### 6.3 데이터 및 AI 인터페이스
+### 6.2 데이터 및 AI 인터페이스
 
 - DB 통합 운영: 비용 절감을 위해 단일 Managed RDS(PostgreSQL) 엔드포인트 구성을 통한 팀 내 데이터 정합성 유지.
 - 벡터 검색 최적화: pgvector 확장을 활용한 레시피 임베딩 데이터 저장 및 유사도 검색 기능 구현.
-- AI 부하 분산: FastAPI 클러스터를 별도 로드밸런서 하단에 배치하여 대량 분석 요청 처리 성능 확보.
+
+### 6.3 네트워크 및 보안
+> - 안드로이드 9.0 이상의 Cleartext HTTP 차단 정책에 의해, HTTPS 환경을 구축
+
 <div align="center">
-<p>(AI Server 로드밸런싱 설정 확인)</p>
-<img src="./assets/Fast_api_ai_server_ALB_flow.png" width="90%" />
+<p>( 외부 도메인(가비아)으로 ACM발급 후 CNAME 등록)</p>
+<img src="./assets/AWS_Certificate_manager_발급.png" width="90%" />
+</div>
+
+- 클라이언트와 로드밸런서 구간만 HTTPS를 유지하고, 내부 네트워크 구간은 HTTP로 통신하는 SSL Termination 구조.
+<div align="center">
+<p>(ALB 리스너 및 타겟 그룹 설정 확인)</p>
+<img src="./assets/springbackend_server_ALB_flow.png" width="90%" />
+</div>
+
+---
+
+> - AWS 서비스 사용 불가
+
+- Learner Lab 환경의 IAM 정책(CloudFront 권한 제한 및 Route 53 호스팅 영역 생성 불가)
+<div align="center">
+<p>(CluodFront 사용 불가)</p>
+<img src="./assets/AWS_CloudFront_assumed_role.png" width="90%" />
+</div>
+
+- api.pado-o.com은 백엔드 로드밸런서(ALB)로, www.pado-o.com은 프론트엔드 정적 호스팅(S3)으로 각각 매핑
+<div align="center">
+<p>(가비아 DNS 설정)</p>
+<img src="./assets/Gabia_DNS_config.png" width="90%" />
+</div>
+
+---
+
+- 보안 그룹 계층화: ALB(80, 443), EC2(8080), RDS(5432) 간 인바운드 소스 참조 설정을 통한 네트워크 격리.
+> - ALB 계층: Public 서브넷에 위치하며, 외부 사용자로부터 80/443 포트 접속을 수용하고 SSL/TLS 복호화 수행.
+> - EC2 계층: 인바운드 소스를 ALB 보안 그룹 ID로 제한하여, 로드밸런서를 우회하는 직접적인 WAS 접속 시도를 원천 차단.
+> - RDS 계층: 인바운드 소스를 WAS(EC2) 보안 그룹 ID로 특정하여, 데이터베이스 계층을 외부 네트워크로부터 완전히 격리.
+<div align="center">
+<p>(EC2 보안 그룹 계층화)</p>
+<img src="./assets/AWS_Security_Group_Layering.png" width="90%" />
 </div>
