@@ -178,7 +178,7 @@
 - SSL Termination: ALB에서 HTTPS(443) 인증서 처리 후 내부 서버로 HTTP(8080) 라우팅하여 서버 부하 최적화.
 <div align="center">
 <p>(ALB 리스너 및 타겟 그룹 설정 확인)</p>
-<img src="./assets/springbackend_server_ALB_flow.jpg" width="90%" />
+<img src="./assets/springbackend_server_ALB_flow.png" width="90%" />
 </div>
 
 - 보안 그룹 계층화: ALB(80, 443), EC2(8080), RDS(5432) 간 인바운드 소스 참조 설정을 통한 네트워크 격리.
@@ -204,5 +204,5 @@
 - AI 부하 분산: FastAPI 클러스터를 별도 로드밸런서 하단에 배치하여 대량 분석 요청 처리 성능 확보.
 <div align="center">
 <p>(AI Server 로드밸런싱 설정 확인)</p>
-<img src="./assets/Fast_api_ai_server_ALB_flow.jpg" width="90%" />
+<img src="./assets/Fast_api_ai_server_ALB_flow.png" width="90%" />
 </div>
