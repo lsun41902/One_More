@@ -220,7 +220,7 @@
 <img src="./assets/AWS_CloudFront_assumed_role.png" width="90%" />
 </div>
 
-- api.pado-o.com은 백엔드 로드밸런서(ALB)로, www.pado-o.com은 프론트엔드 정적 호스팅(S3)으로 각각 매핑
+- api.pado-o.com은 백엔드 로드밸런서(ALB)로, www.pado-o.com 프론트엔드 정적 호스팅(S3)으로 각각 매핑
 <div align="center">
 <p>(가비아 DNS 설정)</p>
 <img src="./assets/Gabia_DNS_config.png" width="90%" />
