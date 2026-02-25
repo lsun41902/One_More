@@ -82,6 +82,9 @@
   <img src="./assets/3-2_시스템_인프라_아키텍처.png" width="80%" />
 </div>
 
+<br>
+<br>
+
 3-3. AWS 인프라 설계 전략
 <div align="center">
 <img src="./assets/3-3_cloud_인프라_플로우.png" width="80%" />
@@ -89,6 +92,7 @@
 
 <br>
 <br>
+---
 
 ## 4. 주요 기능 (Key Features)
 
