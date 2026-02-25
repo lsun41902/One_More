@@ -156,16 +156,6 @@
 <br>
 <br>
 
-
-## 5. 트러블 슈팅(Troubleshooting)
-- [이미지 전송 오류](assets/이미지%20전송%20에러%20301df1d0a3478072ba9bfe948b97696a.md)
->- 422 Unprocessable Content: [no body] 에러
->- HTTP 전송 객체 문제
-- LangChain Google API 기반 임베딩 처리 과정 시, 대량의 레시피 데이터를 처리할 때 발생하는 토큰 제한 및 API 호출 비용 이슈가 발생.
->- `HuggingFaceEmbeddings` 라이브러리를 활용해 모델(`jhgan/ko-sroberta-multitask`)을 로컬 환경에서 직접 구동하도록 처리
-
-
-
 ### 6-A 기본 방식 레시피 생성
 
 <div align="center">
@@ -177,7 +167,8 @@
 - 요약 화면에서 3종의 레시피 확인 가능
 - 상세 화면에서 1종의 레시피의 요리법과 팁 추가로 확인 가능.
 
-
+<br>
+<br>
 
 ### 6-B 재료 추가 방식 레시피 생성 / 6-C '만개의 레시피' 레시피 생성
 
@@ -190,7 +181,18 @@
 - +N개의 추가 재료 확인 가능
 - 실제 ‘만개의 레시피’사이트의 레시피 데이터 출력 구현
 
+<br>
+<br>
 
+## 5. 트러블 슈팅(Troubleshooting)
+- [이미지 전송 오류](assets/이미지%20전송%20에러%20301df1d0a3478072ba9bfe948b97696a.md)
+>- 422 Unprocessable Content: [no body] 에러
+>- HTTP 전송 객체 문제
+- LangChain Google API 기반 임베딩 처리 과정 시, 대량의 레시피 데이터를 처리할 때 발생하는 토큰 제한 및 API 호출 비용 이슈가 발생.
+>- `HuggingFaceEmbeddings` 라이브러리를 활용해 모델(`jhgan/ko-sroberta-multitask`)을 로컬 환경에서 직접 구동하도록 처리
+
+<br>
+<br>
 
 ## 6. AWS 인프라 구축 및 운영 상세 (Infrastructure)
 
