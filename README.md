@@ -75,6 +75,7 @@
 </div>
 
 <br>
+<br>
 
 3-2 시스템 인프라 아키텍처:
 <div align="center">
@@ -86,6 +87,7 @@
 <img src="./assets/3-3_cloud_인프라_플로우.png" width="80%" />
 </div>
 
+<br>
 <br>
 
 ## 4. 주요 기능 (Key Features)
@@ -118,6 +120,7 @@
 
 <br>
 <br>
+
 ---
 
 ### 3-A. 분석 재료 수정 / 3-B. 직접 식재료 선택
