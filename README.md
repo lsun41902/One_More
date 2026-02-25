@@ -194,7 +194,7 @@
 <img src="./assets/AWS_auto_scaling.gif" width="90%"/>
 </div>
 
-- 인스턴스 사이징: JVM 런타임 안정성 및 초기 부팅 리소스 부하를 고려한 t3.large 규격 채택.
+- 인스턴스 사이징: JVM 런타임 안정성 및 초기 부팅 리소스 부하를 고려한 t3.medium 규격 채택.
 - 상태 검사(Health Check): 애플리케이션 내 전용 엔드포인트(/health) 구축을 통한 실시간 가동 상태 검증 및 자동 복구.
 
 ### 6.3 데이터 및 AI 인터페이스
