@@ -239,6 +239,11 @@
 ### 6.3 네트워크 및 보안
 > - 안드로이드 9.0 이상의 Cleartext HTTP 차단 정책에 의해, HTTPS 환경을 구축
 
+<br>
+
+- ALB에 HTTPS리스터를 연결하기 위해, 보유중인 도메인(가비아)를 이용해서 ACM을 발급
+
+
 <div align="center">
 <p>( 외부 도메인(가비아)으로 ACM발급 후 CNAME 등록)</p>
 <img src="./assets/AWS_Certificate_manager_발급.png" width="90%" />
