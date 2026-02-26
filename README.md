@@ -238,12 +238,15 @@
 
 ### 6.3 네트워크 및 보안
 > - 안드로이드 9.0 이상의 Cleartext HTTP 차단 정책에 의해, HTTPS 환경을 구축
+> - SSL Termination 구조로 내부 부담을 줄이기 위해 ALB에 HTTPS 리스너 설치
 
 
 <br>
 
-- ALB에 HTTPS리스터를 연결하기 위해, 보유중인 도메인(가비아)를 이용해서 ACM을 발급
-  
+
+- ALB 443포트 리스너에 장착할 AWS Amazon_Certificate_manager 인증서 발급
+
+<br>
 <br>
 
 <div align="center">
