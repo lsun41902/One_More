@@ -241,16 +241,12 @@
 > - SSL Termination 구조로 내부 부담을 줄이기 위해 ALB에 HTTPS 리스너 설치
 <div align="center">
 <img src="./assets/3-3_cloud_인프라_플로우.png" width="80%" />
-</div
+</div>
 
 <br>
 
 
 - ALB 443포트 리스너에 장착할 AWS Amazon_Certificate_manager 인증서 발급
-
-<br>
-<br>
-
 <div align="center">
 <p>( 외부 도메인(가비아)으로 ACM발급 후 CNAME 등록)</p>
 <img src="./assets/AWS_Certificate_manager_발급.png" width="90%" />
