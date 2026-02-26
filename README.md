@@ -293,26 +293,6 @@
 <img src="./assets/AWS_Security_Group_Layering.png" width="90%" />
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-## 현재... AI서버와 RDS는 사망한 상태입니다...
-<div align="center">
-<p>(R.I.P)</p>
-<img src="./assets/end-of-server.png" width="90%" />
-</div>
-<div align="center">
 <p>(R.I.P)</p>
 <img src="./assets/DIED-SERVER.png" width="90%" />
 </div>
