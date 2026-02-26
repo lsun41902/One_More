@@ -239,7 +239,9 @@
 ### 6.3 네트워크 및 보안
 > - 안드로이드 9.0 이상의 Cleartext HTTP 차단 정책에 의해, HTTPS 환경을 구축
 > - SSL Termination 구조로 내부 부담을 줄이기 위해 ALB에 HTTPS 리스너 설치
-
+<div align="center">
+<img src="./assets/3-3_cloud_인프라_플로우.png" width="80%" />
+</div
 
 <br>
 
