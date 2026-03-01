@@ -292,7 +292,3 @@
 <p>(EC2 보안 그룹 계층화)</p>
 <img src="./assets/AWS_Security_Group_Layering.png" width="90%" />
 </div>
-
-<p>(R.I.P)</p>
-<img src="./assets/DIED-SERVER.png" width="90%" />
-</div>
