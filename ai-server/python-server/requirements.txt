@@ -1,24 +1,44 @@
-fastapi
-uvicorn
-python-multipart
-pydantic
-python-dotenv
+# one-more ai-server(python-server) 의존성 — 실사용 패키지 기준 (2026-07-11, Python 3.11.9)
+#
+# [중요] 이 프로젝트는 지금까지 공용 가상환경(C:\Users\jjong\VS_code_venv\.venv)을 썼음.
+# 복원할 때는 프로젝트 전용 venv를 새로 만들어 이 파일로 설치할 것:
+#   python -m venv .venv
+#   .venv\Scripts\pip install -r requirements.txt
 
-# Database
-langchain-postgres
-psycopg[binary]
-pgvector
+# torch CUDA 12.6 빌드용 PyTorch 인덱스 (CPU만 쓸 거면 이 줄과 아래 torch 주석 참고)
+--extra-index-url https://download.pytorch.org/whl/cu126
 
-# AI & LangChain
-langchain-core
-langchain-community
-langchain-google-genai
-langchain-huggingface
-google-generativeai
+# Web Framework
+fastapi==0.128.0
+uvicorn==0.40.0
+python-multipart==0.0.21
+pydantic==2.12.5
+python-dotenv==1.2.1
 
-# Data & ML
-pandas
-sentence-transformers
-torch --index-url https://download.pytorch.org/whl/cpu
-Pillow
-tqdm
+# LangChain
+langchain-core==1.2.31        # (기존 환경은 1.2.7이었으나 langchain-huggingface 1.2.2가 >=1.2.31 요구)
+langchain-classic==1.0.1
+langchain-community==0.4.1
+langchain-google-genai==4.2.0
+langchain-huggingface==1.2.2  # (기존 1.2.0은 huggingface-hub<1.0 요구 → 신규 설치 불가라 1.2.2로 상향)
+langchain-openai==1.1.7
+langchain-postgres==0.0.17
+
+# Google Gemini
+google-generativeai==0.8.6
+google-api-core==2.29.0
+
+# 임베딩 / ML
+sentence-transformers==5.2.0
+transformers==5.0.0
+huggingface-hub==1.3.0
+tokenizers==0.22.2
+torch==2.9.1+cu126            # GPU(CUDA)용. CPU만 있는 PC면 'torch==2.9.1'로 바꾸고 맨 위 extra-index-url 줄 삭제
+
+# Database (PostgreSQL + pgvector)
+psycopg[binary]==3.3.3
+pgvector==0.3.6               # langchain-postgres 0.0.17이 <0.4를 요구함
+
+# Data
+pandas==2.3.3
+tqdm==4.67.1
