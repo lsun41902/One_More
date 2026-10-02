@@ -42,3 +42,4 @@ pgvector==0.3.6               # langchain-postgres 0.0.17이 <0.4를 요구함
 # Data
 pandas==2.3.3
 tqdm==4.67.1
+pillow==12.3.0                # services/calc_ai.py에서 PIL.Image 사용 (2026-10-01 누락분 추가)

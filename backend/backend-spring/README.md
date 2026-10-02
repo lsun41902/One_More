@@ -8,7 +8,7 @@ Spring Boot 기반 API 서버. 클라이언트 요청을 받아 PostgreSQL + pgv
 
 | 구분 | 기술 |
 |------|------|
-| 언어 / 런타임 | Java 21 |
+| 언어 / 런타임 | Java 17 |
 | 프레임워크 | Spring Boot 3.4.1 |
 | 빌드 | Gradle |
 | DB | PostgreSQL + pgvector (Extension) |
@@ -39,7 +39,7 @@ Spring Boot 기반 API 서버. 클라이언트 요청을 받아 PostgreSQL + pgv
 
 ### 필요 환경
 
-- Java 21  
+- Java 17  
 - PostgreSQL (pgvector 확장 설치)  
 - (선택) Ollama 로컬 실행 — 재료/조미료 검색, 취향 추천, 벡터 마이그레이션에 사용  
 - (선택) AI 서버(FastAPI) — 이미지/영수증 분석·레시피 생성용 (`prod` 프로파일 시 필수)
